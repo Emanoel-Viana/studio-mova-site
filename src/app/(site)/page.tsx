@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   Star,
   Check,
@@ -54,11 +55,16 @@ export default async function Home() {
               Agende sua sessão avaliativa
             </a>
           </div>
-          <FotoPlaceholder
-            label="Foto principal do studio"
-            ratio="4 / 5"
-            escuro
-          />
+          <div className="relative aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-2xl ring-1 ring-white/20">
+            <Image
+              src="/fotos/foto1.jpg"
+              alt="Alunos do Studio MOVA sorrindo após o treino"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              className="object-cover"
+            />
+          </div>
         </div>
       </section>
 

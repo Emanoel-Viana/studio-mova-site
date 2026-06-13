@@ -32,9 +32,8 @@ export function Footer({ content: site }: { content: SiteContent }) {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4 mb-12">
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <span className="grid place-items-center w-9 h-9 rounded-lg bg-white text-verde-escuro font-display font-black">
-                M
-              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/marca/simbolo-branco.png" alt="" className="h-8 w-auto" />
               <span className="font-display font-extrabold text-xl">
                 studioMOVA
               </span>

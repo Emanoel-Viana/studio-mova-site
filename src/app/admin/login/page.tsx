@@ -16,9 +16,8 @@ export default function LoginAdmin() {
     <main className="min-h-screen grid place-items-center bg-verde-claro p-6">
       <div className="w-full max-w-md">
         <div className="flex items-center justify-center gap-2.5 mb-8">
-          <span className="grid place-items-center w-11 h-11 rounded-xl bg-verde-escuro text-verde font-display font-black text-xl">
-            M
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/marca/simbolo-verde.png" alt="" className="h-11 w-auto" />
           <span className="font-display font-extrabold text-2xl text-verde-escuro">
             studioMOVA
           </span>

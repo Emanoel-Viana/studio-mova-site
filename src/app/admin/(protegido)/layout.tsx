@@ -22,9 +22,8 @@ export default async function LayoutProtegido({
       <header className="bg-verde-escuro text-white">
         <div className="max-w-5xl mx-auto px-6 flex items-center justify-between gap-4 py-3.5">
           <Link href="/admin" className="flex items-center gap-2.5">
-            <span className="grid place-items-center w-9 h-9 rounded-lg bg-white text-verde-escuro font-display font-black">
-              M
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/marca/simbolo-branco.png" alt="" className="h-8 w-auto" />
             <span className="font-display font-bold">
               studioMOVA{" "}
               <span className="font-normal text-[#9BE8BF]">· admin</span>

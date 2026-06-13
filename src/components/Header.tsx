@@ -79,9 +79,12 @@ export function Header({ avaliacao, whatsappVisivel }: Props) {
             href="/"
             className="flex items-center gap-2.5 text-white shrink-0"
           >
-            <span className="grid place-items-center w-10 h-10 rounded-xl bg-white text-verde-escuro font-display font-black text-lg">
-              M
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/marca/simbolo-branco.png"
+              alt=""
+              className={`w-auto transition-all ${compacto ? "h-7" : "h-9"}`}
+            />
             <span className="font-display text-xl">
               studio<strong className="font-black text-[#7FE3AC]">MOVA</strong>
             </span>
