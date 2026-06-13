@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+/* ============================================================
+   STUDIO MOVA — design system
+   Acessibilidade no centro: texto legível, alto contraste,
+   alvos de toque grandes, foco sempre visível.
+   ============================================================ */
+
+@theme {
+  /* Paleta da marca */
+  --color-verde: #2eb872;
+  --color-verde-escuro: #14532d;
+  --color-verde-claro: #e8f7ef;
+  --color-verde-medio: #1e9b5e;
+  --color-coral: #e0776b;
+  --color-coral-escuro: #9b3b2e;
+  --color-preto: #161a18;
+  --color-cinza: #45504a; /* escurecido p/ contraste AA */
+  --color-cinza-claro: #f4f8f6;
+
+  /* Tipografia */
+  --font-display: var(--font-archivo), "Archivo", sans-serif;
+  --font-body: var(--font-inter), "Inter", sans-serif;
+
+  /* Raio extra usado nos cards/placeholders */
+  --radius-xl2: 1.25rem;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #161a18;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    /* Corpo de texto maior por padrão — público de várias idades */
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+
+  /* Foco sempre visível e nítido (teclado e leitor de tela) */
+  :focus-visible {
+    outline: 3px solid var(--color-coral);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  /* Respeita quem pediu menos movimento */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-mova {
+    width: 100%;
+    max-width: 1140px;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+  }
+
+  /* Botões — alvos de toque generosos (mín. 52px de altura) */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.95rem 2rem;
+    min-height: 52px;
+    border-radius: 999px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease,
+      background-color 0.15s ease;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 26px rgb(0 0 0 / 0.18);
+  }
+  .btn-coral { background: var(--color-coral); color: #fff; }
+  .btn-coral:hover { background: #d56456; }
+  .btn-escuro { background: var(--color-preto); color: #fff; }
+  .btn-verde { background: var(--color-verde); color: #fff; }
+  .btn-verde:hover { background: var(--color-verde-medio); }
+  .btn-borda { border: 2px solid currentColor; background: transparent; }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-verde-medio);
+    margin-bottom: 0.85rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.9rem, 4vw, 2.7rem);
+    margin-bottom: 1rem;
+  }
+
+  .lead {
+    font-size: 1.2rem;
+    color: var(--color-cinza);
+    max-width: 60ch;
+  }
+
+  /* Placeholder de foto (até as imagens reais chegarem) */
+  .foto-ph {
+    background: var(--color-verde-claro);
+    border: 2px dashed #bfe6d0;
+    border-radius: var(--radius-xl2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-cinza);
+    font-weight: 600;
+    text-align: center;
+    padding: 1.25rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Animação de entrada suave ao rolar */
+@keyframes mova-reveal {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: none; }
+}
+.reveal { animation: mova-reveal 0.6s ease both; }
+
+/* Ticker (faixa rolante) */
+@keyframes mova-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ticker-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: mova-ticker 30s linear infinite;
+}

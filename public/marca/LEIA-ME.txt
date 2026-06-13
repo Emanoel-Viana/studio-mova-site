@@ -1,0 +1,28 @@
+COMO ENVIAR A LOGO E AS FOTOS — Studio MOVA
+============================================
+
+Salve os arquivos de imagem DENTRO destas pastas (arrastar e soltar serve):
+
+LOGO (pasta: public/marca/)
+---------------------------
+  simbolo.png        -> só o símbolo verde (o "M" em losango), fundo transparente
+  logo-horizontal.png-> "studioMOVA" com símbolo + texto (versão preferida p/ cabeçalho)
+  logo-branca.png    -> versão clara/branca da logo (p/ usar sobre o verde escuro)  [se tiver]
+
+  Dica: PNG com fundo transparente é o ideal. SVG é ainda melhor, se você tiver.
+
+FOTOS (pasta: public/fotos/)
+----------------------------
+  Pode jogar TODAS as fotos aqui (pode ser várias dezenas). Nomes livres.
+  Quando estiverem na pasta, me avise que eu escolho as melhores para cada
+  lugar do site (capa, espaço, modalidades, equipe, galeria) e otimizo o
+  tamanho pra carregar rápido.
+
+  Se quiser adiantar, estas são as posições principais:
+    - capa (vertical, a pessoa/ambiente)        -> destaque da home
+    - espaço/ambiente (horizontal)              -> seção "O Studio"
+    - musculação / spinning / pilates           -> cards de modalidades
+    - foto da Juliana e demais profissionais    -> página Equipe
+    - 8+ fotos variadas                          -> galeria
+
+Depois de salvar, é só me dizer "coloquei as fotos" que eu sigo daqui. 💚
