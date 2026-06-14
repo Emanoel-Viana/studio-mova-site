@@ -164,11 +164,11 @@ export const site = {
     },
   ],
 
-  // Agendamento online (Cal.com). Vazio = ainda não configurado;
-  // nesse caso o site mostra o caminho pelo WhatsApp.
-  // Pode ser sobrescrito pelo painel (/admin/agendamento).
+  // Agendamento online (Cal.com) — DESLIGADO por opção do studio.
+  // Vazio = o site direciona todo agendamento para o WhatsApp.
+  // Se um dia quiserem ativar, basta colar o link em /admin/agendamento.
   agendamento: {
-    calUrl: "studiomova/teste",
+    calUrl: "",
   },
 } as const;
 

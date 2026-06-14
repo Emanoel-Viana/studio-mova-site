@@ -222,12 +222,6 @@ export default async function Home() {
           >
             Agendar minha sessão avaliativa
           </a>
-          <p className="mt-5 text-[#EAFBF1]">
-            Prefere marcar um horário online?{" "}
-            <Link href="/agendar" className="underline font-semibold">
-              Agende por aqui
-            </Link>
-          </p>
         </div>
       </section>
 
