@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
-import { HeartPulse, Activity } from "lucide-react";
+import { HeartPulse, Activity, Accessibility, Dumbbell } from "lucide-react";
 import { site, waLink } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
 import { FotoPlaceholder } from "@/components/FotoPlaceholder";
@@ -11,6 +10,8 @@ export const metadata: Metadata = {
     "A metodologia do Studio MOVA: 60 minutos em 3 etapas, turmas de até 4 alunos e treino adaptado, inclusive para reabilitação.",
 };
 
+const icones = [Accessibility, Dumbbell, HeartPulse];
+
 export default function Metodologia() {
   return (
     <>
@@ -20,37 +21,30 @@ export default function Metodologia() {
         descricao="Um método que combina atenção individual com um treino completo — do aquecimento ao fechamento, sempre com professor ao seu lado."
       />
 
-      {/* Arte da metodologia (resumo visual) */}
-      <section className="py-12 bg-verde-claro">
-        <div className="container-mova flex justify-center">
-          <Image
-            src="/fotos/2.jpg"
-            alt="Nossa metodologia é composta por: mobilidade e ativação de core, musculação e treinamento funcional, e HIIT na bike de spinning"
-            width={561}
-            height={300}
-            className="w-full max-w-[680px] h-auto rounded-[1.25rem] shadow-lg"
-            sizes="(max-width: 700px) 100vw, 680px"
-          />
-        </div>
-      </section>
-
+      {/* Infográfico das 3 etapas (nativo) */}
       <section className="py-16 lg:py-20">
-        <div className="container-mova">
-          <div className="grid gap-6">
-            {site.metodologia.map((etapa, i) => (
-              <div
-                key={etapa.titulo}
-                className="grid md:grid-cols-[auto_1fr] gap-5 items-start rounded-2xl border border-[#E2EEE7] p-7"
-              >
-                <div className="grid place-items-center w-14 h-14 rounded-full bg-verde-claro font-display font-black text-2xl text-verde-medio">
-                  {i + 1}
+        <div className="container-mova text-center">
+          <span className="eyebrow">As 3 etapas</span>
+          <h2 className="section-title">Nossa metodologia é composta por</h2>
+          <div className="grid sm:grid-cols-3 gap-10 mt-12">
+            {site.metodologia.map((etapa, i) => {
+              const Icone = icones[i] ?? Activity;
+              return (
+                <div
+                  key={etapa.titulo}
+                  className="flex flex-col items-center"
+                >
+                  <div className="relative grid place-items-center w-24 h-24 rounded-full bg-verde-escuro mb-5">
+                    <Icone size={40} className="text-coral" aria-hidden />
+                    <span className="absolute -top-1 -right-1 grid place-items-center w-7 h-7 rounded-full bg-verde text-white font-display font-bold text-sm">
+                      {i + 1}
+                    </span>
+                  </div>
+                  <h3 className="text-xl mb-2">{etapa.titulo}</h3>
+                  <p className="text-cinza max-w-[34ch]">{etapa.desc}</p>
                 </div>
-                <div>
-                  <h2 className="text-2xl mb-2">{etapa.titulo}</h2>
-                  <p className="text-cinza text-lg">{etapa.desc}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

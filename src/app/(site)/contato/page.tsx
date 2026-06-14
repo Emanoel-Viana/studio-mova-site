@@ -12,6 +12,26 @@ export const metadata: Metadata = {
     "Fale com o Studio MOVA na Asa Norte, Brasília. WhatsApp, endereço e horários de funcionamento.",
 };
 
+function IconeInstagram({ size = 20 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
+    </svg>
+  );
+}
+
 export default async function Contato() {
   const site = await getContent();
   return (
@@ -22,18 +42,99 @@ export default async function Contato() {
         descricao="Tire suas dúvidas, agende sua sessão avaliativa ou venha nos visitar na Asa Norte."
       />
 
-      {/* Arte "Fale conosco" do studio */}
-      <section className="py-10 bg-verde-claro">
-        <div className="container-mova flex justify-center">
-          <Image
-            src="/fotos/1.jpg"
-            alt="Fale conosco — Studio MOVA: telefone, e-mail e Instagram"
-            width={562}
-            height={306}
-            className="w-full max-w-[620px] h-auto rounded-[1.25rem] shadow-lg"
-            sizes="(max-width: 640px) 100vw, 620px"
-            priority
-          />
+      {/* Fale conosco — recriado nativamente (nítido e clicável) */}
+      <section className="py-12 bg-verde-claro">
+        <div className="container-mova">
+          <div className="rounded-[1.25rem] bg-verde-escuro text-white overflow-hidden grid md:grid-cols-2 shadow-xl">
+            {/* contatos */}
+            <div className="p-8 lg:p-10">
+              <h2 className="text-3xl mb-6 text-white">Fale conosco</h2>
+              <div className="grid gap-3">
+                <a
+                  href={waLink("Olá! Vim pelo site do Studio MOVA.")}
+                  target="_blank"
+                  rel="noopener"
+                  className="flex items-center gap-3 rounded-xl bg-white/10 hover:bg-white/15 px-4 py-3.5 transition-colors"
+                >
+                  <Phone size={20} className="text-[#7FE3AC] shrink-0" aria-hidden />
+                  <span>
+                    <span className="block text-[0.7rem] uppercase tracking-wider text-[#9BE8BF]">
+                      Telefone
+                    </span>
+                    {site.contato.whatsappVisivel}
+                  </span>
+                </a>
+                <a
+                  href={`mailto:${site.contato.email}`}
+                  className="flex items-center gap-3 rounded-xl bg-white/10 hover:bg-white/15 px-4 py-3.5 transition-colors break-all"
+                >
+                  <Mail size={20} className="text-[#7FE3AC] shrink-0" aria-hidden />
+                  <span>
+                    <span className="block text-[0.7rem] uppercase tracking-wider text-[#9BE8BF]">
+                      E-mail
+                    </span>
+                    {site.contato.email}
+                  </span>
+                </a>
+                <a
+                  href={site.contato.instagramUrl}
+                  target="_blank"
+                  rel="noopener"
+                  className="flex items-center gap-3 rounded-xl bg-white/10 hover:bg-white/15 px-4 py-3.5 transition-colors"
+                >
+                  <span className="text-[#7FE3AC] shrink-0">
+                    <IconeInstagram size={20} />
+                  </span>
+                  <span>
+                    <span className="block text-[0.7rem] uppercase tracking-wider text-[#9BE8BF]">
+                      Social
+                    </span>
+                    {site.contato.instagram}
+                  </span>
+                </a>
+              </div>
+            </div>
+
+            {/* logo + QR + icones */}
+            <div className="bg-black/15 p-8 lg:p-10 flex flex-col items-center justify-center text-center gap-4">
+              <div className="flex items-center gap-2">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/marca/simbolo-branco.png" alt="" className="h-7 w-auto" />
+                <span className="font-display font-bold text-lg">studioMOVA</span>
+              </div>
+              <div className="bg-white rounded-xl p-2.5">
+                <Image
+                  src="/fotos/qr-whatsapp.png"
+                  alt="QR code para falar no WhatsApp do Studio MOVA"
+                  width={140}
+                  height={140}
+                />
+              </div>
+              <p className="text-sm text-[#D6EEDF]">
+                Aponte a câmera ou toque abaixo:
+              </p>
+              <div className="flex gap-3">
+                <a
+                  href={waLink("Olá! Vim pelo site do Studio MOVA.")}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="WhatsApp"
+                  className="grid place-items-center w-12 h-12 rounded-full bg-[#25D366] hover:scale-105 transition-transform"
+                >
+                  <Phone size={22} className="text-white" aria-hidden />
+                </a>
+                <a
+                  href={site.contato.instagramUrl}
+                  target="_blank"
+                  rel="noopener"
+                  aria-label="Instagram"
+                  className="grid place-items-center w-12 h-12 rounded-full bg-white/15 hover:bg-white/25 transition-colors"
+                >
+                  <IconeInstagram size={22} />
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
