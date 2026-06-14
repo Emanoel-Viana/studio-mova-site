@@ -166,14 +166,24 @@ export default async function Contato() {
                   {site.contato.email}
                 </span>
               </a>
-              <div className="flex items-start gap-4 rounded-2xl border border-[#E2EEE7] p-5">
+              <a
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                  `Studio MOVA, ${site.endereco.linha1}, ${site.endereco.cidade}, ${site.endereco.cep}`,
+                )}`}
+                target="_blank"
+                rel="noopener"
+                className="flex items-start gap-4 rounded-2xl border border-[#E2EEE7] p-5 hover:border-verde transition-colors"
+              >
                 <MapPin className="text-verde-medio shrink-0" aria-hidden />
                 <span>
                   <strong className="block font-display">Endereço</strong>
                   {site.endereco.linha1}, {site.endereco.linha2} —{" "}
                   {site.endereco.cidade} — CEP {site.endereco.cep}
+                  <span className="block text-sm text-verde-medio mt-1">
+                    Abrir no Google Maps →
+                  </span>
                 </span>
-              </div>
+              </a>
             </div>
 
             {/* Horários */}
