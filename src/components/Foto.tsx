@@ -9,6 +9,8 @@ type Props = {
   escuro?: boolean;
   sizes?: string;
   priority?: boolean;
+  /** Foco do recorte (ex.: "top", "center", "50% 20%"). Padrão: center. */
+  posicao?: string;
 };
 
 // Mostra a foto real quando há `src`; senão, cai no placeholder.
@@ -20,6 +22,7 @@ export function Foto({
   escuro = false,
   sizes = "(max-width: 768px) 100vw, 33vw",
   priority = false,
+  posicao = "center",
 }: Props) {
   if (!src) {
     return (
@@ -43,6 +46,7 @@ export function Foto({
         sizes={sizes}
         priority={priority}
         className="object-cover"
+        style={{ objectPosition: posicao }}
       />
     </div>
   );

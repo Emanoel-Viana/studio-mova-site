@@ -32,6 +32,7 @@ export default async function Equipe() {
                     ratio="1 / 1"
                     className="!rounded-full shadow-md"
                     sizes="200px"
+                    posicao={"foco" in pessoa ? pessoa.foco : "center"}
                   />
                 </div>
                 <h2 className="text-xl">{pessoa.nome}</h2>

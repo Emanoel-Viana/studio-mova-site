@@ -136,27 +136,31 @@ export const site = {
   equipe: [
     {
       nome: "Juliana",
-      papel: "Professora e fundadora",
+      papel: "Professora",
       bio: "Especialista em treino personalizado e reabilitação, à frente do método MOVA.",
       foto: "/fotos/equipe/professorajuliana.jpeg",
+      foco: "center",
     },
     {
       nome: "Nathalia",
       papel: "Professora",
       bio: "Acompanha cada aluno de perto, com atenção e energia em todo treino.",
       foto: "/fotos/equipe/professoranathalia.jpg",
+      foco: "top",
     },
     {
       nome: "Yasmine",
       papel: "Professora",
       bio: "Treino seguro e motivador, do aquecimento ao fechamento.",
       foto: "/fotos/equipe/professorayasmine.jpg",
+      foco: "top",
     },
     {
       nome: "Fabrício",
       papel: "Professor",
       bio: "Foco em técnica e evolução, sempre ao seu lado durante o treino.",
       foto: "/fotos/equipe/professorfabricio.jpg",
+      foco: "top",
     },
   ],
 
