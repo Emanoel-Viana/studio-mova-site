@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { HeartPulse, Activity } from "lucide-react";
 import { site, waLink } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
@@ -18,6 +19,20 @@ export default function Metodologia() {
         titulo="60 minutos, 3 etapas, máximo 4 alunos"
         descricao="Um método que combina atenção individual com um treino completo — do aquecimento ao fechamento, sempre com professor ao seu lado."
       />
+
+      {/* Arte da metodologia (resumo visual) */}
+      <section className="py-12 bg-verde-claro">
+        <div className="container-mova flex justify-center">
+          <Image
+            src="/fotos/2.jpg"
+            alt="Nossa metodologia é composta por: mobilidade e ativação de core, musculação e treinamento funcional, e HIIT na bike de spinning"
+            width={561}
+            height={300}
+            className="w-full max-w-[680px] h-auto rounded-[1.25rem] shadow-lg"
+            sizes="(max-width: 700px) 100vw, 680px"
+          />
+        </div>
+      </section>
 
       <section className="py-16 lg:py-20">
         <div className="container-mova">

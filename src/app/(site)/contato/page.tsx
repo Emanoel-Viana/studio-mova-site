@@ -12,26 +12,6 @@ export const metadata: Metadata = {
     "Fale com o Studio MOVA na Asa Norte, Brasília. WhatsApp, endereço e horários de funcionamento.",
 };
 
-function IconeInstagram({ size = 20 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <rect x="2" y="2" width="20" height="20" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
-    </svg>
-  );
-}
-
 export default async function Contato() {
   const site = await getContent();
   return (
@@ -42,51 +22,18 @@ export default async function Contato() {
         descricao="Tire suas dúvidas, agende sua sessão avaliativa ou venha nos visitar na Asa Norte."
       />
 
-      {/* Fale conosco — QR + redes */}
-      <section className="py-12 bg-verde-claro">
-        <div className="container-mova">
-          <div className="rounded-[1.25rem] bg-verde-escuro text-white p-7 lg:p-10 grid md:grid-cols-[1fr_auto] gap-8 items-center">
-            <div>
-              <h2 className="text-2xl lg:text-3xl mb-2 text-white">
-                Fale conosco agora
-              </h2>
-              <p className="text-[#D6EEDF] mb-6 max-w-[48ch]">
-                Aponte a câmera do celular no QR e já comece a conversa no
-                WhatsApp — ou toque num dos botões:
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href={waLink("Olá! Vim pelo site do Studio MOVA.")}
-                  target="_blank"
-                  rel="noopener"
-                  className="btn btn-coral"
-                >
-                  <Phone size={20} aria-hidden />
-                  WhatsApp
-                </a>
-                <a
-                  href={site.contato.instagramUrl}
-                  target="_blank"
-                  rel="noopener"
-                  className="inline-flex items-center gap-2 rounded-full bg-white/10 hover:bg-white/20 px-6 py-3.5 font-display font-bold uppercase tracking-wide text-sm transition-colors"
-                >
-                  <IconeInstagram size={20} />
-                  Instagram
-                </a>
-              </div>
-            </div>
-            <div className="justify-self-center text-center">
-              <div className="bg-white rounded-2xl p-3 inline-block">
-                <Image
-                  src="/fotos/qr-whatsapp.png"
-                  alt="QR code para falar no WhatsApp do Studio MOVA"
-                  width={150}
-                  height={150}
-                />
-              </div>
-              <p className="text-xs text-[#9BE8BF] mt-2">Aponte a câmera 📷</p>
-            </div>
-          </div>
+      {/* Arte "Fale conosco" do studio */}
+      <section className="py-10 bg-verde-claro">
+        <div className="container-mova flex justify-center">
+          <Image
+            src="/fotos/1.jpg"
+            alt="Fale conosco — Studio MOVA: telefone, e-mail e Instagram"
+            width={562}
+            height={306}
+            className="w-full max-w-[620px] h-auto rounded-[1.25rem] shadow-lg"
+            sizes="(max-width: 640px) 100vw, 620px"
+            priority
+          />
         </div>
       </section>
 
