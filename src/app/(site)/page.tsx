@@ -97,7 +97,15 @@ export default async function Home() {
       {/* SOBRE */}
       <section className="py-20 lg:py-24">
         <div className="container-mova grid lg:grid-cols-2 gap-12 items-center">
-          <FotoPlaceholder label="Foto do espaço" ratio="4 / 3" />
+          <div className="relative aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-lg">
+            <Image
+              src="/fotos/2.jpg"
+              alt="Professora do Studio MOVA acompanhando uma aluna no treino"
+              fill
+              sizes="(max-width: 1024px) 100vw, 45vw"
+              className="object-cover"
+            />
+          </div>
           <div>
             <span className="eyebrow">O Studio</span>
             <h2 className="section-title">

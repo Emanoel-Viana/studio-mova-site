@@ -144,8 +144,9 @@ export const site = {
 
   // Agendamento online (Cal.com). Vazio = ainda não configurado;
   // nesse caso o site mostra o caminho pelo WhatsApp.
+  // Pode ser sobrescrito pelo painel (/admin/agendamento).
   agendamento: {
-    calUrl: "",
+    calUrl: "studiomova/teste",
   },
 } as const;
 
