@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { HeartPulse, Activity, Accessibility, Dumbbell } from "lucide-react";
 import { site, waLink } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
-import { FotoPlaceholder } from "@/components/FotoPlaceholder";
+import { Foto } from "@/components/Foto";
 
 export const metadata: Metadata = {
   title: "Metodologia",
@@ -76,7 +76,12 @@ export default function Metodologia() {
               ))}
             </ul>
           </div>
-          <FotoPlaceholder label="Sessão avaliativa" ratio="4 / 3" />
+          <Foto
+            src="/fotos/reabilitacao/DSC00641.jpg"
+            label="Sessão de reabilitação no Studio MOVA"
+            ratio="4 / 3"
+            sizes="(max-width: 1024px) 100vw, 45vw"
+          />
         </div>
       </section>
 

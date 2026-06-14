@@ -9,7 +9,18 @@ import {
 } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
-import { FotoPlaceholder } from "@/components/FotoPlaceholder";
+import { Foto } from "@/components/Foto";
+
+const galeria = [
+  "/fotos/galeria/DSC02142.jpg",
+  "/fotos/galeria/DSC02153.jpg",
+  "/fotos/galeria/MOVA-06.jpg",
+  "/fotos/galeria/MOVA-07.jpg",
+  "/fotos/galeria/studio-mova-43.jpg",
+  "/fotos/studio-mova-01.jpg",
+  "/fotos/studio-mova-03.jpg",
+  "/fotos/MOVA-04.jpg",
+];
 
 export const metadata: Metadata = {
   title: "O Studio",
@@ -37,7 +48,13 @@ export default function OStudio() {
 
       <section className="py-16 lg:py-20">
         <div className="container-mova grid lg:grid-cols-2 gap-12 items-center">
-          <FotoPlaceholder label="Foto do espaço" ratio="4 / 3" />
+          <Foto
+            src="/fotos/espaco/20250827_112003.jpg"
+            label="Espaço do Studio MOVA"
+            ratio="4 / 3"
+            sizes="(max-width: 1024px) 100vw, 45vw"
+            priority
+          />
           <div>
             <h2 className="section-title">
               Boutique não é tamanho, é cuidado
@@ -80,18 +97,16 @@ export default function OStudio() {
           <span className="eyebrow">Galeria</span>
           <h2 className="section-title">Dê uma espiada no espaço</h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <FotoPlaceholder
-                key={i}
-                label={`Foto ${i + 1}`}
+            {galeria.map((src, i) => (
+              <Foto
+                key={src}
+                src={src}
+                label={`Foto ${i + 1} do Studio MOVA`}
                 ratio="1 / 1"
+                sizes="(max-width: 1024px) 50vw, 25vw"
               />
             ))}
           </div>
-          <p className="mt-6 text-sm text-cinza text-center">
-            As fotos reais entram assim que você as enviar (ver lista em
-            img/LEIA-ME.txt).
-          </p>
         </div>
       </section>
 

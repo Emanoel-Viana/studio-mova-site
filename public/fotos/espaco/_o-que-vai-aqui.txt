@@ -1,0 +1,3 @@
+Fotos do AMBIENTE do studio: recepcao, sala de treino, equipamentos, vista.
+Usadas em: home (secao "O Studio") e pagina "O Studio".
+Nomes sugeridos: espaco-01.jpg, recepcao.jpg, sala.jpg (minusculo, sem acento/espaco).

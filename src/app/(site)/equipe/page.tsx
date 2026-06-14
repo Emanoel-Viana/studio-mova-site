@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
 import { PageHero } from "@/components/PageHero";
-import { FotoPlaceholder } from "@/components/FotoPlaceholder";
+import { Foto } from "@/components/Foto";
 
 export const metadata: Metadata = {
   title: "Equipe",
@@ -26,10 +26,12 @@ export default async function Equipe() {
             {site.equipe.map((pessoa) => (
               <div key={pessoa.nome} className="text-center">
                 <div className="w-48 mx-auto mb-5">
-                  <FotoPlaceholder
-                    label={`Foto — ${pessoa.nome}`}
+                  <Foto
+                    src={pessoa.foto || undefined}
+                    label={`Professor(a) ${pessoa.nome}`}
                     ratio="1 / 1"
-                    className="!rounded-full"
+                    className="!rounded-full shadow-md"
+                    sizes="200px"
                   />
                 </div>
                 <h2 className="text-xl">{pessoa.nome}</h2>
@@ -42,8 +44,7 @@ export default async function Equipe() {
           </div>
 
           <p className="mt-10 text-center text-cinza max-w-2xl mx-auto">
-            Nossa equipe está crescendo — em breve apresentamos aqui os demais
-            profissionais do MOVA. 💚
+            É essa equipe que vai te acompanhar de pertinho em cada treino. 💚
           </p>
         </div>
       </section>

@@ -15,7 +15,7 @@ import {
 } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
-import { FotoPlaceholder } from "@/components/FotoPlaceholder";
+import { Foto } from "@/components/Foto";
 
 const planoIcones = [Flame, Dumbbell, Trophy];
 const modalidadeIcones = [Dumbbell, Bike, HeartPulse];
@@ -99,7 +99,7 @@ export default async function Home() {
         <div className="container-mova grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-lg">
             <Image
-              src="/fotos/2.jpg"
+              src="/fotos/reabilitacao/2.jpg"
               alt="Professora do Studio MOVA acompanhando uma aluna no treino"
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"
@@ -163,7 +163,8 @@ export default async function Home() {
                   key={m.titulo}
                   className="rounded-2xl bg-white border border-[#E2EEE7] p-7"
                 >
-                  <FotoPlaceholder
+                  <Foto
+                    src={m.imagem || undefined}
                     label={m.titulo}
                     ratio="16 / 10"
                     className="mb-5"
