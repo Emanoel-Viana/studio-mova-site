@@ -77,9 +77,10 @@ export default function Metodologia() {
             </ul>
           </div>
           <Foto
-            src="/fotos/reabilitacao/DSC00641.jpg"
+            src="/fotos/reabilitacao/2.jpg"
             label="Sessão de reabilitação no Studio MOVA"
             ratio="4 / 3"
+            posicao="top"
             sizes="(max-width: 1024px) 100vw, 45vw"
           />
         </div>

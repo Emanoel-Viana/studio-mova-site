@@ -57,8 +57,8 @@ export default async function Home() {
           </div>
           <div className="relative aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-2xl ring-1 ring-white/20">
             <Image
-              src="/fotos/foto1.jpg"
-              alt="Alunos do Studio MOVA sorrindo após o treino"
+              src="/fotos/reabilitacao/DSC00641.jpg"
+              alt="Professora do Studio MOVA acompanhando um aluno no treino"
               fill
               priority
               sizes="(max-width: 1024px) 100vw, 45vw"
@@ -99,8 +99,8 @@ export default async function Home() {
         <div className="container-mova grid lg:grid-cols-2 gap-12 items-center">
           <div className="relative aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-lg">
             <Image
-              src="/fotos/reabilitacao/2.jpg"
-              alt="Professora do Studio MOVA acompanhando uma aluna no treino"
+              src="/fotos/reabilitacao/DSC01898.jpg"
+              alt="Treino adaptado no Studio MOVA com acompanhamento da professora"
               fill
               sizes="(max-width: 1024px) 100vw, 45vw"
               className="object-cover"
