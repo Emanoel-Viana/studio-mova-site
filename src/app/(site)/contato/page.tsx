@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
@@ -11,6 +12,26 @@ export const metadata: Metadata = {
     "Fale com o Studio MOVA na Asa Norte, Brasília. WhatsApp, endereço e horários de funcionamento.",
 };
 
+function IconeInstagram({ size = 20 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
+    </svg>
+  );
+}
+
 export default async function Contato() {
   const site = await getContent();
   return (
@@ -20,6 +41,54 @@ export default async function Contato() {
         titulo="Vamos conversar?"
         descricao="Tire suas dúvidas, agende sua sessão avaliativa ou venha nos visitar na Asa Norte."
       />
+
+      {/* Fale conosco — QR + redes */}
+      <section className="py-12 bg-verde-claro">
+        <div className="container-mova">
+          <div className="rounded-[1.25rem] bg-verde-escuro text-white p-7 lg:p-10 grid md:grid-cols-[1fr_auto] gap-8 items-center">
+            <div>
+              <h2 className="text-2xl lg:text-3xl mb-2 text-white">
+                Fale conosco agora
+              </h2>
+              <p className="text-[#D6EEDF] mb-6 max-w-[48ch]">
+                Aponte a câmera do celular no QR e já comece a conversa no
+                WhatsApp — ou toque num dos botões:
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={waLink("Olá! Vim pelo site do Studio MOVA.")}
+                  target="_blank"
+                  rel="noopener"
+                  className="btn btn-coral"
+                >
+                  <Phone size={20} aria-hidden />
+                  WhatsApp
+                </a>
+                <a
+                  href={site.contato.instagramUrl}
+                  target="_blank"
+                  rel="noopener"
+                  className="inline-flex items-center gap-2 rounded-full bg-white/10 hover:bg-white/20 px-6 py-3.5 font-display font-bold uppercase tracking-wide text-sm transition-colors"
+                >
+                  <IconeInstagram size={20} />
+                  Instagram
+                </a>
+              </div>
+            </div>
+            <div className="justify-self-center text-center">
+              <div className="bg-white rounded-2xl p-3 inline-block">
+                <Image
+                  src="/fotos/qr-whatsapp.png"
+                  alt="QR code para falar no WhatsApp do Studio MOVA"
+                  width={150}
+                  height={150}
+                />
+              </div>
+              <p className="text-xs text-[#9BE8BF] mt-2">Aponte a câmera 📷</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="py-16 lg:py-20">
         <div className="container-mova grid lg:grid-cols-2 gap-12 lg:gap-16">
