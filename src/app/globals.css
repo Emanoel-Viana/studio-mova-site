@@ -150,6 +150,14 @@
   }
 }
 
+/* Compactação no celular (≤640px) — desktop intacto, tudo ainda legível. */
+@media (max-width: 640px) {
+  body { font-size: 1rem; }
+  .section-title { font-size: 1.6rem; margin-bottom: 0.6rem; }
+  .lead { font-size: 1.05rem; }
+  .eyebrow { font-size: 0.78rem; margin-bottom: 0.55rem; }
+}
+
 /* Animação de entrada suave ao rolar */
 @keyframes mova-reveal {
   from { opacity: 0; transform: translateY(22px); }

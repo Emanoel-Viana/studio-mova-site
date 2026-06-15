@@ -48,7 +48,7 @@ export default function OStudio() {
         descricao="Um espaço boutique pensado para você se sentir em casa enquanto cuida do corpo — com estrutura completa e atenção de verdade."
       />
 
-      <section className="py-16 lg:py-20">
+      <section className="py-10 sm:py-14 lg:py-20">
         <div className="container-mova grid lg:grid-cols-2 gap-12 items-center">
           <Foto
             src="/fotos/galeria/studio-mova-43.jpg"
@@ -75,7 +75,7 @@ export default function OStudio() {
       </section>
 
       {/* Comodidades */}
-      <section className="py-16 lg:py-20 bg-verde-claro">
+      <section className="py-10 sm:py-14 lg:py-20 bg-verde-claro">
         <div className="container-mova">
           <span className="eyebrow">Estrutura</span>
           <h2 className="section-title">O que você encontra por aqui</h2>
@@ -94,7 +94,7 @@ export default function OStudio() {
       </section>
 
       {/* Galeria */}
-      <section className="py-16 lg:py-20">
+      <section className="py-10 sm:py-14 lg:py-20">
         <div className="container-mova">
           <span className="eyebrow">Galeria</span>
           <h2 className="section-title">Dê uma espiada no espaço</h2>
@@ -114,7 +114,7 @@ export default function OStudio() {
         </div>
       </section>
 
-      <section className="py-16 lg:py-20 bg-preto text-white text-center">
+      <section className="py-10 sm:py-14 lg:py-20 bg-preto text-white text-center">
         <div className="container-mova">
           <h2 className="section-title">Venha conhecer pessoalmente</h2>
           <p className="lead mx-auto mb-8 !text-[#B9C6BF]">

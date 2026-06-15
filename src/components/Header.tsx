@@ -42,7 +42,7 @@ export function Header({ avaliacao, whatsappVisivel }: Props) {
           compacto ? "hidden" : "block"
         }`}
       >
-        <div className="container-mova flex items-center justify-between gap-4 py-1.5 sm:py-2">
+        <div className="container-mova flex items-center justify-between gap-4 py-1 sm:py-2">
           <span className="flex items-center gap-1.5">
             <Star size={14} className="fill-white" aria-hidden />
             {avaliacao.nota} — {avaliacao.total} avaliações no {avaliacao.fonte}
@@ -71,8 +71,8 @@ export function Header({ avaliacao, whatsappVisivel }: Props) {
       {/* Navegação — fixa e sempre visível, em versão compacta no celular. */}
       <nav className="bg-verde-escuro">
         <div
-          className={`container-mova flex flex-col lg:flex-row lg:items-center lg:justify-between gap-1.5 lg:gap-2.5 ${
-            compacto ? "py-1.5 lg:py-2" : "py-2 lg:py-3"
+          className={`container-mova flex flex-col lg:flex-row lg:items-center lg:justify-between gap-1 lg:gap-2.5 ${
+            compacto ? "py-1 lg:py-2" : "py-1.5 lg:py-3"
           }`}
         >
           {/* Linha do topo no celular: logo + Agendar. No desktop o wrapper

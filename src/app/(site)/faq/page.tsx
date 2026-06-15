@@ -65,7 +65,7 @@ export default function FAQ() {
         descricao="As dúvidas mais comuns de quem está chegando ao MOVA. Não achou a sua? É só chamar no WhatsApp."
       />
 
-      <section className="py-16 lg:py-20">
+      <section className="py-10 sm:py-14 lg:py-20">
         <div className="container-mova max-w-3xl">
           <div className="grid gap-3">
             {perguntas.map((item) => (

@@ -23,7 +23,7 @@ export default async function Planos() {
         descricao="Treino personalizado em turmas de até 4 alunos. Escolha a frequência que cabe na sua rotina — todos com acompanhamento de professor do início ao fim."
       />
 
-      <section className="py-16 lg:py-20">
+      <section className="py-10 sm:py-14 lg:py-20">
         <div className="container-mova">
           <div className="grid md:grid-cols-3 gap-6 items-stretch">
             {site.planos.map((plano, i) => {
@@ -130,7 +130,7 @@ export default async function Planos() {
       </section>
 
       {/* Parcerias */}
-      <section id="parcerias" className="py-16 lg:py-20 bg-verde-claro scroll-mt-24">
+      <section id="parcerias" className="py-10 sm:py-14 lg:py-20 bg-verde-claro scroll-mt-24">
         <div className="container-mova">
           <span className="eyebrow">Parcerias</span>
           <h2 className="section-title">Use seu benefício corporativo</h2>
@@ -171,7 +171,7 @@ export default async function Planos() {
         </div>
       </section>
 
-      <section className="py-16 lg:py-20 text-center">
+      <section className="py-10 sm:py-14 lg:py-20 text-center">
         <div className="container-mova">
           <h2 className="section-title">Ainda com dúvida sobre o plano ideal?</h2>
           <p className="lead mx-auto mb-8">

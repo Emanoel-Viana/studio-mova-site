@@ -26,14 +26,14 @@ export default async function Home() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#34C97E] via-verde-medio to-[#14744A] text-white">
-        <div className="container-mova relative grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center py-20 lg:py-24">
+        <div className="container-mova relative grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center py-12 sm:py-16 lg:py-24">
           <div className="reveal">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/35 px-4 py-2 text-sm font-medium mb-6">
               <Star size={16} className="fill-white" aria-hidden />
               <strong className="font-display">{site.avaliacao.nota}</strong> —{" "}
               {site.avaliacao.total} avaliações no {site.avaliacao.fonte}
             </div>
-            <h1 className="text-[clamp(2.4rem,6vw,4rem)] mb-3">
+            <h1 className="text-[clamp(1.95rem,6vw,4rem)] mb-3">
               A vida precisa de movimento
             </h1>
             <p className="font-display font-bold text-[clamp(1.1rem,2.4vw,1.45rem)] text-[#D9FBE8] mb-5">
@@ -76,7 +76,7 @@ export default async function Home() {
               ))}
             </ul>
           </div>
-          <div className="relative aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-2xl ring-1 ring-white/20">
+          <div className="relative aspect-square sm:aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-2xl ring-1 ring-white/20">
             <Image
               src="/fotos/reabilitacao/DSC00641.jpg"
               alt="Professora do Studio MOVA acompanhando um aluno no treino"
@@ -116,9 +116,9 @@ export default async function Home() {
       </div>
 
       {/* SOBRE */}
-      <section className="py-20 lg:py-24">
+      <section className="py-12 sm:py-16 lg:py-24">
         <div className="container-mova grid lg:grid-cols-2 gap-12 items-center">
-          <div className="relative aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-lg">
+          <div className="relative aspect-square sm:aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-lg">
             <Image
               src="/fotos/reabilitacao/DSC01898.jpg"
               alt="Treino adaptado no Studio MOVA com acompanhamento da professora"
@@ -145,7 +145,7 @@ export default async function Home() {
       </section>
 
       {/* PARA QUEM É */}
-      <section className="py-20 lg:py-24 bg-cinza-claro">
+      <section className="py-12 sm:py-16 lg:py-24 bg-cinza-claro">
         <div className="container-mova">
           <span className="eyebrow">Para quem é o MOVA</span>
           <h2 className="section-title">Talvez você se reconheça aqui</h2>
@@ -183,7 +183,7 @@ export default async function Home() {
       </section>
 
       {/* METODOLOGIA */}
-      <section className="py-20 lg:py-24 bg-verde-escuro text-white">
+      <section className="py-12 sm:py-16 lg:py-24 bg-verde-escuro text-white">
         <div className="container-mova">
           <span className="eyebrow !text-[#7FE3AC]">Como funcionamos</span>
           <h2 className="section-title">
@@ -210,7 +210,7 @@ export default async function Home() {
       </section>
 
       {/* MODALIDADES */}
-      <section className="py-20 lg:py-24">
+      <section className="py-12 sm:py-16 lg:py-24">
         <div className="container-mova">
           <span className="eyebrow">Modalidades</span>
           <h2 className="section-title">O que você encontra no MOVA</h2>
@@ -249,7 +249,7 @@ export default async function Home() {
       </section>
 
       {/* SESSÃO AVALIATIVA */}
-      <section className="py-20 lg:py-24 bg-gradient-to-br from-verde-medio to-[#14744A] text-white text-center">
+      <section className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-verde-medio to-[#14744A] text-white text-center">
         <div className="container-mova">
           <span className="eyebrow !text-[#9BE8BF]">O primeiro passo</span>
           <h2 className="section-title">Comece pela sessão avaliativa</h2>
@@ -280,7 +280,7 @@ export default async function Home() {
       </section>
 
       {/* PLANOS */}
-      <section className="py-20 lg:py-24 bg-verde-claro">
+      <section className="py-12 sm:py-16 lg:py-24 bg-verde-claro">
         <div className="container-mova">
           <span className="eyebrow">Planos</span>
           <h2 className="section-title">MOVAconfort — escolha o seu ritmo</h2>
@@ -343,7 +343,7 @@ export default async function Home() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section className="py-20 lg:py-24 bg-verde text-white">
+      <section className="py-12 sm:py-16 lg:py-24 bg-verde text-white">
         <div className="container-mova">
           <span className="eyebrow !text-[#0E3D26]">Depoimentos</span>
           <h2 className="section-title">Quem treina aqui recomenda</h2>
@@ -433,7 +433,7 @@ export default async function Home() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="py-20 lg:py-24 text-center">
+      <section className="py-12 sm:py-16 lg:py-24 text-center">
         <div className="container-mova">
           <h2 className="section-title">
             Pronto pra fazer do movimento parte da sua vida?
@@ -458,7 +458,7 @@ export default async function Home() {
       </section>
 
       {/* EXPLORE O SITE */}
-      <section className="py-20 lg:py-24 bg-preto text-white">
+      <section className="py-12 sm:py-16 lg:py-24 bg-preto text-white">
         <div className="container-mova">
           <span className="eyebrow !text-[#7FE3AC]">Continue explorando</span>
           <h2 className="section-title">Conheça mais do MOVA</h2>
