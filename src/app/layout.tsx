@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Archivo, Inter } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
+import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -24,6 +25,12 @@ export const metadata: Metadata = {
     template: `%s | ${site.nome}`,
   },
   description: site.descricao,
+  applicationName: site.nome,
+  appleWebApp: {
+    capable: true,
+    title: site.nome,
+    statusBarStyle: "black-translucent",
+  },
   openGraph: {
     title: `${site.nome} — ${site.slogan}`,
     description: site.descricao,
@@ -76,6 +83,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <ServiceWorkerRegister />
         {children}
       </body>
     </html>
