@@ -7,19 +7,21 @@ import {
   Accessibility,
   Trees,
 } from "lucide-react";
+import Image from "next/image";
 import { waLink } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
 import { Foto } from "@/components/Foto";
 
+// Galeria em mosaico — cada foto no seu formato natural (sem corte).
 const galeria = [
-  "/fotos/galeria/DSC02142.jpg",
-  "/fotos/galeria/DSC02153.jpg",
-  "/fotos/galeria/MOVA-06.jpg",
-  "/fotos/galeria/MOVA-07.jpg",
-  "/fotos/galeria/studio-mova-43.jpg",
-  "/fotos/studio-mova-01.jpg",
-  "/fotos/studio-mova-03.jpg",
-  "/fotos/MOVA-04.jpg",
+  { src: "/fotos/galeria/DSC02142.jpg", w: 2592, h: 4608 },
+  { src: "/fotos/reabilitacao/DSC02103.jpg", w: 2592, h: 4608 },
+  { src: "/fotos/galeria/MOVA-06.jpg", w: 4685, h: 3037 },
+  { src: "/fotos/reabilitacao/DSC00600.jpg", w: 4128, h: 6192 },
+  { src: "/fotos/galeria/studio-mova-43.jpg", w: 4774, h: 3184 },
+  { src: "/fotos/reabilitacao/DSC01924.jpg", w: 2592, h: 4608 },
+  { src: "/fotos/reabilitacao/studio-mova-16.jpg", w: 4817, h: 3212 },
+  { src: "/fotos/reabilitacao/2.jpg", w: 690, h: 922 },
 ];
 
 export const metadata: Metadata = {
@@ -96,14 +98,16 @@ export default function OStudio() {
         <div className="container-mova">
           <span className="eyebrow">Galeria</span>
           <h2 className="section-title">Dê uma espiada no espaço</h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
-            {galeria.map((src, i) => (
-              <Foto
-                key={src}
-                src={src}
-                label={`Foto ${i + 1} do Studio MOVA`}
-                ratio="1 / 1"
-                sizes="(max-width: 1024px) 50vw, 25vw"
+          <div className="columns-2 lg:columns-3 gap-4 mt-8">
+            {galeria.map((f, i) => (
+              <Image
+                key={f.src}
+                src={f.src}
+                alt={`Foto ${i + 1} do Studio MOVA`}
+                width={f.w}
+                height={f.h}
+                sizes="(max-width: 1024px) 50vw, 33vw"
+                className="w-full h-auto rounded-[1.25rem] mb-4 break-inside-avoid"
               />
             ))}
           </div>
