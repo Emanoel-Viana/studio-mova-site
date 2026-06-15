@@ -16,9 +16,24 @@ export function Header({ avaliacao, whatsappVisivel }: Props) {
   const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setCompacto(window.scrollY > 80);
+    let raf = 0;
+    const atualizar = () => {
+      raf = 0;
+      const y = window.scrollY;
+      // Histerese: compacta só passando de 120px e só desfaz abaixo de 40px.
+      // A zona morta (80px) evita o flicker quando a barra superior some/volta
+      // e muda a altura do header perto do limite.
+      setCompacto((anterior) => (anterior ? y > 40 : y > 120));
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(atualizar);
+    };
+    atualizar(); // estado inicial correto (ex.: refresh já rolado)
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (
