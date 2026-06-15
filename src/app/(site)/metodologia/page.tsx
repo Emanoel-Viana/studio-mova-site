@@ -41,7 +41,7 @@ export default function Metodologia() {
             Toda sessão é pensada do começo ao fim para você evoluir com
             segurança — nada de chegar perdido sem saber o que fazer.
           </p>
-          <div className="grid sm:grid-cols-3 gap-10 mt-12">
+          <div className="grid sm:grid-cols-3 gap-8 sm:gap-10 mt-8 sm:mt-12">
             {site.metodologia.map((etapa, i) => {
               const Icone = icones[i] ?? Activity;
               return (
@@ -94,7 +94,7 @@ export default function Metodologia() {
 
       {/* Reabilitação */}
       <section className="py-10 sm:py-14 lg:py-20 bg-verde-claro">
-        <div className="container-mova grid lg:grid-cols-2 gap-12 items-center">
+        <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div>
             <span className="eyebrow">Treino adaptado</span>
             <h2 className="section-title">Reabilitação e movimento seguro</h2>
@@ -139,7 +139,7 @@ export default function Metodologia() {
       <section className="py-10 sm:py-14 lg:py-20">
         <div className="container-mova">
           <div className="rounded-3xl bg-verde-escuro text-white p-6 sm:p-8 lg:p-12">
-            <div className="grid lg:grid-cols-2 gap-10 items-center">
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
               <div>
                 <span className="eyebrow !text-[#7FE3AC]">O primeiro passo</span>
                 <h2 className="section-title">Comece pela sessão avaliativa</h2>

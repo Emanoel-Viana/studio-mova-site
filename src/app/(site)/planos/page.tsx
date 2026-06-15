@@ -44,7 +44,7 @@ export default async function Planos() {
                     </span>
                   )}
                   <Icone size={30} className="text-verde-medio mb-2" aria-hidden />
-                  <div className="font-display font-black text-2xl">
+                  <div className="font-display font-black text-xl sm:text-2xl">
                     {plano.freq}
                   </div>
                   <p className="text-cinza my-3 flex-1">{plano.desc}</p>

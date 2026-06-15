@@ -26,7 +26,7 @@ export default async function Home() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#34C97E] via-verde-medio to-[#14744A] text-white">
-        <div className="container-mova relative grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center py-12 sm:py-16 lg:py-24">
+        <div className="container-mova relative grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center py-12 sm:py-16 lg:py-24">
           <div className="reveal">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/35 px-4 py-2 text-sm font-medium mb-6">
               <Star size={16} className="fill-white" aria-hidden />
@@ -117,7 +117,7 @@ export default async function Home() {
 
       {/* SOBRE */}
       <section className="py-12 sm:py-16 lg:py-24">
-        <div className="container-mova grid lg:grid-cols-2 gap-12 items-center">
+        <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div className="relative aspect-square sm:aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-lg">
             <Image
               src="/fotos/reabilitacao/DSC01898.jpg"
@@ -307,7 +307,7 @@ export default async function Home() {
                     className="text-verde-medio mb-2"
                     aria-hidden
                   />
-                  <div className="font-display font-black text-2xl">
+                  <div className="font-display font-black text-xl sm:text-2xl">
                     {plano.freq}
                   </div>
                   <p className="text-cinza my-3 flex-1">{plano.desc}</p>

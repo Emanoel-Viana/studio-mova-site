@@ -48,7 +48,7 @@ export default async function Contato() {
           <div className="rounded-[1.25rem] bg-verde-escuro text-white overflow-hidden grid md:grid-cols-2 shadow-xl">
             {/* contatos */}
             <div className="p-6 sm:p-8 lg:p-10">
-              <h2 className="text-3xl mb-6 text-white">Fale conosco</h2>
+              <h2 className="text-2xl sm:text-3xl mb-6 text-white">Fale conosco</h2>
               <div className="grid gap-3">
                 <a
                   href={waLink("Olá! Vim pelo site do Studio MOVA.")}
@@ -139,7 +139,7 @@ export default async function Contato() {
       </section>
 
       <section className="py-10 sm:py-14 lg:py-20">
-        <div className="container-mova grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Dados de contato */}
           <div>
             <h2 className="section-title">Fale com a gente</h2>

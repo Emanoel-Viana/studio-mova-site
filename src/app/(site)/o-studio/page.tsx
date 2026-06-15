@@ -49,7 +49,7 @@ export default function OStudio() {
       />
 
       <section className="py-10 sm:py-14 lg:py-20">
-        <div className="container-mova grid lg:grid-cols-2 gap-12 items-center">
+        <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <Foto
             src="/fotos/galeria/studio-mova-43.jpg"
             label="Espaço do Studio MOVA"
