@@ -122,17 +122,49 @@ export const site = {
   metodologia: [
     {
       titulo: "Mobilidade e core",
-      desc: "Seu corpo preparado para render mais e evitar lesões.",
+      desc: "Aquecimento, mobilidade e ativação do core para preparar o corpo. Você rende mais, se movimenta melhor e treina protegido de lesões.",
     },
     {
       titulo: "Musculação + funcional",
-      desc: "Força, resistência e evolução progressiva — treino feito pra você.",
+      desc: "O coração do treino: força, postura e resistência com carga ajustada ao seu nível, evoluindo de forma progressiva e segura.",
     },
     {
       titulo: "HIIT bike / spinning",
-      desc: "Fechamento energizante que queima calorias e eleva o espírito.",
+      desc: "Fechamento energizante na bike que acelera o gasto calórico, turbina o condicionamento e encerra o treino com sensação de dever cumprido.",
     },
   ],
+
+  // Diferenciais — o que faz o MOVA ser diferente de academia comum.
+  diferenciais: [
+    {
+      titulo: "Turmas de até 4 alunos",
+      desc: "Nada de academia lotada e fila por aparelho. Aqui você tem espaço, equipamento livre e atenção de verdade.",
+    },
+    {
+      titulo: "Professor ao seu lado o tempo todo",
+      desc: "Cada série, cada repetição e cada ajuste de postura acompanhados de perto — do primeiro ao último minuto.",
+    },
+    {
+      titulo: "Treino 100% personalizado",
+      desc: "Seu treino é montado pro seu corpo, seus objetivos e seu momento. Iniciante ou avançado, jovem ou com mais idade.",
+    },
+    {
+      titulo: "Ambiente acolhedor e climatizado",
+      desc: "Um espaço boutique pensado pra ser a sua segunda casa: bem cuidado, sem julgamento e fácil de criar rotina.",
+    },
+  ],
+
+  // Sessão avaliativa — o primeiro passo, usado na home e na metodologia.
+  sessaoAvaliativa: {
+    intro:
+      "Antes de escolher qualquer plano, você passa por um encontro individual com a nossa professora especialista — sem compromisso. É onde a gente entende o seu corpo, a sua rotina e os seus objetivos para montar o caminho certo até os seus resultados.",
+    etapas: [
+      "Conversa sobre seus objetivos e sua rotina",
+      "Avaliação postural e de mobilidade",
+      "Análise do seu movimento",
+      "Apresentação do método na prática",
+    ],
+  },
 
   depoimentos: [
     {

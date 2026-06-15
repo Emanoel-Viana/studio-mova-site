@@ -195,16 +195,10 @@ export default async function Home() {
           <span className="eyebrow !text-[#9BE8BF]">O primeiro passo</span>
           <h2 className="section-title">Comece pela sessão avaliativa</h2>
           <p className="max-w-[60ch] mx-auto text-[#EAFBF1] text-lg mb-8">
-            Antes de qualquer plano, você passa por um encontro personalizado
-            com nossa professora especialista — sem compromisso nenhum.
+            {site.sessaoAvaliativa.intro}
           </p>
           <div className="flex flex-wrap justify-center gap-3 mb-9">
-            {[
-              "Conversa sobre objetivos",
-              "Avaliação postural e mobilidade",
-              "Análise de movimento",
-              "Apresentação do método",
-            ].map((item) => (
+            {site.sessaoAvaliativa.etapas.map((item) => (
               <span
                 key={item}
                 className="inline-flex items-center gap-2 rounded-full bg-white/12 border border-white/25 px-5 py-2.5 font-medium"
