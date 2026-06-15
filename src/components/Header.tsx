@@ -13,23 +13,15 @@ type Props = {
 
 export function Header({ avaliacao, whatsappVisivel }: Props) {
   const [compacto, setCompacto] = useState(false);
-  const [oculto, setOculto] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
-    let lastY = window.scrollY;
     let raf = 0;
     const atualizar = () => {
       raf = 0;
       const y = window.scrollY;
-      // Compacto (esconde a barra superior) com histerese p/ evitar flicker.
+      // Histerese: encolhe passando de 120px, volta abaixo de 40px (evita flicker).
       setCompacto((prev) => (prev ? y > 40 : y > 120));
-      // Oculto: some ao rolar pra baixo, volta ao rolar pra cima.
-      // Perto do topo sempre mostra.
-      if (y < 120) setOculto(false);
-      else if (y - lastY > 6) setOculto(true);
-      else if (lastY - y > 6) setOculto(false);
-      lastY = y;
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(atualizar);
@@ -43,21 +35,16 @@ export function Header({ avaliacao, whatsappVisivel }: Props) {
   }, []);
 
   return (
-    <header
-      className={`sticky top-0 z-50 shadow-[0_4px_20px_rgba(0,0,0,0.18)] transition-transform duration-300 will-change-transform ${
-        // o "deslizar pra fora" só no celular; no desktop fica fixo como antes
-        oculto ? "max-lg:-translate-y-full" : "translate-y-0"
-      }`}
-    >
-      {/* Barra superior — prova social + contato */}
+    <header className="sticky top-0 z-50 shadow-[0_4px_20px_rgba(0,0,0,0.18)]">
+      {/* Barra superior — prova social + contato (some ao rolar) */}
       <div
-        className={`bg-verde text-white text-sm font-semibold ${
+        className={`bg-verde text-white text-[0.78rem] sm:text-sm font-semibold ${
           compacto ? "hidden" : "block"
         }`}
       >
-        <div className="container-mova flex items-center justify-between gap-4 py-2">
+        <div className="container-mova flex items-center justify-between gap-4 py-1.5 sm:py-2">
           <span className="flex items-center gap-1.5">
-            <Star size={15} className="fill-white" aria-hidden />
+            <Star size={14} className="fill-white" aria-hidden />
             {avaliacao.nota} — {avaliacao.total} avaliações no {avaliacao.fonte}
           </span>
           <div className="hidden sm:flex items-center gap-4">
@@ -81,30 +68,47 @@ export function Header({ avaliacao, whatsappVisivel }: Props) {
         </div>
       </div>
 
-      {/* Navegação — sempre aberta; no celular o header inteiro desliza
-          pra fora ao rolar pra baixo (e volta ao rolar pra cima). */}
+      {/* Navegação — fixa e sempre visível, em versão compacta no celular. */}
       <nav className="bg-verde-escuro">
         <div
-          className={`container-mova flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2.5 ${
-            compacto ? "py-2" : "py-3"
+          className={`container-mova flex flex-col lg:flex-row lg:items-center lg:justify-between gap-1.5 lg:gap-2.5 ${
+            compacto ? "py-1.5 lg:py-2" : "py-2 lg:py-3"
           }`}
         >
-          <Link
-            href="/"
-            className="flex items-center gap-2.5 text-white self-center lg:self-auto shrink-0"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/marca/simbolo-branco.png"
-              alt=""
-              className={`w-auto transition-all ${compacto ? "h-7" : "h-9"}`}
-            />
-            <span className="font-display text-xl">
-              studio<strong className="font-black text-[#7FE3AC]">MOVA</strong>
-            </span>
-          </Link>
+          {/* Linha do topo no celular: logo + Agendar. No desktop o wrapper
+              "some" (contents) e o logo volta a ser item direto, como antes. */}
+          <div className="flex items-center justify-between gap-3 lg:contents">
+            <Link
+              href="/"
+              className="flex items-center gap-2 text-white shrink-0"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/marca/simbolo-branco.png"
+                alt=""
+                className={`w-auto transition-all ${
+                  compacto ? "h-6 lg:h-7" : "h-7 lg:h-9"
+                }`}
+              />
+              <span className="font-display text-lg lg:text-xl">
+                studio<strong className="font-black text-[#7FE3AC]">MOVA</strong>
+              </span>
+            </Link>
 
-          <ul className="flex flex-wrap items-center justify-center gap-1.5 lg:gap-1">
+            {/* Agendar compacto — só no celular */}
+            <a
+              href={waLink(
+                "Olá! Quero agendar minha sessão avaliativa no Studio MOVA.",
+              )}
+              target="_blank"
+              rel="noopener"
+              className="btn btn-coral !min-h-0 !py-1.5 !px-3 !text-[0.7rem] shrink-0 lg:hidden"
+            >
+              Agendar
+            </a>
+          </div>
+
+          <ul className="flex flex-wrap items-center justify-center gap-1 lg:gap-1">
             {navegacao.map((item) => {
               const ativo = pathname === item.href;
               return (
@@ -112,7 +116,7 @@ export function Header({ avaliacao, whatsappVisivel }: Props) {
                   <Link
                     href={item.href}
                     aria-current={ativo ? "page" : undefined}
-                    className={`block px-3.5 py-2.5 rounded-full font-display font-bold text-[0.8rem] uppercase tracking-wide transition-colors ${
+                    className={`block rounded-full font-display font-bold uppercase tracking-wide transition-colors px-2.5 py-1.5 text-[0.72rem] lg:px-3.5 lg:py-2.5 lg:text-[0.8rem] ${
                       ativo
                         ? "bg-white text-verde-escuro"
                         : "text-white hover:bg-white/10"
@@ -123,7 +127,8 @@ export function Header({ avaliacao, whatsappVisivel }: Props) {
                 </li>
               );
             })}
-            <li>
+            {/* Agendar no fim — só no desktop (no celular está na linha do topo) */}
+            <li className="hidden lg:block">
               <a
                 href={waLink(
                   "Olá! Quero agendar minha sessão avaliativa no Studio MOVA.",
