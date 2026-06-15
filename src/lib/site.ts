@@ -83,19 +83,22 @@ export const site = {
     {
       titulo: "Musculação personalizada",
       desc: "Treino montado para o seu corpo e objetivos, com professor acompanhando cada exercício.",
-      imagem: "/fotos/modalidades/musculacao.jpg",
+      imagem: "/fotos/reabilitacao/DSC01993.jpg",
+      foco: "center 22%",
       emBreve: false,
     },
     {
       titulo: "HIIT bike / Spinning",
       desc: "Aulas dinâmicas, intensas e sem monotonia — condicionamento com energia lá em cima.",
       imagem: "/fotos/modalidades/MOVA-72.jpg",
+      foco: "center",
       emBreve: false,
     },
     {
       titulo: "Pilates",
       desc: "Fortalecimento, mobilidade e consciência corporal com atenção individualizada.",
       imagem: "",
+      foco: "center",
       emBreve: true,
     },
   ],

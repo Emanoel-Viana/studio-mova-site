@@ -168,6 +168,7 @@ export default async function Home() {
                     label={m.titulo}
                     ratio="16 / 10"
                     className="mb-5"
+                    posicao={"foco" in m ? m.foco : "center"}
                   />
                   <div className="flex items-center gap-2 mb-2">
                     <Icone size={22} className="text-verde-medio" aria-hidden />
