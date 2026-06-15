@@ -153,9 +153,16 @@
 /* Compactação no celular (≤640px) — desktop intacto, tudo ainda legível. */
 @media (max-width: 640px) {
   body { font-size: 1rem; }
-  .section-title { font-size: 1.6rem; margin-bottom: 0.6rem; }
-  .lead { font-size: 1.05rem; }
-  .eyebrow { font-size: 0.78rem; margin-bottom: 0.55rem; }
+  .section-title { font-size: 1.5rem; margin-bottom: 0.55rem; }
+  .lead { font-size: 1.02rem; }
+  .eyebrow { font-size: 0.76rem; margin-bottom: 0.5rem; }
+  /* Botões menores no celular (mantendo bom alvo de toque ~46px) */
+  .btn {
+    font-size: 0.88rem;
+    padding: 0.7rem 1.3rem;
+    min-height: 46px;
+    letter-spacing: 0.03em;
+  }
 }
 
 /* Animação de entrada suave ao rolar */

@@ -64,7 +64,7 @@ export default async function Agendar() {
             </>
           ) : (
             <div className="max-w-2xl mx-auto">
-              <div className="rounded-[1.25rem] bg-verde-escuro text-white p-8 lg:p-12 text-center">
+              <div className="rounded-[1.25rem] bg-verde-escuro text-white p-6 sm:p-8 lg:p-12 text-center">
                 <span className="grid place-items-center w-16 h-16 rounded-full bg-white/12 mx-auto mb-5">
                   <MessageCircle size={32} className="text-[#7FE3AC]" aria-hidden />
                 </span>

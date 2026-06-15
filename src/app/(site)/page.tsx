@@ -33,7 +33,7 @@ export default async function Home() {
               <strong className="font-display">{site.avaliacao.nota}</strong> —{" "}
               {site.avaliacao.total} avaliações no {site.avaliacao.fonte}
             </div>
-            <h1 className="text-[clamp(1.95rem,6vw,4rem)] mb-3">
+            <h1 className="text-[clamp(1.5rem,6vw,4rem)] mb-3">
               A vida precisa de movimento
             </h1>
             <p className="font-display font-bold text-[clamp(1.1rem,2.4vw,1.45rem)] text-[#D9FBE8] mb-5">
@@ -157,7 +157,7 @@ export default async function Home() {
             {site.publico.map((p) => (
               <div
                 key={p.titulo}
-                className="rounded-2xl bg-white border border-[#E2EEE7] p-7 transition-all hover:-translate-y-1 hover:border-verde hover:shadow-[0_14px_34px_rgba(30,155,94,0.12)]"
+                className="rounded-2xl bg-white border border-[#E2EEE7] p-5 sm:p-7 transition-all hover:-translate-y-1 hover:border-verde hover:shadow-[0_14px_34px_rgba(30,155,94,0.12)]"
               >
                 <div className="grid place-items-center w-11 h-11 rounded-full bg-verde-claro mb-4">
                   <Check size={22} className="text-verde-medio" aria-hidden />
@@ -193,7 +193,7 @@ export default async function Home() {
             {site.metodologia.map((etapa, i) => (
               <div
                 key={etapa.titulo}
-                className="rounded-2xl bg-white/[0.07] border border-white/15 p-7"
+                className="rounded-2xl bg-white/[0.07] border border-white/15 p-5 sm:p-7"
               >
                 <div className="font-display font-black text-3xl text-[#7FE3AC] mb-2">
                   {i + 1}
@@ -220,7 +220,7 @@ export default async function Home() {
               return (
                 <div
                   key={m.titulo}
-                  className="rounded-2xl bg-white border border-[#E2EEE7] p-7"
+                  className="rounded-2xl bg-white border border-[#E2EEE7] p-5 sm:p-7"
                 >
                   <Foto
                     src={m.imagem || undefined}
@@ -291,7 +291,7 @@ export default async function Home() {
               return (
                 <div
                   key={plano.freq}
-                  className={`relative flex flex-col rounded-2xl bg-white p-8 ${
+                  className={`relative flex flex-col rounded-2xl bg-white p-6 sm:p-8 ${
                     plano.destaque
                       ? "border-2 border-verde shadow-[0_18px_40px_rgba(30,155,94,0.16)]"
                       : "border border-[#DDEDE3]"
@@ -371,7 +371,7 @@ export default async function Home() {
               return (
                 <figure
                   key={d.autor}
-                  className="flex flex-col rounded-2xl bg-white/95 text-preto p-7 h-full"
+                  className="flex flex-col rounded-2xl bg-white/95 text-preto p-5 sm:p-7 h-full"
                 >
                   <div className="flex gap-0.5 mb-3 text-coral">
                     {Array.from({ length: 5 }).map((_, n) => (
@@ -486,7 +486,7 @@ export default async function Home() {
               <Link
                 key={href}
                 href={href}
-                className="group block rounded-2xl bg-[#222824] border border-[#333B36] p-7 transition-all hover:-translate-y-1 hover:border-verde hover:bg-[#26302A]"
+                className="group block rounded-2xl bg-[#222824] border border-[#333B36] p-5 sm:p-7 transition-all hover:-translate-y-1 hover:border-verde hover:bg-[#26302A]"
               >
                 <Icone size={30} className="text-[#7FE3AC] mb-3" aria-hidden />
                 <h3 className="text-lg text-[#7FE3AC] mb-2">{titulo}</h3>

@@ -47,7 +47,7 @@ export default async function Contato() {
         <div className="container-mova">
           <div className="rounded-[1.25rem] bg-verde-escuro text-white overflow-hidden grid md:grid-cols-2 shadow-xl">
             {/* contatos */}
-            <div className="p-8 lg:p-10">
+            <div className="p-6 sm:p-8 lg:p-10">
               <h2 className="text-3xl mb-6 text-white">Fale conosco</h2>
               <div className="grid gap-3">
                 <a
@@ -96,7 +96,7 @@ export default async function Contato() {
             </div>
 
             {/* logo + QR + icones */}
-            <div className="bg-black/15 p-8 lg:p-10 flex flex-col items-center justify-center text-center gap-4">
+            <div className="bg-black/15 p-6 sm:p-8 lg:p-10 flex flex-col items-center justify-center text-center gap-4">
               <div className="flex items-center gap-2">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/marca/simbolo-branco.png" alt="" className="h-7 w-auto" />

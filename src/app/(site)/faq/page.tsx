@@ -86,7 +86,7 @@ export default function FAQ() {
             ))}
           </div>
 
-          <div className="mt-12 text-center rounded-2xl bg-verde-claro p-8">
+          <div className="mt-12 text-center rounded-2xl bg-verde-claro p-6 sm:p-8">
             <h2 className="text-2xl mb-3">Ficou com outra dúvida?</h2>
             <p className="text-cinza mb-6">
               A gente responde rapidinho no WhatsApp.

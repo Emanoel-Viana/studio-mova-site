@@ -32,7 +32,7 @@ export default async function Planos() {
               return (
                 <div
                   key={plano.freq}
-                  className={`relative flex flex-col rounded-2xl bg-white p-8 ${
+                  className={`relative flex flex-col rounded-2xl bg-white p-6 sm:p-8 ${
                     plano.destaque
                       ? "border-2 border-verde shadow-[0_18px_40px_rgba(30,155,94,0.16)]"
                       : "border border-[#DDEDE3]"
@@ -142,7 +142,7 @@ export default async function Planos() {
             {site.parcerias.map((p) => (
               <div
                 key={p.nome}
-                className="rounded-2xl bg-white border border-[#DDEDE3] p-7 flex items-start gap-4"
+                className="rounded-2xl bg-white border border-[#DDEDE3] p-5 sm:p-7 flex items-start gap-4"
               >
                 <Check
                   size={26}

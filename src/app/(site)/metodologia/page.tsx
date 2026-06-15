@@ -76,7 +76,7 @@ export default function Metodologia() {
               return (
                 <div
                   key={d.titulo}
-                  className="flex items-start gap-4 rounded-2xl bg-white border border-[#DDEDE3] p-7"
+                  className="flex items-start gap-4 rounded-2xl bg-white border border-[#DDEDE3] p-5 sm:p-7"
                 >
                   <div className="grid place-items-center w-12 h-12 shrink-0 rounded-full bg-verde-claro">
                     <Icone size={24} className="text-verde-medio" aria-hidden />
@@ -138,7 +138,7 @@ export default function Metodologia() {
       {/* Sessão avaliativa */}
       <section className="py-10 sm:py-14 lg:py-20">
         <div className="container-mova">
-          <div className="rounded-3xl bg-verde-escuro text-white p-8 lg:p-12">
+          <div className="rounded-3xl bg-verde-escuro text-white p-6 sm:p-8 lg:p-12">
             <div className="grid lg:grid-cols-2 gap-10 items-center">
               <div>
                 <span className="eyebrow !text-[#7FE3AC]">O primeiro passo</span>
