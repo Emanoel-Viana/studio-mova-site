@@ -44,16 +44,37 @@ export default async function Home() {
               turmas de até 4 alunos, com um professor ao seu lado do início ao
               fim.
             </p>
-            <a
-              href={waLink(
-                "Olá! Quero agendar minha sessão avaliativa no Studio MOVA.",
-              )}
-              target="_blank"
-              rel="noopener"
-              className="btn btn-coral text-lg"
-            >
-              Agende sua sessão avaliativa
-            </a>
+            <div className="flex flex-wrap items-center gap-3">
+              <a
+                href={waLink(
+                  "Olá! Quero agendar minha sessão avaliativa no Studio MOVA.",
+                )}
+                target="_blank"
+                rel="noopener"
+                className="btn btn-coral text-lg"
+              >
+                Agende sua sessão avaliativa
+              </a>
+              <a
+                href={waLink("Olá! Vim pelo site e quero conhecer o Studio MOVA.")}
+                target="_blank"
+                rel="noopener"
+                className="btn btn-borda text-white text-lg"
+              >
+                Conhecer sem compromisso
+              </a>
+            </div>
+            <ul className="flex flex-wrap gap-x-5 gap-y-2 mt-7">
+              {site.heroDestaques.map((item) => (
+                <li
+                  key={item}
+                  className="inline-flex items-center gap-2 text-[#EAFBF1] font-medium"
+                >
+                  <Check size={18} className="text-[#9BE8BF]" aria-hidden />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
           <div className="relative aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-2xl ring-1 ring-white/20">
             <Image
@@ -119,6 +140,44 @@ export default async function Home() {
             <Link href="/o-studio" className="btn btn-escuro">
               Conheça o Studio
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* PARA QUEM É */}
+      <section className="py-20 lg:py-24 bg-cinza-claro">
+        <div className="container-mova">
+          <span className="eyebrow">Para quem é o MOVA</span>
+          <h2 className="section-title">Talvez você se reconheça aqui</h2>
+          <p className="lead mb-10 max-w-[60ch]">
+            Recebemos gente de todas as idades e níveis. Veja se algum desses é
+            o seu momento — em todos eles, a gente sabe te ajudar.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {site.publico.map((p) => (
+              <div
+                key={p.titulo}
+                className="rounded-2xl bg-white border border-[#E2EEE7] p-7 transition-all hover:-translate-y-1 hover:border-verde hover:shadow-[0_14px_34px_rgba(30,155,94,0.12)]"
+              >
+                <div className="grid place-items-center w-11 h-11 rounded-full bg-verde-claro mb-4">
+                  <Check size={22} className="text-verde-medio" aria-hidden />
+                </div>
+                <h3 className="text-lg mb-2">{p.titulo}</h3>
+                <p className="text-cinza">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-10 text-center">
+            <a
+              href={waLink(
+                "Olá! Vim pelo site do Studio MOVA e quero saber se o treino é pra mim.",
+              )}
+              target="_blank"
+              rel="noopener"
+              className="btn btn-coral text-lg"
+            >
+              Me identifiquei — quero começar
+            </a>
           </div>
         </div>
       </section>

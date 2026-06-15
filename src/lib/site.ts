@@ -154,6 +154,41 @@ export const site = {
     },
   ],
 
+  // Chips de confiança exibidos no hero da home.
+  heroDestaques: [
+    "Turmas de até 4 alunos",
+    "Professor ao seu lado o tempo todo",
+    "Para todas as idades e níveis",
+  ],
+
+  // "Para quem é o MOVA" — personas para o visitante se identificar.
+  publico: [
+    {
+      titulo: "Quer sair do sedentarismo",
+      desc: "Começar do zero com segurança e criar a rotina que finalmente não para na segunda-feira.",
+    },
+    {
+      titulo: "Busca emagrecer com saúde",
+      desc: "Perder gordura preservando músculo, com treino que cabe na sua rotina — até se você usa medicação.",
+    },
+    {
+      titulo: "Está voltando de uma lesão",
+      desc: "Reabilitação e movimento seguro, com exercícios adaptados à sua condição e professor por perto.",
+    },
+    {
+      titulo: "Já treina e quer evoluir",
+      desc: "Sair do platô com treino personalizado, carga bem ajustada e a variação que mantém a constância.",
+    },
+    {
+      titulo: "Quer se cuidar com mais idade",
+      desc: "Mais força, equilíbrio e disposição no dia a dia, no seu ritmo e sem nenhuma intimidação.",
+    },
+    {
+      titulo: "Não curte academia lotada",
+      desc: "Um espaço boutique, turmas pequenas e atenção de verdade — a sua segunda casa na Asa Norte.",
+    },
+  ],
+
   // Sessão avaliativa — o primeiro passo, usado na home e na metodologia.
   sessaoAvaliativa: {
     intro:
