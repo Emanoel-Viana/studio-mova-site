@@ -29,7 +29,7 @@ export const site = {
 
   avaliacao: {
     nota: "4.94",
-    total: 173,
+    total: 175,
     fonte: "Wellhub",
   },
 

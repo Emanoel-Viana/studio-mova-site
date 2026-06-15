@@ -347,6 +347,19 @@ export default async function Home() {
         <div className="container-mova">
           <span className="eyebrow !text-[#0E3D26]">Depoimentos</span>
           <h2 className="section-title">Quem treina aqui recomenda</h2>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-3">
+            <span className="flex gap-0.5 text-coral">
+              {Array.from({ length: 5 }).map((_, n) => (
+                <Star key={n} size={18} className="fill-coral" aria-hidden />
+              ))}
+            </span>
+            <span className="font-display font-bold text-xl">
+              {site.avaliacao.nota}
+            </span>
+            <span className="text-[#DFF5E8]">
+              · {site.avaliacao.total} avaliações no {site.avaliacao.fonte}
+            </span>
+          </div>
           <div className="grid md:grid-cols-3 gap-6 mt-10 items-start">
             {site.depoimentos.map((d) => {
               const iniciais = d.autor
@@ -404,6 +417,17 @@ export default async function Home() {
                 </figure>
               );
             })}
+          </div>
+          <div className="mt-10 text-center">
+            <a
+              href={site.parcerias[0].url}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/35 px-5 py-2.5 font-medium transition-colors hover:bg-white/25"
+            >
+              <Star size={18} className="fill-white" aria-hidden />
+              Ver as {site.avaliacao.total} avaliações no {site.avaliacao.fonte}
+            </a>
           </div>
         </div>
       </section>
