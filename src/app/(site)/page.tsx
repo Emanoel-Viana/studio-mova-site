@@ -347,23 +347,63 @@ export default async function Home() {
         <div className="container-mova">
           <span className="eyebrow !text-[#0E3D26]">Depoimentos</span>
           <h2 className="section-title">Quem treina aqui recomenda</h2>
-          <div className="grid md:grid-cols-3 gap-6 mt-10">
-            {site.depoimentos.map((d) => (
-              <figure
-                key={d.autor}
-                className="rounded-2xl bg-white/95 text-preto p-7"
-              >
-                <div className="flex gap-0.5 mb-3 text-coral">
-                  {Array.from({ length: 5 }).map((_, n) => (
-                    <Star key={n} size={16} className="fill-coral" aria-hidden />
-                  ))}
-                </div>
-                <blockquote className="mb-4">{d.texto}</blockquote>
-                <figcaption className="font-display font-bold">
-                  {d.autor}
-                </figcaption>
-              </figure>
-            ))}
+          <div className="grid md:grid-cols-3 gap-6 mt-10 items-start">
+            {site.depoimentos.map((d) => {
+              const iniciais = d.autor
+                .split(" ")
+                .slice(0, 2)
+                .map((parte) => parte[0])
+                .join("")
+                .toUpperCase();
+              return (
+                <figure
+                  key={d.autor}
+                  className="flex flex-col rounded-2xl bg-white/95 text-preto p-7 h-full"
+                >
+                  <div className="flex gap-0.5 mb-3 text-coral">
+                    {Array.from({ length: 5 }).map((_, n) => (
+                      <Star
+                        key={n}
+                        size={16}
+                        className="fill-coral"
+                        aria-hidden
+                      />
+                    ))}
+                  </div>
+                  <blockquote className="mb-5 flex-1">{d.texto}</blockquote>
+                  <figcaption className="flex items-center gap-3">
+                    {d.foto ? (
+                      <span className="relative w-11 h-11 shrink-0 rounded-full overflow-hidden ring-2 ring-verde-claro">
+                        <Image
+                          src={d.foto}
+                          alt={`Foto de ${d.autor}`}
+                          fill
+                          sizes="44px"
+                          className="object-cover"
+                        />
+                      </span>
+                    ) : (
+                      <span
+                        className="grid place-items-center w-11 h-11 shrink-0 rounded-full bg-verde-claro text-verde-escuro font-display font-bold"
+                        aria-hidden
+                      >
+                        {iniciais}
+                      </span>
+                    )}
+                    <span>
+                      <span className="block font-display font-bold leading-tight">
+                        {d.autor}
+                      </span>
+                      {d.fonte && (
+                        <span className="block text-sm text-cinza">
+                          via {d.fonte}
+                        </span>
+                      )}
+                    </span>
+                  </figcaption>
+                </figure>
+              );
+            })}
           </div>
         </div>
       </section>

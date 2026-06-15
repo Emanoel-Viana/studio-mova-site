@@ -203,21 +203,31 @@ export const site = {
       "Leve roupa leve e confortável, tênis, garrafinha de água e toalha. Se tiver algum exame ou laudo, pode trazer também.",
   },
 
+  // Depoimentos reais. Cada um pode ter:
+  //  - foto: caminho em /fotos/depoimentos/... (opcional; se vazio, mostra
+  //          um avatar com as iniciais do nome)
+  //  - fonte: "Wellhub" | "TotalPass" | "Google" | "" (mostra um selo de origem)
   depoimentos: [
     {
       texto:
         "O Studio Mova oferece um ambiente espaçoso, com todos os equipamentos necessários para um treino completo, e uma professora 'bravinha' e incrível. E podemos aproveitar os momentos de descanso curtindo o verde da quadra residencial ao lado.",
       autor: "Flávia Mendim",
+      foto: "",
+      fonte: "",
     },
     {
       texto:
         "Amo e estou amando o estúdio de atividade física MOVA! É lindo, de bom gosto, banheiros amplos, limpeza evidente; aparelhos modernos e uma profissional dedicada que me ajuda a manter meu corpo bem cuidado e saudável com exercícios dinâmicos e inteligentes.",
       autor: "Indira Vale",
+      foto: "",
+      fonte: "",
     },
     {
       texto:
         "Infraestrutura excelente, ambiente climatizado, ótima localização, mas o melhor do Studio MOVA é a personal. Juliana é uma profissional dedicada, animada, capacitada... e uma pessoa incrível! Recomendadíssimo!",
       autor: "Marly Osugi",
+      foto: "",
+      fonte: "",
     },
   ],
 
