@@ -24,11 +24,31 @@ const perguntas = [
   },
   {
     q: "Quais são os planos e valores?",
-    a: "Temos o MOVAconfort em 2x, 3x ou 4x por semana, a partir de R$ 630/mês. Os valores são o ponto de partida de cada frequência — na sessão avaliativa montamos a proposta ideal para o seu caso.",
+    a: "Temos o MOVAconfort em 2x, 3x ou 4x por semana. Cada plano tem três formas de pagamento — Mensal, Semestral e Anual (quanto maior o período, melhor o valor por mês). O 2x começa em R$ 630/mês (anual). Veja todos os valores na página de Planos.",
   },
   {
-    q: "Vocês aceitam Wellhub ou TotalPass?",
-    a: "Sim! Somos parceiros do Wellhub (a partir do plano Gold+) e do TotalPass (a partir do TP5+). Fale com a gente para entender como usar o seu benefício.",
+    q: "Quais as formas de pagamento?",
+    a: "Você escolhe a que for mais confortável: Pix (instantâneo via chave ou QR code), cartão de crédito (com parcelamento) ou recorrência automática (débito mensal automático).",
+  },
+  {
+    q: "Tenho dores ou alguma limitação física. Posso treinar?",
+    a: "Pode sim — é justamente para isso que servimos. Nossos professores são especializados em treino adaptado e ajustam cada exercício à sua condição. Se você tiver laudo, exame ou orientação médica, pode trazer no dia da sessão avaliativa: ajuda muito na personalização. Importante: o exercício supervisionado é um grande aliado na reabilitação e no fortalecimento, mas não substitui a avaliação do seu médico ou fisioterapeuta.",
+  },
+  {
+    q: "Uso medicação para emagrecer (Ozempic, Mounjaro). Vale a pena treinar?",
+    a: "Vale muito! Essas medicações ajudam a baixar o peso, mas sem treino de força o corpo perde músculo junto com a gordura. A musculação personalizada protege a sua massa muscular, o que mantém o metabolismo e garante um emagrecimento mais firme e saudável. Como as turmas são de até 4 alunos, o professor ajusta a intensidade conforme a sua disposição no dia.",
+  },
+  {
+    q: "Vocês aceitam convênio ou plano de saúde?",
+    a: "No momento não trabalhamos com convênios ou planos de saúde. As formas de acesso são: pagamento regular (Pix, cartão ou recorrência), Wellhub (a partir do Gold) e TotalPass (a partir do TP5+).",
+  },
+  {
+    q: "Como funciona pelo Wellhub?",
+    a: "Aceitamos a partir do plano Gold (Gold, Gold+, Platinum, Diamond e Diamond+). Você tem 2 check-ins por semana, e a sessão avaliativa já conta como 1 check-in. Todos os agendamentos, reagendamentos e cancelamentos são feitos direto pelo app da Wellhub — as vagas são liberadas com cerca de 5 dias de antecedência.",
+  },
+  {
+    q: "Como funciona pelo TotalPass?",
+    a: "Aceitamos a partir do plano TP5+ (TP5+, TP6 e TP7), com direito a 3 check-ins por semana. Aqui o agendamento é feito via WhatsApp com a nossa especialista: toda sexta-feira da semana anterior você envia seus dias e horários disponíveis, e ela confirma sua agenda da semana seguinte.",
   },
   {
     q: "Onde fica o Studio?",

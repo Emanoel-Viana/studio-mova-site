@@ -48,10 +48,42 @@ export default async function Planos() {
                     {plano.freq}
                   </div>
                   <p className="text-cinza my-3 flex-1">{plano.desc}</p>
-                  <p className="text-lg mb-6">
-                    A partir de{" "}
-                    <strong className="font-display">R$ {plano.preco}/mês</strong>
-                  </p>
+
+                  <div className="grid gap-2 mb-6">
+                    <div className="flex justify-between items-baseline border-b border-[#EEF5F0] pb-2">
+                      <span className="text-cinza">Mensal</span>
+                      <strong className="font-display text-lg">
+                        R$ {plano.precos.mensal}
+                        <span className="text-sm text-cinza font-body font-normal">
+                          /mês
+                        </span>
+                      </strong>
+                    </div>
+                    <div className="flex justify-between items-baseline border-b border-[#EEF5F0] pb-2">
+                      <span className="text-cinza">Semestral</span>
+                      <strong className="font-display text-lg">
+                        R$ {plano.precos.semestral}
+                        <span className="text-sm text-cinza font-body font-normal">
+                          /mês
+                        </span>
+                      </strong>
+                    </div>
+                    <div className="flex justify-between items-baseline">
+                      <span className="font-semibold text-verde-escuro">
+                        Anual{" "}
+                        <span className="text-[0.6rem] align-middle bg-verde-claro text-verde-escuro px-2 py-0.5 rounded-full uppercase tracking-wide font-display">
+                          melhor preço
+                        </span>
+                      </span>
+                      <strong className="font-display text-xl text-verde-medio">
+                        R$ {plano.precos.anual}
+                        <span className="text-sm text-cinza font-body font-normal">
+                          /mês
+                        </span>
+                      </strong>
+                    </div>
+                  </div>
+
                   <a
                     href={waLink(
                       `Olá! Tenho interesse no plano ${plano.freq} do Studio MOVA. Pode me passar os detalhes?`,
@@ -69,9 +101,31 @@ export default async function Planos() {
             })}
           </div>
           <p className="mt-8 text-center text-cinza">
-            Os valores são o ponto de partida de cada frequência. Na sessão
-            avaliativa montamos a melhor proposta pra você.
+            Quanto maior o plano, melhor o valor por mês. Na sessão avaliativa a
+            gente define a melhor proposta pra você — sem pressa e sem pressão.
           </p>
+        </div>
+      </section>
+
+      {/* Formas de pagamento */}
+      <section className="py-12 lg:py-16 bg-cinza-claro">
+        <div className="container-mova">
+          <span className="eyebrow">Pagamento</span>
+          <h2 className="section-title">Formas de pagamento</h2>
+          <p className="lead mb-8">
+            Você escolhe a forma mais confortável pra você.
+          </p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {site.pagamento.map((f) => (
+              <div
+                key={f.titulo}
+                className="rounded-2xl border border-[#DDEDE3] bg-white p-6"
+              >
+                <h3 className="text-lg mb-1">{f.titulo}</h3>
+                <p className="text-cinza text-sm">{f.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -97,7 +151,11 @@ export default async function Planos() {
                 />
                 <div>
                   <h3 className="text-xl mb-1">{p.nome}</h3>
-                  <p className="text-cinza mb-3">Aceito {p.detalhe}.</p>
+                  <p className="text-cinza mb-2">{p.detalhe}</p>
+                  <p className="font-semibold text-verde-escuro mb-1">
+                    {p.checkins}
+                  </p>
+                  <p className="text-cinza text-sm mb-3">{p.agendamento}</p>
                   <a
                     href={p.url}
                     target="_blank"

@@ -261,7 +261,7 @@ export default async function Home() {
                   <p className="text-lg mb-6">
                     A partir de{" "}
                     <strong className="font-display">
-                      R$ {plano.preco}/mês
+                      R$ {plano.precos.anual}/mês
                     </strong>
                   </p>
                   <Link

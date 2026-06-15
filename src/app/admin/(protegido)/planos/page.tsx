@@ -9,7 +9,9 @@ export default async function EditarPlanos() {
   const planos: PlanoEditavel[] = content.planos.map((p) => ({
     freq: p.freq,
     desc: p.desc,
-    preco: p.preco,
+    precoMensal: p.precos.mensal,
+    precoSemestral: p.precos.semestral,
+    precoAnual: p.precos.anual,
     icone: p.icone,
     destaque: p.destaque,
     selo: "selo" in p ? p.selo : "",

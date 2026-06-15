@@ -45,36 +45,52 @@ export const site = {
     {
       freq: "2x por semana",
       icone: "ti-flame",
-      desc: "Pra criar rotina e sair do sedentarismo com segurança.",
-      preco: "630",
+      desc: "Ideal pra criar rotina, sair do sedentarismo e evoluir com constância — perfeito pra retomar os treinos com segurança e mais disposição.",
+      precos: { mensal: "720", semestral: "680", anual: "630" },
       destaque: false,
     },
     {
       freq: "3x por semana",
       icone: "ti-barbell",
-      desc: "Resultado mais rápido e mudança visível no corpo.",
-      preco: "820",
+      desc: "A escolha de quem quer resultado mais rápido e mudança visível no corpo — emagrecer, ganhar força e manter a constância que transforma.",
+      precos: { mensal: "980", semestral: "890", anual: "820" },
       destaque: true,
       selo: "Mais escolhido",
     },
     {
       freq: "4x por semana",
       icone: "ti-trophy",
-      desc: "Máxima evolução e total dedicação aos treinos.",
-      preco: "940",
+      desc: "Para quem quer máxima evolução, resultado acelerado e total dedicação aos treinos.",
+      precos: { mensal: "1.280", semestral: "1.110", anual: "940" },
       destaque: false,
+    },
+  ],
+
+  // Formas de pagamento aceitas.
+  pagamento: [
+    { titulo: "Pix", desc: "Pagamento instantâneo via chave ou QR code." },
+    { titulo: "Cartão de crédito", desc: "Com parcelamento disponível." },
+    {
+      titulo: "Recorrência automática",
+      desc: "Débito mensal automático, sem preocupação.",
     },
   ],
 
   parcerias: [
     {
       nome: "Wellhub",
-      detalhe: "a partir do plano Gold+",
+      detalhe: "A partir do plano Gold (Gold, Gold+, Platinum, Diamond e Diamond+).",
+      checkins: "2 check-ins por semana",
+      agendamento:
+        "Agendamento, reagendamento e cancelamento direto pelo app da Wellhub. As vagas são liberadas com cerca de 5 dias de antecedência.",
       url: "https://wellhub.com/pt-br/search/partners/studio-mova-asa-norte/",
     },
     {
       nome: "TotalPass",
-      detalhe: "a partir do TP5+",
+      detalhe: "A partir do plano TP5+ (TP5+, TP6 e TP7).",
+      checkins: "3 check-ins por semana",
+      agendamento:
+        "Agendamento via WhatsApp com a nossa especialista. Toda sexta-feira você envia suas disponibilidades para a semana seguinte.",
       url: "https://totalpass.com/br/academias/studio-mova/",
     },
   ],

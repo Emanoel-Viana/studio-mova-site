@@ -7,7 +7,9 @@ import { salvarConteudo } from "../../actions";
 export type PlanoEditavel = {
   freq: string;
   desc: string;
-  preco: string;
+  precoMensal: string;
+  precoSemestral: string;
+  precoAnual: string;
   icone: string;
   destaque: boolean;
   selo: string;
@@ -36,8 +38,20 @@ export function PlanosForm({
 
   function salvar() {
     setMsg(null);
+    const paraSalvar = planos.map((p) => ({
+      freq: p.freq,
+      desc: p.desc,
+      icone: p.icone,
+      destaque: p.destaque,
+      selo: p.selo,
+      precos: {
+        mensal: p.precoMensal,
+        semestral: p.precoSemestral,
+        anual: p.precoAnual,
+      },
+    }));
     iniciar(async () => {
-      const r = await salvarConteudo({ planos });
+      const r = await salvarConteudo({ planos: paraSalvar });
       setMsg(r);
     });
   }
@@ -76,21 +90,45 @@ export function PlanosForm({
                   className={campo}
                 />
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 <div>
                   <label className="block font-semibold mb-1.5 text-sm">
-                    Preço (R$/mês)
+                    Mensal (R$)
                   </label>
                   <input
-                    value={plano.preco}
-                    onChange={(e) => atualizar(i, "preco", e.target.value)}
+                    value={plano.precoMensal}
+                    onChange={(e) => atualizar(i, "precoMensal", e.target.value)}
                     inputMode="numeric"
                     className={campo}
                   />
                 </div>
                 <div>
                   <label className="block font-semibold mb-1.5 text-sm">
-                    Selo (ex.: Mais escolhido)
+                    Semestral (R$)
+                  </label>
+                  <input
+                    value={plano.precoSemestral}
+                    onChange={(e) =>
+                      atualizar(i, "precoSemestral", e.target.value)
+                    }
+                    inputMode="numeric"
+                    className={campo}
+                  />
+                </div>
+                <div>
+                  <label className="block font-semibold mb-1.5 text-sm">
+                    Anual (R$)
+                  </label>
+                  <input
+                    value={plano.precoAnual}
+                    onChange={(e) => atualizar(i, "precoAnual", e.target.value)}
+                    inputMode="numeric"
+                    className={campo}
+                  />
+                </div>
+                <div>
+                  <label className="block font-semibold mb-1.5 text-sm">
+                    Selo
                   </label>
                   <input
                     value={plano.selo}
