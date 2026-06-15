@@ -156,6 +156,10 @@ export default function Metodologia() {
                 >
                   Agendar sessão avaliativa
                 </a>
+                <p className="flex items-start gap-2.5 text-sm text-[#9FD9BC] mt-5">
+                  <Check size={18} className="shrink-0 mt-0.5" aria-hidden />
+                  {site.sessaoAvaliativa.levar}
+                </p>
               </div>
               <ul className="grid gap-3">
                 {site.sessaoAvaliativa.etapas.map((item, i) => (

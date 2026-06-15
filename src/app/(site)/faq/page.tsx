@@ -20,7 +20,7 @@ const perguntas = [
   },
   {
     q: "O que é a sessão avaliativa?",
-    a: "É o seu primeiro encontro, sem compromisso. Conversamos sobre seus objetivos, fazemos uma avaliação postural e de mobilidade, analisamos seu movimento e apresentamos o método. A partir daí montamos a melhor proposta para você.",
+    a: "É o seu primeiro passo, sem compromisso: o momento de conhecer o Studio pessoalmente, sentir o clima do espaço e entender se o MOVA combina com você — com a nossa professora especialista do seu lado desde o primeiro minuto. Conversamos sobre seus objetivos e sua rotina, fazemos uma avaliação postural e de mobilidade, e você sente o método na prática. Só depois a gente fala de plano, com calma e sem pressão. Dica: leve roupa leve e confortável, tênis, garrafinha de água e toalha — e, se tiver exame ou laudo, pode trazer.",
   },
   {
     q: "Quais são os planos e valores?",

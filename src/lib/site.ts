@@ -192,13 +192,15 @@ export const site = {
   // Sessão avaliativa — o primeiro passo, usado na home e na metodologia.
   sessaoAvaliativa: {
     intro:
-      "Antes de escolher qualquer plano, você passa por um encontro individual com a nossa professora especialista — sem compromisso. É onde a gente entende o seu corpo, a sua rotina e os seus objetivos para montar o caminho certo até os seus resultados.",
+      "A sessão avaliativa é o seu primeiro passo: o momento de conhecer o Studio pessoalmente, sentir o clima do espaço e entender se o MOVA combina com você — com a nossa professora especialista do seu lado desde o primeiro minuto e sem nenhum compromisso. Você sente na prática a diferença de um treino feito pra você e, depois, a gente conversa sobre o plano com calma, sem pressa.",
     etapas: [
+      "Conheça o Studio e a professora especialista pessoalmente",
       "Conversa sobre seus objetivos e sua rotina",
       "Avaliação postural e de mobilidade",
-      "Análise do seu movimento",
-      "Apresentação do método na prática",
+      "Sinta o método na prática — e fale de plano sem pressão",
     ],
+    levar:
+      "Leve roupa leve e confortável, tênis, garrafinha de água e toalha. Se tiver algum exame ou laudo, pode trazer também.",
   },
 
   depoimentos: [
