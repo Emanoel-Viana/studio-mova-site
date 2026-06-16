@@ -33,7 +33,7 @@ export default async function Home() {
               <strong className="font-display">{site.avaliacao.nota}</strong> —{" "}
               {site.avaliacao.total} avaliações no {site.avaliacao.fonte}
             </div>
-            <h1 className="text-[clamp(1.5rem,6vw,4rem)] mb-3">
+            <h1 className="text-[clamp(1.8rem,6.5vw,4rem)] leading-[1.08] mb-3">
               A vida precisa de movimento
             </h1>
             <p className="font-display font-bold text-[clamp(1.1rem,2.4vw,1.45rem)] text-[#D9FBE8] mb-5">
