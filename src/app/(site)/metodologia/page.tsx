@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
+import type { SVGProps } from "react";
 import {
   HeartPulse,
   Activity,
-  Accessibility,
   Dumbbell,
   Users,
   UserCheck,
@@ -20,7 +20,32 @@ export const metadata: Metadata = {
     "A metodologia do Studio MOVA: 60 minutos em 3 etapas, turmas de até 4 alunos e treino personalizado e adaptado, inclusive para reabilitação. Comece pela sessão avaliativa.",
 };
 
-const icones = [Accessibility, Dumbbell, HeartPulse];
+// Ícone de mobilidade corporal (figura se alongando), no traço do lucide —
+// substitui o ícone de cadeirante, que dava ideia errada de "acessibilidade".
+function Alongamento({ size = 24, ...props }: { size?: number } & SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <circle cx="10.5" cy="4" r="2" />
+      <path d="M10.5 6 12 13" />
+      <path d="M11 7.5 16.5 4" />
+      <path d="M11 8.5 7 11" />
+      <path d="M12 13 8 21" />
+      <path d="M12 13 16 17 15 21" />
+    </svg>
+  );
+}
+
+const icones = [Alongamento, Dumbbell, HeartPulse];
 const difIcones = [Users, UserCheck, Target, HomeIcon];
 
 export default function Metodologia() {
