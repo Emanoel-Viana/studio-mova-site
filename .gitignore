@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# docs internos do projeto (contêm infra/VPS — NÃO publicar no repo público)
+/docs/
