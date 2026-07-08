@@ -29,6 +29,18 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+
+  // Redireciona www.studiomova.com.br -> studiomova.com.br (domínio único/canônico).
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.studiomova.com.br" }],
+        destination: "https://studiomova.com.br/:path*",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
