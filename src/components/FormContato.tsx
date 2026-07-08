@@ -23,7 +23,7 @@ export function FormContato() {
     if (supabaseConfigurado) {
       const supabase = createClient();
       void supabase
-        .from("leads")
+        .from("site_studiomova_leads_contato")
         .insert({ nome, assunto, mensagem: mensagem || null })
         .then(({ error }) => {
           if (error) console.error("Falha ao registrar lead:", error.message);

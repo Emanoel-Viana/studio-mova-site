@@ -23,7 +23,7 @@ function formatarData(iso: string) {
 export default async function Leads() {
   const supabase = await createClient();
   const { data, error } = await supabase
-    .from("leads")
+    .from("site_studiomova_leads_contato")
     .select("id, nome, assunto, mensagem, criado_em")
     .order("criado_em", { ascending: false })
     .limit(200);

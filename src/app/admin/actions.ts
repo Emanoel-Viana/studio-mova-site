@@ -50,7 +50,7 @@ export async function salvarConteudo(
   if (!user) return { erro: "Sessão expirada. Faça login novamente." };
 
   const { data: atual } = await supabase
-    .from("site_settings")
+    .from("site_studiomova_configuracoes")
     .select("content")
     .eq("id", 1)
     .maybeSingle();
@@ -58,7 +58,7 @@ export async function salvarConteudo(
   const novoConteudo = { ...(atual?.content ?? {}), ...patch };
 
   const { error } = await supabase
-    .from("site_settings")
+    .from("site_studiomova_configuracoes")
     .update({ content: novoConteudo })
     .eq("id", 1);
 

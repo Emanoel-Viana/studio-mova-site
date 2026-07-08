@@ -14,7 +14,7 @@ export async function getContent(): Promise<SiteContent> {
   try {
     const supabase = await createClient();
     const { data, error } = await supabase
-      .from("site_settings")
+      .from("site_studiomova_configuracoes")
       .select("content")
       .eq("id", 1)
       .maybeSingle();
