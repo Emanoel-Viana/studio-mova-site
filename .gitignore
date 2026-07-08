@@ -42,3 +42,6 @@ next-env.d.ts
 
 # docs internos do projeto (contêm infra/VPS — NÃO publicar no repo público)
 /docs/
+
+# versão antiga do site (site estático), guardada como backup — NÃO publicar
+/site mova - versao antiga/
