@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {
-  Tag,
   Clock,
   Phone,
   Users,
@@ -12,13 +11,6 @@ import {
 } from "lucide-react";
 
 const secoes = [
-  {
-    href: "/admin/planos",
-    Icone: Tag,
-    titulo: "Planos e preços",
-    desc: "Edite os valores e descrições dos planos MOVAconfort.",
-    pronto: true,
-  },
   {
     href: "/admin/contato",
     Icone: Phone,

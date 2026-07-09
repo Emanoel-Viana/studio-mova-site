@@ -42,31 +42,6 @@ export const site = {
     { dias: "Domingo", faixas: ["Fechado"] },
   ],
 
-  planos: [
-    {
-      freq: "2x por semana",
-      icone: "ti-flame",
-      desc: "Ideal pra criar rotina, sair do sedentarismo e evoluir com constância — perfeito pra retomar os treinos com segurança e mais disposição.",
-      precos: { mensal: "720", semestral: "680", anual: "630" },
-      destaque: false,
-    },
-    {
-      freq: "3x por semana",
-      icone: "ti-barbell",
-      desc: "A escolha de quem quer resultado mais rápido e mudança visível no corpo — emagrecer, ganhar força e manter a constância que transforma.",
-      precos: { mensal: "980", semestral: "890", anual: "820" },
-      destaque: true,
-      selo: "Mais escolhido",
-    },
-    {
-      freq: "4x por semana",
-      icone: "ti-trophy",
-      desc: "Para quem quer máxima evolução, resultado acelerado e total dedicação aos treinos.",
-      precos: { mensal: "1.280", semestral: "1.110", anual: "940" },
-      destaque: false,
-    },
-  ],
-
   // ============================================================
   // CATÁLOGO (nova grade — lançamento). O visitante escolhe "o que
   // quer treinar" e vê os planos daquela modalidade.
