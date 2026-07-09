@@ -18,6 +18,7 @@ import {
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
 import { Foto } from "@/components/Foto";
+import { QuizModalidade } from "./QuizModalidade";
 
 const modalidadeIcones = [Dumbbell, Bike, HeartPulse];
 const catalogoIcones: Record<string, typeof Dumbbell> = {
@@ -285,6 +286,21 @@ export default async function Home() {
           >
             Agendar minha sessão avaliativa
           </a>
+        </div>
+      </section>
+
+      {/* QUIZ — descubra sua modalidade */}
+      <section className="py-12 sm:py-16 lg:py-24 bg-verde-escuro text-white">
+        <div className="container-mova text-center">
+          <span className="eyebrow !text-[#7FE3AC]">
+            Não sabe por onde começar?
+          </span>
+          <h2 className="section-title">Descubra a sua modalidade ideal</h2>
+          <p className="lead mx-auto mb-8 !text-[#D6EEDF]">
+            Responda 3 perguntinhas rápidas e a gente te mostra o treino
+            perfeito pro seu momento.
+          </p>
+          <QuizModalidade />
         </div>
       </section>
 
