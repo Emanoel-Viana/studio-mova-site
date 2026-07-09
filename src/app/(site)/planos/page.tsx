@@ -1,17 +1,15 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Flame, Dumbbell, Trophy, Check } from "lucide-react";
+import { Check } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
 import { PageHero } from "@/components/PageHero";
+import { SeletorPlanos } from "./SeletorPlanos";
 
 export const metadata: Metadata = {
   title: "Planos",
   description:
-    "Planos MOVAconfort de 2x, 3x e 4x por semana. Também aceitamos Wellhub e TotalPass.",
+    "Musculação, Pilates, Bike, Coletivas, Kids e Teens — escolha o que quer treinar e veja os planos. Também aceitamos Wellhub e TotalPass.",
 };
-
-const icones = [Flame, Dumbbell, Trophy];
 
 export default async function Planos() {
   const site = await getContent();
@@ -19,90 +17,16 @@ export default async function Planos() {
     <>
       <PageHero
         eyebrow="Planos"
-        titulo="MOVAconfort — escolha o seu ritmo"
-        descricao="Treino personalizado em turmas de até 4 alunos. Escolha a frequência que cabe na sua rotina — todos com acompanhamento de professor do início ao fim."
+        titulo="Escolha o seu movimento"
+        descricao="Musculação, Pilates, Bike, Coletivas e turmas para crianças e adolescentes. Escolha o que você quer treinar e monte o plano ideal — sempre com acompanhamento de professor."
       />
 
       <section className="py-10 sm:py-14 lg:py-20">
         <div className="container-mova">
-          <div className="grid md:grid-cols-3 gap-6 items-stretch">
-            {site.planos.map((plano, i) => {
-              const Icone = icones[i] ?? Flame;
-              const selo = "selo" in plano ? plano.selo : null;
-              return (
-                <div
-                  key={plano.freq}
-                  className={`relative flex flex-col rounded-2xl bg-white p-6 sm:p-8 ${
-                    plano.destaque
-                      ? "border-2 border-verde shadow-[0_18px_40px_rgba(30,155,94,0.16)]"
-                      : "border border-[#DDEDE3]"
-                  }`}
-                >
-                  {selo && (
-                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-verde text-white font-display font-bold text-xs uppercase tracking-wide px-4 py-1.5 rounded-full whitespace-nowrap">
-                      {selo}
-                    </span>
-                  )}
-                  <Icone size={30} className="text-verde-medio mb-2" aria-hidden />
-                  <div className="font-display font-black text-xl sm:text-2xl">
-                    {plano.freq}
-                  </div>
-                  <p className="text-cinza my-3 flex-1">{plano.desc}</p>
-
-                  <div className="grid gap-2 mb-6">
-                    <div className="flex justify-between items-baseline border-b border-[#EEF5F0] pb-2">
-                      <span className="text-cinza">Mensal</span>
-                      <strong className="font-display text-lg">
-                        R$ {plano.precos.mensal}
-                        <span className="text-sm text-cinza font-body font-normal">
-                          /mês
-                        </span>
-                      </strong>
-                    </div>
-                    <div className="flex justify-between items-baseline border-b border-[#EEF5F0] pb-2">
-                      <span className="text-cinza">Semestral</span>
-                      <strong className="font-display text-lg">
-                        R$ {plano.precos.semestral}
-                        <span className="text-sm text-cinza font-body font-normal">
-                          /mês
-                        </span>
-                      </strong>
-                    </div>
-                    <div className="flex justify-between items-baseline">
-                      <span className="font-semibold text-verde-escuro">
-                        Anual{" "}
-                        <span className="text-[0.6rem] align-middle bg-verde-claro text-verde-escuro px-2 py-0.5 rounded-full uppercase tracking-wide font-display">
-                          melhor preço
-                        </span>
-                      </span>
-                      <strong className="font-display text-xl text-verde-medio">
-                        R$ {plano.precos.anual}
-                        <span className="text-sm text-cinza font-body font-normal">
-                          /mês
-                        </span>
-                      </strong>
-                    </div>
-                  </div>
-
-                  <a
-                    href={waLink(
-                      `Olá! Tenho interesse no plano ${plano.freq} do Studio MOVA. Pode me passar os detalhes?`,
-                    )}
-                    target="_blank"
-                    rel="noopener"
-                    className={`btn ${
-                      plano.destaque ? "btn-coral" : "btn-escuro"
-                    }`}
-                  >
-                    Quero esse plano
-                  </a>
-                </div>
-              );
-            })}
-          </div>
-          <p className="mt-8 text-center text-cinza">
-            Quanto maior o plano, melhor o valor por mês. Na sessão avaliativa a
-            gente define a melhor proposta pra você — sem pressa e sem pressão.
+          <SeletorPlanos catalogo={site.catalogo} />
+          <p className="mt-10 text-center text-cinza max-w-2xl mx-auto">
+            Quanto maior o período, melhor o valor por mês. Na sessão avaliativa
+            a gente define a melhor proposta pra você — sem pressa e sem pressão.
           </p>
         </div>
       </section>
@@ -130,7 +54,10 @@ export default async function Planos() {
       </section>
 
       {/* Parcerias */}
-      <section id="parcerias" className="py-10 sm:py-14 lg:py-20 bg-verde-claro scroll-mt-24">
+      <section
+        id="parcerias"
+        className="py-10 sm:py-14 lg:py-20 bg-verde-claro scroll-mt-24"
+      >
         <div className="container-mova">
           <span className="eyebrow">Parcerias</span>
           <h2 className="section-title">Use seu benefício corporativo</h2>
@@ -178,7 +105,9 @@ export default async function Planos() {
             Fale com a gente no WhatsApp — a gente te ajuda a escolher.
           </p>
           <a
-            href={waLink("Olá! Quero ajuda para escolher o melhor plano no Studio MOVA.")}
+            href={waLink(
+              "Olá! Quero ajuda para escolher o melhor plano no Studio MOVA.",
+            )}
             target="_blank"
             rel="noopener"
             className="btn btn-coral text-lg"

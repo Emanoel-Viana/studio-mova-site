@@ -66,6 +66,190 @@ export const site = {
     },
   ],
 
+  // ============================================================
+  // CATÁLOGO (nova grade — lançamento). O visitante escolhe "o que
+  // quer treinar" e vê os planos daquela modalidade.
+  // Preço sempre { mensal, semestral, anual } — anual "" quando não houver.
+  // ============================================================
+  catalogo: {
+    modalidades: [
+      {
+        id: "musculacao",
+        nome: "Musculação",
+        titulo: "MOVA Musculação",
+        tagline: "Sua base de força e saúde",
+        icone: "dumbbell",
+        temNiveis: true,
+        niveis: [
+          { nome: "Essencial", nota: "só musculação" },
+          { nome: "Equilíbrio", nota: "+1 modalidade/semana" },
+          { nome: "Performance", nota: "+2 modalidades/semana" },
+        ],
+        frequencias: [
+          {
+            freq: "2x por semana",
+            precos: [
+              { mensal: "720", semestral: "680", anual: "630" },
+              { mensal: "850", semestral: "790", anual: "740" },
+              { mensal: "960", semestral: "890", anual: "850" },
+            ],
+          },
+          {
+            freq: "3x por semana",
+            precos: [
+              { mensal: "980", semestral: "890", anual: "820" },
+              { mensal: "1.110", semestral: "1.000", anual: "930" },
+              { mensal: "1.220", semestral: "1.110", anual: "1.040" },
+            ],
+          },
+        ],
+        complementares: [
+          "Bike", "HIIT", "Funcional", "GAP",
+          "Mobilidade", "Flexibilidade", "Ritmos", "Abdominal",
+        ],
+      },
+      {
+        id: "pilates",
+        nome: "Pilates",
+        titulo: "MOVA Pilates",
+        tagline: "Mobilidade, estabilidade, força profunda e longevidade",
+        icone: "flower",
+        temNiveis: true,
+        niveis: [
+          { nome: "Essencial", nota: "só pilates" },
+          { nome: "Equilíbrio", nota: "+1 modalidade/semana" },
+          { nome: "Performance", nota: "+2 modalidades/semana" },
+        ],
+        frequencias: [
+          {
+            freq: "2x por semana",
+            precos: [
+              { mensal: "650", semestral: "610", anual: "570" },
+              { mensal: "780", semestral: "720", anual: "680" },
+              { mensal: "890", semestral: "830", anual: "790" },
+            ],
+          },
+          {
+            freq: "3x por semana",
+            precos: [
+              { mensal: "890", semestral: "790", anual: "730" },
+              { mensal: "1.010", semestral: "900", anual: "840" },
+              { mensal: "1.120", semestral: "1.010", anual: "950" },
+            ],
+          },
+        ],
+        complementares: [],
+      },
+      {
+        id: "bike",
+        nome: "Bike",
+        titulo: "MOVA Bike",
+        tagline: "Pedale. Supere. Evolua.",
+        icone: "bike",
+        temNiveis: false,
+        niveis: [],
+        frequencias: [
+          { freq: "2x por semana", precos: [{ mensal: "650", semestral: "550", anual: "" }] },
+          { freq: "3x por semana", precos: [{ mensal: "890", semestral: "790", anual: "" }] },
+        ],
+        complementares: [],
+      },
+      {
+        id: "coletivas",
+        nome: "Coletivas",
+        titulo: "MOVA Coletivas",
+        tagline: "Energia que motiva. Resultados que ficam.",
+        icone: "users",
+        temNiveis: false,
+        niveis: [],
+        frequencias: [
+          { freq: "2x por semana", precos: [{ mensal: "650", semestral: "550", anual: "" }] },
+          { freq: "3x por semana", precos: [{ mensal: "890", semestral: "790", anual: "" }] },
+        ],
+        complementares: [],
+      },
+      {
+        id: "kids",
+        nome: "Kids",
+        titulo: "MOVA Kids",
+        tagline: "Movimento, coordenação e desenvolvimento saudável — 7 a 11 anos",
+        icone: "baby",
+        temNiveis: false,
+        niveis: [],
+        frequencias: [
+          { freq: "2x por semana", precos: [{ mensal: "390", semestral: "350", anual: "" }] },
+          { freq: "3x por semana", precos: [{ mensal: "490", semestral: "450", anual: "" }] },
+        ],
+        complementares: [],
+      },
+      {
+        id: "teens",
+        nome: "Teens",
+        titulo: "MOVA Teens",
+        tagline: "Performance, força, autoestima e movimento — 12 a 17 anos",
+        icone: "sparkles",
+        temNiveis: false,
+        niveis: [],
+        frequencias: [
+          { freq: "2x por semana", precos: [{ mensal: "480", semestral: "430", anual: "390" }] },
+          { freq: "3x por semana", precos: [{ mensal: "590", semestral: "540", anual: "490" }] },
+        ],
+        complementares: [],
+      },
+    ],
+
+    // Planos "tudo incluso" (destaque) — só Semestral e Anual.
+    clubes: [
+      {
+        id: "clube",
+        nome: "MOVA Clube",
+        tagline: "O melhor do MOVA numa rotina completa de saúde e movimento",
+        semestral: "1.320",
+        anual: "1.240",
+        inclui: [
+          "Até 3x de musculação por semana",
+          "Até 2x de pilates por semana",
+          "Até 5 aulas coletivas por semana",
+          "1 acesso por dia",
+        ],
+        beneficios: [
+          "Avaliação física trimestral cortesia",
+          "Prioridade de agenda",
+          "Congelamento de valor do plano",
+          "Aula guest (leve um convidado)",
+          "Benefícios com parceiros MOVA",
+          "Condições especiais em terapias e massoterapia",
+          "Prioridade na rematrícula",
+        ],
+        destaque: false,
+        selo: "",
+      },
+      {
+        id: "premium",
+        nome: "MOVA Club Premium",
+        tagline: "A experiência MOVA de forma integral",
+        semestral: "1.650",
+        anual: "1.550",
+        inclui: [
+          "Até 3x de musculação por semana",
+          "Até 2x de pilates por semana",
+          "Coletivas ampliadas (até 5 acessos/semana)",
+          "Até 2 acessos por dia (2 modalidades)",
+        ],
+        beneficios: [
+          "Todos os benefícios do MOVA Clube",
+          "Metodologia exclusiva",
+          "Flexibilidade ampliada de remarcação",
+          "Acesso antecipado a novas modalidades",
+          "Experiências premium MOVA",
+          "Convites VIP para eventos e desafios",
+        ],
+        destaque: true,
+        selo: "Vagas limitadas",
+      },
+    ],
+  },
+
   // Formas de pagamento aceitas.
   pagamento: [
     { titulo: "Pix", desc: "Pagamento instantâneo via chave ou QR code." },
