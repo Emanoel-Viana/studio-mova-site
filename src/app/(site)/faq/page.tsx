@@ -24,7 +24,7 @@ const perguntas = [
   },
   {
     q: "Quais são os planos e valores?",
-    a: "Temos o MOVAconfort em 2x, 3x ou 4x por semana. Cada plano tem três formas de pagamento — Mensal, Semestral e Anual (quanto maior o período, melhor o valor por mês). O 2x começa em R$ 630/mês (anual). Veja todos os valores na página de Planos.",
+    a: "Você escolhe a modalidade que quer treinar — Musculação, Pilates, Bike, Coletivas, ou as turmas MOVA Kids (7–11) e Teens (12–17) — e a frequência (2x ou 3x por semana). Musculação e Pilates têm níveis (Essencial, Equilíbrio e Performance, que liberam modalidades complementares). E há os planos completos MOVA Clube e Club Premium, que reúnem várias modalidades numa rotina só. Cada plano tem valores Mensal, Semestral e Anual (quanto maior o período, melhor o valor por mês). Veja tudo, com preços, na página de Planos.",
   },
   {
     q: "Quais as formas de pagamento?",

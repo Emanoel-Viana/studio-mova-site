@@ -72,33 +72,39 @@ export function SeletorPlanos({ catalogo }: { catalogo: Catalogo }) {
 
   return (
     <div>
-      {/* 1. Pergunta + seletor de modalidade */}
-      <p className="text-center font-display font-bold text-lg lg:text-xl mb-5">
-        O que você quer treinar?
-      </p>
-      <div className="flex flex-wrap justify-center gap-2.5 mb-10">
-        {catalogo.modalidades.map((m) => {
-          const Icone = iconMap[m.icone] ?? Dumbbell;
-          const ativa = m.id === modId;
-          return (
-            <button
-              key={m.id}
-              type="button"
-              onClick={() => {
-                setModId(m.id);
-                setFreqIdx(0);
-              }}
-              className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 font-display font-bold text-sm transition-colors ${
-                ativa
-                  ? "bg-verde text-white"
-                  : "bg-white border border-[#DDEDE3] text-preto hover:border-verde"
-              }`}
-            >
-              <Icone size={18} aria-hidden />
-              {m.nome}
-            </button>
-          );
-        })}
+      {/* 1. Seletor de modalidade — em destaque (menu de opções) */}
+      <div className="rounded-[1.5rem] bg-verde-claro border border-[#CDEBD9] p-5 sm:p-8 mb-10">
+        <p className="eyebrow text-center block">Escolha sua modalidade</p>
+        <h3 className="text-center font-display font-black text-2xl lg:text-3xl mb-6">
+          O que você quer treinar?
+        </h3>
+        <div className="grid grid-cols-3 sm:grid-cols-6 gap-2.5 sm:gap-3">
+          {catalogo.modalidades.map((m) => {
+            const Icone = iconMap[m.icone] ?? Dumbbell;
+            const ativa = m.id === modId;
+            return (
+              <button
+                key={m.id}
+                type="button"
+                onClick={() => {
+                  setModId(m.id);
+                  setFreqIdx(0);
+                }}
+                className={`flex flex-col items-center justify-center gap-2 rounded-2xl px-1.5 py-4 font-display font-bold text-xs sm:text-sm transition-all ${
+                  ativa
+                    ? "bg-verde text-white shadow-[0_10px_24px_rgba(30,155,94,0.28)] scale-[1.04]"
+                    : "bg-white border border-[#DDEDE3] text-preto hover:border-verde hover:-translate-y-0.5"
+                }`}
+              >
+                <Icone size={26} aria-hidden />
+                {m.nome}
+              </button>
+            );
+          })}
+        </div>
+        <p className="text-center text-sm text-cinza mt-4">
+          👆 Toque numa modalidade para ver os planos e valores
+        </p>
       </div>
 
       {/* 2. Modalidade selecionada */}

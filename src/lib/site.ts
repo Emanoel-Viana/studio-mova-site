@@ -7,9 +7,10 @@
 
 export const site = {
   nome: "Studio MOVA",
-  slogan: "Sua nova segunda casa!",
+  slogan: "Seu movimento. Sua melhor versão.",
+  subSlogan: "Musculação, Pilates, Bike e Coletivas — para todas as idades.",
   descricao:
-    "Academia boutique na Asa Norte, Brasília: treino 100% personalizado em turmas de até 4 alunos, com um professor ao seu lado do início ao fim.",
+    "Musculação, Pilates, Bike e Coletivas para todas as idades. Academia boutique na Asa Norte, Brasília, com treino personalizado em turmas de até 4 alunos e professor ao seu lado do início ao fim.",
   url: "https://studiomova.com.br",
 
   contato: {
@@ -299,7 +300,7 @@ export const site = {
       desc: "Fortalecimento, mobilidade e consciência corporal com atenção individualizada.",
       imagem: "",
       foco: "center",
-      emBreve: true,
+      emBreve: false,
     },
   ],
 

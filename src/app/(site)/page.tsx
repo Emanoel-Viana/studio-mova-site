@@ -3,22 +3,31 @@ import Image from "next/image";
 import {
   Star,
   Check,
-  Flame,
   Dumbbell,
-  Trophy,
   Bike,
   HeartPulse,
   ArrowRight,
   Home as HomeIcon,
   Target,
   HandHeart,
+  Flower2,
+  Users,
+  Baby,
+  Sparkles,
 } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
 import { Foto } from "@/components/Foto";
 
-const planoIcones = [Flame, Dumbbell, Trophy];
 const modalidadeIcones = [Dumbbell, Bike, HeartPulse];
+const catalogoIcones: Record<string, typeof Dumbbell> = {
+  dumbbell: Dumbbell,
+  flower: Flower2,
+  bike: Bike,
+  users: Users,
+  baby: Baby,
+  sparkles: Sparkles,
+};
 
 export default async function Home() {
   const site = await getContent();
@@ -34,15 +43,15 @@ export default async function Home() {
               {site.avaliacao.total} avaliações no {site.avaliacao.fonte}
             </div>
             <h1 className="text-[clamp(1.8rem,6.5vw,4rem)] leading-[1.08] mb-3">
-              A vida precisa de movimento
+              {site.slogan}
             </h1>
             <p className="font-display font-bold text-[clamp(1.1rem,2.4vw,1.45rem)] text-[#D9FBE8] mb-5">
-              {site.slogan}
+              {site.subSlogan}
             </p>
             <p className="max-w-[46ch] text-[#EAFBF1] text-lg mb-8">
-              Academia boutique na Asa Norte: treino 100% personalizado em
-              turmas de até 4 alunos, com um professor ao seu lado do início ao
-              fim.
+              Academia boutique na Asa Norte: musculação, pilates, bike e
+              coletivas em turmas de até 4 alunos, com professor ao seu lado do
+              início ao fim.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <a
@@ -279,65 +288,43 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* PLANOS */}
+      {/* PLANOS & MODALIDADES */}
       <section className="py-12 sm:py-16 lg:py-24 bg-verde-claro">
-        <div className="container-mova">
-          <span className="eyebrow">Planos</span>
-          <h2 className="section-title">MOVAconfort — escolha o seu ritmo</h2>
-          <div className="grid md:grid-cols-3 gap-6 mt-10 items-stretch">
-            {site.planos.map((plano, i) => {
-              const Icone = planoIcones[i] ?? Flame;
-              const selo = "selo" in plano ? plano.selo : null;
+        <div className="container-mova text-center">
+          <span className="eyebrow">Planos &amp; Modalidades</span>
+          <h2 className="section-title">Escolha o seu movimento</h2>
+          <p className="lead mx-auto mb-8">
+            Musculação, Pilates, Bike, Coletivas e turmas para crianças e
+            adolescentes — escolha o que quer treinar e monte o plano ideal.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 max-w-4xl mx-auto mb-8">
+            {site.catalogo.modalidades.map((m) => {
+              const Icone = catalogoIcones[m.icone] ?? Dumbbell;
               return (
-                <div
-                  key={plano.freq}
-                  className={`relative flex flex-col rounded-2xl bg-white p-6 sm:p-8 ${
-                    plano.destaque
-                      ? "border-2 border-verde shadow-[0_18px_40px_rgba(30,155,94,0.16)]"
-                      : "border border-[#DDEDE3]"
-                  }`}
+                <Link
+                  key={m.id}
+                  href="/planos"
+                  className="flex flex-col items-center gap-2 rounded-2xl bg-white border border-[#DDEDE3] p-4 transition-all hover:border-verde hover:-translate-y-1"
                 >
-                  {selo && (
-                    <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-verde text-white font-display font-bold text-xs uppercase tracking-wide px-4 py-1.5 rounded-full whitespace-nowrap">
-                      {selo}
-                    </span>
-                  )}
-                  <Icone
-                    size={28}
-                    className="text-verde-medio mb-2"
-                    aria-hidden
-                  />
-                  <div className="font-display font-black text-xl sm:text-2xl">
-                    {plano.freq}
-                  </div>
-                  <p className="text-cinza my-3 flex-1">{plano.desc}</p>
-                  <p className="text-lg mb-6">
-                    A partir de{" "}
-                    <strong className="font-display">
-                      R$ {plano.precos.anual}/mês
-                    </strong>
-                  </p>
-                  <Link
-                    href="/planos"
-                    className={`btn ${
-                      plano.destaque ? "btn-coral" : "btn-escuro"
-                    }`}
-                  >
-                    Ver detalhes
-                  </Link>
-                </div>
+                  <Icone size={26} className="text-verde-medio" aria-hidden />
+                  <span className="font-display font-bold text-sm">
+                    {m.nome}
+                  </span>
+                </Link>
               );
             })}
           </div>
-          <p className="mt-9 text-center text-cinza">
+          <p className="text-cinza mb-7">
+            Quer o pacote completo? Conheça também o{" "}
+            <strong>MOVA Clube</strong> e o <strong>Club Premium</strong> —
+            várias modalidades numa rotina só.
+          </p>
+          <Link href="/planos" className="btn btn-coral text-lg">
+            Ver todos os planos e valores
+          </Link>
+          <p className="mt-6 text-cinza text-sm">
             Também aceitamos <strong>Wellhub</strong> (Gold+) e{" "}
-            <strong>TotalPass</strong> (TP5+).{" "}
-            <Link
-              href="/planos"
-              className="text-verde-escuro font-semibold underline"
-            >
-              Saiba como funciona →
-            </Link>
+            <strong>TotalPass</strong> (TP5+).
           </p>
         </div>
       </section>
