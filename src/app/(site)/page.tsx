@@ -61,9 +61,14 @@ export default async function Home() {
                 )}
                 target="_blank"
                 rel="noopener"
-                className="btn btn-coral text-lg"
+                className="btn btn-coral text-lg group"
               >
                 Agende sua sessão avaliativa
+                <ArrowRight
+                  size={20}
+                  className="transition-transform group-hover:translate-x-1"
+                  aria-hidden
+                />
               </a>
               <a
                 href={waLink("Olá! Vim pelo site e quero conhecer o Studio MOVA.")}
