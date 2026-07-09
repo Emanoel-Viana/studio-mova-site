@@ -18,6 +18,7 @@ import {
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
 import { Foto } from "@/components/Foto";
+import { Contador } from "@/components/Contador";
 import { QuizModalidade } from "./QuizModalidade";
 
 const modalidadeIcones = [Dumbbell, Bike, HeartPulse];
@@ -40,8 +41,11 @@ export default async function Home() {
           <div className="reveal">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/35 px-4 py-2 text-sm font-medium mb-6">
               <Star size={16} className="fill-white" aria-hidden />
-              <strong className="font-display">{site.avaliacao.nota}</strong> —{" "}
-              {site.avaliacao.total} avaliações no {site.avaliacao.fonte}
+              <strong className="font-display">
+                <Contador value={Number(site.avaliacao.nota)} decimais={2} />
+              </strong>{" "}
+              — <Contador value={site.avaliacao.total} /> avaliações no{" "}
+              {site.avaliacao.fonte}
             </div>
             <h1 className="text-[clamp(1.8rem,6.5vw,4rem)] leading-[1.08] mb-3">
               {site.slogan}
