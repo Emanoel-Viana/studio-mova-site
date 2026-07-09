@@ -7,10 +7,10 @@ import {
   Accessibility,
   Trees,
 } from "lucide-react";
-import Image from "next/image";
 import { waLink } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
 import { Foto } from "@/components/Foto";
+import { Galeria } from "./Galeria";
 
 // Galeria em mosaico — cada foto no seu formato natural (sem corte).
 const galeria = [
@@ -98,19 +98,8 @@ export default function OStudio() {
         <div className="container-mova">
           <span className="eyebrow">Galeria</span>
           <h2 className="section-title">Dê uma espiada no espaço</h2>
-          <div className="columns-2 lg:columns-3 gap-4 mt-8">
-            {galeria.map((f, i) => (
-              <Image
-                key={f.src}
-                src={f.src}
-                alt={`Foto ${i + 1} do Studio MOVA`}
-                width={f.w}
-                height={f.h}
-                sizes="(max-width: 1024px) 50vw, 33vw"
-                className="w-full h-auto rounded-[1.25rem] mb-4 break-inside-avoid"
-              />
-            ))}
-          </div>
+          <p className="text-cinza">Toque em qualquer foto para ampliar.</p>
+          <Galeria fotos={galeria} />
         </div>
       </section>
 
