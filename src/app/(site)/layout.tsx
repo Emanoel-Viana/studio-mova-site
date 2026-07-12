@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { WhatsAppFloat } from "@/components/WhatsAppFloat";
+import { BarraMobile } from "@/components/BarraMobile";
 import { getContent } from "@/lib/content";
 
 export default async function SiteLayout({
@@ -25,6 +26,7 @@ export default async function SiteLayout({
       </main>
       <Footer content={content} />
       <WhatsAppFloat />
+      <BarraMobile />
     </>
   );
 }
