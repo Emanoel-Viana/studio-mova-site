@@ -160,6 +160,29 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* NÚMEROS */}
+      <section className="py-12 lg:py-16 bg-verde-escuro text-white">
+        <div className="container-mova">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-9 text-center">
+            {[
+              { num: "4", label: "alunos por turma, no máximo" },
+              { num: "6", label: "modalidades pra você escolher" },
+              { num: "4.94", label: "nota de avaliação no Wellhub" },
+              { num: "100%", label: "treino com professor do seu lado" },
+            ].map((s) => (
+              <div key={s.label}>
+                <div className="font-display font-black text-[clamp(2.6rem,9vw,4rem)] leading-none text-coral">
+                  {s.num}
+                </div>
+                <p className="text-[#D6EEDF] mt-2.5 text-sm max-w-[16ch] mx-auto">
+                  {s.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PARA QUEM É */}
       <section className="py-12 sm:py-16 lg:py-24 bg-cinza-claro">
         <div className="container-mova">
