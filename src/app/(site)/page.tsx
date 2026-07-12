@@ -488,7 +488,7 @@ export default async function Home() {
                 href: "/planos",
                 Icone: HandHeart,
                 titulo: "Planos",
-                desc: "MOVAconfort, Wellhub e TotalPass em detalhes.",
+                desc: "Todas as modalidades, níveis, Clube, Wellhub e TotalPass.",
               },
             ].map(({ href, Icone, titulo, desc }) => (
               <Link
