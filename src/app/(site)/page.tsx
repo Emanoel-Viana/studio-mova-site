@@ -34,6 +34,25 @@ export default async function Home() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#34C97E] via-verde-medio to-[#14744A] text-white">
+        {/* brilhos decorativos (profundidade/calor) */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-24 -right-16 w-80 h-80 rounded-full"
+          style={{
+            background: "radial-gradient(circle, #9CF7C4 0%, transparent 70%)",
+            filter: "blur(50px)",
+            opacity: 0.45,
+          }}
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -bottom-16 -left-12 w-72 h-72 rounded-full"
+          style={{
+            background: "radial-gradient(circle, #0E6B41 0%, transparent 70%)",
+            filter: "blur(55px)",
+            opacity: 0.5,
+          }}
+        />
         <div className="container-mova relative grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center py-12 sm:py-16 lg:py-24">
           <div className="reveal">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/35 px-4 py-2 text-sm font-medium mb-6">
