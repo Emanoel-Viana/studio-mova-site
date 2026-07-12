@@ -5,7 +5,6 @@ import {
   Check,
   Dumbbell,
   Bike,
-  HeartPulse,
   ArrowRight,
   Home as HomeIcon,
   Target,
@@ -17,11 +16,9 @@ import {
 } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
-import { Foto } from "@/components/Foto";
 import { Contador } from "@/components/Contador";
 import { QuizModalidade } from "./QuizModalidade";
 
-const modalidadeIcones = [Dumbbell, Bike, HeartPulse];
 const catalogoIcones: Record<string, typeof Dumbbell> = {
   dumbbell: Dumbbell,
   flower: Flower2,
@@ -233,36 +230,35 @@ export default async function Home() {
         <div className="container-mova">
           <span className="eyebrow">Modalidades</span>
           <h2 className="section-title">O que você encontra no MOVA</h2>
-          <div className="grid md:grid-cols-3 gap-6 mt-10">
-            {site.modalidades.map((m, i) => {
-              const Icone = modalidadeIcones[i] ?? Dumbbell;
+          <p className="lead mb-10 max-w-[60ch]">
+            Um centro completo de movimento — do treino de força ao pilates, da
+            bike às aulas coletivas, para todas as idades.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {site.catalogo.modalidades.map((m) => {
+              const Icone = catalogoIcones[m.icone] ?? Dumbbell;
               return (
                 <div
-                  key={m.titulo}
-                  className="rounded-2xl bg-white border border-[#E2EEE7] p-5 sm:p-7"
+                  key={m.id}
+                  className="rounded-2xl bg-white border border-[#E2EEE7] p-6 transition-all hover:-translate-y-1 hover:border-verde hover:shadow-[0_14px_34px_rgba(30,155,94,0.12)]"
                 >
-                  <Foto
-                    src={m.imagem || undefined}
-                    label={m.titulo}
-                    ratio="16 / 10"
-                    className="mb-5"
-                    posicao={"foco" in m ? m.foco : "center"}
-                  />
-                  <div className="flex items-center gap-2 mb-2">
-                    <Icone size={22} className="text-verde-medio" aria-hidden />
-                    <h3 className="text-xl">
-                      {m.titulo}
-                      {m.emBreve && (
-                        <span className="ml-2 align-middle text-[0.65rem] bg-coral text-white px-2.5 py-1 rounded-full font-display tracking-wide uppercase">
-                          Em breve
-                        </span>
-                      )}
-                    </h3>
+                  <div className="grid place-items-center w-14 h-14 rounded-2xl bg-verde-claro mb-4">
+                    <Icone
+                      size={28}
+                      className="text-verde-medio"
+                      aria-hidden
+                    />
                   </div>
-                  <p className="text-cinza">{m.desc}</p>
+                  <h3 className="text-xl mb-1">{m.titulo}</h3>
+                  <p className="text-cinza">{m.tagline}</p>
                 </div>
               );
             })}
+          </div>
+          <div className="mt-8">
+            <Link href="/planos" className="btn btn-escuro">
+              Ver planos e valores
+            </Link>
           </div>
         </div>
       </section>
