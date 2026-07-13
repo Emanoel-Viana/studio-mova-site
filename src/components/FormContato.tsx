@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { waLink } from "@/lib/site";
-import { createClient, supabaseConfigurado } from "@/lib/supabase/client";
+import { Turnstile } from "@/components/Turnstile";
+import { enviarContato } from "@/app/(site)/contato/actions";
 
 const assuntos = [
   "Agendar sessão avaliativa",
@@ -11,23 +12,38 @@ const assuntos = [
   "Outro assunto",
 ];
 
-export function FormContato() {
+export function FormContato({
+  turnstileSiteKey = "",
+}: {
+  turnstileSiteKey?: string;
+}) {
   const [nome, setNome] = useState("");
   const [assunto, setAssunto] = useState(assuntos[0]);
   const [mensagem, setMensagem] = useState("");
+  const [token, setToken] = useState("");
+  const [enviando, setEnviando] = useState(false);
+  const [erro, setErro] = useState("");
 
-  function enviar(e: React.FormEvent) {
+  // Só exige o captcha quando a chave está configurada.
+  const precisaCaptcha = !!turnstileSiteKey;
+
+  async function enviar(e: React.FormEvent) {
     e.preventDefault();
+    if (enviando) return;
+    setErro("");
 
-    // Registra o contato no banco (sem bloquear a abertura do WhatsApp).
-    if (supabaseConfigurado) {
-      const supabase = createClient();
-      void supabase
-        .from("site_studiomova_leads_contato")
-        .insert({ nome, assunto, mensagem: mensagem || null })
-        .then(({ error }) => {
-          if (error) console.error("Falha ao registrar lead:", error.message);
-        });
+    if (precisaCaptcha && !token) {
+      setErro("Aguarde a verificação de segurança carregar…");
+      return;
+    }
+
+    setEnviando(true);
+    const resultado = await enviarContato({ nome, assunto, mensagem, token });
+    setEnviando(false);
+
+    if (!resultado.ok) {
+      setErro(resultado.erro);
+      return;
     }
 
     const texto =
@@ -87,8 +103,22 @@ export function FormContato() {
         />
       </div>
 
-      <button type="submit" className="btn btn-coral justify-self-start text-lg">
-        Enviar pelo WhatsApp
+      {precisaCaptcha && (
+        <Turnstile siteKey={turnstileSiteKey} onToken={setToken} />
+      )}
+
+      {erro && (
+        <p className="text-sm text-coral font-medium" role="alert">
+          {erro}
+        </p>
+      )}
+
+      <button
+        type="submit"
+        disabled={enviando}
+        className="btn btn-coral justify-self-start text-lg disabled:opacity-60 disabled:cursor-not-allowed"
+      >
+        {enviando ? "Enviando…" : "Enviar pelo WhatsApp"}
       </button>
       <p className="text-sm text-cinza">
         Ao enviar, abrimos o WhatsApp com sua mensagem já pronta. Você confere e

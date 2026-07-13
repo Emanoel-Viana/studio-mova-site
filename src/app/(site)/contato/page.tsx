@@ -12,6 +12,10 @@ export const metadata: Metadata = {
     "Fale com o Studio MOVA na Asa Norte, Brasília. WhatsApp, endereço e horários de funcionamento.",
 };
 
+// Renderiza a cada request para ler a chave do Turnstile do ambiente
+// (env NÃO-NEXT_PUBLIC não é "assada" no build do EasyPanel).
+export const dynamic = "force-dynamic";
+
 function IconeInstagram({ size = 20 }: { size?: number }) {
   return (
     <svg
@@ -34,6 +38,7 @@ function IconeInstagram({ size = 20 }: { size?: number }) {
 
 export default async function Contato() {
   const site = await getContent();
+  const turnstileSiteKey = process.env.TURNSTILE_SITE_KEY ?? "";
   return (
     <>
       <PageHero
@@ -214,7 +219,7 @@ export default async function Contato() {
             <p className="text-cinza mb-6">
               Preencha e a gente continua a conversa no WhatsApp.
             </p>
-            <FormContato />
+            <FormContato turnstileSiteKey={turnstileSiteKey} />
           </div>
         </div>
       </section>
