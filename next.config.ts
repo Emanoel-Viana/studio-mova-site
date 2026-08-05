@@ -4,8 +4,8 @@ import type { NextConfig } from "next";
 // estilos, imagens, etc. — mitiga injeção de código (XSS).
 // Origens externas usadas: Cloudflare Turnstile (captcha) e Cloudflare
 // Web Analytics (script + beacon), Supabase (API/realtime do admin).
-// Publicado primeiro em modo REPORT-ONLY (não bloqueia, só reporta no
-// console) pra confirmar que nada quebra; depois vira enforce.
+// Validado em report-only (0 violações com Turnstile+Analytics no ar) →
+// agora em modo ENFORCE (bloqueia origens não listadas).
 const csp = [
   "default-src 'self'",
   "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://static.cloudflareinsights.com",
@@ -34,8 +34,8 @@ const securityHeaders = [
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
   },
-  // CSP em modo report-only (fase 1): observa violações sem bloquear.
-  { key: "Content-Security-Policy-Report-Only", value: csp },
+  // CSP em modo enforce: bloqueia scripts/recursos de origens não listadas.
+  { key: "Content-Security-Policy", value: csp },
 ];
 
 const nextConfig: NextConfig = {
