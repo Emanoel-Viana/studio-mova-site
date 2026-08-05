@@ -178,6 +178,20 @@
 }
 .reveal { animation: mova-reveal 0.6s ease both; }
 
+/* Entrada suave AO ROLAR — scroll-driven puro em CSS (animation-timeline).
+   Envolto em @supports + reduced-motion: em navegador sem suporte ou com
+   "menos movimento", o conteúdo aparece normal (opacidade 1) — nunca some. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal-scroll {
+      opacity: 0;
+      animation: mova-reveal 0.7s ease both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 55%;
+    }
+  }
+}
+
 /* Ticker (faixa rolante) */
 @keyframes mova-ticker {
   from { transform: translateX(0); }

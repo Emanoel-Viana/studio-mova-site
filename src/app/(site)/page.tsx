@@ -53,6 +53,15 @@ export default async function Home() {
             opacity: 0.5,
           }}
         />
+        {/* textura de pontos sutil (profundidade premium) */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+          }}
+        />
         <div className="container-mova relative grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center py-12 sm:py-16 lg:py-24">
           <div className="reveal">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/35 px-4 py-2 text-sm font-medium mb-6">
@@ -111,15 +120,36 @@ export default async function Home() {
               ))}
             </ul>
           </div>
-          <div className="relative aspect-square sm:aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-2xl ring-1 ring-white/20">
-            <Image
-              src="/fotos/reabilitacao/DSC00641.jpg"
-              alt="Professora do Studio MOVA acompanhando um aluno no treino"
-              fill
-              priority
-              sizes="(max-width: 1024px) 100vw, 45vw"
-              className="object-cover"
-            />
+          <div className="relative reveal">
+            <div className="relative aspect-square sm:aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-2xl ring-1 ring-white/20">
+              <Image
+                src="/fotos/reabilitacao/DSC00641.jpg"
+                alt="Professora do Studio MOVA acompanhando um aluno no treino"
+                fill
+                priority
+                sizes="(max-width: 1024px) 100vw, 45vw"
+                className="object-cover"
+              />
+              {/* leve escurecimento na base pra dar profundidade */}
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent"
+              />
+            </div>
+            {/* badge flutuante premium */}
+            <div className="absolute -bottom-4 -left-3 sm:-left-5 bg-white text-preto rounded-2xl shadow-[0_12px_30px_rgba(0,0,0,0.25)] px-4 py-3 flex items-center gap-3">
+              <span className="grid place-items-center w-10 h-10 rounded-xl bg-verde-claro text-verde-escuro shrink-0">
+                <Users size={20} aria-hidden />
+              </span>
+              <span className="leading-tight">
+                <span className="block font-display font-black text-lg">
+                  Até 4 alunos
+                </span>
+                <span className="block text-xs text-cinza">
+                  por turma — atenção de verdade
+                </span>
+              </span>
+            </div>
           </div>
         </div>
       </section>
@@ -152,7 +182,7 @@ export default async function Home() {
 
       {/* SOBRE */}
       <section className="py-12 sm:py-16 lg:py-24">
-        <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-12 items-center reveal-scroll">
           <div className="relative aspect-square sm:aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-lg">
             <Image
               src="/fotos/reabilitacao/DSC01898.jpg"
@@ -242,7 +272,7 @@ export default async function Home() {
 
       {/* METODOLOGIA */}
       <section className="py-12 sm:py-16 lg:py-24 bg-verde-escuro text-white">
-        <div className="container-mova">
+        <div className="container-mova reveal-scroll">
           <span className="eyebrow !text-[#7FE3AC]">Como funcionamos</span>
           <h2 className="section-title">
             60 minutos, 3 etapas, máximo 4 alunos
@@ -269,7 +299,7 @@ export default async function Home() {
 
       {/* MODALIDADES */}
       <section className="py-12 sm:py-16 lg:py-24">
-        <div className="container-mova">
+        <div className="container-mova reveal-scroll">
           <span className="eyebrow">Modalidades</span>
           <h2 className="section-title">O que você encontra no MOVA</h2>
           <p className="lead mb-10 max-w-[60ch]">
@@ -394,7 +424,7 @@ export default async function Home() {
 
       {/* DEPOIMENTOS */}
       <section className="py-12 sm:py-16 lg:py-24 bg-verde text-white">
-        <div className="container-mova">
+        <div className="container-mova reveal-scroll">
           <span className="eyebrow !text-[#0E3D26]">Depoimentos</span>
           <h2 className="section-title">Quem treina aqui recomenda</h2>
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-3">
