@@ -8,6 +8,7 @@ import {
   ArrowRight,
   Inbox,
   CalendarCheck,
+  Tag,
 } from "lucide-react";
 
 const secoes = [
@@ -26,10 +27,17 @@ const secoes = [
     pronto: true,
   },
   {
+    href: "/admin/planos",
+    Icone: Tag,
+    titulo: "Planos e preços",
+    desc: "Valores das modalidades, níveis e dos planos Clube.",
+    pronto: true,
+  },
+  {
     href: "/admin/modalidades",
     Icone: Dumbbell,
-    titulo: "Modalidades",
-    desc: "Musculação, spinning, pilates e o que mais oferecer.",
+    titulo: "Modalidades (destaque)",
+    desc: "Cards de modalidades exibidos em algumas seções.",
     pronto: true,
   },
   {
