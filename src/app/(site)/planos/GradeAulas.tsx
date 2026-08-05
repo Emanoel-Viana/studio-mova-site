@@ -30,7 +30,39 @@ const icones: Record<string, typeof Shield> = {
   flame: Flame,
 };
 
-export function GradeAulas({ aulas }: { aulas: readonly Aula[] }) {
+export function GradeAulas({
+  aulas,
+  compacto = false,
+}: {
+  aulas: readonly Aula[];
+  compacto?: boolean;
+}) {
+  if (compacto) {
+    return (
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+        {aulas.map((aula) => {
+          const Icone = icones[aula.icone] ?? Activity;
+          return (
+            <div
+              key={aula.nome}
+              className="flex flex-col items-center text-center gap-2 rounded-2xl bg-white border border-[#DDEDE3] p-4 transition-all hover:-translate-y-0.5 hover:border-verde"
+            >
+              <span className="grid place-items-center w-11 h-11 rounded-2xl bg-verde-claro text-verde-escuro">
+                <Icone size={22} aria-hidden />
+              </span>
+              <span className="font-display font-bold text-sm leading-tight">
+                {aula.nome}
+              </span>
+              <span className="text-[0.7rem] text-cinza leading-tight">
+                {aula.duracao} · {aula.capacidade}
+              </span>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
   return (
     <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
       {aulas.map((aula) => {

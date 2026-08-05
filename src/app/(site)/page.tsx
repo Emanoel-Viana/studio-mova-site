@@ -18,6 +18,7 @@ import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
 import { Contador } from "@/components/Contador";
 import { QuizModalidade } from "./QuizModalidade";
+import { GradeAulas } from "./planos/GradeAulas";
 
 const catalogoIcones: Record<string, typeof Dumbbell> = {
   dumbbell: Dumbbell,
@@ -327,6 +328,15 @@ export default async function Home() {
               );
             })}
           </div>
+
+          {/* Aulas coletivas — grade compacta */}
+          <div className="mt-10">
+            <h3 className="font-display font-bold text-lg mb-4">
+              E ainda, nossas aulas coletivas:
+            </h3>
+            <GradeAulas aulas={site.aulas} compacto />
+          </div>
+
           <div className="mt-8">
             <Link href="/planos" className="btn btn-escuro">
               Ver planos e valores

@@ -10,6 +10,7 @@ import {
   CalendarCheck,
   Tag,
   HelpCircle,
+  Activity,
 } from "lucide-react";
 
 const secoes = [
@@ -32,6 +33,13 @@ const secoes = [
     Icone: Tag,
     titulo: "Planos e preços",
     desc: "Valores das modalidades, níveis e dos planos Clube.",
+    pronto: true,
+  },
+  {
+    href: "/admin/aulas",
+    Icone: Activity,
+    titulo: "Aulas / modalidades",
+    desc: "Grade de aulas (duração, capacidade, benefícios) na página de planos.",
     pronto: true,
   },
   {
