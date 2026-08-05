@@ -4,7 +4,10 @@ import { useState, useTransition } from "react";
 import { Check, Plus, Trash2 } from "lucide-react";
 import { salvarConteudo } from "../../actions";
 
-type Item = { texto: string; autor: string };
+type Item = { texto: string; autor: string; foto: string; fonte: string };
+
+// Fontes disponíveis para o selo de origem do depoimento.
+const FONTES = ["", "Wellhub", "Google", "TotalPass"] as const;
 
 export function DepoimentosForm({ itensIniciais }: { itensIniciais: Item[] }) {
   const [itens, setItens] = useState<Item[]>(itensIniciais);
@@ -18,14 +21,20 @@ export function DepoimentosForm({ itensIniciais }: { itensIniciais: Item[] }) {
     setItens((a) => a.filter((_, idx) => idx !== i));
   }
   function adicionar() {
-    setItens((a) => [...a, { texto: "", autor: "" }]);
+    setItens((a) => [...a, { texto: "", autor: "", foto: "", fonte: "" }]);
   }
 
   function salvar() {
     setMsg(null);
+    // Preserva foto e fonte (antes eram descartados ao salvar).
     const depoimentos = itens
       .filter((d) => d.texto.trim() && d.autor.trim())
-      .map((d) => ({ texto: d.texto.trim(), autor: d.autor.trim() }));
+      .map((d) => ({
+        texto: d.texto.trim(),
+        autor: d.autor.trim(),
+        foto: d.foto.trim(),
+        fonte: d.fonte.trim(),
+      }));
     iniciar(async () => {
       const r = await salvarConteudo({ depoimentos });
       setMsg(r);
@@ -62,11 +71,45 @@ export function DepoimentosForm({ itensIniciais }: { itensIniciais: Item[] }) {
                 className={campo}
               />
             </div>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block font-semibold mb-1.5 text-sm">Autor</label>
+                <input
+                  value={d.autor}
+                  onChange={(e) => atualizar(i, "autor", e.target.value)}
+                  className={campo}
+                />
+              </div>
+              <div>
+                <label className="block font-semibold mb-1.5 text-sm">
+                  Fonte{" "}
+                  <span className="font-normal text-cinza">(selo de origem)</span>
+                </label>
+                <select
+                  value={d.fonte}
+                  onChange={(e) => atualizar(i, "fonte", e.target.value)}
+                  className={campo}
+                >
+                  {FONTES.map((f) => (
+                    <option key={f || "nenhuma"} value={f}>
+                      {f || "Nenhuma"}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
             <div>
-              <label className="block font-semibold mb-1.5 text-sm">Autor</label>
+              <label className="block font-semibold mb-1.5 text-sm">
+                Foto{" "}
+                <span className="font-normal text-cinza">
+                  (opcional — caminho em /fotos/depoimentos/…; vazio mostra as
+                  iniciais)
+                </span>
+              </label>
               <input
-                value={d.autor}
-                onChange={(e) => atualizar(i, "autor", e.target.value)}
+                value={d.foto}
+                onChange={(e) => atualizar(i, "foto", e.target.value)}
+                placeholder="/fotos/depoimentos/nome.jpg"
                 className={campo}
               />
             </div>

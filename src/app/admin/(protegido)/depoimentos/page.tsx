@@ -5,7 +5,12 @@ import { DepoimentosForm } from "./DepoimentosForm";
 
 export default async function EditarDepoimentos() {
   const c = await getContent();
-  const itens = c.depoimentos.map((d) => ({ texto: d.texto, autor: d.autor }));
+  const itens = c.depoimentos.map((d) => ({
+    texto: d.texto,
+    autor: d.autor,
+    foto: d.foto ?? "",
+    fonte: d.fonte ?? "",
+  }));
 
   return (
     <>
