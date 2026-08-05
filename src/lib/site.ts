@@ -9,6 +9,8 @@ export const site = {
   nome: "Studio MOVA",
   slogan: "Seu movimento. Sua melhor versão.",
   subSlogan: "Musculação, Pilates, Bike e Coletivas — para todas as idades.",
+  // Pilares da marca (faixa elegante no hero).
+  pilares: ["Saúde", "Força", "Equilíbrio", "Bem-estar"],
   descricao:
     "Musculação, Pilates, Bike e Coletivas para todas as idades. Academia boutique na Asa Norte, Brasília, com treino personalizado em turmas de até 4 alunos e professor ao seu lado do início ao fim.",
   url: "https://studiomova.com.br",
@@ -154,7 +156,7 @@ export const site = {
         niveis: [],
         frequencias: [
           { freq: "2x por semana", precos: [{ mensal: "390", semestral: "350", anual: "" }] },
-          { freq: "3x por semana", precos: [{ mensal: "490", semestral: "450", anual: "" }] },
+          { freq: "3x por semana", precos: [{ mensal: "490", semestral: "450", anual: "410" }] },
         ],
         complementares: [],
       },
@@ -423,6 +425,10 @@ export const site = {
       a: "Você escolhe a que for mais confortável: Pix (instantâneo via chave ou QR code), cartão de crédito (com parcelamento) ou recorrência automática (débito mensal automático).",
     },
     {
+      q: "Como funciona o cancelamento de uma aula?",
+      a: "Você pode cancelar ou remarcar a sua aula com até 12h de antecedência, liberando a vaga para outro aluno e mantendo o seu direito à reposição. Nos planos anuais, você ainda conta com congelamento de valor e condições especiais.",
+    },
+    {
       q: "Tenho dores ou alguma limitação física. Posso treinar?",
       a: "Pode sim — é justamente para isso que servimos. Nossos professores são especializados em treino adaptado e ajustam cada exercício à sua condição. Se você tiver laudo, exame ou orientação médica, pode trazer no dia da sessão avaliativa: ajuda muito na personalização. Importante: o exercício supervisionado é um grande aliado na reabilitação e no fortalecimento, mas não substitui a avaliação do seu médico ou fisioterapeuta.",
     },
@@ -511,6 +517,7 @@ export const site = {
   heroDestaques: [
     "Turmas de até 4 alunos",
     "Professor ao seu lado o tempo todo",
+    "Bike HIIT integrada ao treino",
     "Para todas as idades e níveis",
   ],
 

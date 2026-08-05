@@ -76,9 +76,21 @@ export default async function Home() {
             <h1 className="text-[clamp(1.8rem,6.5vw,4rem)] leading-[1.08] mb-3">
               {site.slogan}
             </h1>
-            <p className="font-display font-bold text-[clamp(1.1rem,2.4vw,1.45rem)] text-[#D9FBE8] mb-5">
+            <p className="font-display font-bold text-[clamp(1.1rem,2.4vw,1.45rem)] text-[#D9FBE8] mb-4">
               {site.subSlogan}
             </p>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-6 font-display font-bold uppercase tracking-[0.18em] text-[0.68rem] sm:text-xs text-[#9BE8BF]">
+              {site.pilares.map((p, i) => (
+                <span key={p} className="inline-flex items-center gap-3">
+                  {i > 0 && (
+                    <span aria-hidden className="text-white/35">
+                      •
+                    </span>
+                  )}
+                  {p}
+                </span>
+              ))}
+            </div>
             <p className="max-w-[46ch] text-[#EAFBF1] text-lg mb-8">
               Academia boutique na Asa Norte: musculação, pilates, bike e
               coletivas em turmas de até 4 alunos, com professor ao seu lado do
