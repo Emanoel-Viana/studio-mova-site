@@ -4,6 +4,7 @@ import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
 import { PageHero } from "@/components/PageHero";
 import { SeletorPlanos } from "./SeletorPlanos";
+import { GradeAulas } from "./GradeAulas";
 
 export const metadata: Metadata = {
   title: "Planos",
@@ -28,6 +29,21 @@ export default async function Planos() {
             Quanto maior o período, melhor o valor por mês. Na sessão avaliativa
             a gente define a melhor proposta pra você — sem pressa e sem pressão.
           </p>
+        </div>
+      </section>
+
+      {/* Grade de aulas / modalidades */}
+      <section className="py-12 lg:py-16 bg-verde-claro">
+        <div className="container-mova">
+          <div className="text-center mb-10">
+            <span className="eyebrow">Nossas modalidades</span>
+            <h2 className="section-title">Conheça todas as nossas aulas</h2>
+            <p className="lead mx-auto">
+              Mais saúde, movimento e bem-estar para a sua vida — sempre em
+              turmas reduzidas, com acompanhamento próximo dos professores.
+            </p>
+          </div>
+          <GradeAulas aulas={site.aulas} />
         </div>
       </section>
 

@@ -255,6 +255,151 @@ export const site = {
     },
   ],
 
+  // Grade de aulas coletivas do Studio MOVA (a "grade de modalidades").
+  // icone: chave mapeada para um ícone lucide em GradeAulas.tsx.
+  aulas: [
+    {
+      nome: "Abdominal",
+      duracao: "40 min",
+      capacidade: "até 8 alunos",
+      icone: "shield",
+      descricao:
+        "Foco no fortalecimento do core (abdômen, lombar e pelve) — essencial para postura, estabilidade e prevenção de lesões.",
+      beneficios: [
+        "Fortalece abdômen e lombar",
+        "Melhora a postura",
+        "Mais equilíbrio e estabilidade",
+        "Previne dores e lesões",
+      ],
+    },
+    {
+      nome: "Alongamento",
+      duracao: "40 min",
+      capacidade: "até 8 alunos",
+      icone: "wind",
+      descricao:
+        "Alivia tensões musculares, aumenta a mobilidade e proporciona relaxamento. Ideal para mais leveza e recuperação.",
+      beneficios: [
+        "Reduz tensões musculares",
+        "Aumenta a amplitude dos movimentos",
+        "Diminui o estresse",
+        "Auxilia na recuperação",
+      ],
+    },
+    {
+      nome: "Flexibilidade",
+      duracao: "40 min",
+      capacidade: "até 8 alunos",
+      icone: "person",
+      descricao:
+        "Desenvolve a flexibilidade corporal com técnicas de alongamento e mobilidade, para movimentos mais livres e eficientes.",
+      beneficios: [
+        "Mais flexibilidade",
+        "Melhora a mobilidade articular",
+        "Reduz a rigidez muscular",
+        "Previne lesões",
+      ],
+    },
+    {
+      nome: "Funcional",
+      duracao: "40 min",
+      capacidade: "até 8 alunos",
+      icone: "activity",
+      descricao:
+        "Treino dinâmico com movimentos naturais do corpo: força, resistência, equilíbrio, coordenação e agilidade.",
+      beneficios: [
+        "Fortalecimento global",
+        "Melhora o condicionamento",
+        "Desenvolve a coordenação",
+        "Alta queima calórica",
+      ],
+    },
+    {
+      nome: "GAP",
+      duracao: "40 min",
+      capacidade: "até 8 alunos",
+      icone: "target",
+      descricao:
+        "Glúteos, abdômen e pernas: treino direcionado que fortalece e tonifica os membros inferiores e o core, com definição e resistência.",
+      beneficios: [
+        "Fortalece glúteos, pernas e abdômen",
+        "Mais resistência muscular",
+        "Definição corporal",
+        "Mais estabilidade e equilíbrio",
+      ],
+    },
+    {
+      nome: "Mobilidade",
+      duracao: "40 min",
+      capacidade: "até 8 alunos",
+      icone: "move",
+      descricao:
+        "Dedicada à mobilidade articular e à qualidade dos movimentos, com ativação, coordenação e controle corporal.",
+      beneficios: [
+        "Melhora a mobilidade articular",
+        "Movimentos mais eficientes",
+        "Reduz o risco de lesões",
+        "Mais autonomia e qualidade de vida",
+      ],
+    },
+    {
+      nome: "Ritmos",
+      duracao: "40 min",
+      capacidade: "até 8 alunos",
+      icone: "music",
+      descricao:
+        "Dança, música e movimento para melhorar o condicionamento, estimular a coordenação e tornar o treino mais divertido.",
+      beneficios: [
+        "Alto gasto calórico",
+        "Condicionamento cardiovascular",
+        "Desenvolve a coordenação",
+        "Mais disposição e alegria",
+      ],
+    },
+    {
+      nome: "Spin MOVA",
+      duracao: "45 min",
+      capacidade: "até 12 alunos",
+      icone: "bike",
+      descricao:
+        "Bike indoor intensa e motivadora, com diferentes níveis de intensidade ao som de playlists envolventes — baixo impacto nas articulações.",
+      beneficios: [
+        "Alto gasto calórico",
+        "Fortalece os membros inferiores",
+        "Melhora a capacidade cardiovascular",
+        "Baixo impacto nas articulações",
+      ],
+    },
+    {
+      nome: "Pilates",
+      duracao: "50 min",
+      capacidade: "até 4 alunos",
+      icone: "flower",
+      descricao:
+        "Em pequenos grupos, com atendimento personalizado: força, controle, postura, mobilidade e equilíbrio nos aparelhos e no solo.",
+      beneficios: [
+        "Fortalece o core",
+        "Melhora a postura",
+        "Ganho de flexibilidade e mobilidade",
+        "Mais consciência corporal",
+      ],
+    },
+    {
+      nome: "HIIT MOVA",
+      duracao: "40 min",
+      capacidade: "até 8 alunos",
+      icone: "flame",
+      descricao:
+        "Treino intervalado de alta intensidade: exercícios rápidos e intensos com recuperação ativa, para condicionamento, queima e força.",
+      beneficios: [
+        "Alto gasto calórico",
+        "Melhora o condicionamento físico",
+        "Desenvolve força e resistência",
+        "Acompanhamento profissional",
+      ],
+    },
+  ],
+
   // Perguntas frequentes (editáveis no /admin/faq).
   faq: [
     {
