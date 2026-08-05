@@ -255,6 +255,54 @@ export const site = {
     },
   ],
 
+  // Perguntas frequentes (editáveis no /admin/faq).
+  faq: [
+    {
+      q: "Como funciona o treino no Studio MOVA?",
+      a: "Você treina em turmas de até 4 alunos, com um professor ao seu lado durante todo o treino. São 60 minutos divididos em 3 etapas: mobilidade e core, musculação + funcional, e um fechamento de HIIT bike. Tudo personalizado para o seu corpo e objetivos.",
+    },
+    {
+      q: "Preciso já estar em forma para começar?",
+      a: "Não! Recebemos pessoas de todas as idades e níveis — de quem está saindo do sedentarismo a quem já treina há anos. O treino é adaptado para você, no seu ritmo e com segurança.",
+    },
+    {
+      q: "O que é a sessão avaliativa?",
+      a: "É o seu primeiro passo, sem compromisso: o momento de conhecer o Studio pessoalmente, sentir o clima do espaço e entender se o MOVA combina com você — com a nossa professora especialista do seu lado desde o primeiro minuto. Conversamos sobre seus objetivos e sua rotina, fazemos uma avaliação postural e de mobilidade, e você sente o método na prática. Só depois a gente fala de plano, com calma e sem pressão. Dica: leve roupa leve e confortável, tênis, garrafinha de água e toalha — e, se tiver exame ou laudo, pode trazer.",
+    },
+    {
+      q: "Quais são os planos e valores?",
+      a: "Você escolhe a modalidade que quer treinar — Musculação, Pilates, Bike, Coletivas, ou as turmas MOVA Kids (7–11) e Teens (12–17) — e a frequência (2x ou 3x por semana). Musculação e Pilates têm níveis (Essencial, Equilíbrio e Performance, que liberam modalidades complementares). E há os planos completos MOVA Clube e Club Premium, que reúnem várias modalidades numa rotina só. Cada plano tem valores Mensal, Semestral e Anual (quanto maior o período, melhor o valor por mês). Veja tudo, com preços, na página de Planos.",
+    },
+    {
+      q: "Quais as formas de pagamento?",
+      a: "Você escolhe a que for mais confortável: Pix (instantâneo via chave ou QR code), cartão de crédito (com parcelamento) ou recorrência automática (débito mensal automático).",
+    },
+    {
+      q: "Tenho dores ou alguma limitação física. Posso treinar?",
+      a: "Pode sim — é justamente para isso que servimos. Nossos professores são especializados em treino adaptado e ajustam cada exercício à sua condição. Se você tiver laudo, exame ou orientação médica, pode trazer no dia da sessão avaliativa: ajuda muito na personalização. Importante: o exercício supervisionado é um grande aliado na reabilitação e no fortalecimento, mas não substitui a avaliação do seu médico ou fisioterapeuta.",
+    },
+    {
+      q: "Uso medicação para emagrecer (Ozempic, Mounjaro). Vale a pena treinar?",
+      a: "Vale muito! Essas medicações ajudam a baixar o peso, mas sem treino de força o corpo perde músculo junto com a gordura. A musculação personalizada protege a sua massa muscular, o que mantém o metabolismo e garante um emagrecimento mais firme e saudável. Como as turmas são de até 4 alunos, o professor ajusta a intensidade conforme a sua disposição no dia.",
+    },
+    {
+      q: "Vocês aceitam convênio ou plano de saúde?",
+      a: "No momento não trabalhamos com convênios ou planos de saúde. As formas de acesso são: pagamento regular (Pix, cartão ou recorrência), Wellhub (a partir do Gold) e TotalPass (a partir do TP5+).",
+    },
+    {
+      q: "Como funciona pelo Wellhub?",
+      a: "Aceitamos a partir do plano Gold (Gold, Gold+, Platinum, Diamond e Diamond+). Você tem 2 check-ins por semana, e a sessão avaliativa já conta como 1 check-in. Todos os agendamentos, reagendamentos e cancelamentos são feitos direto pelo app da Wellhub — as vagas são liberadas com cerca de 5 dias de antecedência.",
+    },
+    {
+      q: "Como funciona pelo TotalPass?",
+      a: "Aceitamos a partir do plano TP5+ (TP5+, TP6 e TP7), com direito a 3 check-ins por semana. Aqui o agendamento é feito via WhatsApp com a nossa especialista: toda sexta-feira da semana anterior você envia seus dias e horários disponíveis, e ela confirma sua agenda da semana seguinte.",
+    },
+    {
+      q: "Onde fica o Studio?",
+      a: "Estamos na Asa Norte, Brasília — SHCN EQN 102/103, Ed. Estação 102, Sala 9A, 1º andar. Pertinho da quadra residencial, em um espaço climatizado e acolhedor.",
+    },
+  ],
+
   modalidades: [
     {
       titulo: "Musculação personalizada",

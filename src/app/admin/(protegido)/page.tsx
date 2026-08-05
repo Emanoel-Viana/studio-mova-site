@@ -9,6 +9,7 @@ import {
   Inbox,
   CalendarCheck,
   Tag,
+  HelpCircle,
 } from "lucide-react";
 
 const secoes = [
@@ -52,6 +53,13 @@ const secoes = [
     Icone: MessageSquareQuote,
     titulo: "Depoimentos",
     desc: "Avaliações de alunos exibidas na home.",
+    pronto: true,
+  },
+  {
+    href: "/admin/faq",
+    Icone: HelpCircle,
+    titulo: "Perguntas frequentes",
+    desc: "Adicione, edite ou reordene as perguntas do FAQ.",
     pronto: true,
   },
   {
