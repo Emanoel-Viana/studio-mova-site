@@ -82,8 +82,8 @@ export const site = {
           },
         ],
         complementares: [
-          "Bike", "HIIT", "Funcional", "GAP",
-          "Mobilidade", "Flexibilidade", "Ritmos", "Abdominal",
+          "Bike", "HIIT", "Funcional", "GAP", "Mobilidade",
+          "Flexibilidade", "Alongamento", "Ritmos", "Abdominal",
         ],
       },
       {
