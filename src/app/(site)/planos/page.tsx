@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Check } from "lucide-react";
+import { Check, Lock, BadgePercent, CalendarClock } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
 import { PageHero } from "@/components/PageHero";
@@ -29,6 +29,42 @@ export default async function Planos() {
             Quanto maior o período, melhor o valor por mês. Na sessão avaliativa
             a gente define a melhor proposta pra você — sem pressa e sem pressão.
           </p>
+
+          {/* Vantagens dos planos (selos) */}
+          <div className="grid sm:grid-cols-3 gap-4 mt-10 max-w-4xl mx-auto">
+            {[
+              {
+                Icone: Lock,
+                titulo: "Congelamento de valor",
+                desc: "Nos planos anuais, o seu valor por mês não muda.",
+              },
+              {
+                Icone: BadgePercent,
+                titulo: "Condições especiais",
+                desc: "Planos semestrais e anuais com condições especiais.",
+              },
+              {
+                Icone: CalendarClock,
+                titulo: "Flexibilidade pra remarcar",
+                desc: "Cancele ou remarque sua aula com até 12h de antecedência.",
+              },
+            ].map((v) => (
+              <div
+                key={v.titulo}
+                className="flex items-start gap-3 rounded-2xl border border-[#DDEDE3] bg-white p-5"
+              >
+                <span className="grid place-items-center w-11 h-11 rounded-xl bg-verde-claro text-verde-escuro shrink-0">
+                  <v.Icone size={22} aria-hidden />
+                </span>
+                <div>
+                  <h3 className="font-display font-bold leading-tight mb-1">
+                    {v.titulo}
+                  </h3>
+                  <p className="text-cinza text-sm">{v.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

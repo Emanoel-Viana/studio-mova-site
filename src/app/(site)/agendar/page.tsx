@@ -7,7 +7,7 @@ import { PageHero } from "@/components/PageHero";
 export const metadata: Metadata = {
   title: "Agendar avaliação",
   description:
-    "Agende sua sessão avaliativa no Studio MOVA pelo WhatsApp — atendimento humano e sem compromisso.",
+    "Agende sua sessão avaliativa gratuita no Studio MOVA pelo WhatsApp — atendimento humano e sem compromisso.",
 };
 
 // Aceita a URL completa ou "usuario/evento" e devolve o link de
@@ -31,7 +31,7 @@ export default async function Agendar() {
       <PageHero
         eyebrow="Sessão avaliativa"
         titulo="Agende sua avaliação"
-        descricao="Fale com a gente e marque sua sessão avaliativa — atendimento humano, sem compromisso."
+        descricao="Fale com a gente e marque sua sessão avaliativa gratuita — atendimento humano, sem compromisso."
       />
 
       <section className="py-10 sm:py-14 lg:py-20">
@@ -89,7 +89,7 @@ export default async function Agendar() {
 
               <div className="grid sm:grid-cols-3 gap-3 mt-6">
                 {[
-                  "Sem compromisso",
+                  "Gratuita e sem compromisso",
                   "Atendimento humano",
                   "No melhor horário pra você",
                 ].map((item) => (

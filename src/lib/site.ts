@@ -414,7 +414,7 @@ export const site = {
     },
     {
       q: "O que é a sessão avaliativa?",
-      a: "É o seu primeiro passo, sem compromisso: o momento de conhecer o Studio pessoalmente, sentir o clima do espaço e entender se o MOVA combina com você — com a nossa professora especialista do seu lado desde o primeiro minuto. Conversamos sobre seus objetivos e sua rotina, fazemos uma avaliação postural e de mobilidade, e você sente o método na prática. Só depois a gente fala de plano, com calma e sem pressão. Dica: leve roupa leve e confortável, tênis, garrafinha de água e toalha — e, se tiver exame ou laudo, pode trazer.",
+      a: "É o seu primeiro passo, gratuita e sem compromisso: o momento de conhecer o Studio pessoalmente, sentir o clima do espaço e entender se o MOVA combina com você — com a nossa professora especialista do seu lado desde o primeiro minuto. Conversamos sobre seus objetivos e sua rotina, fazemos uma avaliação postural e de mobilidade, e você sente o método na prática. Só depois a gente fala de plano, com calma e sem pressão. Dica: leve roupa leve e confortável, tênis, garrafinha de água e toalha — e, se tiver exame ou laudo, pode trazer.",
     },
     {
       q: "Quais são os planos e valores?",
@@ -552,7 +552,7 @@ export const site = {
   // Sessão avaliativa — o primeiro passo, usado na home e na metodologia.
   sessaoAvaliativa: {
     intro:
-      "A sessão avaliativa é o seu primeiro passo: o momento de conhecer o Studio pessoalmente, sentir o clima do espaço e entender se o MOVA combina com você — com a nossa professora especialista do seu lado desde o primeiro minuto e sem nenhum compromisso. Você sente na prática a diferença de um treino feito pra você e, depois, a gente conversa sobre o plano com calma, sem pressa.",
+      "A sessão avaliativa é o seu primeiro passo — gratuita e sem compromisso: o momento de conhecer o Studio pessoalmente, sentir o clima do espaço e entender se o MOVA combina com você, com a nossa professora especialista do seu lado desde o primeiro minuto. Você sente na prática a diferença de um treino feito pra você e, depois, a gente conversa sobre o plano com calma, sem pressa.",
     etapas: [
       "Conheça o Studio e a professora especialista pessoalmente",
       "Conversa sobre seus objetivos e sua rotina",

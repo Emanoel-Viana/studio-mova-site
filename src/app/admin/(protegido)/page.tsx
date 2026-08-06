@@ -3,7 +3,6 @@ import {
   Clock,
   Phone,
   Users,
-  Dumbbell,
   MessageSquareQuote,
   ArrowRight,
   Inbox,
@@ -40,13 +39,6 @@ const secoes = [
     Icone: Activity,
     titulo: "Aulas / modalidades",
     desc: "Grade de aulas (duração, capacidade, benefícios) na página de planos.",
-    pronto: true,
-  },
-  {
-    href: "/admin/modalidades",
-    Icone: Dumbbell,
-    titulo: "Modalidades (destaque)",
-    desc: "Cards de modalidades exibidos em algumas seções.",
     pronto: true,
   },
   {

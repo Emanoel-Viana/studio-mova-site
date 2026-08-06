@@ -1,7 +1,7 @@
 // Service Worker do Studio MOVA (PWA).
 // Estratégia: navegações = network-first (conteúdo sempre atual, com
 // fallback offline); assets estáticos = cache-first (rápido e offline).
-const CACHE = "mova-v6";
+const CACHE = "mova-v7";
 const OFFLINE_URL = "/offline";
 
 self.addEventListener("install", (event) => {

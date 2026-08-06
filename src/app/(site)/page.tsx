@@ -362,6 +362,11 @@ export default async function Home() {
         <div className="container-mova">
           <span className="eyebrow !text-[#9BE8BF]">O primeiro passo</span>
           <h2 className="section-title">Comece pela sessão avaliativa</h2>
+          <div className="flex justify-center mb-5">
+            <span className="inline-flex items-center gap-2 rounded-full bg-coral text-white font-display font-bold text-sm px-5 py-2 shadow-[0_8px_20px_rgba(224,119,107,0.35)]">
+              <Check size={17} aria-hidden /> Gratuita e sem compromisso
+            </span>
+          </div>
           <p className="max-w-[60ch] mx-auto text-[#EAFBF1] text-lg mb-8">
             {site.sessaoAvaliativa.intro}
           </p>
