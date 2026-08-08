@@ -10,6 +10,7 @@ import {
   Tag,
   HelpCircle,
   Activity,
+  CalendarDays,
 } from "lucide-react";
 
 const secoes = [
@@ -23,8 +24,15 @@ const secoes = [
   {
     href: "/admin/horarios",
     Icone: Clock,
-    titulo: "Horários",
-    desc: "Dias e faixas de funcionamento do studio.",
+    titulo: "Horários do studio",
+    desc: "Dias e faixas de funcionamento (aberto/fechado).",
+    pronto: true,
+  },
+  {
+    href: "/admin/grade",
+    Icone: CalendarDays,
+    titulo: "Grade de horários (aulas)",
+    desc: "Tabela de horários das aulas coletivas na página de horários.",
     pronto: true,
   },
   {
