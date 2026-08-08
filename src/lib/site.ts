@@ -364,6 +364,35 @@ export const site = {
     },
   ],
 
+  // Quiropraxia (atendimento além do Pilates).
+  quiropraxia: {
+    titulo: "Pilates & Quiropraxia",
+    subtitulo: "Movimento, cuidado e bem-estar para a sua rotina.",
+    texto:
+      "Além do Pilates, o Studio MOVA oferece atendimento de quiropraxia — cuidado personalizado para a sua coluna e articulações, ajudando a aliviar dores, melhorar a mobilidade e complementar o seu treino, sempre com atenção individual.",
+    horarios: [{ dias: "Terça e Quinta", faixas: ["12h às 13h", "14h às 15h"] }],
+  },
+
+  // Grade de horários das aulas coletivas (referência — confirmar no WhatsApp).
+  // cels na ordem: Segunda, Terça, Quarta, Quinta, Sexta. "" = sem aula.
+  grade: {
+    dias: ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"],
+    linhas: [
+      { hora: "06h00", cels: ["", "Funcional", "", "Funcional", ""] },
+      { hora: "06h30", cels: ["Spin", "", "Spin", "", "Spin"] },
+      { hora: "07h00", cels: ["Pilates", "Funcional", "Pilates", "Funcional", "Pilates"] },
+      { hora: "07h30", cels: ["Spin", "", "Spin", "", "Spin"] },
+      { hora: "08h00", cels: ["Pilates", "Alongamento", "Pilates", "Alongamento", "Pilates"] },
+      { hora: "08h15", cels: ["Abdominal", "", "Abdominal", "", ""] },
+      { hora: "09h00", cels: ["Flexibilidade", "", "", "", ""] },
+      { hora: "10h00", cels: ["Mobilidade", "", "", "", ""] },
+      { hora: "11h00", cels: ["Ritmos", "", "Ritmos", "", ""] },
+      { hora: "17h00", cels: ["HIIT", "", "", "", "HIIT"] },
+      { hora: "18h00", cels: ["Ritmos", "", "Ritmos", "", ""] },
+      { hora: "19h00", cels: ["", "Spin", "Spin", "Spin", ""] },
+    ],
+  },
+
   // Perguntas frequentes (editáveis no /admin/faq).
   faq: [
     {
@@ -612,6 +641,7 @@ export const navegacao = [
   { href: "/o-studio", label: "O Studio" },
   { href: "/metodologia", label: "Metodologia" },
   { href: "/planos", label: "Planos" },
+  { href: "/horarios", label: "Horários" },
   { href: "/equipe", label: "Equipe" },
   { href: "/faq", label: "FAQ" },
   { href: "/contato", label: "Contato" },

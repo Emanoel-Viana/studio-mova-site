@@ -357,6 +357,57 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* QUIROPRAXIA */}
+      <section className="py-12 sm:py-16 lg:py-24 bg-cinza-claro">
+        <div className="container-mova">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div>
+              <span className="eyebrow">{site.quiropraxia.titulo}</span>
+              <h2 className="section-title">{site.quiropraxia.subtitulo}</h2>
+              <p className="lead mb-6">{site.quiropraxia.texto}</p>
+              <div className="flex flex-wrap gap-3">
+                <Link href="/horarios" className="btn btn-escuro">
+                  Ver a grade de horários
+                </Link>
+                <a
+                  href={waLink(
+                    "Olá! Quero saber sobre o atendimento de quiropraxia no Studio MOVA.",
+                  )}
+                  target="_blank"
+                  rel="noopener"
+                  className="btn btn-borda text-preto"
+                >
+                  Falar no WhatsApp
+                </a>
+              </div>
+            </div>
+            <div className="rounded-2xl bg-white border border-[#DDEDE3] p-6 sm:p-8">
+              <h3 className="flex items-center gap-2 text-xl mb-4">
+                <HandHeart size={22} className="text-verde-medio" aria-hidden />
+                Atendimento de Quiropraxia
+              </h3>
+              <div className="grid gap-3">
+                {site.quiropraxia.horarios.map((h) => (
+                  <div
+                    key={h.dias}
+                    className="flex flex-wrap items-baseline justify-between gap-2 rounded-xl bg-verde-claro px-4 py-3"
+                  >
+                    <span className="font-semibold text-verde-escuro">
+                      {h.dias}
+                    </span>
+                    <span className="text-cinza">{h.faixas.join(" • ")}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-sm text-cinza mt-4">
+                Atendimento personalizado, em pequenos grupos — agende pelo
+                WhatsApp.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* SESSÃO AVALIATIVA */}
       <section className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-verde-medio to-[#14744A] text-white text-center">
         <div className="container-mova">
