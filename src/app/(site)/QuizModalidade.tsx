@@ -6,7 +6,6 @@ import {
   Dumbbell,
   Flower2,
   Bike,
-  Users,
   RotateCcw,
   ArrowRight,
   Sparkles,
@@ -21,16 +20,16 @@ const perguntas: { q: string; opcoes: { txt: string; pts: Pontos }[] }[] = [
     opcoes: [
       { txt: "Força e definição muscular", pts: { musculacao: 2 } },
       { txt: "Postura, mobilidade e equilíbrio", pts: { pilates: 2 } },
-      { txt: "Emagrecer e ganhar fôlego", pts: { bike: 2, coletivas: 1 } },
-      { txt: "Me mexer com energia e diversão", pts: { coletivas: 2, bike: 1 } },
+      { txt: "Emagrecer e ganhar fôlego", pts: { spin: 2 } },
+      { txt: "Me mexer com energia e intensidade", pts: { spin: 2 } },
     ],
   },
   {
     q: "Como você gosta de treinar?",
     opcoes: [
       { txt: "No meu ritmo, com foco", pts: { musculacao: 1, pilates: 1 } },
-      { txt: "Suando muito, alta intensidade", pts: { bike: 2 } },
-      { txt: "Em grupo, no clima da turma", pts: { coletivas: 2 } },
+      { txt: "Suando muito, alta intensidade", pts: { spin: 2 } },
+      { txt: "Com controle e consciência corporal", pts: { pilates: 2 } },
     ],
   },
   {
@@ -38,7 +37,7 @@ const perguntas: { q: string; opcoes: { txt: string; pts: Pontos }[] }[] = [
     opcoes: [
       { txt: "Resultados sólidos e progressivos", pts: { musculacao: 2 } },
       { txt: "Um corpo alinhado e sem dores", pts: { pilates: 2 } },
-      { txt: "Uma aula dinâmica que passa voando", pts: { bike: 1, coletivas: 1 } },
+      { txt: "Uma aula dinâmica que passa voando", pts: { spin: 2 } },
     ],
   },
 ];
@@ -54,19 +53,14 @@ const resultados = {
     tag: "Mobilidade, estabilidade e longevidade — corpo alinhado e sem dores.",
     Icone: Flower2,
   },
-  bike: {
-    nome: "MOVA Bike",
-    tag: "Pedale, supere, evolua — intensidade que transforma.",
+  spin: {
+    nome: "Spin MOVA",
+    tag: "Pedale, supere, evolua — intensidade indoor que transforma.",
     Icone: Bike,
-  },
-  coletivas: {
-    nome: "MOVA Coletivas",
-    tag: "Energia que motiva, resultados que ficam — no clima da turma.",
-    Icone: Users,
   },
 } as const;
 
-const ordem = ["musculacao", "pilates", "bike", "coletivas"] as const;
+const ordem = ["musculacao", "pilates", "spin"] as const;
 
 export function QuizModalidade() {
   const [passo, setPasso] = useState(0);

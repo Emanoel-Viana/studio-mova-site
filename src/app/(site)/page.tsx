@@ -92,9 +92,9 @@ export default async function Home() {
               ))}
             </div>
             <p className="max-w-[46ch] text-[#EAFBF1] text-lg mb-8">
-              Academia boutique na Asa Norte: musculação, pilates, bike e
-              coletivas em turmas de até 4 alunos, com professor ao seu lado do
-              início ao fim.
+              Academia boutique na Asa Norte: musculação, spin, pilates e
+              aulas coletivas em turmas de até 4 alunos, com professor ao seu
+              lado do início ao fim.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <a
@@ -316,8 +316,8 @@ export default async function Home() {
           <span className="eyebrow">Modalidades</span>
           <h2 className="section-title">O que você encontra no MOVA</h2>
           <p className="lead mb-10 max-w-[60ch]">
-            Um centro completo de movimento — do treino de força ao pilates, da
-            bike às aulas coletivas, para todas as idades.
+            Um centro completo de movimento — do treino de força ao pilates, do
+            spin às aulas coletivas, para todas as idades.
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {site.catalogo.modalidades.map((m) => {
@@ -414,8 +414,8 @@ export default async function Home() {
           <span className="eyebrow">Planos &amp; Modalidades</span>
           <h2 className="section-title">Escolha o seu movimento</h2>
           <p className="lead mx-auto mb-8">
-            Musculação, Pilates, Bike, Coletivas e turmas para crianças e
-            adolescentes — escolha o que quer treinar e monte o plano ideal.
+            Musculação, Spin, Pilates e aulas coletivas — escolha o que quer
+            treinar e monte o plano ideal.
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 max-w-4xl mx-auto mb-8">
             {site.catalogo.modalidades.map((m) => {

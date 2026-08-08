@@ -8,11 +8,11 @@
 export const site = {
   nome: "Studio MOVA",
   slogan: "Seu movimento. Sua melhor versão.",
-  subSlogan: "Musculação, Pilates, Bike e Coletivas — para todas as idades.",
+  subSlogan: "Musculação, Spin, Pilates e aulas coletivas — para todas as idades.",
   // Pilares da marca (faixa elegante no hero).
   pilares: ["Saúde", "Força", "Equilíbrio", "Bem-estar"],
   descricao:
-    "Musculação, Pilates, Bike e Coletivas para todas as idades. Academia boutique na Asa Norte, Brasília, com treino personalizado em turmas de até 4 alunos e professor ao seu lado do início ao fim.",
+    "Musculação, Spin, Pilates e aulas coletivas para todas as idades. Academia boutique na Asa Norte, Brasília, com treino personalizado em turmas de até 4 alunos e professor ao seu lado do início ao fim.",
   url: "https://studiomova.com.br",
 
   contato: {
@@ -55,11 +55,11 @@ export const site = {
         id: "musculacao",
         nome: "Musculação",
         titulo: "MOVA Musculação",
-        tagline: "Sua base de força e saúde",
+        tagline: "Sua base de força e saúde, com liberdade para complementar a sua evolução",
         icone: "dumbbell",
         temNiveis: true,
         niveis: [
-          { nome: "Essencial", nota: "só musculação" },
+          { nome: "Essencial", nota: "apenas musculação" },
           { nome: "Equilíbrio", nota: "+1 modalidade/semana" },
           { nome: "Performance", nota: "+2 modalidades/semana" },
         ],
@@ -82,9 +82,23 @@ export const site = {
           },
         ],
         complementares: [
-          "Bike", "HIIT", "Funcional", "GAP", "Mobilidade",
-          "Flexibilidade", "Alongamento", "Ritmos", "Abdominal",
+          "Abdominal", "Alongamento", "Flexibilidade", "Mobilidade",
+          "GAP", "Funcional", "Ritmos",
         ],
+      },
+      {
+        id: "spin",
+        nome: "Spin",
+        titulo: "Spin MOVA",
+        tagline: "Pedale. Supere. Evolua. — treinos indoor de intensidade que transforma",
+        icone: "bike",
+        temNiveis: false,
+        niveis: [],
+        frequencias: [
+          { freq: "2x por semana", precos: [{ mensal: "420", semestral: "390", anual: "360" }] },
+          { freq: "3x por semana", precos: [{ mensal: "620", semestral: "580", anual: "540" }] },
+        ],
+        complementares: [],
       },
       {
         id: "pilates",
@@ -94,7 +108,7 @@ export const site = {
         icone: "flower",
         temNiveis: true,
         niveis: [
-          { nome: "Essencial", nota: "só pilates" },
+          { nome: "Essencial", nota: "apenas pilates" },
           { nome: "Equilíbrio", nota: "+1 modalidade/semana" },
           { nome: "Performance", nota: "+2 modalidades/semana" },
         ],
@@ -116,63 +130,10 @@ export const site = {
             ],
           },
         ],
-        complementares: [],
-      },
-      {
-        id: "bike",
-        nome: "Bike",
-        titulo: "MOVA Bike",
-        tagline: "Pedale. Supere. Evolua.",
-        icone: "bike",
-        temNiveis: false,
-        niveis: [],
-        frequencias: [
-          { freq: "2x por semana", precos: [{ mensal: "650", semestral: "550", anual: "" }] },
-          { freq: "3x por semana", precos: [{ mensal: "890", semestral: "790", anual: "" }] },
+        complementares: [
+          "Abdominal", "Alongamento", "Flexibilidade", "Mobilidade",
+          "GAP", "Funcional", "Ritmos",
         ],
-        complementares: [],
-      },
-      {
-        id: "coletivas",
-        nome: "Coletivas",
-        titulo: "MOVA Coletivas",
-        tagline: "Energia que motiva. Resultados que ficam.",
-        icone: "users",
-        temNiveis: false,
-        niveis: [],
-        frequencias: [
-          { freq: "2x por semana", precos: [{ mensal: "650", semestral: "550", anual: "" }] },
-          { freq: "3x por semana", precos: [{ mensal: "890", semestral: "790", anual: "" }] },
-        ],
-        complementares: [],
-      },
-      {
-        id: "kids",
-        nome: "Kids",
-        titulo: "MOVA Kids",
-        tagline: "Movimento, coordenação e desenvolvimento saudável — 7 a 11 anos",
-        icone: "baby",
-        temNiveis: false,
-        niveis: [],
-        frequencias: [
-          { freq: "2x por semana", precos: [{ mensal: "390", semestral: "350", anual: "" }] },
-          { freq: "3x por semana", precos: [{ mensal: "490", semestral: "450", anual: "410" }] },
-        ],
-        complementares: [],
-      },
-      {
-        id: "teens",
-        nome: "Teens",
-        titulo: "MOVA Teens",
-        tagline: "Performance, força, autoestima e movimento — 12 a 17 anos",
-        icone: "sparkles",
-        temNiveis: false,
-        niveis: [],
-        frequencias: [
-          { freq: "2x por semana", precos: [{ mensal: "480", semestral: "430", anual: "390" }] },
-          { freq: "3x por semana", precos: [{ mensal: "590", semestral: "540", anual: "490" }] },
-        ],
-        complementares: [],
       },
     ],
 
@@ -241,7 +202,8 @@ export const site = {
   parcerias: [
     {
       nome: "Wellhub",
-      detalhe: "A partir do plano Gold (Gold, Gold+, Platinum, Diamond e Diamond+).",
+      detalhe:
+        "No plano Gold você acessa a Musculação. A partir do Gold+ (Gold+, Platinum, Diamond e Diamond+) libera também o Pilates e as aulas coletivas: Abdominal, Alongamento, Flexibilidade, Mobilidade, GAP, Funcional e Ritmos.",
       checkins: "2 check-ins por semana",
       agendamento:
         "Agendamento, reagendamento e cancelamento direto pelo app da Wellhub. As vagas são liberadas com cerca de 5 dias de antecedência.",
@@ -418,7 +380,7 @@ export const site = {
     },
     {
       q: "Quais são os planos e valores?",
-      a: "Você escolhe a modalidade que quer treinar — Musculação, Pilates, Bike, Coletivas, ou as turmas MOVA Kids (7–11) e Teens (12–17) — e a frequência (2x ou 3x por semana). Musculação e Pilates têm níveis (Essencial, Equilíbrio e Performance, que liberam modalidades complementares). E há os planos completos MOVA Clube e Club Premium, que reúnem várias modalidades numa rotina só. Cada plano tem valores Mensal, Semestral e Anual (quanto maior o período, melhor o valor por mês). Veja tudo, com preços, na página de Planos.",
+      a: "Você escolhe a modalidade que quer treinar — Musculação, Spin ou Pilates — e a frequência (2x ou 3x por semana). Musculação e Pilates têm níveis (Essencial, Equilíbrio e Performance, que liberam as aulas coletivas complementares: Abdominal, Alongamento, Flexibilidade, Mobilidade, GAP, Funcional e Ritmos). E há os planos completos MOVA Clube e Club Premium, que reúnem várias modalidades numa rotina só. Cada plano tem valores Mensal, Semestral e Anual (quanto maior o período, melhor o valor por mês). Veja tudo, com preços, na página de Planos.",
     },
     {
       q: "Quais as formas de pagamento?",

@@ -9,7 +9,7 @@ import { GradeAulas } from "./GradeAulas";
 export const metadata: Metadata = {
   title: "Planos",
   description:
-    "Musculação, Pilates, Bike, Coletivas, Kids e Teens — escolha o que quer treinar e veja os planos. Também aceitamos Wellhub e TotalPass.",
+    "Musculação, Spin, Pilates e aulas coletivas — escolha o que quer treinar e veja os planos. Também aceitamos Wellhub e TotalPass.",
 };
 
 export default async function Planos() {
@@ -19,7 +19,7 @@ export default async function Planos() {
       <PageHero
         eyebrow="Planos"
         titulo="Escolha o seu movimento"
-        descricao="Musculação, Pilates, Bike, Coletivas e turmas para crianças e adolescentes. Escolha o que você quer treinar e monte o plano ideal — sempre com acompanhamento de professor."
+        descricao="Musculação, Spin, Pilates e aulas coletivas. Escolha o que você quer treinar e monte o plano ideal — sempre com acompanhamento de professor."
       />
 
       <section className="py-10 sm:py-14 lg:py-20">
