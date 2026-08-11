@@ -27,6 +27,11 @@ const securityHeaders = [
   { key: "X-Frame-Options", value: "SAMEORIGIN" },
   // Impede o navegador de "adivinhar" tipos de arquivo (evita alguns ataques).
   { key: "X-Content-Type-Options", value: "nosniff" },
+  // Força o navegador a sempre usar HTTPS neste domínio e subdomínios.
+  {
+    key: "Strict-Transport-Security",
+    value: "max-age=31536000; includeSubDomains",
+  },
   // Não vaza a URL completa de origem para outros sites.
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   // Bloqueia recursos sensíveis que o site não usa.

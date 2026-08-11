@@ -25,7 +25,8 @@ const iconMap: Record<string, typeof Dumbbell> = {
 type Catalogo = typeof site.catalogo;
 type Preco = { mensal: string; semestral: string; anual: string };
 
-function LinhasPreco({ p }: { p: Preco }) {
+function LinhasPreco({ p }: { p?: Preco }) {
+  if (!p) return null;
   return (
     <div className="grid gap-1.5">
       <div className="flex justify-between items-baseline border-b border-[#EEF5F0] pb-1.5">
@@ -65,10 +66,16 @@ function LinhasPreco({ p }: { p: Preco }) {
 }
 
 export function SeletorPlanos({ catalogo }: { catalogo: Catalogo }) {
-  const [modId, setModId] = useState<string>(catalogo.modalidades[0].id);
+  const [modId, setModId] = useState<string>(
+    catalogo.modalidades[0]?.id ?? "",
+  );
   const [freqIdx, setFreqIdx] = useState(0);
-  const mod = catalogo.modalidades.find((m) => m.id === modId)!;
-  const freq = mod.frequencias[freqIdx] ?? mod.frequencias[0];
+  const mod =
+    catalogo.modalidades.find((m) => m.id === modId) ??
+    catalogo.modalidades[0];
+  const freq = mod?.frequencias[freqIdx] ?? mod?.frequencias[0];
+
+  if (!mod || !freq) return null;
 
   return (
     <div>

@@ -4,7 +4,13 @@ import { useState, useTransition } from "react";
 import { Check, Plus, Trash2 } from "lucide-react";
 import { salvarConteudo } from "../../actions";
 
-type Item = { nome: string; papel: string; bio: string; foto: string };
+type Item = {
+  nome: string;
+  papel: string;
+  bio: string;
+  foto: string;
+  foco: string;
+};
 
 const classeCampo =
   "w-full px-3.5 py-2.5 rounded-lg border border-[#D5E5DB] bg-white text-base focus:outline-none focus:border-verde focus:ring-2 focus:ring-verde/30";
@@ -23,7 +29,10 @@ export function EquipeForm({ itensIniciais }: { itensIniciais: Item[] }) {
     setItens((a) => a.filter((_, idx) => idx !== i));
   }
   function adicionar() {
-    setItens((a) => [...a, { nome: "", papel: "", bio: "", foto: "" }]);
+    setItens((a) => [
+      ...a,
+      { nome: "", papel: "", bio: "", foto: "", foco: "center" },
+    ]);
   }
 
   function salvar() {
@@ -35,6 +44,7 @@ export function EquipeForm({ itensIniciais }: { itensIniciais: Item[] }) {
         papel: p.papel.trim(),
         bio: p.bio.trim(),
         foto: p.foto,
+        foco: p.foco || "center",
       }));
     iniciar(async () => {
       const r = await salvarConteudo({ equipe });
@@ -89,6 +99,19 @@ export function EquipeForm({ itensIniciais }: { itensIniciais: Item[] }) {
                 rows={2}
                 className={classeCampo}
               />
+            </div>
+            <div className="max-w-[220px]">
+              <label className="block font-semibold mb-1.5 text-sm">
+                Enquadramento da foto
+              </label>
+              <select
+                value={p.foco || "center"}
+                onChange={(e) => atualizar(i, "foco", e.target.value)}
+                className={classeCampo}
+              >
+                <option value="center">Centro</option>
+                <option value="top">Topo (rosto no alto)</option>
+              </select>
             </div>
           </div>
         </div>

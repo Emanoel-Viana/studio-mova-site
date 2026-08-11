@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { MessageCircle, Check } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { Turnstile } from "@/components/Turnstile";
 import { enviarContato } from "@/app/(site)/contato/actions";
@@ -23,9 +24,18 @@ export function FormContato({
   const [token, setToken] = useState("");
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState("");
+  const [enviado, setEnviado] = useState(false);
+  // Muda a key do Turnstile pra remontar o widget e gerar um token NOVO
+  // (o token do captcha é de uso único).
+  const [captchaKey, setCaptchaKey] = useState(0);
 
   // Só exige o captcha quando a chave está configurada.
   const precisaCaptcha = !!turnstileSiteKey;
+
+  const linkWhats = waLink(
+    `Olá! Meu nome é ${nome}. Assunto: ${assunto}.` +
+      (mensagem ? ` ${mensagem}` : ""),
+  );
 
   async function enviar(e: React.FormEvent) {
     e.preventDefault();
@@ -43,17 +53,58 @@ export function FormContato({
 
     if (!resultado.ok) {
       setErro(resultado.erro);
+      // Token é de uso único: gera um novo pra permitir tentar de novo.
+      setToken("");
+      setCaptchaKey((k) => k + 1);
       return;
     }
 
-    const texto =
-      `Olá! Meu nome é ${nome}. Assunto: ${assunto}.` +
-      (mensagem ? ` ${mensagem}` : "");
-    window.open(waLink(texto), "_blank", "noopener");
+    setEnviado(true);
+  }
+
+  function novaMensagem() {
+    setEnviado(false);
+    setErro("");
+    setToken("");
+    setCaptchaKey((k) => k + 1);
+    setMensagem("");
   }
 
   const campo =
     "w-full px-4 py-3.5 rounded-xl border border-[#D5E5DB] bg-white text-base focus:outline-none focus:border-verde focus:ring-3 focus:ring-verde/30";
+
+  // Tela de sucesso: link clicável (gesto real do usuário → o navegador NÃO
+  // bloqueia como bloquearia um window.open disparado depois do await).
+  if (enviado) {
+    return (
+      <div className="max-w-xl rounded-2xl border border-[#CDEBD9] bg-verde-claro p-6 sm:p-8 text-center">
+        <span className="grid place-items-center w-14 h-14 rounded-full bg-verde text-white mx-auto mb-4">
+          <Check size={30} aria-hidden />
+        </span>
+        <h3 className="text-xl sm:text-2xl mb-2">Recebemos sua mensagem! 💚</h3>
+        <p className="text-cinza mb-6">
+          Toque no botão abaixo para abrir o WhatsApp com a sua mensagem já
+          pronta — é só enviar pra gente.
+        </p>
+        <a
+          href={linkWhats}
+          target="_blank"
+          rel="noopener"
+          className="btn btn-coral text-lg"
+        >
+          <MessageCircle size={22} aria-hidden />
+          Abrir o WhatsApp
+        </a>
+        <button
+          type="button"
+          onClick={novaMensagem}
+          className="block mx-auto mt-5 text-sm text-verde-escuro font-semibold hover:underline"
+        >
+          Enviar outra mensagem
+        </button>
+      </div>
+    );
+  }
 
   return (
     <form onSubmit={enviar} className="grid gap-5 max-w-xl">
@@ -104,7 +155,11 @@ export function FormContato({
       </div>
 
       {precisaCaptcha && (
-        <Turnstile siteKey={turnstileSiteKey} onToken={setToken} />
+        <Turnstile
+          key={captchaKey}
+          siteKey={turnstileSiteKey}
+          onToken={setToken}
+        />
       )}
 
       {erro && (

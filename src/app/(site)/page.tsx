@@ -228,8 +228,11 @@ export default async function Home() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-9 text-center">
             {[
               { num: "4", label: "alunos por turma, no máximo" },
-              { num: "6", label: "modalidades pra você escolher" },
-              { num: "4.94", label: "nota de avaliação no Wellhub" },
+              { num: `+${site.aulas.length}`, label: "aulas e modalidades pra escolher" },
+              {
+                num: site.avaliacao.nota,
+                label: `nota de avaliação no ${site.avaliacao.fonte}`,
+              },
               { num: "100%", label: "treino com professor do seu lado" },
             ].map((s) => (
               <div key={s.label}>

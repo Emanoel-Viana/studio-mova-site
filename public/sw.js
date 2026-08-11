@@ -1,7 +1,7 @@
 // Service Worker do Studio MOVA (PWA).
 // Estratégia: navegações = network-first (conteúdo sempre atual, com
 // fallback offline); assets estáticos = cache-first (rápido e offline).
-const CACHE = "mova-v9";
+const CACHE = "mova-v10";
 const OFFLINE_URL = "/offline";
 
 self.addEventListener("install", (event) => {
@@ -30,6 +30,16 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
+
+  // NUNCA cachear a área autenticada nem as APIs: o HTML do /admin já vem
+  // com os dados dos leads, e cachear vazaria isso num aparelho compartilhado.
+  // Deixa o navegador buscar direto da rede (sem put e sem match no cache).
+  if (
+    url.pathname.startsWith("/admin") ||
+    url.pathname.startsWith("/api")
+  ) {
+    return;
+  }
 
   // Navegações entre páginas: rede primeiro, cache/offline como reserva.
   if (request.mode === "navigate") {

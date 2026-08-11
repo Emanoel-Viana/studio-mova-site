@@ -10,6 +10,7 @@ export default async function EditarEquipe() {
     papel: p.papel,
     bio: p.bio,
     foto: p.foto,
+    foco: "foco" in p ? p.foco : "center",
   }));
 
   return (

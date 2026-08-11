@@ -57,10 +57,11 @@ export async function salvarConteudo(
 
   const novoConteudo = { ...(atual?.content ?? {}), ...patch };
 
+  // upsert (não update) para gravar mesmo se a linha id=1 ainda não existir —
+  // um update em linha inexistente casaria 0 linhas e retornaria "ok" sem salvar.
   const { error } = await supabase
     .from("site_studiomova_configuracoes")
-    .update({ content: novoConteudo })
-    .eq("id", 1);
+    .upsert({ id: 1, content: novoConteudo }, { onConflict: "id" });
 
   if (error) return { erro: error.message };
 

@@ -33,7 +33,9 @@ export async function GET() {
     cache = { ts: Date.now(), body, status: 200 };
     return NextResponse.json(body);
   } catch (e) {
-    const body = { ok: false, erro: e instanceof Error ? e.message : "db" };
+    // Loga o detalhe no servidor, mas não expõe a mensagem interna na resposta.
+    console.error("health: falha no banco:", e instanceof Error ? e.message : e);
+    const body = { ok: false, erro: "db" };
     cache = { ts: Date.now(), body, status: 503 };
     return NextResponse.json(body, { status: 503 });
   } finally {
