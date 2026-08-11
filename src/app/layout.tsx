@@ -76,9 +76,17 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
+      suppressHydrationWarning
       className={`${archivo.variable} ${inter.variable} h-full`}
     >
-      <body className="min-h-full flex flex-col bg-white text-preto">
+      <body className="min-h-full flex flex-col">
+        {/* Aplica o tema salvo ANTES da tela pintar (evita "piscar" claro→escuro). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{if(localStorage.getItem('tema')==='dark'){document.documentElement.classList.add('dark')}}catch(e){}})()",
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

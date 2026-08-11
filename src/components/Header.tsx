@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Star, MapPin, Phone } from "lucide-react";
 import { navegacao, waLink } from "@/lib/site";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 type Props = {
   avaliacao: { nota: string; total: number; fonte: string };
@@ -127,6 +128,10 @@ export function Header({ avaliacao, whatsappVisivel }: Props) {
                 </li>
               );
             })}
+            {/* Botão de modo claro/escuro */}
+            <li className="flex items-center">
+              <ThemeToggle />
+            </li>
             {/* Agendar no fim — só no desktop (no celular está na linha do topo) */}
             <li className="hidden lg:block">
               <a

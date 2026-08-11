@@ -202,3 +202,52 @@
   white-space: nowrap;
   animation: mova-ticker 30s linear infinite;
 }
+
+/* ============================================================
+   MODO ESCURO (ativado por `html.dark`, via botão no header)
+   Estratégia: inverter só os tokens usados EXCLUSIVAMENTE como texto
+   (cinza) ou como fundo (cinza-claro, verde-claro); os tokens usados
+   pros dois (preto, verde-escuro) NÃO são invertidos — trato por classe.
+   As seções verdes (bg-verde-escuro / bg-verde) ficam como estão e viram
+   faixas de destaque no escuro. Regras fora de @layer p/ vencer utilitários.
+   ============================================================ */
+:root.dark {
+  color-scheme: dark;
+  --background: #0d1712;
+  --foreground: #e8f1eb;
+  --color-cinza: #a6b5ad;        /* texto secundário → claro (só usado como texto) */
+  --color-cinza-claro: #101a15;  /* fundo de seção → escuro (só usado como fundo) */
+  --color-verde-claro: #14211a;  /* cards/seções verde-claro → verde escuro (só fundo) */
+}
+
+/* Fundo/texto do body explícitos (a regra base via var não estava vencendo) */
+:root.dark body { background-color: #0d1712; color: #e8f1eb; }
+
+/* Superfícies e classes com uso duplo (texto x fundo) — tratadas à parte */
+:root.dark .bg-white { background-color: #17221c; }
+:root.dark .text-preto { color: #e8f1eb; }            /* texto (o fundo bg-preto continua escuro) */
+:root.dark .text-verde-escuro { color: #86e6b2; }     /* título/link em superfície agora escura */
+:root.dark .text-verde-medio { color: #63d69d; }
+:root.dark .btn-escuro { background: #22302a; color: #eaf3ee; }
+
+/* Bordas claras → escuras */
+:root.dark .border-\[\#DDEDE3\],
+:root.dark .border-\[\#D5E5DB\],
+:root.dark .border-\[\#E2EEE7\],
+:root.dark .border-\[\#EEF5F0\],
+:root.dark .border-\[\#CDEBD9\] { border-color: #28362e; }
+
+/* Fundo de erro/remover (coral claro) → coral escuro */
+:root.dark .bg-\[\#F7E4E0\] { background-color: #2c1c19; }
+:root.dark .text-coral-escuro { color: #f0a99b; }
+
+/* Placeholder de foto e inputs */
+:root.dark .foto-ph { border-color: #2a3a30; }
+:root.dark input::placeholder,
+:root.dark textarea::placeholder { color: #7d8c84; }
+
+/* Transição suave ao trocar de tema */
+:root.dark,
+:root.dark body {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
