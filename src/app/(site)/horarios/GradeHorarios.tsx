@@ -11,26 +11,25 @@ type Grade = {
   linhas: readonly { hora: string; cels: readonly Cel[] }[];
 };
 
-// Cor por modalidade. Musculação é "muda" (discreta) porque roda o dia todo.
-const CORES: Record<
-  string,
-  { bg: string; cor: string; mudo?: boolean; contorno?: boolean }
-> = {
-  Musculação: { bg: "#EEF2F0", cor: "#66756c", mudo: true },
-  "Spin MOVA": { bg: "#FBEAE5", cor: "#9b3b2e" },
+// Cor por modalidade (texto escuro e legível em todas).
+const CORES: Record<string, { bg: string; cor: string; contorno?: boolean }> = {
+  Musculação: { bg: "#E8EDEA", cor: "#33413a" },
+  "Spin MOVA": { bg: "#FBEAE5", cor: "#8f3527" },
   Pilates: { bg: "#E4F4EB", cor: "#14532d" },
-  Funcional: { bg: "#FCEFD8", cor: "#7a4b0a" },
+  Funcional: { bg: "#FBEDD2", cor: "#6d4409" },
   Alongamento: { bg: "#E6F1FB", cor: "#0c447c" },
-  Abdominal: { bg: "#EDEBFD", cor: "#3c3489" },
-  Flexibilidade: { bg: "#DFF5EE", cor: "#0f6e56" },
-  Mobilidade: { bg: "#FBE8F1", cor: "#8a2a52" },
-  Ritmos: { bg: "#FDE9DE", cor: "#a5451a" },
-  "HIIT MOVA": { bg: "#FDE6E6", cor: "#a32d2d" },
-  "Sessão avaliativa": { bg: "#F3FBF6", cor: "#1e9b5e", contorno: true },
+  Abdominal: { bg: "#ECE9FD", cor: "#37307d" },
+  Flexibilidade: { bg: "#DBF3EB", cor: "#0d6350" },
+  Mobilidade: { bg: "#FBE6EF", cor: "#872950" },
+  Ritmos: { bg: "#FDE7DB", cor: "#973f18" },
+  "HIIT MOVA": { bg: "#FDE3E3", cor: "#992a2a" },
+  "Sessão avaliativa": { bg: "#EEF9F2", cor: "#14532d", contorno: true },
 };
-const PADRAO = { bg: "#EEF2F0", cor: "#66756c" };
+const PADRAO = { bg: "#E8EDEA", cor: "#33413a" };
 
-const LEGENDA = [
+// Ordem das modalidades no filtro/legenda.
+const MODALIDADES = [
+  "Musculação",
   "Spin MOVA",
   "Pilates",
   "Funcional",
@@ -61,26 +60,26 @@ function noPeriodo(hora: string, p: Periodo) {
   return true;
 }
 
-function Chip({ item }: { item: string }) {
+function Chip({ item, mudo }: { item: string; mudo: boolean }) {
   const [aula, dur] = item.split(":");
   const c = CORES[aula] ?? PADRAO;
+  const ehMusc = aula === "Musculação";
   return (
     <span
-      className={`flex items-center gap-1 rounded-lg px-2 py-1 leading-tight ${
-        c.mudo ? "text-[0.66rem]" : "text-[0.74rem] font-semibold"
-      }`}
+      className="flex items-center gap-1 rounded-lg px-2 py-1 leading-tight text-[0.72rem] font-semibold"
       style={{
         backgroundColor: c.bg,
         color: c.cor,
-        border: c.contorno ? `1px dashed ${c.cor}80` : undefined,
+        border: c.contorno ? `1px dashed ${c.cor}66` : undefined,
+        opacity: mudo ? 0.5 : 1,
       }}
     >
-      {c.mudo && <Dumbbell size={11} className="shrink-0 opacity-60" aria-hidden />}
+      {ehMusc && <Dumbbell size={11} className="shrink-0 opacity-70" aria-hidden />}
       <span className="truncate">{aula}</span>
       {dur && (
         <span
           className="ml-auto shrink-0 rounded px-1 text-[0.58rem] font-bold"
-          style={{ backgroundColor: `${c.cor}1f` }}
+          style={{ backgroundColor: `${c.cor}22` }}
         >
           {dur}′
         </span>
@@ -91,89 +90,93 @@ function Chip({ item }: { item: string }) {
 
 export function GradeHorarios({ grade }: { grade: Grade }) {
   const [periodo, setPeriodo] = useState<Periodo>("Todos");
-  const [soColetivas, setSoColetivas] = useState(false);
+  // "Todas" | "Coletivas" | nome de uma modalidade
+  const [foco, setFoco] = useState<string>("Todas");
+
+  const combina = (item: string) => {
+    if (foco === "Todas") return true;
+    if (foco === "Coletivas") return !item.startsWith("Musculação");
+    return item.startsWith(foco);
+  };
 
   const linhas = useMemo(() => {
     return grade.linhas
       .filter((l) => noPeriodo(l.hora, periodo))
       .map((l) => ({
         hora: l.hora,
-        cels: l.cels.map((cel) => {
-          const lista = normalizar(cel);
-          return soColetivas
-            ? lista.filter((it) => !it.startsWith("Musculação"))
-            : lista;
-        }),
+        cels: l.cels.map((cel) => normalizar(cel)),
       }))
-      // no modo "só coletivas", esconde as linhas que ficaram sem nada
-      .filter((l) => !soColetivas || l.cels.some((c) => c.length > 0));
-  }, [grade.linhas, periodo, soColetivas]);
+      // com filtro ativo, esconde as linhas que ficaram sem nada relevante
+      .filter(
+        (l) =>
+          foco === "Todas" ||
+          l.cels.some((c) => c.some((it) => combina(it))),
+      );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [grade.linhas, periodo, foco]);
+
+  const botaoFiltro = (ativo: boolean) =>
+    `inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors ${
+      ativo
+        ? "bg-verde-escuro text-white border-verde-escuro"
+        : "bg-white text-cinza border-[#DDEDE3] hover:border-verde"
+    }`;
 
   return (
     <div>
-      {/* Controles: período + só coletivas */}
-      <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
-        <div className="inline-flex bg-cinza-claro rounded-full p-1">
-          {PERIODOS.map((p) => (
-            <button
-              key={p}
-              type="button"
-              onClick={() => setPeriodo(p)}
-              className={`px-3.5 py-1.5 rounded-full text-sm font-display font-bold transition-colors ${
-                periodo === p ? "bg-verde text-white" : "text-cinza"
-              }`}
-            >
-              {p}
-            </button>
-          ))}
-        </div>
-        <button
-          type="button"
-          onClick={() => setSoColetivas((v) => !v)}
-          className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-sm font-medium transition-colors ${
-            soColetivas
-              ? "bg-verde-escuro text-white border-verde-escuro"
-              : "bg-white text-cinza border-[#DDEDE3] hover:border-verde"
-          }`}
-          aria-pressed={soColetivas}
-        >
-          <span
-            className={`grid place-items-center w-4 h-4 rounded-full border ${
-              soColetivas ? "bg-white border-white" : "border-cinza"
+      {/* Filtro por período */}
+      <div className="inline-flex bg-cinza-claro rounded-full p-1 mb-4">
+        {PERIODOS.map((p) => (
+          <button
+            key={p}
+            type="button"
+            onClick={() => setPeriodo(p)}
+            className={`px-3.5 py-1.5 rounded-full text-sm font-display font-bold transition-colors ${
+              periodo === p ? "bg-verde text-white" : "text-cinza"
             }`}
           >
-            {soColetivas && (
-              <span className="w-2 h-2 rounded-full bg-verde-escuro" />
-            )}
-          </span>
-          Só aulas coletivas
-        </button>
+            {p}
+          </button>
+        ))}
       </div>
 
-      {/* Legenda */}
-      <div className="flex flex-wrap gap-x-3 gap-y-2 mb-5">
-        {LEGENDA.map((nome) => {
+      {/* Filtro por modalidade (também é a legenda) */}
+      <div className="flex flex-wrap gap-2 mb-5">
+        <button
+          type="button"
+          onClick={() => setFoco("Todas")}
+          className={botaoFiltro(foco === "Todas")}
+        >
+          Todas
+        </button>
+        <button
+          type="button"
+          onClick={() => setFoco("Coletivas")}
+          className={botaoFiltro(foco === "Coletivas")}
+        >
+          Só coletivas
+        </button>
+        {MODALIDADES.map((nome) => {
           const c = CORES[nome] ?? PADRAO;
+          const ativo = foco === nome;
           return (
-            <span
+            <button
               key={nome}
-              className="inline-flex items-center gap-1.5 text-xs text-cinza"
+              type="button"
+              onClick={() => setFoco(nome)}
+              className={botaoFiltro(ativo)}
             >
               <span
-                className="w-3 h-3 rounded-full shrink-0"
+                className="w-2.5 h-2.5 rounded-full shrink-0"
                 style={{
                   backgroundColor: c.contorno ? "transparent" : c.cor,
                   border: c.contorno ? `1.5px dashed ${c.cor}` : undefined,
                 }}
               />
               {nome}
-            </span>
+            </button>
           );
         })}
-        <span className="inline-flex items-center gap-1.5 text-xs text-cinza">
-          <Dumbbell size={13} className="text-[#66756c]" aria-hidden />
-          Musculação (o dia todo)
-        </span>
       </div>
 
       {/* Grade */}
@@ -213,24 +216,27 @@ export function GradeHorarios({ grade }: { grade: Grade }) {
                   <th className="sticky left-0 z-10 bg-inherit text-left font-display font-bold text-xs px-3 py-2 whitespace-nowrap border-r border-[#EEF5F0]">
                     {linha.hora}
                   </th>
-                  {linha.cels.map((cel, j) => (
-                    <td
-                      key={j}
-                      className="align-top px-1.5 py-2 border-l border-[#F0F5F2]"
-                    >
-                      {cel.length > 0 ? (
-                        <div className="grid gap-1">
-                          {cel.map((item, k) => (
-                            <Chip key={k} item={String(item)} />
-                          ))}
-                        </div>
-                      ) : (
-                        <span className="block text-center text-[#C7D6CD]">
-                          —
-                        </span>
-                      )}
-                    </td>
-                  ))}
+                  {linha.cels.map((cel, j) => {
+                    const visiveis = cel.filter((it) => combina(it));
+                    return (
+                      <td
+                        key={j}
+                        className="align-top px-1.5 py-2 border-l border-[#F0F5F2]"
+                      >
+                        {visiveis.length > 0 ? (
+                          <div className="grid gap-1">
+                            {visiveis.map((item, k) => (
+                              <Chip key={k} item={String(item)} mudo={false} />
+                            ))}
+                          </div>
+                        ) : (
+                          <span className="block text-center text-[#C7D6CD]">
+                            —
+                          </span>
+                        )}
+                      </td>
+                    );
+                  })}
                 </tr>
               ))
             )}
