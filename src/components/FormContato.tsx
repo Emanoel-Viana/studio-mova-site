@@ -48,18 +48,25 @@ export function FormContato({
     }
 
     setEnviando(true);
-    const resultado = await enviarContato({ nome, assunto, mensagem, token });
-    setEnviando(false);
-
-    if (!resultado.ok) {
-      setErro(resultado.erro);
-      // Token é de uso único: gera um novo pra permitir tentar de novo.
+    try {
+      const resultado = await enviarContato({ nome, assunto, mensagem, token });
+      if (!resultado.ok) {
+        setErro(resultado.erro);
+        // Token é de uso único: gera um novo pra permitir tentar de novo.
+        setToken("");
+        setCaptchaKey((k) => k + 1);
+        return;
+      }
+      setEnviado(true);
+    } catch {
+      setErro(
+        "Não conseguimos enviar agora. Tente de novo ou fale direto no WhatsApp.",
+      );
       setToken("");
       setCaptchaKey((k) => k + 1);
-      return;
+    } finally {
+      setEnviando(false);
     }
-
-    setEnviado(true);
   }
 
   function novaMensagem() {
