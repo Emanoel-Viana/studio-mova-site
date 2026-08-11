@@ -57,13 +57,22 @@ export async function salvarConteudo(
 
   const novoConteudo = { ...(atual?.content ?? {}), ...patch };
 
-  // upsert (não update) para gravar mesmo se a linha id=1 ainda não existir —
-  // um update em linha inexistente casaria 0 linhas e retornaria "ok" sem salvar.
-  const { error } = await supabase
+  // UPDATE (não upsert): a tabela só tem policy de UPDATE, não de INSERT — um
+  // upsert tentaria inserir e a RLS bloquearia. O `.select("id")` devolve as
+  // linhas afetadas: se vier vazio, a linha base não existe e avisamos em vez
+  // de retornar "salvo" sem ter salvo (evita o salvamento fantasma).
+  const { data: afetadas, error } = await supabase
     .from("site_studiomova_configuracoes")
-    .upsert({ id: 1, content: novoConteudo }, { onConflict: "id" });
+    .update({ content: novoConteudo })
+    .eq("id", 1)
+    .select("id");
 
   if (error) return { erro: error.message };
+  if (!afetadas || afetadas.length === 0) {
+    return {
+      erro: "Não foi possível salvar: registro base de conteúdo não encontrado. Avise o suporte.",
+    };
+  }
 
   // Atualiza o site público imediatamente.
   revalidatePath("/", "layout");
