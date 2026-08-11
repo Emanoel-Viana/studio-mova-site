@@ -1,6 +1,11 @@
-import { site } from "@/lib/site";
-
-type Grade = typeof site.grade;
+// Tipo TOLERANTE: a célula pode vir como lista de "Aula:duração" (formato
+// novo) OU como uma string única (formato antigo salvo no banco). Normalizamos
+// pra nunca quebrar.
+type Cel = readonly string[] | string;
+type Grade = {
+  dias: readonly string[];
+  linhas: readonly { hora: string; cels: readonly Cel[] }[];
+};
 
 // Cor por modalidade. Musculação é "muda" (discreta) porque roda o dia todo —
 // assim as aulas coletivas coloridas se destacam. Sessão avaliativa = contorno.
@@ -114,24 +119,32 @@ export function GradeHorarios({ grade }: { grade: Grade }) {
                 <th className="sticky left-0 z-10 bg-inherit text-left font-display font-bold text-xs px-3 py-2 whitespace-nowrap border-r border-[#EEF5F0]">
                   {linha.hora}
                 </th>
-                {linha.cels.map((cel, j) => (
-                  <td
-                    key={j}
-                    className="align-top px-1.5 py-2 border-l border-[#F0F5F2]"
-                  >
-                    {cel.length > 0 ? (
-                      <div className="grid gap-1">
-                        {cel.map((item, k) => (
-                          <Chip key={k} item={item} />
-                        ))}
-                      </div>
-                    ) : (
-                      <span className="block text-center text-[#C7D6CD]">
-                        —
-                      </span>
-                    )}
-                  </td>
-                ))}
+                {linha.cels.map((cel, j) => {
+                  // Normaliza: string única (antigo) → [string]; lista → lista.
+                  const lista = Array.isArray(cel)
+                    ? cel
+                    : cel
+                      ? [cel as string]
+                      : [];
+                  return (
+                    <td
+                      key={j}
+                      className="align-top px-1.5 py-2 border-l border-[#F0F5F2]"
+                    >
+                      {lista.length > 0 ? (
+                        <div className="grid gap-1">
+                          {lista.map((item, k) => (
+                            <Chip key={k} item={String(item)} />
+                          ))}
+                        </div>
+                      ) : (
+                        <span className="block text-center text-[#C7D6CD]">
+                          —
+                        </span>
+                      )}
+                    </td>
+                  );
+                })}
               </tr>
             ))}
           </tbody>
