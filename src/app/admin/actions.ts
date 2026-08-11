@@ -6,6 +6,28 @@ import { createClient } from "@/lib/supabase/server";
 
 export type EstadoLogin = { erro?: string };
 
+// Confere o token do Turnstile no Cloudflare. Se o segredo não estiver
+// configurado, pula (fail-open) — o login ainda exige e-mail/senha corretos.
+async function verificarTurnstile(token: string): Promise<boolean> {
+  const SECRET = process.env.TURNSTILE_SECRET_KEY;
+  if (!SECRET) return true;
+  if (!token) return false;
+  try {
+    const resp = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ secret: SECRET, response: token }),
+      },
+    );
+    const dados = (await resp.json()) as { success?: boolean };
+    return dados.success === true;
+  } catch {
+    return false;
+  }
+}
+
 export async function entrar(
   _prev: EstadoLogin,
   formData: FormData,
@@ -15,6 +37,13 @@ export async function entrar(
 
   if (!email || !senha) {
     return { erro: "Preencha e-mail e senha." };
+  }
+
+  const captchaOk = await verificarTurnstile(
+    String(formData.get("turnstileToken") ?? ""),
+  );
+  if (!captchaOk) {
+    return { erro: "Verificação de segurança falhou. Recarregue a página e tente de novo." };
   }
 
   const supabase = await createClient();
