@@ -5,9 +5,11 @@ import { GradeForm } from "./GradeForm";
 
 export default async function EditarGrade() {
   const c = await getContent();
+  // Cada célula (lista de "Aula:duração") vira um texto com 1 aula por linha,
+  // pra editar em um campo só.
   const linhas = c.grade.linhas.map((l) => ({
     hora: l.hora,
-    cels: [...l.cels],
+    cels: l.cels.map((cel) => cel.join("\n")),
   }));
 
   return (

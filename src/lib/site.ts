@@ -373,23 +373,36 @@ export const site = {
     horarios: [{ dias: "Terça e Quinta", faixas: ["12h às 13h", "14h às 15h"] }],
   },
 
-  // Grade de horários das aulas coletivas (referência — confirmar no WhatsApp).
-  // cels na ordem: Segunda, Terça, Quarta, Quinta, Sexta. "" = sem aula.
+  // Grade de horários (referência — confirmar no WhatsApp). Cada célula é uma
+  // lista de "Aula:duração(min)". Ordem dos dias: Seg, Ter, Qua, Qui, Sex, Sáb.
+  // Musculação roda o dia todo (aparece discreta na grade). Domingo fechado.
   grade: {
-    dias: ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"],
+    dias: ["Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"],
     linhas: [
-      { hora: "06h00", cels: ["", "Funcional", "", "Funcional", ""] },
-      { hora: "06h30", cels: ["Spin", "", "Spin", "", "Spin"] },
-      { hora: "07h00", cels: ["Pilates", "Funcional", "Pilates", "Funcional", "Pilates"] },
-      { hora: "07h30", cels: ["Spin", "", "Spin", "", "Spin"] },
-      { hora: "08h00", cels: ["Pilates", "Alongamento", "Pilates", "Alongamento", "Pilates"] },
-      { hora: "08h15", cels: ["Abdominal", "", "Abdominal", "", ""] },
-      { hora: "09h00", cels: ["Flexibilidade", "", "", "", ""] },
-      { hora: "10h00", cels: ["Mobilidade", "", "", "", ""] },
-      { hora: "11h00", cels: ["Ritmos", "", "Ritmos", "", ""] },
-      { hora: "17h00", cels: ["HIIT", "", "", "", "HIIT"] },
-      { hora: "18h00", cels: ["Ritmos", "", "Ritmos", "", ""] },
-      { hora: "19h00", cels: ["", "Spin", "Spin", "Spin", ""] },
+      { hora: "06h00", cels: [["Musculação:60", "Pilates:50"], ["Funcional:40", "Musculação:60"], ["Musculação:60", "Pilates:50"], ["Funcional:40", "Musculação:60"], ["Musculação:60", "Pilates:50"], []] },
+      { hora: "06h30", cels: [["Musculação:60", "Spin MOVA:45"], ["Musculação:60"], ["Musculação:60", "Spin MOVA:45"], ["Musculação:60"], ["Musculação:60", "Spin MOVA:45"], []] },
+      { hora: "07h00", cels: [["Musculação:60", "Pilates:50"], ["Funcional:40", "Musculação:60"], ["Musculação:60", "Pilates:50"], ["Funcional:40", "Musculação:60"], ["Musculação:60", "Pilates:50"], ["Musculação:60", "Sessão avaliativa:50"]] },
+      { hora: "07h30", cels: [["Musculação:60", "Spin MOVA:45"], ["Musculação:60", "Pilates:50"], ["Musculação:60", "Spin MOVA:45"], ["Musculação:60", "Pilates:50"], ["Musculação:60", "Spin MOVA:45"], ["Musculação:60"]] },
+      { hora: "08h00", cels: [["Musculação:60", "Pilates:50"], ["Alongamento:40", "Musculação:60"], ["Musculação:60", "Pilates:50"], ["Alongamento:40", "Musculação:60"], ["Musculação:60", "Pilates:50"], ["Musculação:60", "Spin MOVA:45"]] },
+      { hora: "08h15", cels: [["Abdominal:40"], [], ["Abdominal:40"], [], [], []] },
+      { hora: "08h30", cels: [["Musculação:60"], ["Musculação:60", "Pilates:50"], ["Musculação:60"], ["Musculação:60", "Pilates:50"], ["Musculação:60"], ["Musculação:60"]] },
+      { hora: "09h00", cels: [["Flexibilidade:40", "Musculação:60", "Pilates:50"], ["Musculação:60", "Sessão avaliativa:50"], ["Flexibilidade:40", "Musculação:60", "Pilates:50"], ["Musculação:60", "Sessão avaliativa:50"], ["Musculação:60", "Pilates:50", "Sessão avaliativa:50"], ["Musculação:60", "Spin MOVA:45"]] },
+      { hora: "09h30", cels: [["Musculação:60"], ["Musculação:60", "Pilates:50"], ["Musculação:60"], ["Musculação:60", "Pilates:50"], ["Musculação:60"], ["Musculação:60"]] },
+      { hora: "10h00", cels: [["Mobilidade:40", "Musculação:60"], ["Musculação:60"], ["Mobilidade:40", "Musculação:60"], ["Musculação:60"], ["Musculação:60"], ["Musculação:60", "Spin MOVA:45"]] },
+      { hora: "10h30", cels: [["Musculação:60"], ["Musculação:60", "Pilates:50"], ["Musculação:60"], ["Musculação:60", "Pilates:50"], ["Musculação:60"], ["Musculação:60"]] },
+      { hora: "11h00", cels: [["Musculação:60", "Ritmos:40"], ["Musculação:60"], ["Musculação:60", "Ritmos:40"], ["Musculação:60"], ["Musculação:60"], ["Musculação:60", "Sessão avaliativa:50"]] },
+      { hora: "11h30", cels: [["Musculação:60"], ["Musculação:60"], ["Musculação:60"], ["Musculação:60"], ["Musculação:60"], []] },
+      { hora: "12h00", cels: [["Musculação:60"], ["Musculação:60"], ["Musculação:60"], ["Musculação:60"], ["Musculação:60"], []] },
+      { hora: "15h00", cels: [["Musculação:60"], ["Musculação:60", "Sessão avaliativa:50"], ["Musculação:60"], ["Musculação:60", "Sessão avaliativa:50"], ["Musculação:60"], []] },
+      { hora: "15h30", cels: [["Musculação:60"], ["Musculação:60"], ["Musculação:60"], ["Musculação:60"], ["Musculação:60"], []] },
+      { hora: "16h00", cels: [["Musculação:60"], ["Musculação:60", "Pilates:50", "Sessão avaliativa:50"], ["Musculação:60"], ["Musculação:60", "Pilates:50", "Sessão avaliativa:50"], ["Musculação:60"], []] },
+      { hora: "16h30", cels: [["Musculação:60"], [], ["Musculação:60"], [], ["Musculação:60"], []] },
+      { hora: "17h00", cels: [["HIIT MOVA:40", "Musculação:60"], ["Musculação:60", "Pilates:50", "Sessão avaliativa:50"], ["HIIT MOVA:40", "Musculação:60"], ["Musculação:60", "Pilates:50", "Sessão avaliativa:50"], ["Musculação:60"], []] },
+      { hora: "17h30", cels: [["Musculação:60"], [], ["Musculação:60"], [], ["Musculação:60"], []] },
+      { hora: "18h00", cels: [["Musculação:60", "Ritmos:40"], ["Musculação:60", "Pilates:50", "Sessão avaliativa:50"], ["Musculação:60", "Ritmos:40"], ["Musculação:60", "Pilates:50", "Sessão avaliativa:50"], ["Musculação:60"], []] },
+      { hora: "18h30", cels: [["Musculação:60", "Spin MOVA:45"], ["Musculação:60"], ["Musculação:60", "Spin MOVA:45"], ["Musculação:60"], ["Musculação:60"], []] },
+      { hora: "19h00", cels: [["Musculação:60"], ["Musculação:60", "Pilates:50", "Spin MOVA:45"], ["Musculação:60"], ["Musculação:60", "Pilates:50", "Spin MOVA:45"], ["Musculação:60"], []] },
+      { hora: "19h30", cels: [["Spin MOVA:45"], ["Musculação:60"], ["Spin MOVA:45"], ["Musculação:60"], ["Musculação:60"], []] },
     ],
   },
 

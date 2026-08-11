@@ -4,22 +4,24 @@ import { useState, useTransition } from "react";
 import { Check, Plus, Trash2, ArrowUp, ArrowDown } from "lucide-react";
 import { salvarConteudo } from "../../actions";
 
-const DIAS = ["Segunda", "Terça", "Quarta", "Quinta", "Sexta"] as const;
+const DIAS = [
+  "Segunda",
+  "Terça",
+  "Quarta",
+  "Quinta",
+  "Sexta",
+  "Sábado",
+] as const;
 
-// Sugestões de aulas (aparecem no autocompletar de cada célula).
-const AULAS = [
-  "Spin", "Pilates", "Funcional", "Alongamento", "Abdominal",
-  "Flexibilidade", "Mobilidade", "Ritmos", "HIIT", "GAP",
-];
-
+// Cada célula é um TEXTO com uma aula por linha, no formato "Aula:duração".
+// Ex.: "Pilates:50" (duração em minutos). Vazio = sem aula.
 type Linha = { hora: string; cels: string[] };
 
 export function GradeForm({ linhasIniciais }: { linhasIniciais: Linha[] }) {
   const [linhas, setLinhas] = useState<Linha[]>(
-    // garante 5 células por linha
     linhasIniciais.map((l) => ({
       hora: l.hora,
-      cels: [0, 1, 2, 3, 4].map((i) => l.cels[i] ?? ""),
+      cels: [0, 1, 2, 3, 4, 5].map((i) => l.cels[i] ?? ""),
     })),
   );
   const [pendente, iniciar] = useTransition();
@@ -41,7 +43,7 @@ export function GradeForm({ linhasIniciais }: { linhasIniciais: Linha[] }) {
     setLinhas((a) => a.filter((_, idx) => idx !== i));
   }
   function adicionar() {
-    setLinhas((a) => [...a, { hora: "", cels: ["", "", "", "", ""] }]);
+    setLinhas((a) => [...a, { hora: "", cels: ["", "", "", "", "", ""] }]);
   }
   function mover(i: number, dir: -1 | 1) {
     setLinhas((a) => {
@@ -59,7 +61,13 @@ export function GradeForm({ linhasIniciais }: { linhasIniciais: Linha[] }) {
       .filter((l) => l.hora.trim())
       .map((l) => ({
         hora: l.hora.trim(),
-        cels: l.cels.map((c) => c.trim()),
+        // texto → lista de "Aula:duração" (1 por linha)
+        cels: l.cels.map((c) =>
+          c
+            .split("\n")
+            .map((s) => s.trim())
+            .filter(Boolean),
+        ),
       }));
     iniciar(async () => {
       const r = await salvarConteudo({
@@ -70,21 +78,19 @@ export function GradeForm({ linhasIniciais }: { linhasIniciais: Linha[] }) {
   }
 
   const campo =
-    "w-full px-2.5 py-2 rounded-lg border border-[#D5E5DB] bg-white text-sm focus:outline-none focus:border-verde focus:ring-2 focus:ring-verde/30";
+    "w-full px-2 py-1.5 rounded-lg border border-[#D5E5DB] bg-white text-sm focus:outline-none focus:border-verde focus:ring-2 focus:ring-verde/30";
 
   return (
     <div className="grid gap-4">
       <p className="text-cinza text-sm bg-verde-claro rounded-xl p-4">
-        Cada linha é um <strong>horário</strong>. Preencha a aula em cada dia —
-        deixe <strong>em branco</strong> onde não houver aula. Ex.: “Spin”,
-        “Pilates”. Você pode adicionar, remover e reordenar as linhas.
+        Cada linha é um <strong>horário</strong>. Em cada dia, escreva as aulas
+        no formato <strong>Aula:duração</strong> (uma por linha). Ex.:{" "}
+        <code>Pilates:50</code> ou <code>Spin MOVA:45</code>. Deixe em branco
+        onde não houver aula. Nomes que combinam com a legenda ganham a cor
+        certa (Musculação, Spin MOVA, Pilates, Funcional, Alongamento,
+        Abdominal, Flexibilidade, Mobilidade, Ritmos, HIIT MOVA, Sessão
+        avaliativa).
       </p>
-
-      <datalist id="aulas-sugestoes">
-        {AULAS.map((a) => (
-          <option key={a} value={a} />
-        ))}
-      </datalist>
 
       {linhas.map((l, i) => (
         <div key={i} className="rounded-2xl bg-white border border-[#DDEDE3] p-4">
@@ -130,18 +136,18 @@ export function GradeForm({ linhasIniciais }: { linhasIniciais: Linha[] }) {
               </button>
             </div>
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
             {DIAS.map((dia, d) => (
               <div key={dia}>
                 <label className="block text-xs font-semibold text-cinza mb-1">
                   {dia}
                 </label>
-                <input
+                <textarea
                   value={l.cels[d]}
                   onChange={(e) => setCel(i, d, e.target.value)}
-                  list="aulas-sugestoes"
+                  rows={2}
                   placeholder="—"
-                  className={campo}
+                  className={campo + " resize-y"}
                 />
               </div>
             ))}
