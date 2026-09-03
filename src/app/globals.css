@@ -178,17 +178,71 @@
 }
 .reveal { animation: mova-reveal 0.6s ease both; }
 
-/* Entrada suave AO ROLAR — scroll-driven puro em CSS (animation-timeline).
-   Envolto em @supports + reduced-motion: em navegador sem suporte ou com
-   "menos movimento", o conteúdo aparece normal (opacidade 1) — nunca some. */
+/* Entrada suave AO ROLAR — revelação por scroll, À PROVA DE FALHA.
+   Padrão = VISÍVEL. Só quando o JS confirma que está rodando (o script
+   inline no layout adiciona `html.reveal-on`) é que o elemento parte
+   invisível/deslocado; o RevealObserver (IntersectionObserver, funciona em
+   TODO navegador, inclusive iPhone antigo) adiciona `.is-visible` ao entrar
+   na tela. Sem JS, ou com "menos movimento", nada some — o conteúdo aparece
+   normal. Há ainda uma rede de segurança (timer no layout) que revela tudo
+   depois de 2,5s caso algo falhe. */
 @media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: view()) {
-    .reveal-scroll {
-      opacity: 0;
-      animation: mova-reveal 0.7s ease both;
-      animation-timeline: view();
-      animation-range: entry 5% entry 55%;
+  html.reveal-on .reveal-scroll {
+    opacity: 0;
+    transform: translateY(26px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  /* Variações de direção (movimento variado, estilo AOS) */
+  html.reveal-on .reveal-scroll.from-left {
+    transform: translateX(-42px);
+  }
+  html.reveal-on .reveal-scroll.from-right {
+    transform: translateX(42px);
+  }
+  html.reveal-on .reveal-scroll.zoom {
+    transform: scale(0.93);
+  }
+  /* Pequeno atraso opcional pra escalonar cartões vizinhos */
+  html.reveal-on .reveal-scroll.atraso-1 {
+    transition-delay: 0.08s;
+  }
+  html.reveal-on .reveal-scroll.atraso-2 {
+    transition-delay: 0.16s;
+  }
+  html.reveal-on .reveal-scroll.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Orbs/brilhos que boiam de leve no hero (decorativo, atrás do conteúdo). */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes mova-boia {
+    0%,
+    100% {
+      transform: translate(0, 0);
     }
+    50% {
+      transform: translate(18px, -22px);
+    }
+  }
+  @keyframes mova-boia-2 {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    50% {
+      transform: translate(-16px, 18px) scale(1.08);
+    }
+  }
+  .orb-boia {
+    animation: mova-boia 13s ease-in-out infinite;
+  }
+  .orb-boia-2 {
+    animation: mova-boia-2 16s ease-in-out infinite;
   }
 }
 

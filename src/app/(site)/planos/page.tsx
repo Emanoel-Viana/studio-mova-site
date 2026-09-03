@@ -23,7 +23,7 @@ export default async function Planos() {
       />
 
       <section className="py-10 sm:py-14 lg:py-20">
-        <div className="container-mova">
+        <div className="container-mova reveal-scroll">
           <SeletorPlanos catalogo={site.catalogo} />
           <p className="mt-10 text-center text-cinza max-w-2xl mx-auto">
             Quanto maior o período, melhor o valor por mês. Na sessão avaliativa
@@ -70,7 +70,7 @@ export default async function Planos() {
 
       {/* Grade de aulas / modalidades */}
       <section className="py-12 lg:py-16 bg-verde-claro">
-        <div className="container-mova">
+        <div className="container-mova reveal-scroll">
           <div className="text-center mb-10">
             <span className="eyebrow">Nossas modalidades</span>
             <h2 className="section-title">Conheça todas as nossas aulas</h2>
@@ -85,7 +85,7 @@ export default async function Planos() {
 
       {/* Formas de pagamento */}
       <section className="py-12 lg:py-16 bg-cinza-claro">
-        <div className="container-mova">
+        <div className="container-mova reveal-scroll">
           <span className="eyebrow">Pagamento</span>
           <h2 className="section-title">Formas de pagamento</h2>
           <p className="lead mb-8">
@@ -110,7 +110,7 @@ export default async function Planos() {
         id="parcerias"
         className="py-10 sm:py-14 lg:py-20 bg-verde-claro scroll-mt-24"
       >
-        <div className="container-mova">
+        <div className="container-mova reveal-scroll">
           <span className="eyebrow">Parcerias</span>
           <h2 className="section-title">Use seu benefício corporativo</h2>
           <p className="lead mb-10">
@@ -151,7 +151,7 @@ export default async function Planos() {
       </section>
 
       <section className="py-10 sm:py-14 lg:py-20 text-center">
-        <div className="container-mova">
+        <div className="container-mova reveal-scroll">
           <h2 className="section-title">Ainda com dúvida sobre o plano ideal?</h2>
           <p className="lead mx-auto mb-8">
             Fale com a gente no WhatsApp — a gente te ajuda a escolher.

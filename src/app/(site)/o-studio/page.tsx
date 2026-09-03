@@ -49,7 +49,7 @@ export default function OStudio() {
       />
 
       <section className="py-10 sm:py-14 lg:py-20">
-        <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-12 items-center reveal-scroll">
           <Foto
             src="/fotos/galeria/studio-mova-43.jpg"
             label="Espaço do Studio MOVA"
@@ -76,7 +76,7 @@ export default function OStudio() {
 
       {/* Comodidades */}
       <section className="py-10 sm:py-14 lg:py-20 bg-verde-claro">
-        <div className="container-mova">
+        <div className="container-mova reveal-scroll">
           <span className="eyebrow">Estrutura</span>
           <h2 className="section-title">O que você encontra por aqui</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
@@ -95,7 +95,7 @@ export default function OStudio() {
 
       {/* Galeria */}
       <section className="py-10 sm:py-14 lg:py-20">
-        <div className="container-mova">
+        <div className="container-mova reveal-scroll">
           <span className="eyebrow">Galeria</span>
           <h2 className="section-title">Dê uma espiada no espaço</h2>
           <p className="text-cinza">Toque em qualquer foto para ampliar.</p>
@@ -104,7 +104,7 @@ export default function OStudio() {
       </section>
 
       <section className="py-10 sm:py-14 lg:py-20 bg-preto text-white text-center">
-        <div className="container-mova">
+        <div className="container-mova reveal-scroll">
           <h2 className="section-title">Venha conhecer pessoalmente</h2>
           <p className="lead mx-auto mb-8 !text-[#B9C6BF]">
             A melhor forma de sentir o MOVA é vivendo o espaço. Agende sua
