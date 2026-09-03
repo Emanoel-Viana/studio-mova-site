@@ -14,11 +14,22 @@ export type ResultadoContato =
   | { ok: false; erro: string };
 
 // Confere o token do Turnstile junto ao Cloudflare (siteverify).
-// Se o segredo não estiver configurado, a verificação é pulada — assim o
-// formulário continua funcionando antes das chaves serem definidas.
+// Regra do segredo ausente:
+//   - se a SITE key existe, o captcha DEVERIA estar ativo → config quebrada
+//     → RECUSA (fail-closed), pra não desligar o anti-spam silenciosamente;
+//   - se nem a SITE key existe, o captcha está intencionalmente desligado
+//     (fallback "antes das chaves") → segue.
 async function verificarCaptcha(token: string): Promise<boolean> {
   const SECRET = process.env.TURNSTILE_SECRET_KEY;
-  if (!SECRET) return true; // captcha ainda não configurado
+  if (!SECRET) {
+    if (process.env.TURNSTILE_SITE_KEY) {
+      console.error(
+        "Turnstile mal configurado (contato): SITE key presente, SECRET ausente — recusando.",
+      );
+      return false;
+    }
+    return true; // captcha intencionalmente desligado
+  }
   if (!token) return false;
 
   try {
@@ -40,9 +51,11 @@ async function verificarCaptcha(token: string): Promise<boolean> {
 export async function enviarContato(
   dados: Payload,
 ): Promise<ResultadoContato> {
-  const nome = dados.nome?.trim();
-  const assunto = dados.assunto?.trim();
-  const mensagem = dados.mensagem?.trim();
+  // Limita o tamanho no servidor (o cliente é só UI — a action pode ser
+  // chamada direto). Evita payloads gigantes e abuso de armazenamento.
+  const nome = dados.nome?.trim().slice(0, 120);
+  const assunto = dados.assunto?.trim().slice(0, 80);
+  const mensagem = dados.mensagem?.trim().slice(0, 2000);
 
   if (!nome) return { ok: false, erro: "Informe seu nome." };
 

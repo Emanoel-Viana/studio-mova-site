@@ -6,11 +6,21 @@ import { createClient } from "@/lib/supabase/server";
 
 export type EstadoLogin = { erro?: string };
 
-// Confere o token do Turnstile no Cloudflare. Se o segredo não estiver
-// configurado, pula (fail-open) — o login ainda exige e-mail/senha corretos.
+// Confere o token do Turnstile no Cloudflare. No login, o captcha é a única
+// barreira extra contra força bruta — então, se a SITE key existe mas o
+// SECRET sumiu (config quebrada), RECUSA (fail-closed) em vez de liberar
+// silenciosamente. Sem nenhuma das chaves = captcha desligado de propósito.
 async function verificarTurnstile(token: string): Promise<boolean> {
   const SECRET = process.env.TURNSTILE_SECRET_KEY;
-  if (!SECRET) return true;
+  if (!SECRET) {
+    if (process.env.TURNSTILE_SITE_KEY) {
+      console.error(
+        "Turnstile mal configurado (login): SITE key presente, SECRET ausente — recusando.",
+      );
+      return false;
+    }
+    return true;
+  }
   if (!token) return false;
   try {
     const resp = await fetch(
@@ -96,7 +106,12 @@ export async function salvarConteudo(
     .eq("id", 1)
     .select("id");
 
-  if (error) return { erro: error.message };
+  if (error) {
+    // Não devolve a mensagem crua do banco ao cliente (pode revelar nomes de
+    // coluna/constraint). Loga internamente e responde genérico.
+    console.error("Falha ao salvar conteúdo:", error.message);
+    return { erro: "Não foi possível salvar. Tente de novo." };
+  }
   if (!afetadas || afetadas.length === 0) {
     return {
       erro: "Não foi possível salvar: registro base de conteúdo não encontrado. Avise o suporte.",

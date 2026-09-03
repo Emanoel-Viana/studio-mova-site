@@ -89,7 +89,12 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          // Escapa "<" (→ <) pra que nenhum valor consiga fechar o
+          // <script> e injetar código (defesa preventiva: hoje o jsonLd é
+          // 100% estático, mas fica seguro se um dia usar dado do banco).
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+          }}
         />
         <ServiceWorkerRegister />
         {children}

@@ -33,6 +33,7 @@ export default async function LayoutProtegido({
             <Link
               href="/"
               target="_blank"
+              rel="noopener noreferrer"
               className="hidden sm:inline-flex items-center gap-1.5 text-sm text-[#D9E6DE] hover:text-white px-3 py-2"
             >
               <ExternalLink size={16} aria-hidden />
