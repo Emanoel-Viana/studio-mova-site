@@ -38,7 +38,7 @@ export default async function Home() {
         {/* brilhos decorativos (profundidade/calor) */}
         <div
           aria-hidden
-          className="pointer-events-none absolute -top-24 -right-16 w-80 h-80 rounded-full"
+          className="orb-boia pointer-events-none absolute -top-24 -right-16 w-80 h-80 rounded-full"
           style={{
             background: "radial-gradient(circle, #9CF7C4 0%, transparent 70%)",
             filter: "blur(50px)",
@@ -47,7 +47,7 @@ export default async function Home() {
         />
         <div
           aria-hidden
-          className="pointer-events-none absolute -bottom-16 -left-12 w-72 h-72 rounded-full"
+          className="orb-boia-2 pointer-events-none absolute -bottom-16 -left-12 w-72 h-72 rounded-full"
           style={{
             background: "radial-gradient(circle, #0E6B41 0%, transparent 70%)",
             filter: "blur(55px)",

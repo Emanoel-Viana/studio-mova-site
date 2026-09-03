@@ -203,6 +203,22 @@
   animation: mova-ticker 30s linear infinite;
 }
 
+/* Orbs/brilhos do hero que boiam de leve (100% decorativo, atrás do
+   conteúdo — nunca escondem nada). Só quando o usuário não pediu "menos
+   movimento". */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes mova-boia {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(18px, -22px); }
+  }
+  @keyframes mova-boia-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(-16px, 18px) scale(1.08); }
+  }
+  .orb-boia { animation: mova-boia 13s ease-in-out infinite; }
+  .orb-boia-2 { animation: mova-boia-2 16s ease-in-out infinite; }
+}
+
 /* ============================================================
    MODO ESCURO (ativado por `html.dark`, via botão no header)
    Estratégia: inverter só os tokens usados EXCLUSIVAMENTE como texto
