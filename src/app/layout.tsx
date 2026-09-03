@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo, Inter } from "next/font/google";
+import { headers } from "next/headers";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
@@ -70,9 +71,12 @@ const jsonLd = {
   sameAs: [site.contato.instagramUrl, ...site.parcerias.map((p) => p.url)],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  // Nonce gerado pelo proxy.ts — libera SÓ os nossos scripts inline sob a CSP.
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
+
   return (
     <html
       lang="pt-BR"
@@ -82,6 +86,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         {/* Aplica o tema salvo ANTES da tela pintar (evita "piscar" claro→escuro). */}
         <script
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html:
               "(function(){try{if(localStorage.getItem('tema')==='dark'){document.documentElement.classList.add('dark')}}catch(e){}})()",
@@ -89,6 +94,7 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
+          nonce={nonce}
           // Escapa "<" (→ <) pra que nenhum valor consiga fechar o
           // <script> e injetar código (defesa preventiva: hoje o jsonLd é
           // 100% estático, mas fica seguro se um dia usar dado do banco).

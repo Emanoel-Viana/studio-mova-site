@@ -1,25 +1,9 @@
 import type { NextConfig } from "next";
 
-// Content-Security-Policy: limita de onde o site pode carregar scripts,
-// estilos, imagens, etc. — mitiga injeção de código (XSS).
-// Origens externas usadas: Cloudflare Turnstile (captcha) e Cloudflare
-// Web Analytics (script + beacon), Supabase (API/realtime do admin).
-// Validado em report-only (0 violações com Turnstile+Analytics no ar) →
-// agora em modo ENFORCE (bloqueia origens não listadas).
-const csp = [
-  "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://static.cloudflareinsights.com",
-  "style-src 'self' 'unsafe-inline'",
-  "img-src 'self' data: blob: https:",
-  "font-src 'self' data:",
-  "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://challenges.cloudflare.com",
-  "frame-src https://challenges.cloudflare.com",
-  "object-src 'none'",
-  "base-uri 'self'",
-  "form-action 'self'",
-  "frame-ancestors 'self'",
-  "upgrade-insecure-requests",
-].join("; ");
+// A Content-Security-Policy agora é montada no `proxy.ts`, com um NONCE
+// único por request (script-src sem 'unsafe-inline'). Por isso ela NÃO está
+// mais aqui — se estivesse, viriam 2 CSPs e o navegador aplicaria a
+// interseção das duas, quebrando os scripts.
 
 // Headers de segurança aplicados a todas as rotas.
 const securityHeaders = [
@@ -39,8 +23,7 @@ const securityHeaders = [
     key: "Permissions-Policy",
     value: "camera=(), microphone=(), geolocation=(), browsing-topics=()",
   },
-  // CSP em modo enforce: bloqueia scripts/recursos de origens não listadas.
-  { key: "Content-Security-Policy", value: csp },
+  // (A Content-Security-Policy vem do proxy.ts, com nonce por request.)
 ];
 
 const nextConfig: NextConfig = {
