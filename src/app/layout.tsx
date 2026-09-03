@@ -4,7 +4,6 @@ import { headers } from "next/headers";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
-import { RevealObserver } from "@/components/RevealObserver";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -85,15 +84,12 @@ export default async function RootLayout({
       className={`${archivo.variable} ${inter.variable} h-full`}
     >
       <body className="min-h-full flex flex-col">
-        {/* Antes da tela pintar: aplica o tema salvo (evita "piscar") e liga o
-            modo de revelação ao rolar (html.reveal-on) só se houver suporte e o
-            usuário não pediu "menos movimento". A rede de segurança de 2,5s
-            garante que o conteúdo apareça mesmo se o React não hidratar. */}
+        {/* Aplica o tema salvo ANTES da tela pintar (evita "piscar" claro→escuro). */}
         <script
           nonce={nonce}
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var d=document.documentElement;if(localStorage.getItem('tema')==='dark'){d.classList.add('dark')}if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&'IntersectionObserver' in window){d.classList.add('reveal-on');setTimeout(function(){var a=document.querySelectorAll('.reveal-scroll');for(var i=0;i<a.length;i++){a[i].classList.add('is-visible')}},2500)}}catch(e){}})()",
+              "(function(){try{if(localStorage.getItem('tema')==='dark'){document.documentElement.classList.add('dark')}}catch(e){}})()",
           }}
         />
         <script
@@ -107,7 +103,6 @@ export default async function RootLayout({
           }}
         />
         <ServiceWorkerRegister />
-        <RevealObserver />
         {children}
       </body>
     </html>

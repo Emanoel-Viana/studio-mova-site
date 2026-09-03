@@ -59,7 +59,7 @@ export default function Metodologia() {
 
       {/* Infográfico das 3 etapas (nativo) */}
       <section className="py-10 sm:py-14 lg:py-20">
-        <div className="container-mova text-center reveal-scroll">
+        <div className="container-mova text-center">
           <span className="eyebrow">As 3 etapas</span>
           <h2 className="section-title">Como é cada treino no MOVA</h2>
           <p className="lead mx-auto mb-2">
@@ -88,7 +88,7 @@ export default function Metodologia() {
 
       {/* Diferenciais — por que funciona */}
       <section className="py-10 sm:py-14 lg:py-20 bg-cinza-claro">
-        <div className="container-mova reveal-scroll">
+        <div className="container-mova">
           <span className="eyebrow">Por que o método funciona</span>
           <h2 className="section-title">O que você não encontra na academia comum</h2>
           <p className="lead mb-10 max-w-[60ch]">
@@ -119,7 +119,7 @@ export default function Metodologia() {
 
       {/* Reabilitação */}
       <section className="py-10 sm:py-14 lg:py-20 bg-verde-claro">
-        <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-12 items-center reveal-scroll">
+        <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div>
             <span className="eyebrow">Treino adaptado</span>
             <h2 className="section-title">Reabilitação e movimento seguro</h2>
@@ -162,7 +162,7 @@ export default function Metodologia() {
 
       {/* Sessão avaliativa */}
       <section className="py-10 sm:py-14 lg:py-20">
-        <div className="container-mova reveal-scroll">
+        <div className="container-mova">
           <div className="rounded-3xl bg-verde-escuro text-white p-6 sm:p-8 lg:p-12">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
               <div>
@@ -205,7 +205,7 @@ export default function Metodologia() {
       </section>
 
       <section className="pb-16 lg:pb-24 text-center">
-        <div className="container-mova reveal-scroll">
+        <div className="container-mova">
           <Activity
             className="mx-auto text-verde-medio mb-4"
             size={36}

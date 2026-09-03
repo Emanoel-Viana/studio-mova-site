@@ -21,7 +21,7 @@ export default async function FAQ() {
       />
 
       <section className="py-10 sm:py-14 lg:py-20">
-        <div className="container-mova max-w-3xl reveal-scroll">
+        <div className="container-mova max-w-3xl">
           <div className="grid gap-3">
             {perguntas.map((item) => (
               <details

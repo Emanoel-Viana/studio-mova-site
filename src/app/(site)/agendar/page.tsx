@@ -35,7 +35,7 @@ export default async function Agendar() {
       />
 
       <section className="py-10 sm:py-14 lg:py-20">
-        <div className="container-mova reveal-scroll">
+        <div className="container-mova">
           {embed ? (
             <>
               <div className="rounded-2xl overflow-hidden border border-[#DDEDE3] bg-white">

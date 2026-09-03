@@ -23,7 +23,7 @@ export default async function Horarios() {
       />
 
       <section className="py-10 sm:py-14 lg:py-20">
-        <div className="container-mova reveal-scroll">
+        <div className="container-mova">
           <GradeHorarios grade={site.grade} />
 
           <p className="text-sm text-cinza mt-4 flex items-start gap-2">

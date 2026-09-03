@@ -21,7 +21,7 @@ export default async function Equipe() {
       />
 
       <section className="py-10 sm:py-14 lg:py-20">
-        <div className="container-mova reveal-scroll">
+        <div className="container-mova">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {site.equipe.map((pessoa) => (
               <div key={pessoa.nome} className="text-center">
@@ -51,7 +51,7 @@ export default async function Equipe() {
       </section>
 
       <section className="py-10 sm:py-14 lg:py-20 bg-verde-claro text-center">
-        <div className="container-mova reveal-scroll">
+        <div className="container-mova">
           <h2 className="section-title">Treine com quem se importa</h2>
           <p className="lead mx-auto mb-8">
             Venha conhecer a equipe pessoalmente na sua sessão avaliativa.
