@@ -19,6 +19,7 @@ import { getContent } from "@/lib/content";
 import { Contador } from "@/components/Contador";
 import { QuizModalidade } from "./QuizModalidade";
 import { GradeAulas } from "./planos/GradeAulas";
+import { HistoriasAlunos } from "@/components/HistoriasAlunos";
 
 const catalogoIcones: Record<string, typeof Dumbbell> = {
   dumbbell: Dumbbell,
@@ -599,6 +600,19 @@ export default async function Home() {
               Ver as {site.avaliacao.total} avaliações no {site.avaliacao.fonte}
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* HISTÓRIAS DE ALUNOS (vídeos do Instagram) */}
+      <section className="py-12 sm:py-16 lg:py-24 bg-cinza-claro">
+        <div className="container-mova reveal-scroll">
+          <span className="eyebrow">Histórias reais</span>
+          <h2 className="section-title">Histórias de quem treina aqui</h2>
+          <p className="lead mb-10 max-w-[60ch]">
+            Alunos de verdade contando o que mudou depois que começaram no MOVA.
+            Toque em um vídeo para assistir.
+          </p>
+          <HistoriasAlunos />
         </div>
       </section>
 
