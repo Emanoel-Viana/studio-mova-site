@@ -234,6 +234,7 @@ export const site = {
         "Melhora a postura",
         "Mais equilíbrio e estabilidade",
         "Previne dores e lesões",
+        "Melhor desempenho no dia a dia e nos treinos",
       ],
     },
     {
@@ -245,9 +246,10 @@ export const site = {
         "Alivia tensões musculares, aumenta a mobilidade e proporciona relaxamento. Ideal para mais leveza e recuperação.",
       beneficios: [
         "Reduz tensões musculares",
+        "Melhora a postura",
         "Aumenta a amplitude dos movimentos",
         "Diminui o estresse",
-        "Auxilia na recuperação",
+        "Auxilia na recuperação muscular",
       ],
     },
     {
@@ -262,6 +264,7 @@ export const site = {
         "Melhora a mobilidade articular",
         "Reduz a rigidez muscular",
         "Previne lesões",
+        "Mais conforto no dia a dia",
       ],
     },
     {
@@ -273,8 +276,9 @@ export const site = {
         "Treino dinâmico com movimentos naturais do corpo: força, resistência, equilíbrio, coordenação e agilidade.",
       beneficios: [
         "Fortalecimento global",
-        "Melhora o condicionamento",
-        "Desenvolve a coordenação",
+        "Melhora o condicionamento físico",
+        "Desenvolve a coordenação motora",
+        "Mais equilíbrio e estabilidade",
         "Alta queima calórica",
       ],
     },
@@ -290,6 +294,7 @@ export const site = {
         "Mais resistência muscular",
         "Definição corporal",
         "Mais estabilidade e equilíbrio",
+        "Auxilia na prevenção de lesões",
       ],
     },
     {
@@ -303,6 +308,7 @@ export const site = {
         "Melhora a mobilidade articular",
         "Movimentos mais eficientes",
         "Reduz o risco de lesões",
+        "Melhor desempenho em outras modalidades",
         "Mais autonomia e qualidade de vida",
       ],
     },
@@ -315,9 +321,10 @@ export const site = {
         "Dança, música e movimento para melhorar o condicionamento, estimular a coordenação e tornar o treino mais divertido.",
       beneficios: [
         "Alto gasto calórico",
-        "Condicionamento cardiovascular",
-        "Desenvolve a coordenação",
-        "Mais disposição e alegria",
+        "Melhora o condicionamento cardiovascular",
+        "Desenvolve a coordenação motora",
+        "Mais disposição e autoestima",
+        "Bem-estar e diversão",
       ],
     },
     {
@@ -331,7 +338,9 @@ export const site = {
         "Alto gasto calórico",
         "Fortalece os membros inferiores",
         "Melhora a capacidade cardiovascular",
+        "Aumenta a resistência física",
         "Baixo impacto nas articulações",
+        "Treino dinâmico e motivador",
       ],
     },
     {
@@ -345,7 +354,9 @@ export const site = {
         "Fortalece o core",
         "Melhora a postura",
         "Ganho de flexibilidade e mobilidade",
-        "Mais consciência corporal",
+        "Mais equilíbrio e coordenação",
+        "Alívio de dores musculares",
+        "Mais consciência corporal e qualidade de vida",
       ],
     },
     {
