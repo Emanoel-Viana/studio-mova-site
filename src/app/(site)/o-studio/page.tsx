@@ -108,7 +108,7 @@ export default function OStudio() {
           <h2 className="section-title">Venha conhecer pessoalmente</h2>
           <p className="lead mx-auto mb-8 !text-[#B9C6BF]">
             A melhor forma de sentir o MOVA é vivendo o espaço. Agende sua
-            sessão avaliativa.
+            avaliação gratuita — sem compromisso.
           </p>
           <a
             href={waLink(
@@ -118,7 +118,7 @@ export default function OStudio() {
             rel="noopener"
             className="btn btn-coral text-lg"
           >
-            Agendar visita
+            Agendar avaliação gratuita
           </a>
         </div>
       </section>

@@ -105,7 +105,7 @@ export default async function Home() {
                 rel="noopener"
                 className="btn btn-coral text-lg group"
               >
-                Agende sua sessão avaliativa
+                Agende sua avaliação gratuita
                 <ArrowRight
                   size={20}
                   className="transition-transform group-hover:translate-x-1"
@@ -442,7 +442,7 @@ export default async function Home() {
             rel="noopener"
             className="btn btn-coral text-lg"
           >
-            Agendar minha sessão avaliativa
+            Agendar minha avaliação gratuita
           </a>
         </div>
       </section>

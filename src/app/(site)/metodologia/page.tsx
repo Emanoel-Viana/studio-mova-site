@@ -179,7 +179,7 @@ export default function Metodologia() {
                   rel="noopener"
                   className="btn btn-coral text-lg"
                 >
-                  Agendar sessão avaliativa
+                  Agendar avaliação gratuita
                 </a>
                 <p className="flex items-start gap-2.5 text-sm text-[#9FD9BC] mt-5">
                   <Check size={18} className="shrink-0 mt-0.5" aria-hidden />
@@ -224,7 +224,7 @@ export default function Metodologia() {
             rel="noopener"
             className="btn btn-coral text-lg"
           >
-            Agendar sessão avaliativa
+            Agendar avaliação gratuita
           </a>
         </div>
       </section>

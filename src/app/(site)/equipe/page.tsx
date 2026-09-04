@@ -64,7 +64,7 @@ export default async function Equipe() {
             rel="noopener"
             className="btn btn-coral text-lg"
           >
-            Agendar sessão avaliativa
+            Agendar avaliação gratuita
           </a>
         </div>
       </section>

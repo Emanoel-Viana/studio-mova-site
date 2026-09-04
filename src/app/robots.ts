@@ -6,6 +6,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
+      // Não indexar a área administrativa nem as rotas de API.
+      disallow: ["/admin", "/api"],
     },
     sitemap: `${site.url}/sitemap.xml`,
   };
