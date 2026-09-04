@@ -53,8 +53,11 @@ const jsonLd = {
   name: site.nome,
   slogan: site.slogan,
   url: site.url,
+  image: `${site.url}/fotos/galeria/studio-mova-43.jpg`,
+  logo: `${site.url}/marca/icon-512.png`,
   telephone: `+${site.contato.whatsapp}`,
   email: site.contato.email,
+  priceRange: "R$$",
   address: {
     "@type": "PostalAddress",
     streetAddress: `${site.endereco.linha1}, ${site.endereco.linha2}`,
@@ -63,6 +66,34 @@ const jsonLd = {
     postalCode: site.endereco.cep,
     addressCountry: "BR",
   },
+  // Horários de funcionamento (schema.org, formato HH:MM por dia).
+  // ⚠️ Se mudar `site.horarios`, atualizar aqui também.
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Wednesday", "Friday"],
+      opens: "06:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Tuesday", "Thursday"],
+      opens: "06:00",
+      closes: "13:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Tuesday", "Thursday"],
+      opens: "15:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "07:00",
+      closes: "12:00",
+    },
+  ],
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: site.avaliacao.nota,
