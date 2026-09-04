@@ -82,8 +82,8 @@ export const site = {
           },
         ],
         complementares: [
-          "Abdominal", "Alongamento", "Flexibilidade", "Mobilidade",
-          "GAP", "Funcional", "Ritmos",
+          "Bike", "HIIT", "Funcional", "GAP", "Mobilidade",
+          "Flexibilidade", "Ritmos", "Abdominal",
         ],
       },
       {
@@ -131,8 +131,8 @@ export const site = {
           },
         ],
         complementares: [
-          "Abdominal", "Alongamento", "Flexibilidade", "Mobilidade",
-          "GAP", "Funcional", "Ritmos",
+          "Bike", "HIIT", "Funcional", "GAP", "Mobilidade",
+          "Flexibilidade", "Ritmos", "Abdominal",
         ],
       },
     ],
@@ -433,7 +433,7 @@ export const site = {
     },
     {
       q: "Quais são os planos e valores?",
-      a: "Você escolhe a modalidade que quer treinar — Musculação, Spin ou Pilates — e a frequência (2x ou 3x por semana). Musculação e Pilates têm níveis (Essencial, Equilíbrio e Performance, que liberam as aulas coletivas complementares: Abdominal, Alongamento, Flexibilidade, Mobilidade, GAP, Funcional e Ritmos). E há os planos completos MOVA Clube e Club Premium, que reúnem várias modalidades numa rotina só. Cada plano tem valores Mensal, Semestral e Anual (quanto maior o período, melhor o valor por mês). Veja tudo, com preços, na página de Planos.",
+      a: "Você escolhe a modalidade que quer treinar — Musculação, Spin ou Pilates — e a frequência (2x ou 3x por semana). Musculação e Pilates têm níveis (Essencial, Equilíbrio e Performance, que liberam as aulas coletivas complementares: Bike, HIIT, Funcional, GAP, Mobilidade, Flexibilidade, Ritmos e Abdominal). E há os planos completos MOVA Clube e Club Premium, que reúnem várias modalidades numa rotina só. Cada plano tem valores Mensal, Semestral e Anual (quanto maior o período, melhor o valor por mês). Veja tudo, com preços, na página de Planos.",
     },
     {
       q: "Quais as formas de pagamento?",
