@@ -24,7 +24,7 @@ export const site = {
   },
 
   endereco: {
-    linha1: "SHCN EQN 102/103, Ed. Estação 102",
+    linha1: "SHCN EQN 102/103, Ed. Avenida 102",
     linha2: "Sala 9A, 1º andar — Asa Norte",
     cidade: "Brasília/DF",
     cep: "70722-400",
@@ -446,15 +446,15 @@ export const site = {
     },
     {
       q: "Como funciona pelo Wellhub?",
-      a: "Aceitamos a partir do plano Gold (Gold, Gold+, Platinum, Diamond e Diamond+). Você tem 2 check-ins por semana, e a sessão avaliativa já conta como 1 check-in. Todos os agendamentos, reagendamentos e cancelamentos são feitos direto pelo app da Wellhub — as vagas são liberadas com cerca de 5 dias de antecedência.",
+      a: "Aceitamos a partir do Gold. No plano Gold você faz musculação; já no Gold+ (e acima — Platinum, Diamond, Diamond+) você tem musculação e também as aulas coletivas. Os limites são mensais e cada atividade tem o seu — por exemplo, no Gold+: musculação 8, Pilates 12, Spin 12 e as demais coletivas 12 por mês, sempre com 1 check-in por dia. A gente sugere umas 2 vezes por semana pela constância, mas você organiza como quiser. A sessão avaliativa já conta como 1 check-in — e nela você já é avaliado e já treina na prática. Agendar, remarcar e cancelar é tudo pelo app da Wellhub (as vagas abrem cerca de 5 dias antes).",
     },
     {
       q: "Como funciona pelo TotalPass?",
-      a: "Aceitamos a partir do plano TP5+ (TP5+, TP6 e TP7), com direito a 3 check-ins por semana. Aqui o agendamento é feito via WhatsApp com a nossa especialista: toda sexta-feira da semana anterior você envia seus dias e horários disponíveis, e ela confirma sua agenda da semana seguinte.",
+      a: "Aceitamos a partir do TP5+ (TP5+, TP6 e TP7) — o TP5 comum, sem o '+', não é aceito. Pelo TotalPass o acesso é à musculação (as aulas coletivas ficam disponíveis no Wellhub Gold+ ou no plano regular). São até 12 check-ins por mês (limite mensal, com 1 por dia; sugerimos ~2 por semana). A sessão avaliativa já conta como 1 check-in. Agendar, remarcar e cancelar é tudo pelo próprio app do TotalPass.",
     },
     {
       q: "Onde fica o Studio?",
-      a: "Estamos na Asa Norte, Brasília — SHCN EQN 102/103, Ed. Estação 102, Sala 9A, 1º andar. Pertinho da quadra residencial, em um espaço climatizado e acolhedor.",
+      a: "Estamos na Asa Norte, Brasília — SHCN EQN 102/103, Ed. Avenida 102, Sala 9A, 1º andar. Pertinho da quadra residencial, em um espaço climatizado e acolhedor.",
     },
   ],
 

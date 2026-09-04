@@ -526,6 +526,10 @@ export default async function Home() {
               · {site.avaliacao.total} avaliações no {site.avaliacao.fonte}
             </span>
           </div>
+          <p className="text-[#DFF5E8] text-sm mt-2">
+            Você também encontra avaliações reais de alunos no Google e no
+            Wellhub.
+          </p>
           <div className="grid md:grid-cols-3 gap-6 mt-10 items-start">
             {site.depoimentos.map((d) => {
               const iniciais = d.autor
