@@ -17,7 +17,7 @@ export default async function Equipe() {
       <PageHero
         eyebrow="Equipe"
         titulo="Quem cuida de você no MOVA"
-        descricao="Profissionais dedicados, que conhecem você pelo nome e acompanham cada movimento do seu treino."
+        descricao="Educadores físicos com pós em treino funcional, reabilitação e fortalecimento — e mais de 10 anos de experiência. Profissionais que conhecem você pelo nome e acompanham cada movimento do seu treino."
       />
 
       <section className="py-10 sm:py-14 lg:py-20">

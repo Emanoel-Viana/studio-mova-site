@@ -228,8 +228,10 @@ export default async function Home() {
       {/* NÚMEROS */}
       <section className="py-12 lg:py-16 bg-verde-escuro text-white">
         <div className="container-mova">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-9 text-center">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-9 text-center">
             {[
+              { num: "+150", label: "alunos já passaram pelo MOVA" },
+              { num: "+10", label: "anos de experiência dos professores" },
               { num: "4", label: "alunos por turma, no máximo" },
               { num: `+${site.aulas.length}`, label: "aulas e modalidades pra escolher" },
               {
