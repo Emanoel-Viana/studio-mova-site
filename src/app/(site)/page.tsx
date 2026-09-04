@@ -73,6 +73,9 @@ export default async function Home() {
               — <Contador value={site.avaliacao.total} /> avaliações no{" "}
               {site.avaliacao.fonte}
             </div>
+            <p className="font-display font-bold uppercase tracking-[0.16em] text-[0.78rem] sm:text-sm text-[#9BE8BF] mb-2">
+              Para quem não quer academia
+            </p>
             <h1 className="text-[clamp(1.8rem,6.5vw,4rem)] leading-[1.08] mb-3">
               {site.slogan}
             </h1>

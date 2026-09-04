@@ -12,7 +12,7 @@ export const site = {
   // Pilares da marca (faixa elegante no hero).
   pilares: ["Saúde", "Força", "Equilíbrio", "Bem-estar"],
   descricao:
-    "Musculação, Spin, Pilates e aulas coletivas para todas as idades. Academia boutique na Asa Norte, Brasília, com treino personalizado em turmas de até 4 alunos e professor ao seu lado do início ao fim.",
+    "Para quem não quer academia: musculação, Spin, Pilates e aulas coletivas em turmas de até 4 alunos, com professor ao seu lado do início ao fim. Studio boutique acolhedor na Asa Norte, Brasília — para todas as idades.",
   url: "https://studiomova.com.br",
 
   contato: {
@@ -566,6 +566,13 @@ export const site = {
       texto:
         "Infraestrutura excelente, ambiente climatizado, ótima localização, mas o melhor do Studio MOVA é a personal. Juliana é uma profissional dedicada, animada, capacitada... e uma pessoa incrível! Recomendadíssimo!",
       autor: "Marly Osugi",
+      foto: "",
+      fonte: "",
+    },
+    {
+      texto:
+        "A importância do Studio Mova pra mim é essa: meu bem-estar físico e mental, principalmente.",
+      autor: "Diana Lopes",
       foto: "",
       fonte: "",
     },
