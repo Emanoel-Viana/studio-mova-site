@@ -6,7 +6,7 @@ type Props = {
 
 export function PageHero({ eyebrow, titulo, descricao }: Props) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-verde-medio to-[#14744A] text-white py-10 sm:py-14 lg:py-20">
+    <section className="relative overflow-hidden bg-gradient-to-br from-verde-medio to-[#14744A] text-white py-8 sm:py-10 lg:py-14">
       {/* Brilhos decorativos que boiam (atrás do conteúdo, nunca escondem nada) */}
       <div
         aria-hidden

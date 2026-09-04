@@ -34,7 +34,7 @@ export default async function Agendar() {
         descricao="Fale com a gente e marque sua sessão avaliativa gratuita — atendimento humano, sem compromisso."
       />
 
-      <section className="py-10 sm:py-14 lg:py-20">
+      <section className="py-8 sm:py-10 lg:py-14">
         <div className="container-mova">
           {embed ? (
             <>

@@ -58,7 +58,7 @@ export default function Metodologia() {
       />
 
       {/* Infográfico das 3 etapas (nativo) */}
-      <section className="py-10 sm:py-14 lg:py-20">
+      <section className="py-8 sm:py-10 lg:py-14">
         <div className="container-mova text-center">
           <span className="eyebrow">As 3 etapas</span>
           <h2 className="section-title">Como é cada treino no MOVA</h2>
@@ -87,7 +87,7 @@ export default function Metodologia() {
       </section>
 
       {/* Diferenciais — por que funciona */}
-      <section className="py-10 sm:py-14 lg:py-20 bg-cinza-claro">
+      <section className="py-8 sm:py-10 lg:py-14 bg-cinza-claro">
         <div className="container-mova">
           <span className="eyebrow">Por que o método funciona</span>
           <h2 className="section-title">O que você não encontra na academia comum</h2>
@@ -118,7 +118,7 @@ export default function Metodologia() {
       </section>
 
       {/* Reabilitação */}
-      <section className="py-10 sm:py-14 lg:py-20 bg-verde-claro">
+      <section className="py-8 sm:py-10 lg:py-14 bg-verde-claro">
         <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div>
             <span className="eyebrow">Treino adaptado</span>
@@ -161,7 +161,7 @@ export default function Metodologia() {
       </section>
 
       {/* Sessão avaliativa */}
-      <section className="py-10 sm:py-14 lg:py-20">
+      <section className="py-8 sm:py-10 lg:py-14">
         <div className="container-mova">
           <div className="rounded-3xl bg-verde-escuro text-white p-6 sm:p-8 lg:p-12">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">

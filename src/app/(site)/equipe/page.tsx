@@ -20,7 +20,7 @@ export default async function Equipe() {
         descricao="Educadores físicos com pós em treino funcional, reabilitação e fortalecimento — e mais de 10 anos de experiência. Profissionais que conhecem você pelo nome e acompanham cada movimento do seu treino."
       />
 
-      <section className="py-10 sm:py-14 lg:py-20">
+      <section className="py-8 sm:py-10 lg:py-14">
         <div className="container-mova">
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {site.equipe.map((pessoa) => (
@@ -50,7 +50,7 @@ export default async function Equipe() {
         </div>
       </section>
 
-      <section className="py-10 sm:py-14 lg:py-20 bg-verde-claro text-center">
+      <section className="py-8 sm:py-10 lg:py-14 bg-verde-claro text-center">
         <div className="container-mova">
           <h2 className="section-title">Treine com quem se importa</h2>
           <p className="lead mx-auto mb-8">

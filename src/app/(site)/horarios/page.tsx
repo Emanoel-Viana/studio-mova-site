@@ -22,7 +22,7 @@ export default async function Horarios() {
         descricao="Confira os horários das nossas aulas coletivas e da musculação. As vagas são limitadas (turmas reduzidas) — confirme a sua no WhatsApp ou na recepção."
       />
 
-      <section className="py-10 sm:py-14 lg:py-20">
+      <section className="py-8 sm:py-10 lg:py-14">
         <div className="container-mova">
           <GradeHorarios grade={site.grade} />
 

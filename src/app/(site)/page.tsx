@@ -64,7 +64,7 @@ export default async function Home() {
             backgroundSize: "22px 22px",
           }}
         />
-        <div className="container-mova relative grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center py-12 sm:py-16 lg:py-24">
+        <div className="container-mova relative grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center py-10 sm:py-12 lg:py-16">
           <div className="reveal">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/35 px-4 py-2 text-sm font-medium mb-6">
               <Star size={16} className="fill-white" aria-hidden />
@@ -198,7 +198,7 @@ export default async function Home() {
       </div>
 
       {/* SOBRE */}
-      <section className="py-12 sm:py-16 lg:py-24">
+      <section className="py-10 sm:py-12 lg:py-16">
         <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-12 items-center reveal-scroll">
           <div className="relative aspect-square sm:aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-lg">
             <Image
@@ -227,7 +227,7 @@ export default async function Home() {
       </section>
 
       {/* NÚMEROS */}
-      <section className="py-12 lg:py-16 bg-verde-escuro text-white">
+      <section className="py-10 lg:py-12 bg-verde-escuro text-white">
         <div className="container-mova">
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-9 text-center">
             {[
@@ -255,7 +255,7 @@ export default async function Home() {
       </section>
 
       {/* PARA QUEM É */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-cinza-claro">
+      <section className="py-10 sm:py-12 lg:py-16 bg-cinza-claro">
         <div className="container-mova">
           <span className="eyebrow">Para quem é o MOVA</span>
           <h2 className="section-title">Talvez você se reconheça aqui</h2>
@@ -293,7 +293,7 @@ export default async function Home() {
       </section>
 
       {/* HISTÓRIAS DE ALUNOS (vídeos) — prova social alta na página */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-white">
+      <section className="py-10 sm:py-12 lg:py-16 bg-white">
         <div className="container-mova reveal-scroll">
           <span className="eyebrow">Histórias reais</span>
           <h2 className="section-title">Histórias de quem treina aqui</h2>
@@ -306,7 +306,7 @@ export default async function Home() {
       </section>
 
       {/* METODOLOGIA */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-verde-escuro text-white">
+      <section className="py-10 sm:py-12 lg:py-16 bg-verde-escuro text-white">
         <div className="container-mova reveal-scroll">
           <span className="eyebrow !text-[#7FE3AC]">Como funcionamos</span>
           <h2 className="section-title">
@@ -333,7 +333,7 @@ export default async function Home() {
       </section>
 
       {/* MODALIDADES */}
-      <section className="py-12 sm:py-16 lg:py-24">
+      <section className="py-10 sm:py-12 lg:py-16">
         <div className="container-mova reveal-scroll">
           <span className="eyebrow">Modalidades</span>
           <h2 className="section-title">O que você encontra no MOVA</h2>
@@ -380,7 +380,7 @@ export default async function Home() {
       </section>
 
       {/* QUIROPRAXIA */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-cinza-claro">
+      <section className="py-10 sm:py-12 lg:py-16 bg-cinza-claro">
         <div className="container-mova">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div>
@@ -431,7 +431,7 @@ export default async function Home() {
       </section>
 
       {/* SESSÃO AVALIATIVA */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-verde-medio to-[#14744A] text-white text-center">
+      <section className="py-10 sm:py-12 lg:py-16 bg-gradient-to-br from-verde-medio to-[#14744A] text-white text-center">
         <div className="container-mova">
           <span className="eyebrow !text-[#9BE8BF]">O primeiro passo</span>
           <h2 className="section-title">Comece pela sessão avaliativa</h2>
@@ -467,7 +467,7 @@ export default async function Home() {
       </section>
 
       {/* QUIZ — descubra sua modalidade */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-verde-escuro text-white">
+      <section className="py-10 sm:py-12 lg:py-16 bg-verde-escuro text-white">
         <div className="container-mova text-center">
           <span className="eyebrow !text-[#7FE3AC]">
             Não sabe por onde começar?
@@ -482,7 +482,7 @@ export default async function Home() {
       </section>
 
       {/* PLANOS & MODALIDADES */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-verde-claro">
+      <section className="py-10 sm:py-12 lg:py-16 bg-verde-claro">
         <div className="container-mova text-center">
           <span className="eyebrow">Planos &amp; Modalidades</span>
           <h2 className="section-title">Escolha o seu movimento</h2>
@@ -523,7 +523,7 @@ export default async function Home() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-verde text-white">
+      <section className="py-10 sm:py-12 lg:py-16 bg-verde text-white">
         <div className="container-mova reveal-scroll">
           <span className="eyebrow !text-[#0E3D26]">Depoimentos</span>
           <h2 className="section-title">Quem treina aqui recomenda</h2>
@@ -617,7 +617,7 @@ export default async function Home() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="py-12 sm:py-16 lg:py-24 text-center">
+      <section className="py-10 sm:py-12 lg:py-16 text-center">
         <div className="container-mova">
           <h2 className="section-title">
             Pronto pra fazer do movimento parte da sua vida?
@@ -642,7 +642,7 @@ export default async function Home() {
       </section>
 
       {/* EXPLORE O SITE */}
-      <section className="py-12 sm:py-16 lg:py-24 bg-preto text-white">
+      <section className="py-10 sm:py-12 lg:py-16 bg-preto text-white">
         <div className="container-mova">
           <span className="eyebrow !text-[#7FE3AC]">Continue explorando</span>
           <h2 className="section-title">Conheça mais do MOVA</h2>

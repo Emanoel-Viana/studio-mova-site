@@ -143,7 +143,7 @@ export default async function Contato() {
         </div>
       </section>
 
-      <section className="py-10 sm:py-14 lg:py-20">
+      <section className="py-8 sm:py-10 lg:py-14">
         <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-16">
           {/* Dados de contato */}
           <div>

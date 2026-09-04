@@ -22,7 +22,7 @@ export default async function Planos() {
         descricao="Musculação, Spin, Pilates e aulas coletivas. Escolha o que você quer treinar e monte o plano ideal — sempre com acompanhamento de professor."
       />
 
-      <section className="py-10 sm:py-14 lg:py-20">
+      <section className="py-8 sm:py-10 lg:py-14">
         <div className="container-mova">
           <SeletorPlanos catalogo={site.catalogo} />
           <p className="mt-10 text-center text-cinza max-w-2xl mx-auto">
@@ -69,7 +69,7 @@ export default async function Planos() {
       </section>
 
       {/* Grade de aulas / modalidades */}
-      <section className="py-12 lg:py-16 bg-verde-claro">
+      <section className="py-10 lg:py-12 bg-verde-claro">
         <div className="container-mova">
           <div className="text-center mb-10">
             <span className="eyebrow">Nossas modalidades</span>
@@ -84,7 +84,7 @@ export default async function Planos() {
       </section>
 
       {/* Formas de pagamento */}
-      <section className="py-12 lg:py-16 bg-cinza-claro">
+      <section className="py-10 lg:py-12 bg-cinza-claro">
         <div className="container-mova">
           <span className="eyebrow">Pagamento</span>
           <h2 className="section-title">Formas de pagamento</h2>
@@ -108,7 +108,7 @@ export default async function Planos() {
       {/* Parcerias */}
       <section
         id="parcerias"
-        className="py-10 sm:py-14 lg:py-20 bg-verde-claro scroll-mt-24"
+        className="py-8 sm:py-10 lg:py-14 bg-verde-claro scroll-mt-24"
       >
         <div className="container-mova">
           <span className="eyebrow">Parcerias</span>
@@ -150,7 +150,7 @@ export default async function Planos() {
         </div>
       </section>
 
-      <section className="py-10 sm:py-14 lg:py-20 text-center">
+      <section className="py-8 sm:py-10 lg:py-14 text-center">
         <div className="container-mova">
           <h2 className="section-title">Ainda com dúvida sobre o plano ideal?</h2>
           <p className="lead mx-auto mb-8">

@@ -3,7 +3,7 @@ import { waLink } from "@/lib/site";
 
 export default function NotFound() {
   return (
-    <section className="py-24 lg:py-32 text-center">
+    <section className="py-14 lg:py-20 text-center">
       <div className="container-mova">
         <p className="font-display font-black text-6xl text-verde mb-4">404</p>
         <h1 className="section-title">Página não encontrada</h1>
