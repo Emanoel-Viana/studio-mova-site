@@ -468,8 +468,8 @@ export const site = {
       desc: "O coração do treino: força, postura e resistência com carga ajustada ao seu nível, evoluindo de forma progressiva e segura.",
     },
     {
-      titulo: "HIIT bike / spinning",
-      desc: "Fechamento energizante na bike que acelera o gasto calórico, turbina o condicionamento e encerra o treino com sensação de dever cumprido.",
+      titulo: "Fechamento na bike (HIIT)",
+      desc: "Para encerrar, um HIIT na bike que acelera o gasto calórico e turbina o condicionamento — o cardio que fecha o treino de força com chave de ouro.",
     },
   ],
 
