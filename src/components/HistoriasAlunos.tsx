@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PlayCircle, ArrowUpRight } from "lucide-react";
 
 // Fase 1: histórias reais de alunos que abrem o Reel no Instagram.
@@ -59,14 +60,25 @@ export function HistoriasAlunos() {
           rel="noopener noreferrer"
           className="group flex flex-col rounded-2xl overflow-hidden bg-white border border-[#DDEDE3] shadow-[0_10px_30px_rgba(30,155,94,0.06)] transition-transform hover:-translate-y-1"
         >
-          {/* Capa (Fase 1: gradiente + play; Fase 2: vira o vídeo) */}
-          <div className="relative aspect-video bg-gradient-to-br from-verde-medio to-[#14744A] grid place-items-center">
+          {/* Capa: imagem real do vídeo com o play por cima */}
+          <div className="relative aspect-square bg-gradient-to-br from-verde-medio to-[#14744A] grid place-items-center overflow-hidden">
+            <Image
+              src={`/fotos/historias/${h.codigo}.jpg`}
+              alt={`Vídeo — ${h.nome}`}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              className="object-cover"
+            />
+            <div
+              aria-hidden
+              className="absolute inset-0 bg-black/25 transition-colors group-hover:bg-black/10"
+            />
             <PlayCircle
               size={56}
-              className="text-white/90 transition-transform group-hover:scale-110"
+              className="relative text-white drop-shadow-lg transition-transform group-hover:scale-110"
               aria-hidden
             />
-            <span className="absolute top-3 left-3 text-[0.7rem] font-display font-bold uppercase tracking-wide text-white/90 bg-black/20 rounded-full px-2.5 py-1">
+            <span className="absolute top-3 left-3 text-[0.7rem] font-display font-bold uppercase tracking-wide text-white bg-black/40 rounded-full px-2.5 py-1">
               Vídeo
             </span>
           </div>
