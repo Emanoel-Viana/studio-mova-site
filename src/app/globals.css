@@ -81,7 +81,7 @@
 @layer components {
   .container-mova {
     width: 100%;
-    max-width: 1140px;
+    max-width: 1280px;
     margin-inline: auto;
     /* Margem lateral fluida: ~18px no celular → 24px no desktop */
     padding-inline: clamp(1.15rem, 4vw, 1.5rem);
