@@ -17,9 +17,12 @@ const galeria = [
   { src: "/fotos/galeria/DSC02142.jpg", w: 2592, h: 4608 },
   { src: "/fotos/reabilitacao/DSC02103.jpg", w: 2592, h: 4608 },
   { src: "/fotos/galeria/MOVA-06.jpg", w: 4685, h: 3037 },
+  { src: "/fotos/pilates/pilates-1.jpg", w: 720, h: 1280 },
   { src: "/fotos/reabilitacao/DSC00600.jpg", w: 4128, h: 6192 },
+  { src: "/fotos/pilates/pilates-4.jpg", w: 1280, h: 720 },
   { src: "/fotos/galeria/studio-mova-43.jpg", w: 4774, h: 3184 },
   { src: "/fotos/reabilitacao/DSC01924.jpg", w: 2592, h: 4608 },
+  { src: "/fotos/pilates/pilates-2.jpg", w: 720, h: 1280 },
   { src: "/fotos/reabilitacao/studio-mova-16.jpg", w: 4817, h: 3212 },
   { src: "/fotos/reabilitacao/2.jpg", w: 690, h: 922 },
 ];
