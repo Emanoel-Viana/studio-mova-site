@@ -571,8 +571,8 @@ export const site = {
   depoimentos: [
     {
       texto:
-        "Odeio fazer exercício, mas no Studio Mova passa rapidinho. A Juliana e a Carol são muito atenciosas, comprometidas e muito dedicadas aos alunos.",
-      autor: "Marina Fukuoka",
+        "Faço personal no Studio Mova com a professora Juliana e só tenho elogios! Os profissionais são extremamente competentes, atenciosos e dedicados. Estou grávida e recebo uma atenção diferenciada, com treinos sempre adaptados e seguros.",
+      autor: "Nivia Cangussu",
       foto: "",
       fonte: "Google",
     },
