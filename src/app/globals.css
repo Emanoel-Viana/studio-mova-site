@@ -203,10 +203,6 @@
   }
 }
 
-/* Esconde a barra de rolagem (carrossel de depoimentos) sem perder o scroll */
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-.no-scrollbar::-webkit-scrollbar { display: none; }
-
 /* Ticker (faixa rolante) */
 @keyframes mova-ticker {
   from { transform: translateX(0); }

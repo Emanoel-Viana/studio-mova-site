@@ -20,7 +20,6 @@ import { Contador } from "@/components/Contador";
 import { QuizModalidade } from "./QuizModalidade";
 import { GradeAulas } from "./planos/GradeAulas";
 import { HistoriasAlunos } from "@/components/HistoriasAlunos";
-import { DepoimentosCarrossel } from "@/components/DepoimentosCarrossel";
 
 const catalogoIcones: Record<string, typeof Dumbbell> = {
   dumbbell: Dumbbell,
@@ -67,13 +66,24 @@ export default async function Home() {
         />
         <div className="container-mova relative grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center secao">
           <div className="reveal">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/35 px-4 py-2 text-sm font-medium mb-6">
+            <div className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full bg-white/15 border border-white/35 px-4 py-2 text-sm font-medium mb-6">
               <Star size={16} className="fill-white" aria-hidden />
-              <strong className="font-display">
-                <Contador value={Number(site.avaliacao.nota)} decimais={2} />
-              </strong>{" "}
-              — <Contador value={site.avaliacao.total} /> avaliações no{" "}
-              {site.avaliacao.fonte}
+              <span>
+                <strong className="font-display">
+                  {site.avaliacaoGoogle.nota}
+                </strong>{" "}
+                no {site.avaliacaoGoogle.fonte}
+              </span>
+              <span aria-hidden className="text-white/40">
+                ·
+              </span>
+              <span>
+                <strong className="font-display">
+                  <Contador value={Number(site.avaliacao.nota)} decimais={2} />
+                </strong>{" "}
+                — <Contador value={site.avaliacao.total} /> no{" "}
+                {site.avaliacao.fonte}
+              </span>
             </div>
             <p className="font-display font-bold uppercase tracking-[0.16em] text-[0.78rem] sm:text-sm text-[#9BE8BF] mb-2">
               Para quem não quer academia
@@ -579,7 +589,64 @@ export default async function Home() {
             Avaliações reais de alunos — nota máxima no Google e quase perfeita
             no Wellhub.
           </p>
-          <DepoimentosCarrossel depoimentos={site.depoimentos} />
+          <div className="grid md:grid-cols-3 gap-6 mt-8 items-start">
+            {site.depoimentos.map((d) => {
+              const iniciais = d.autor
+                .split(" ")
+                .slice(0, 2)
+                .map((parte) => parte[0])
+                .join("")
+                .toUpperCase();
+              return (
+                <figure
+                  key={d.autor}
+                  className="flex flex-col rounded-2xl bg-white/95 text-preto p-5 sm:p-7 h-full"
+                >
+                  <div className="flex gap-0.5 mb-3 text-coral">
+                    {Array.from({ length: 5 }).map((_, n) => (
+                      <Star
+                        key={n}
+                        size={16}
+                        className="fill-coral"
+                        aria-hidden
+                      />
+                    ))}
+                  </div>
+                  <blockquote className="mb-5 flex-1">{d.texto}</blockquote>
+                  <figcaption className="flex items-center gap-3">
+                    {d.foto ? (
+                      <span className="relative w-11 h-11 shrink-0 rounded-full overflow-hidden ring-2 ring-verde-claro">
+                        <Image
+                          src={d.foto}
+                          alt={`Foto de ${d.autor}`}
+                          fill
+                          sizes="44px"
+                          className="object-cover"
+                        />
+                      </span>
+                    ) : (
+                      <span
+                        className="grid place-items-center w-11 h-11 shrink-0 rounded-full bg-verde-claro text-verde-escuro font-display font-bold"
+                        aria-hidden
+                      >
+                        {iniciais}
+                      </span>
+                    )}
+                    <span>
+                      <span className="block font-display font-bold leading-tight">
+                        {d.autor}
+                      </span>
+                      {d.fonte && (
+                        <span className="block text-sm text-cinza">
+                          via {d.fonte}
+                        </span>
+                      )}
+                    </span>
+                  </figcaption>
+                </figure>
+              );
+            })}
+          </div>
           <div className="mt-8 text-center">
             <a
               href={site.avaliacaoGoogle.url}
