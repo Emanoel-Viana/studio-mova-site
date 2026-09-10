@@ -19,6 +19,7 @@ export default async function SiteLayout({
       </a>
       <Header
         avaliacao={content.avaliacao}
+        avaliacaoGoogle={content.avaliacaoGoogle}
         whatsappVisivel={content.contato.whatsappVisivel}
       />
       <main id="conteudo" className="flex-1">

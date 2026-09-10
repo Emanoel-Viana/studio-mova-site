@@ -9,10 +9,11 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 
 type Props = {
   avaliacao: { nota: string; total: number; fonte: string };
+  avaliacaoGoogle: { nota: string; total: number; fonte: string };
   whatsappVisivel: string;
 };
 
-export function Header({ avaliacao, whatsappVisivel }: Props) {
+export function Header({ avaliacao, avaliacaoGoogle, whatsappVisivel }: Props) {
   const [compacto, setCompacto] = useState(false);
   const pathname = usePathname();
 
@@ -46,7 +47,8 @@ export function Header({ avaliacao, whatsappVisivel }: Props) {
         <div className="container-mova flex items-center justify-between gap-4 py-1 sm:py-2">
           <span className="flex items-center gap-1.5">
             <Star size={14} className="fill-white" aria-hidden />
-            {avaliacao.nota} — {avaliacao.total} avaliações no {avaliacao.fonte}
+            {avaliacaoGoogle.nota} no {avaliacaoGoogle.fonte} · {avaliacao.nota} ·{" "}
+            {avaliacao.total} no {avaliacao.fonte}
           </span>
           <div className="hidden sm:flex items-center gap-4">
             <a
