@@ -35,6 +35,13 @@ export const site = {
     total: 175,
     fonte: "Wellhub",
   },
+  // Segunda prova social: nota perfeita no Google (perfil da empresa).
+  avaliacaoGoogle: {
+    nota: "5,0",
+    total: 48,
+    fonte: "Google",
+    url: "https://www.google.com/maps/search/?api=1&query=Studio%20MOVA%20Asa%20Norte%20Bras%C3%ADlia",
+  },
 
   // Horários — atenção ao intervalo de Ter/Qui (13h–15h)
   horarios: [
@@ -57,6 +64,7 @@ export const site = {
         titulo: "MOVA Musculação",
         tagline: "Sua base de força e saúde, com liberdade para complementar a sua evolução",
         icone: "dumbbell",
+        foto: "/fotos/modalidades/musculacao.jpg",
         temNiveis: true,
         niveis: [
           { nome: "Essencial", nota: "apenas musculação" },
@@ -92,6 +100,7 @@ export const site = {
         titulo: "Spin MOVA",
         tagline: "Pedale. Supere. Evolua. — treinos indoor de intensidade que transforma",
         icone: "bike",
+        foto: "/fotos/modalidades/spin.jpg",
         temNiveis: false,
         niveis: [],
         frequencias: [
@@ -106,6 +115,7 @@ export const site = {
         titulo: "MOVA Pilates",
         tagline: "Mobilidade, estabilidade, força profunda e longevidade",
         icone: "flower",
+        foto: "/fotos/modalidades/pilates.jpg",
         temNiveis: true,
         niveis: [
           { nome: "Essencial", nota: "apenas pilates" },
@@ -561,6 +571,27 @@ export const site = {
   depoimentos: [
     {
       texto:
+        "Odeio fazer exercício, mas no Studio Mova passa rapidinho. A Juliana e a Carol são muito atenciosas, comprometidas e muito dedicadas aos alunos.",
+      autor: "Marina Fukuoka",
+      foto: "",
+      fonte: "Google",
+    },
+    {
+      texto:
+        "O Studio MOVA é um local para treinos específicos de acordo com as suas necessidades. Professores atentos e o tempo todo nos dando suporte e atenção nos exercícios.",
+      autor: "Jessica Camargo",
+      foto: "",
+      fonte: "Google",
+    },
+    {
+      texto:
+        "A experiência da minha família no estúdio é de muita satisfação! A dedicação, carinho e cuidado da Juliana em cada exercício faz muita diferença no resultado que buscamos. Seu trabalho muda nossa vida pra muito melhor!",
+      autor: "Fabiolla Algarte",
+      foto: "",
+      fonte: "Google",
+    },
+    {
+      texto:
         "O Studio Mova oferece um ambiente espaçoso, com todos os equipamentos necessários para um treino completo, e uma professora 'bravinha' e incrível. E podemos aproveitar os momentos de descanso curtindo o verde da quadra residencial ao lado.",
       autor: "Flávia Mendim",
       foto: "",
@@ -577,13 +608,6 @@ export const site = {
       texto:
         "Infraestrutura excelente, ambiente climatizado, ótima localização, mas o melhor do Studio MOVA é a personal. Juliana é uma profissional dedicada, animada, capacitada... e uma pessoa incrível! Recomendadíssimo!",
       autor: "Marly Osugi",
-      foto: "",
-      fonte: "",
-    },
-    {
-      texto:
-        "A importância do Studio Mova pra mim é essa: meu bem-estar físico e mental, principalmente.",
-      autor: "Diana Lopes",
       foto: "",
       fonte: "",
     },

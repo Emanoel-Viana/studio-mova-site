@@ -344,20 +344,34 @@ export default async function Home() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {site.catalogo.modalidades.map((m) => {
               const Icone = catalogoIcones[m.icone] ?? Dumbbell;
+              const foto = "foto" in m ? m.foto : "";
               return (
                 <div
                   key={m.id}
-                  className="rounded-2xl bg-white border border-[#E2EEE7] p-6 transition-all hover:-translate-y-1 hover:border-verde hover:shadow-[0_14px_34px_rgba(30,155,94,0.12)]"
+                  className="group overflow-hidden rounded-2xl bg-white border border-[#E2EEE7] transition-all hover:-translate-y-1 hover:border-verde hover:shadow-[0_14px_34px_rgba(30,155,94,0.12)]"
                 >
-                  <div className="grid place-items-center w-14 h-14 rounded-2xl bg-verde-claro mb-4">
-                    <Icone
-                      size={28}
-                      className="text-verde-medio"
-                      aria-hidden
-                    />
+                  {foto ? (
+                    <div className="relative aspect-[3/2] overflow-hidden">
+                      <Image
+                        src={foto}
+                        alt={`${m.titulo} no Studio MOVA`}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      />
+                    </div>
+                  ) : null}
+                  <div className="p-6">
+                    <div className="grid place-items-center w-12 h-12 rounded-2xl bg-verde-claro mb-3">
+                      <Icone
+                        size={26}
+                        className="text-verde-medio"
+                        aria-hidden
+                      />
+                    </div>
+                    <h3 className="text-xl mb-1">{m.titulo}</h3>
+                    <p className="text-cinza">{m.tagline}</p>
                   </div>
-                  <h3 className="text-xl mb-1">{m.titulo}</h3>
-                  <p className="text-cinza">{m.tagline}</p>
                 </div>
               );
             })}
@@ -527,22 +541,42 @@ export default async function Home() {
         <div className="container-mova reveal-scroll">
           <span className="eyebrow !text-[#0E3D26]">Depoimentos</span>
           <h2 className="section-title">Quem treina aqui recomenda</h2>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mt-3">
-            <span className="flex gap-0.5 text-coral">
-              {Array.from({ length: 5 }).map((_, n) => (
-                <Star key={n} size={18} className="fill-coral" aria-hidden />
-              ))}
-            </span>
-            <span className="font-display font-bold text-xl">
-              {site.avaliacao.nota}
-            </span>
-            <span className="text-[#DFF5E8]">
-              · {site.avaliacao.total} avaliações no {site.avaliacao.fonte}
+          <div className="flex flex-wrap gap-3 mt-4">
+            <a
+              href={site.avaliacaoGoogle.url}
+              target="_blank"
+              rel="noopener"
+              className="inline-flex items-center gap-2 rounded-full bg-white text-preto px-4 py-2.5 shadow-[0_6px_16px_rgba(0,0,0,0.15)] transition-transform hover:-translate-y-0.5"
+            >
+              <span className="flex gap-0.5 text-coral">
+                {Array.from({ length: 5 }).map((_, n) => (
+                  <Star key={n} size={15} className="fill-coral" aria-hidden />
+                ))}
+              </span>
+              <span className="font-display font-black">
+                {site.avaliacaoGoogle.nota}
+              </span>
+              <span className="text-cinza text-sm">
+                · {site.avaliacaoGoogle.total} no {site.avaliacaoGoogle.fonte}
+              </span>
+            </a>
+            <span className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/35 px-4 py-2.5">
+              <span className="flex gap-0.5 text-coral">
+                {Array.from({ length: 5 }).map((_, n) => (
+                  <Star key={n} size={15} className="fill-coral" aria-hidden />
+                ))}
+              </span>
+              <span className="font-display font-black">
+                {site.avaliacao.nota}
+              </span>
+              <span className="text-[#DFF5E8] text-sm">
+                · {site.avaliacao.total} no {site.avaliacao.fonte}
+              </span>
             </span>
           </div>
-          <p className="text-[#DFF5E8] text-sm mt-2">
-            Você também encontra avaliações reais de alunos no Google e no
-            Wellhub.
+          <p className="text-[#DFF5E8] text-sm mt-3">
+            Avaliações reais de alunos — nota máxima no Google e quase perfeita
+            no Wellhub.
           </p>
           <div className="grid md:grid-cols-3 gap-6 mt-8 items-start">
             {site.depoimentos.map((d) => {
@@ -604,13 +638,14 @@ export default async function Home() {
           </div>
           <div className="mt-8 text-center">
             <a
-              href={site.parcerias[0].url}
+              href={site.avaliacaoGoogle.url}
               target="_blank"
               rel="noopener"
               className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/35 px-5 py-2.5 font-medium transition-colors hover:bg-white/25"
             >
               <Star size={18} className="fill-white" aria-hidden />
-              Ver as {site.avaliacao.total} avaliações no {site.avaliacao.fonte}
+              Ver as {site.avaliacaoGoogle.total} avaliações no{" "}
+              {site.avaliacaoGoogle.fonte}
             </a>
           </div>
         </div>
