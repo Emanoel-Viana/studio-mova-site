@@ -592,24 +592,45 @@ export const site = {
     },
     {
       texto:
+        "Treinar aqui tem sido uma das melhores decisões que tomei! Os equipamentos são ótimos e novos, o espaço é super bem cuidado e o treino é completo de verdade — nada fica de fora!",
+      autor: "Pedro Gabriel Oliveira",
+      foto: "",
+      fonte: "Google",
+    },
+    {
+      texto:
+        "Treinar com a Juliana tem sido uma experiência incrível! A metodologia que ela aplica é completa, dinâmica e totalmente personalizada, respeitando os limites de cada aluno, mas sempre incentivando a evolução constante.",
+      autor: "Inalda Maria Silveira Linhares",
+      foto: "",
+      fonte: "Google",
+    },
+    {
+      texto:
+        "Ótimo ambiente para treinar, profissionais super atenciosos e qualificados! Muito boa ideia para quem não consegue treinar sozinho em uma academia comum: o profissional está o tempo todo ao seu lado, montando suas séries e te acompanhando, tornando o treino dinâmico e não enjoativo.",
+      autor: "Leiliany Mariano",
+      foto: "",
+      fonte: "Google",
+    },
+    {
+      texto:
         "O Studio Mova oferece um ambiente espaçoso, com todos os equipamentos necessários para um treino completo, e uma professora 'bravinha' e incrível. E podemos aproveitar os momentos de descanso curtindo o verde da quadra residencial ao lado.",
       autor: "Flávia Mendim",
       foto: "",
-      fonte: "",
+      fonte: "Google",
     },
     {
       texto:
         "Amo e estou amando o estúdio de atividade física MOVA! É lindo, de bom gosto, banheiros amplos, limpeza evidente; aparelhos modernos e uma profissional dedicada que me ajuda a manter meu corpo bem cuidado e saudável com exercícios dinâmicos e inteligentes.",
       autor: "Indira Vale",
       foto: "",
-      fonte: "",
+      fonte: "Google",
     },
     {
       texto:
         "Infraestrutura excelente, ambiente climatizado, ótima localização, mas o melhor do Studio MOVA é a personal. Juliana é uma profissional dedicada, animada, capacitada... e uma pessoa incrível! Recomendadíssimo!",
       autor: "Marly Osugi",
       foto: "",
-      fonte: "",
+      fonte: "Google",
     },
   ],
 
