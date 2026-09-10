@@ -64,7 +64,7 @@ export default async function Home() {
             backgroundSize: "22px 22px",
           }}
         />
-        <div className="container-mova relative grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center py-10 sm:py-12 lg:py-16">
+        <div className="container-mova relative grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center secao">
           <div className="reveal">
             <div className="inline-flex items-center gap-2 rounded-full bg-white/15 border border-white/35 px-4 py-2 text-sm font-medium mb-6">
               <Star size={16} className="fill-white" aria-hidden />
@@ -198,7 +198,7 @@ export default async function Home() {
       </div>
 
       {/* SOBRE */}
-      <section className="py-10 sm:py-12 lg:py-16">
+      <section className="secao">
         <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-12 items-center reveal-scroll">
           <div className="relative aspect-square sm:aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-lg">
             <Image
@@ -214,7 +214,7 @@ export default async function Home() {
             <h2 className="section-title">
               Se você não gosta de academia convencional, aqui é o seu lugar
             </h2>
-            <p className="lead mb-8">
+            <p className="lead mb-7">
               Somos uma academia boutique com metodologia própria: você treina
               com um professor ao seu lado durante todo o treino, em um espaço
               projetado para ser a sua segunda casa.
@@ -227,9 +227,9 @@ export default async function Home() {
       </section>
 
       {/* NÚMEROS */}
-      <section className="py-10 lg:py-12 bg-verde-escuro text-white">
-        <div className="container-mova">
-          <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-9 text-center">
+      <section className="secao-compacta bg-verde-escuro text-white">
+        <div className="container-mova reveal-scroll">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8 text-center">
             {[
               { num: "+150", label: "alunos já passaram pelo MOVA" },
               { num: "+10", label: "anos de experiência dos professores" },
@@ -255,11 +255,11 @@ export default async function Home() {
       </section>
 
       {/* PARA QUEM É */}
-      <section className="py-10 sm:py-12 lg:py-16 bg-cinza-claro">
-        <div className="container-mova">
+      <section className="secao bg-cinza-claro">
+        <div className="container-mova reveal-scroll">
           <span className="eyebrow">Para quem é o MOVA</span>
           <h2 className="section-title">Talvez você se reconheça aqui</h2>
-          <p className="lead mb-10 max-w-[60ch]">
+          <p className="lead mb-8 max-w-[60ch]">
             Recebemos gente de todas as idades e níveis. Veja se algum desses é
             o seu momento — em todos eles, a gente sabe te ajudar.
           </p>
@@ -277,7 +277,7 @@ export default async function Home() {
               </div>
             ))}
           </div>
-          <div className="mt-10 text-center">
+          <div className="mt-8 text-center">
             <a
               href={waLink(
                 "Olá! Vim pelo site do Studio MOVA e quero saber se o treino é pra mim.",
@@ -293,11 +293,11 @@ export default async function Home() {
       </section>
 
       {/* HISTÓRIAS DE ALUNOS (vídeos) — prova social alta na página */}
-      <section className="py-10 sm:py-12 lg:py-16 bg-white">
+      <section className="secao bg-white">
         <div className="container-mova reveal-scroll">
           <span className="eyebrow">Histórias reais</span>
           <h2 className="section-title">Histórias de quem treina aqui</h2>
-          <p className="lead mb-10 max-w-[60ch]">
+          <p className="lead mb-8 max-w-[60ch]">
             Alunos de verdade contando o que mudou depois que começaram no MOVA.
             Toque em um vídeo para assistir.
           </p>
@@ -306,13 +306,13 @@ export default async function Home() {
       </section>
 
       {/* METODOLOGIA */}
-      <section className="py-10 sm:py-12 lg:py-16 bg-verde-escuro text-white">
+      <section className="secao bg-verde-escuro text-white">
         <div className="container-mova reveal-scroll">
           <span className="eyebrow !text-[#7FE3AC]">Como funcionamos</span>
           <h2 className="section-title">
             60 minutos, 3 etapas, máximo 4 alunos
           </h2>
-          <div className="grid md:grid-cols-3 gap-6 mt-10">
+          <div className="grid md:grid-cols-3 gap-6 mt-8">
             {site.metodologia.map((etapa, i) => (
               <div
                 key={etapa.titulo}
@@ -326,18 +326,18 @@ export default async function Home() {
               </div>
             ))}
           </div>
-          <Link href="/metodologia" className="btn btn-borda text-white mt-10">
+          <Link href="/metodologia" className="btn btn-borda text-white mt-8">
             Entenda a metodologia completa
           </Link>
         </div>
       </section>
 
       {/* MODALIDADES */}
-      <section className="py-10 sm:py-12 lg:py-16">
+      <section className="secao">
         <div className="container-mova reveal-scroll">
           <span className="eyebrow">Modalidades</span>
           <h2 className="section-title">O que você encontra no MOVA</h2>
-          <p className="lead mb-10 max-w-[60ch]">
+          <p className="lead mb-8 max-w-[60ch]">
             Um centro completo de movimento — do treino de força ao pilates, do
             spin às aulas coletivas, para todas as idades.
           </p>
@@ -364,14 +364,14 @@ export default async function Home() {
           </div>
 
           {/* Aulas coletivas — grade compacta */}
-          <div className="mt-10">
+          <div className="mt-8">
             <h3 className="font-display font-bold text-lg mb-4">
               E ainda, nossas aulas coletivas:
             </h3>
             <GradeAulas aulas={site.aulas} compacto />
           </div>
 
-          <div className="mt-8">
+          <div className="mt-7">
             <Link href="/planos" className="btn btn-escuro">
               Ver planos e valores
             </Link>
@@ -380,8 +380,8 @@ export default async function Home() {
       </section>
 
       {/* QUIROPRAXIA */}
-      <section className="py-10 sm:py-12 lg:py-16 bg-cinza-claro">
-        <div className="container-mova">
+      <section className="secao bg-cinza-claro">
+        <div className="container-mova reveal-scroll">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div>
               <span className="eyebrow">{site.quiropraxia.titulo}</span>
@@ -431,8 +431,8 @@ export default async function Home() {
       </section>
 
       {/* SESSÃO AVALIATIVA */}
-      <section className="py-10 sm:py-12 lg:py-16 bg-gradient-to-br from-verde-medio to-[#14744A] text-white text-center">
-        <div className="container-mova">
+      <section className="secao bg-gradient-to-br from-verde-medio to-[#14744A] text-white text-center">
+        <div className="container-mova reveal-scroll">
           <span className="eyebrow !text-[#9BE8BF]">O primeiro passo</span>
           <h2 className="section-title">Comece pela sessão avaliativa</h2>
           <div className="flex justify-center mb-5">
@@ -443,7 +443,7 @@ export default async function Home() {
           <p className="max-w-[60ch] mx-auto text-[#EAFBF1] text-lg mb-8">
             {site.sessaoAvaliativa.intro}
           </p>
-          <div className="flex flex-wrap justify-center gap-3 mb-9">
+          <div className="flex flex-wrap justify-center gap-3 mb-8">
             {site.sessaoAvaliativa.etapas.map((item) => (
               <span
                 key={item}
@@ -467,8 +467,8 @@ export default async function Home() {
       </section>
 
       {/* QUIZ — descubra sua modalidade */}
-      <section className="py-10 sm:py-12 lg:py-16 bg-verde-escuro text-white">
-        <div className="container-mova text-center">
+      <section className="secao bg-verde-escuro text-white">
+        <div className="container-mova text-center reveal-scroll">
           <span className="eyebrow !text-[#7FE3AC]">
             Não sabe por onde começar?
           </span>
@@ -482,8 +482,8 @@ export default async function Home() {
       </section>
 
       {/* PLANOS & MODALIDADES */}
-      <section className="py-10 sm:py-12 lg:py-16 bg-verde-claro">
-        <div className="container-mova text-center">
+      <section className="secao bg-verde-claro">
+        <div className="container-mova text-center reveal-scroll">
           <span className="eyebrow">Planos &amp; Modalidades</span>
           <h2 className="section-title">Escolha o seu movimento</h2>
           <p className="lead mx-auto mb-8">
@@ -523,7 +523,7 @@ export default async function Home() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section className="py-10 sm:py-12 lg:py-16 bg-verde text-white">
+      <section className="secao bg-verde text-white">
         <div className="container-mova reveal-scroll">
           <span className="eyebrow !text-[#0E3D26]">Depoimentos</span>
           <h2 className="section-title">Quem treina aqui recomenda</h2>
@@ -544,7 +544,7 @@ export default async function Home() {
             Você também encontra avaliações reais de alunos no Google e no
             Wellhub.
           </p>
-          <div className="grid md:grid-cols-3 gap-6 mt-10 items-start">
+          <div className="grid md:grid-cols-3 gap-6 mt-8 items-start">
             {site.depoimentos.map((d) => {
               const iniciais = d.autor
                 .split(" ")
@@ -602,7 +602,7 @@ export default async function Home() {
               );
             })}
           </div>
-          <div className="mt-10 text-center">
+          <div className="mt-8 text-center">
             <a
               href={site.parcerias[0].url}
               target="_blank"
@@ -617,8 +617,8 @@ export default async function Home() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="py-10 sm:py-12 lg:py-16 text-center">
-        <div className="container-mova">
+      <section className="secao text-center">
+        <div className="container-mova reveal-scroll">
           <h2 className="section-title">
             Pronto pra fazer do movimento parte da sua vida?
           </h2>
@@ -642,11 +642,11 @@ export default async function Home() {
       </section>
 
       {/* EXPLORE O SITE */}
-      <section className="py-10 sm:py-12 lg:py-16 bg-preto text-white">
-        <div className="container-mova">
+      <section className="secao bg-preto text-white">
+        <div className="container-mova reveal-scroll">
           <span className="eyebrow !text-[#7FE3AC]">Continue explorando</span>
           <h2 className="section-title">Conheça mais do MOVA</h2>
-          <div className="grid md:grid-cols-3 gap-5 mt-9">
+          <div className="grid md:grid-cols-3 gap-5 mt-8">
             {[
               {
                 href: "/o-studio",

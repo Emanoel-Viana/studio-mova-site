@@ -87,6 +87,17 @@
     padding-inline: clamp(1.15rem, 4vw, 1.5rem);
   }
 
+  /* Ritmo vertical padrão das seções — centraliza o espaçamento aqui pra
+     manter a página compacta e consistente (era py-10/12/16 = folga dobrada
+     entre blocos). Calibrar só neste ponto. ~30px no celular → ~52px no desktop. */
+  .secao {
+    padding-block: clamp(1.9rem, 3.6vw, 3.25rem);
+  }
+  /* Faixa de destaque (números/CTA curtos) um pouco mais enxuta ainda. */
+  .secao-compacta {
+    padding-block: clamp(1.6rem, 3vw, 2.75rem);
+  }
+
   /* Botões — alvos de toque generosos (mín. 52px de altura) */
   .btn {
     display: inline-flex;
