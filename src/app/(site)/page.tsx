@@ -700,8 +700,8 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* EXPLORE O SITE */}
-      <section className="secao bg-preto text-white">
+      {/* EXPLORE O SITE — pb reduzido: o footer (também preto) vem logo abaixo */}
+      <section className="secao !pb-8 bg-preto text-white">
         <div className="container-mova reveal-scroll">
           <span className="eyebrow !text-[#7FE3AC]">Continue explorando</span>
           <h2 className="section-title">Conheça mais do MOVA</h2>
