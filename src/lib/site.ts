@@ -65,6 +65,7 @@ export const site = {
         tagline: "Sua base de força e saúde, com liberdade para complementar a sua evolução",
         icone: "dumbbell",
         foto: "/fotos/modalidades/musculacao.jpg",
+        reel: "https://www.instagram.com/studio.mova/reel/DdCY268B0pc/",
         temNiveis: true,
         niveis: [
           { nome: "Essencial", nota: "apenas musculação" },
@@ -101,6 +102,7 @@ export const site = {
         tagline: "Pedale. Supere. Evolua. — treinos indoor de intensidade que transforma",
         icone: "bike",
         foto: "/fotos/modalidades/spin.jpg",
+        reel: "https://www.instagram.com/studio.mova/reels/",
         temNiveis: false,
         niveis: [],
         frequencias: [
@@ -116,6 +118,7 @@ export const site = {
         tagline: "Mobilidade, estabilidade, força profunda e longevidade",
         icone: "flower",
         foto: "/fotos/modalidades/pilates.jpg",
+        reel: "https://www.instagram.com/studio.mova/reel/Db_BWTqB7Ng/",
         temNiveis: true,
         niveis: [
           { nome: "Essencial", nota: "apenas pilates" },

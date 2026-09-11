@@ -13,6 +13,7 @@ import {
   Users,
   Baby,
   Sparkles,
+  PlayCircle,
 } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
@@ -356,6 +357,7 @@ export default async function Home() {
             {site.catalogo.modalidades.map((m) => {
               const Icone = catalogoIcones[m.icone] ?? Dumbbell;
               const foto = "foto" in m ? m.foto : "";
+              const reel = "reel" in m ? m.reel : "";
               return (
                 <div
                   key={m.id}
@@ -382,6 +384,17 @@ export default async function Home() {
                     </div>
                     <h3 className="text-xl mb-1">{m.titulo}</h3>
                     <p className="text-cinza">{m.tagline}</p>
+                    {reel ? (
+                      <a
+                        href={reel}
+                        target="_blank"
+                        rel="noopener"
+                        className="inline-flex items-center gap-1.5 mt-4 font-display font-bold text-sm uppercase tracking-wide text-verde-medio transition-colors hover:text-verde-escuro"
+                      >
+                        <PlayCircle size={17} aria-hidden />
+                        Ver em ação
+                      </a>
+                    ) : null}
                   </div>
                 </div>
               );
