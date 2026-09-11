@@ -27,11 +27,11 @@ export function Footer({ content: site }: { content: SiteContent }) {
   const ano = new Date().getFullYear();
 
   return (
-    <footer className="bg-preto text-white pt-16 pb-8">
+    <footer className="bg-preto text-white pt-10 pb-6">
       <div className="container-mova">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4 mb-12">
+        <div className="grid gap-x-8 gap-y-8 md:grid-cols-2 lg:grid-cols-4 mb-8">
           <div>
-            <div className="flex items-center gap-2.5 mb-4">
+            <div className="flex items-center gap-2.5 mb-3">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/marca/simbolo-branco.png" alt="" className="h-8 w-auto" />
               <span className="font-display font-extrabold text-xl">
@@ -45,23 +45,23 @@ export function Footer({ content: site }: { content: SiteContent }) {
           </div>
 
           <div>
-            <h3 className="font-display font-bold text-[#7FE3AC] mb-4">
+            <h3 className="font-display font-bold text-[#7FE3AC] mb-3">
               Fale conosco
             </h3>
             <a
               href={waLink("Olá! Vim pelo site do Studio MOVA.")}
               target="_blank"
               rel="noopener"
-              className="flex items-center gap-2 text-[#D9E6DE] hover:text-white mb-2.5"
+              className="flex items-center gap-2 text-[#D9E6DE] hover:text-white mb-2"
             >
               <Phone size={17} aria-hidden />
               {site.contato.whatsappVisivel}
             </a>
             <a
               href={`mailto:${site.contato.email}`}
-              className="flex items-center gap-2 text-[#D9E6DE] hover:text-white mb-2.5 break-all"
+              className="flex items-center gap-2 text-[#D9E6DE] hover:text-white mb-2"
             >
-              <Mail size={17} aria-hidden />
+              <Mail size={17} aria-hidden className="shrink-0" />
               {site.contato.email}
             </a>
             <a
@@ -76,7 +76,7 @@ export function Footer({ content: site }: { content: SiteContent }) {
           </div>
 
           <div>
-            <h3 className="font-display font-bold text-[#7FE3AC] mb-4">
+            <h3 className="font-display font-bold text-[#7FE3AC] mb-3">
               Navegação
             </h3>
             {navegacao
@@ -85,7 +85,7 @@ export function Footer({ content: site }: { content: SiteContent }) {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block text-[#D9E6DE] hover:text-white mb-2.5"
+                  className="block text-[#D9E6DE] hover:text-white mb-2"
                 >
                   {item.label}
                 </Link>
@@ -93,7 +93,7 @@ export function Footer({ content: site }: { content: SiteContent }) {
           </div>
 
           <div>
-            <h3 className="font-display font-bold text-[#7FE3AC] mb-4">
+            <h3 className="font-display font-bold text-[#7FE3AC] mb-3">
               Parcerias
             </h3>
             {site.parcerias.map((p) => (
@@ -102,7 +102,7 @@ export function Footer({ content: site }: { content: SiteContent }) {
                 href={p.url}
                 target="_blank"
                 rel="noopener"
-                className="block text-[#D9E6DE] hover:text-white mb-2.5"
+                className="block text-[#D9E6DE] hover:text-white mb-2"
               >
                 {p.nome}
               </a>
