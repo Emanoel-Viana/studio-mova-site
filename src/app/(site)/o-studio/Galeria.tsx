@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
+import { BLUR_FOTO } from "@/lib/blur";
 
 type Foto = { src: string; w: number; h: number };
 
@@ -54,6 +55,8 @@ export function Galeria({ fotos }: { fotos: Foto[] }) {
               width={f.w}
               height={f.h}
               sizes="(max-width: 1024px) 50vw, 33vw"
+              placeholder="blur"
+              blurDataURL={BLUR_FOTO}
               className="w-full h-auto transition-transform duration-500 group-hover:scale-[1.05]"
             />
             <span className="absolute inset-0 grid place-items-center bg-verde-escuro/0 group-hover:bg-verde-escuro/25 transition-colors">

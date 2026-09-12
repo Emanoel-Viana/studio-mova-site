@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
+import { BLUR_FOTO } from "@/lib/blur";
 import { Contador } from "@/components/Contador";
 import { QuizModalidade } from "./QuizModalidade";
 import { GradeAulas } from "./planos/GradeAulas";
@@ -156,6 +157,8 @@ export default async function Home() {
                 alt="Professora do Studio MOVA acompanhando um aluno no treino"
                 fill
                 priority
+                placeholder="blur"
+                blurDataURL={BLUR_FOTO}
                 sizes="(max-width: 1024px) 100vw, 45vw"
                 className="object-cover"
               />
@@ -217,6 +220,8 @@ export default async function Home() {
               src="/fotos/reabilitacao/DSC01898.jpg"
               alt="Treino adaptado no Studio MOVA com acompanhamento da professora"
               fill
+              placeholder="blur"
+              blurDataURL={BLUR_FOTO}
               sizes="(max-width: 1024px) 100vw, 45vw"
               className="object-cover"
             />
@@ -369,6 +374,8 @@ export default async function Home() {
                         src={foto}
                         alt={`${m.titulo} no Studio MOVA`}
                         fill
+                        placeholder="blur"
+                        blurDataURL={BLUR_FOTO}
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />

@@ -94,11 +94,22 @@ const jsonLd = {
       closes: "12:00",
     },
   ],
+  // Nota agregada = a do Google (5,0), que é a mostrada em destaque na página
+  // e a fonte das avaliações marcadas abaixo. Ponto decimal (schema.org).
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: site.avaliacao.nota,
-    reviewCount: site.avaliacao.total,
+    ratingValue: site.avaliacaoGoogle.nota.replace(",", "."),
+    reviewCount: site.avaliacaoGoogle.total,
+    bestRating: "5",
+    worstRating: "1",
   },
+  // Avaliações reais (Google) marcadas pro Google poder exibir estrelas na busca.
+  review: site.depoimentos.map((d) => ({
+    "@type": "Review",
+    author: { "@type": "Person", name: d.autor },
+    reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+    reviewBody: d.texto,
+  })),
   sameAs: [site.contato.instagramUrl, ...site.parcerias.map((p) => p.url)],
 };
 

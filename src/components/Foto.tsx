@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { FotoPlaceholder } from "./FotoPlaceholder";
+import { BLUR_FOTO } from "@/lib/blur";
 
 type Props = {
   src?: string;
@@ -45,6 +46,8 @@ export function Foto({
         fill
         sizes={sizes}
         priority={priority}
+        placeholder="blur"
+        blurDataURL={BLUR_FOTO}
         className="object-cover"
         style={{ objectPosition: posicao }}
       />
