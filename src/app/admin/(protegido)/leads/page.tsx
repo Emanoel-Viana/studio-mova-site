@@ -1,32 +1,15 @@
 import Link from "next/link";
 import { ArrowLeft, Inbox } from "lucide-react";
 import { createClient } from "@/lib/supabase/server";
-
-type Lead = {
-  id: string;
-  nome: string;
-  assunto: string | null;
-  mensagem: string | null;
-  criado_em: string;
-};
-
-function formatarData(iso: string) {
-  return new Date(iso).toLocaleString("pt-BR", {
-    day: "2-digit",
-    month: "2-digit",
-    year: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-}
+import { LeadsLista, type Lead } from "./LeadsLista";
 
 export default async function Leads() {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("site_studiomova_leads_contato")
-    .select("id, nome, assunto, mensagem, criado_em")
+    .select("id, nome, telefone, assunto, mensagem, criado_em")
     .order("criado_em", { ascending: false })
-    .limit(200);
+    .limit(500);
 
   const leads = (data ?? []) as Lead[];
   const tabelaFaltando = error?.code === "42P01";
@@ -63,33 +46,7 @@ export default async function Leads() {
           </p>
         </div>
       ) : (
-        <div className="grid gap-3">
-          {leads.map((l) => (
-            <div
-              key={l.id}
-              className="rounded-2xl bg-white border border-[#DDEDE3] p-5"
-            >
-              <div className="flex items-start justify-between gap-4 flex-wrap">
-                <div>
-                  <p className="font-display font-bold text-lg">{l.nome}</p>
-                  {l.assunto && (
-                    <span className="inline-block mt-1 text-xs bg-verde-claro text-verde-escuro px-2.5 py-0.5 rounded-full font-medium">
-                      {l.assunto}
-                    </span>
-                  )}
-                </div>
-                <span className="text-sm text-cinza whitespace-nowrap">
-                  {formatarData(l.criado_em)}
-                </span>
-              </div>
-              {l.mensagem && (
-                <p className="text-cinza mt-3 whitespace-pre-wrap">
-                  {l.mensagem}
-                </p>
-              )}
-            </div>
-          ))}
-        </div>
+        <LeadsLista leads={leads} />
       )}
     </>
   );

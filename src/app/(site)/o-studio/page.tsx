@@ -27,10 +27,12 @@ const galeria = [
   { src: "/fotos/reabilitacao/2.jpg", w: 690, h: 922 },
 ];
 
+const descricao =
+  "Conheça o espaço do Studio MOVA: academia boutique climatizada na Asa Norte, com estrutura completa e turmas reduzidas.";
 export const metadata: Metadata = {
   title: "O Studio",
-  description:
-    "Conheça o espaço do Studio MOVA: academia boutique climatizada na Asa Norte, com estrutura completa e turmas reduzidas.",
+  description: descricao,
+  openGraph: { title: "O Studio — Studio MOVA", description: descricao },
 };
 
 const comodidades = [

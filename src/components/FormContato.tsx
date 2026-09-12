@@ -13,12 +13,22 @@ const assuntos = [
   "Outro assunto",
 ];
 
+// Máscara progressiva de telefone BR: (61) 9 9999-9999
+function formatarTelefone(valor: string) {
+  const d = valor.replace(/\D/g, "").slice(0, 11);
+  if (d.length <= 2) return d;
+  if (d.length <= 7) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+  if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
+  return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+}
+
 export function FormContato({
   turnstileSiteKey = "",
 }: {
   turnstileSiteKey?: string;
 }) {
   const [nome, setNome] = useState("");
+  const [telefone, setTelefone] = useState("");
   const [assunto, setAssunto] = useState(assuntos[0]);
   const [mensagem, setMensagem] = useState("");
   const [token, setToken] = useState("");
@@ -42,6 +52,11 @@ export function FormContato({
     if (enviando) return;
     setErro("");
 
+    if (telefone.replace(/\D/g, "").length < 10) {
+      setErro("Informe um telefone/WhatsApp válido com DDD.");
+      return;
+    }
+
     if (precisaCaptcha && !token) {
       setErro("Aguarde a verificação de segurança carregar…");
       return;
@@ -49,7 +64,13 @@ export function FormContato({
 
     setEnviando(true);
     try {
-      const resultado = await enviarContato({ nome, assunto, mensagem, token });
+      const resultado = await enviarContato({
+        nome,
+        telefone,
+        assunto,
+        mensagem,
+        token,
+      });
       if (!resultado.ok) {
         setErro(resultado.erro);
         // Token é de uso único: gera um novo pra permitir tentar de novo.
@@ -75,6 +96,7 @@ export function FormContato({
     setToken("");
     setCaptchaKey((k) => k + 1);
     setMensagem("");
+    setTelefone("");
   }
 
   const campo =
@@ -128,6 +150,26 @@ export function FormContato({
           className={campo}
           placeholder="Como podemos te chamar?"
         />
+      </div>
+
+      <div>
+        <label htmlFor="telefone" className="block font-semibold mb-1.5">
+          Seu WhatsApp / Telefone
+        </label>
+        <input
+          id="telefone"
+          type="tel"
+          inputMode="tel"
+          required
+          value={telefone}
+          onChange={(e) => setTelefone(formatarTelefone(e.target.value))}
+          className={campo}
+          placeholder="(61) 9 9999-9999"
+          aria-describedby="telefone-ajuda"
+        />
+        <p id="telefone-ajuda" className="text-sm text-cinza mt-1.5">
+          Pra gente conseguir te responder mesmo que a conversa não abra.
+        </p>
       </div>
 
       <div>

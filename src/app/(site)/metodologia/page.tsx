@@ -14,10 +14,12 @@ import { site, waLink } from "@/lib/site";
 import { PageHero } from "@/components/PageHero";
 import { Foto } from "@/components/Foto";
 
+const descricao =
+  "A metodologia do Studio MOVA: 60 minutos em 3 etapas, turmas de até 4 alunos e treino personalizado e adaptado, inclusive para reabilitação. Comece pela sessão avaliativa.";
 export const metadata: Metadata = {
   title: "Metodologia",
-  description:
-    "A metodologia do Studio MOVA: 60 minutos em 3 etapas, turmas de até 4 alunos e treino personalizado e adaptado, inclusive para reabilitação. Comece pela sessão avaliativa.",
+  description: descricao,
+  openGraph: { title: "Metodologia — Studio MOVA", description: descricao },
 };
 
 // Ícone de mobilidade corporal (figura se alongando), no traço do lucide —

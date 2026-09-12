@@ -5,10 +5,12 @@ import { getContent } from "@/lib/content";
 import { PageHero } from "@/components/PageHero";
 import { GradeHorarios } from "./GradeHorarios";
 
+const descricao =
+  "Horários das aulas coletivas do Studio MOVA (Spin, Pilates, Funcional, Abdominal, Ritmos e mais). Confirme a disponibilidade pelo WhatsApp.";
 export const metadata: Metadata = {
   title: "Grade de horários",
-  description:
-    "Horários das aulas coletivas do Studio MOVA (Spin, Pilates, Funcional, Abdominal, Ritmos e mais). Confirme a disponibilidade pelo WhatsApp.",
+  description: descricao,
+  openGraph: { title: "Grade de horários — Studio MOVA", description: descricao },
 };
 
 export default async function Horarios() {

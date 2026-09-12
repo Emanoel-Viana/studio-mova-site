@@ -4,6 +4,7 @@ import { createClient, supabaseConfigurado } from "@/lib/supabase/server";
 
 type Payload = {
   nome: string;
+  telefone: string;
   assunto: string;
   mensagem: string;
   token: string;
@@ -54,10 +55,15 @@ export async function enviarContato(
   // Limita o tamanho no servidor (o cliente é só UI — a action pode ser
   // chamada direto). Evita payloads gigantes e abuso de armazenamento.
   const nome = dados.nome?.trim().slice(0, 120);
+  const telefone = dados.telefone?.trim().slice(0, 25);
   const assunto = dados.assunto?.trim().slice(0, 80);
   const mensagem = dados.mensagem?.trim().slice(0, 2000);
 
   if (!nome) return { ok: false, erro: "Informe seu nome." };
+  // Exige um telefone com pelo menos 10 dígitos (DDD + número).
+  if (!telefone || telefone.replace(/\D/g, "").length < 10) {
+    return { ok: false, erro: "Informe um telefone/WhatsApp válido com DDD." };
+  }
 
   const captchaOk = await verificarCaptcha(dados.token);
   if (!captchaOk) {
@@ -70,9 +76,16 @@ export async function enviarContato(
   // Registra o lead (sem travar caso o banco não esteja configurado).
   if (supabaseConfigurado) {
     const supabase = await createClient();
-    const { error } = await supabase
+    let { error } = await supabase
       .from("site_studiomova_leads_contato")
-      .insert({ nome, assunto, mensagem: mensagem || null });
+      .insert({ nome, telefone, assunto, mensagem: mensagem || null });
+    // Se a coluna `telefone` ainda não existe no banco, grava sem ela pra
+    // NÃO perder o lead — o telefone passa a ser salvo assim que o SQL rodar.
+    if (error && /telefone/i.test(error.message)) {
+      ({ error } = await supabase
+        .from("site_studiomova_leads_contato")
+        .insert({ nome, assunto, mensagem: mensagem || null }));
+    }
     if (error) console.error("Falha ao registrar lead:", error.message);
   }
 

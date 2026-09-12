@@ -6,10 +6,12 @@ import { PageHero } from "@/components/PageHero";
 import { SeletorPlanos } from "./SeletorPlanos";
 import { GradeAulas } from "./GradeAulas";
 
+const descricao =
+  "Musculação, Spin, Pilates e aulas coletivas — escolha o que quer treinar e veja os planos. Também aceitamos Wellhub e TotalPass.";
 export const metadata: Metadata = {
   title: "Planos",
-  description:
-    "Musculação, Spin, Pilates e aulas coletivas — escolha o que quer treinar e veja os planos. Também aceitamos Wellhub e TotalPass.",
+  description: descricao,
+  openGraph: { title: "Planos — Studio MOVA", description: descricao },
 };
 
 export default async function Planos() {
