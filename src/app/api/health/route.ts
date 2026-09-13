@@ -2,9 +2,9 @@ import { NextResponse } from "next/server";
 import { createClient, supabaseConfigurado } from "@/lib/supabase/server";
 
 // Health check p/ monitoramento de uptime (UptimeRobot/WhatsApp) — 2º projeto Supabase (site + GABI).
-// REGRA: 200 = o APP está de pé. Banco Free lento NÃO derruba o app → status do banco vai
-// como CAMPO `db` ("ok" | "lento"), não vira 503 (evita alarme falso quando o Free engasga >4s).
-// Queda REAL do container segue detectada (proxy 502). Config ausente = 503 (misconfig real).
+// REGRA: 200 = app + banco de pé. Banco Free só LENTO (timeout > 4s) → 200 `db:"lento"` (evita
+// alarme falso). Erro REAL do banco (conexão/credencial/tabela) → 503 `db:"erro"` (alerta de
+// verdade). Queda do container segue detectada (proxy 502). Config ausente = 503 (misconfig).
 // Blindado: (1) ping via supabase-js (HTTP/PostgREST, sem conexão direta → serve de keep-alive
 // sem estourar o limite de conexões do Free); (2) CACHE em memória (45s) — absorve floods sem
 // quebrar o keep-alive (pings de 15–30 min sempre testam o banco); (3) TIMEOUT curto (4s).
@@ -35,12 +35,21 @@ export async function GET() {
     cache = { ts: Date.now(), body, status: 200 };
     return NextResponse.json(body);
   } catch (e) {
-    // Banco Free lento/instável NÃO é queda do app → 200 com db:"lento" (evita alarme falso).
-    // Loga o detalhe no servidor, mas não expõe a mensagem interna na resposta.
-    console.error("health: banco lento/instável:", e instanceof Error ? e.message : e);
-    const body = { ok: true, db: "lento", ts: new Date().toISOString() };
-    cache = { ts: Date.now(), body, status: 200 };
-    return NextResponse.json(body);
+    console.error("health: erro no banco:", e instanceof Error ? e.message : e);
+    // TIMEOUT (abort > 4s) = Free tier engasgando, NÃO é queda → 200 db:"lento"
+    // (evita alarme falso de latência). Já um erro REAL (conexão recusada,
+    // credencial inválida, tabela sumida) = banco INOPERANTE → 503, pra o
+    // UptimeRobot alertar de verdade em vez de mascarar a queda.
+    // `signal.aborted` = true só quando o nosso timeout de 4s disparou (lento).
+    // Erro real do banco chega com aborted=false → 503.
+    if (ctrl.signal.aborted) {
+      const body = { ok: true, db: "lento", ts: new Date().toISOString() };
+      cache = { ts: Date.now(), body, status: 200 };
+      return NextResponse.json(body, { status: 200 });
+    }
+    const body = { ok: false, db: "erro", ts: new Date().toISOString() };
+    cache = { ts: Date.now(), body, status: 503 };
+    return NextResponse.json(body, { status: 503 });
   } finally {
     clearTimeout(timer);
   }

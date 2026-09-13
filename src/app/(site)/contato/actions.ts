@@ -49,6 +49,41 @@ async function verificarCaptcha(token: string): Promise<boolean> {
   }
 }
 
+// Avisa o studio na hora de um novo lead (WhatsApp via n8n), pra ninguém
+// depender de abrir o painel /admin/leads. Best-effort: NUNCA trava a resposta
+// ao visitante nem depende do banco (o lead chega mesmo se a gravação falhar).
+// Ativa quando `N8N_LEAD_WEBHOOK_URL` estiver configurada no ambiente.
+async function notificarLead(lead: {
+  nome: string;
+  telefone: string;
+  assunto: string;
+  mensagem: string;
+}): Promise<void> {
+  const url = process.env.N8N_LEAD_WEBHOOK_URL;
+  if (!url) return;
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), 5000);
+  try {
+    await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...lead,
+        origem: "site",
+        recebido_em: new Date().toISOString(),
+      }),
+      signal: ctrl.signal,
+    });
+  } catch (e) {
+    console.error(
+      "Falha ao notificar lead (n8n):",
+      e instanceof Error ? e.message : e,
+    );
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
 export async function enviarContato(
   dados: Payload,
 ): Promise<ResultadoContato> {
@@ -79,15 +114,20 @@ export async function enviarContato(
     let { error } = await supabase
       .from("site_studiomova_leads_contato")
       .insert({ nome, telefone, assunto, mensagem: mensagem || null });
-    // Se a coluna `telefone` ainda não existe no banco, grava sem ela pra
-    // NÃO perder o lead — o telefone passa a ser salvo assim que o SQL rodar.
-    if (error && /telefone/i.test(error.message)) {
+    // PGRST204 = coluna não encontrada no schema cache (ex.: `telefone` ainda
+    // não existe no banco). Regrava sem ela pra NÃO perder o lead. Uso o
+    // CÓDIGO do erro (estável), não a mensagem em inglês do driver.
+    if (error && error.code === "PGRST204") {
       ({ error } = await supabase
         .from("site_studiomova_leads_contato")
         .insert({ nome, assunto, mensagem: mensagem || null }));
     }
     if (error) console.error("Falha ao registrar lead:", error.message);
   }
+
+  // Notifica o studio na hora — mesmo que a gravação acima tenha falhado, o
+  // lead chega a um humano (fecha o "loop do lead").
+  await notificarLead({ nome, telefone, assunto, mensagem });
 
   return { ok: true };
 }

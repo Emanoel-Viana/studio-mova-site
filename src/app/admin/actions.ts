@@ -3,8 +3,31 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import { mergeProfundo } from "@/lib/content";
+import { site } from "@/lib/site";
 
 export type EstadoLogin = { erro?: string };
+
+// Barreira anti-corrupção do conteúdo: confere, recursivamente, que cada chave
+// do patch tem a MESMA "forma" (array/objeto/primitivo) da mesma chave nos
+// padrões (`site`). Assim um payload torto (ex.: um array virar string) é
+// RECUSADO antes de gravar, em vez de quebrar a renderização do site público.
+// Chaves novas (que não existem nos padrões) são permitidas.
+function formaCoerente(over: unknown, base: unknown): boolean {
+  if (Array.isArray(base) || Array.isArray(over)) {
+    return Array.isArray(base) === Array.isArray(over);
+  }
+  const baseObj = base !== null && typeof base === "object";
+  const overObj = over !== null && typeof over === "object";
+  if (baseObj !== overObj) return false;
+  if (!baseObj) return true;
+  const b = base as Record<string, unknown>;
+  const o = over as Record<string, unknown>;
+  for (const [k, v] of Object.entries(o)) {
+    if (k in b && !formaCoerente(v, b[k])) return false;
+  }
+  return true;
+}
 
 // Confere o token do Turnstile no Cloudflare. No login, o captcha é a única
 // barreira extra contra força bruta — então, se a SITE key existe mas o
@@ -88,13 +111,21 @@ export async function salvarConteudo(
   } = await supabase.auth.getUser();
   if (!user) return { erro: "Sessão expirada. Faça login novamente." };
 
+  // Recusa payload com tipo trocado (evita corromper o conteúdo do site).
+  if (!formaCoerente(patch, site)) {
+    console.error("salvarConteudo: patch com forma incoerente, recusado.");
+    return { erro: "Não foi possível salvar: dados em formato inesperado." };
+  }
+
   const { data: atual } = await supabase
     .from("site_studiomova_configuracoes")
     .select("content")
     .eq("id", 1)
     .maybeSingle();
 
-  const novoConteudo = { ...(atual?.content ?? {}), ...patch };
+  // Merge PROFUNDO (igual ao da leitura) — editar uma sub-seção não apaga as
+  // irmãs. Antes era um spread raso, que substituía o objeto de topo inteiro.
+  const novoConteudo = mergeProfundo(atual?.content ?? {}, patch);
 
   // UPDATE (não upsert): a tabela só tem policy de UPDATE, não de INSERT — um
   // upsert tentaria inserir e a RLS bloquearia. O `.select("id")` devolve as

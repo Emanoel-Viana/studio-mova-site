@@ -5,28 +5,13 @@
 // para os padrões do código.
 import { site } from "./site";
 import { createClient, supabaseConfigurado } from "./supabase/server";
+import { mergeProfundo } from "./merge";
 
 export type SiteContent = typeof site;
 
-function ehObjetoPuro(v: unknown): v is Record<string, unknown> {
-  return typeof v === "object" && v !== null && !Array.isArray(v);
-}
-
-// Merge PROFUNDO: objetos são mesclados recursivamente (o override do banco
-// atualiza/preenche campos, mantendo os que só existem no código); arrays e
-// valores simples do banco SUBSTITUEM os do código. Assim, editar uma seção
-// no admin não "congela" a seção inteira contra campos novos adicionados
-// depois no código.
-function mergeProfundo<T>(base: T, over: unknown): T {
-  if (!ehObjetoPuro(base) || !ehObjetoPuro(over)) {
-    return over === undefined ? base : (over as T);
-  }
-  const out: Record<string, unknown> = { ...base };
-  for (const [k, v] of Object.entries(over)) {
-    out[k] = mergeProfundo((base as Record<string, unknown>)[k], v);
-  }
-  return out as T;
-}
+// Re-exporta pra manter o caminho de import `@/lib/content` (a lógica pura vive
+// em `merge.ts`, testável sem o cliente Supabase).
+export { mergeProfundo };
 
 export async function getContent(): Promise<SiteContent> {
   if (!supabaseConfigurado) return site;

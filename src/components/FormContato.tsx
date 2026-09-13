@@ -149,6 +149,7 @@ export function FormContato({
           onChange={(e) => setNome(e.target.value)}
           className={campo}
           placeholder="Como podemos te chamar?"
+          autoComplete="name"
         />
       </div>
 
@@ -166,6 +167,7 @@ export function FormContato({
           className={campo}
           placeholder="(61) 9 9999-9999"
           aria-describedby="telefone-ajuda"
+          autoComplete="tel"
         />
         <p id="telefone-ajuda" className="text-sm text-cinza mt-1.5">
           Pra gente conseguir te responder mesmo que a conversa não abra.

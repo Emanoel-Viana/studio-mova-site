@@ -30,6 +30,12 @@ const nextConfig: NextConfig = {
   // Remove o header "X-Powered-By: Next.js" (não revela a tecnologia).
   poweredByHeader: false,
 
+  // Serve as fotos em AVIF quando o navegador suporta (mais leve que WebP),
+  // com WebP de fallback. O next/image faz o resize/conversão sob demanda.
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
+
   async headers() {
     return [
       {
