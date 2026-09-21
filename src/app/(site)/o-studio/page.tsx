@@ -14,11 +14,11 @@ import { Galeria } from "./Galeria";
 
 // Galeria em mosaico — cada foto no seu formato natural (sem corte).
 const galeria = [
+  { src: "/fotos/galeria/pilates-acao.jpg", w: 720, h: 1263 },
   { src: "/fotos/galeria/DSC02142.jpg", w: 2592, h: 4608 },
   { src: "/fotos/reabilitacao/DSC02103.jpg", w: 2592, h: 4608 },
   { src: "/fotos/galeria/MOVA-06.jpg", w: 4685, h: 3037 },
   { src: "/fotos/galeria/spin-sala.jpg", w: 720, h: 1280 },
-  { src: "/fotos/galeria/pilates-acao.jpg", w: 720, h: 1466 },
   { src: "/fotos/reabilitacao/DSC00600.jpg", w: 4128, h: 6192 },
   { src: "/fotos/galeria/pilates-sala.jpg", w: 720, h: 1280 },
   { src: "/fotos/galeria/studio-mova-43.jpg", w: 4774, h: 3184 },
