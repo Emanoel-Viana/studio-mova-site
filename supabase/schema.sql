@@ -29,7 +29,14 @@ create policy "leitura publica do conteudo"
   for select
   using (true);
 
--- ESCRITA: somente usuários autenticados (o administrador logado).
+-- ESCRITA: somente o administrador.
+-- ⚠️ SEGURANÇA: `auth.uid() is not null` = QUALQUER conta autenticada. Isso só é
+-- seguro porque o SIGNUP PÚBLICO do Supabase está DESLIGADO (Auth → Providers →
+-- Email → "Allow new users to sign up" = OFF) → existe só o admin. Como reforço
+-- (defesa em profundidade), o recomendado é escopar ao UID do admin — troque a
+-- linha abaixo por:  using (auth.uid() = 'SEU-UID-ADMIN')  with check (auth.uid() = 'SEU-UID-ADMIN')
+-- (o UID fica em Auth → Users). Em 11/08/2026 isso foi aplicado no banco vivo via
+-- SQL manual — confirme com o SELECT de verificação (ver docs/PENDENCIAS).
 drop policy if exists "escrita apenas admin" on public.site_studiomova_configuracoes;
 create policy "escrita apenas admin"
   on public.site_studiomova_configuracoes
@@ -57,11 +64,15 @@ create trigger trg_site_settings_updated_at
 create table if not exists public.site_studiomova_leads_contato (
   id         uuid primary key default gen_random_uuid(),
   nome       text not null,
+  telefone   text,
   assunto    text,
   mensagem   text,
   origem     text default 'site',
   criado_em  timestamptz not null default now()
 );
+-- Coluna telefone (o formulário passou a capturar o contato em 12/09/2026).
+alter table public.site_studiomova_leads_contato
+  add column if not exists telefone text;
 
 alter table public.site_studiomova_leads_contato enable row level security;
 
@@ -71,7 +82,9 @@ create policy "inserir lead publico"
   on public.site_studiomova_leads_contato for insert
   with check (true);
 
--- LER: somente o administrador autenticado.
+-- LER: somente o administrador. ⚠️ Mesma observação da policy de escrita acima —
+-- protege PII dos leads (nome/telefone/mensagem, LGPD). Depende do signup estar
+-- DESLIGADO; o recomendado é escopar ao UID do admin (auth.uid() = 'SEU-UID-ADMIN').
 drop policy if exists "ler leads admin" on public.site_studiomova_leads_contato;
 create policy "ler leads admin"
   on public.site_studiomova_leads_contato for select
