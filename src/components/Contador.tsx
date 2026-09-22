@@ -11,6 +11,9 @@ export function Contador({
   value: number;
   decimais?: number;
 }) {
+  // Blindagem: se `value` vier NaN (ex.: nota editada como "4,94" no admin e
+  // convertida errado), cai pra 0 em vez de renderizar "NaN".
+  const seguro = Number.isFinite(value) ? value : 0;
   const [n, setN] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
 
@@ -18,7 +21,7 @@ export function Contador({
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setN(value);
+      setN(seguro);
       return;
     }
     let raf = 0;
@@ -31,9 +34,9 @@ export function Contador({
           const dur = 1200;
           const tick = (t: number) => {
             const p = Math.min((t - t0) / dur, 1);
-            setN(value * (1 - Math.pow(1 - p, 3)));
+            setN(seguro * (1 - Math.pow(1 - p, 3)));
             if (p < 1) raf = requestAnimationFrame(tick);
-            else setN(value);
+            else setN(seguro);
           };
           raf = requestAnimationFrame(tick);
           obs.disconnect();
@@ -46,7 +49,15 @@ export function Contador({
       obs.disconnect();
       cancelAnimationFrame(raf);
     };
-  }, [value]);
+  }, [seguro]);
 
-  return <span ref={ref}>{n.toFixed(decimais)}</span>;
+  // Formato pt-BR (vírgula decimal), coerente com o resto do site.
+  return (
+    <span ref={ref}>
+      {n.toLocaleString("pt-BR", {
+        minimumFractionDigits: decimais,
+        maximumFractionDigits: decimais,
+      })}
+    </span>
+  );
 }

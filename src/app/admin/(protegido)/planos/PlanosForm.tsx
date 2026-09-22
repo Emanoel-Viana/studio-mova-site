@@ -15,6 +15,11 @@ type Modalidade = {
   titulo: string;
   tagline: string;
   icone: string;
+  // Preservados no round-trip (foto do card + reel "ver em ação"). Não são
+  // editados neste form, mas PRECISAM sobreviver ao salvar — por isso ficam no
+  // tipo (o `structuredClone` do estado inicial já os copia).
+  foto?: string;
+  reel?: string;
   temNiveis: boolean;
   niveis: Nivel[];
   frequencias: Freq[];

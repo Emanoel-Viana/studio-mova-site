@@ -32,7 +32,14 @@ function linkWhats(telefone: string) {
 // Gera e baixa um CSV dos leads visíveis (abre no Excel/Sheets).
 function baixarCSV(leads: Lead[]) {
   const cabecalho = ["Nome", "Telefone", "Assunto", "Mensagem", "Recebido em"];
-  const escapar = (v: string) => `"${(v ?? "").replace(/"/g, '""')}"`;
+  // Escapa aspas E neutraliza injeção de fórmula: um valor (vindo de formulário
+  // público) que comece com = + - @ ou TAB é interpretado como fórmula pelo
+  // Excel/Sheets — prefixamos com apóstrofo pra virar texto puro.
+  const escapar = (v: string) => {
+    let s = (v ?? "").replace(/"/g, '""');
+    if (/^[=+\-@\t\r]/.test(s)) s = "'" + s;
+    return `"${s}"`;
+  };
   const linhas = leads.map((l) =>
     [
       l.nome,

@@ -62,6 +62,58 @@ const DIAS_SCHEMA: Record<string, string> = {
   sabado: "Saturday",
   domingo: "Sunday",
 };
+const ORDEM_DIAS = [
+  "segunda",
+  "terça",
+  "quarta",
+  "quinta",
+  "sexta",
+  "sábado",
+  "domingo",
+];
+function normalizarDia(d: string): string {
+  return d
+    .trim()
+    .replace(/\.$/, "")
+    .replace(/^terca$/, "terça")
+    .replace(/^sabado$/, "sábado")
+    .replace(/-feira$/, "");
+}
+// "Segunda, Quarta e Sexta" → [Mon, Wed, Fri]; "Segunda a Sexta" → [Mon..Fri].
+function diasParaSchema(texto: string): string[] {
+  const dias: string[] = [];
+  for (let parte of texto.toLowerCase().split(/,|\se\s/)) {
+    parte = parte.trim();
+    const range = parte.match(/^(.+?)\s+(?:a|à|às|até|-|–|—)\s+(.+)$/);
+    if (range) {
+      const ini = ORDEM_DIAS.indexOf(normalizarDia(range[1]));
+      const fim = ORDEM_DIAS.indexOf(normalizarDia(range[2]));
+      if (ini >= 0 && fim >= ini) {
+        for (let i = ini; i <= fim; i++) dias.push(ORDEM_DIAS[i]);
+        continue;
+      }
+    }
+    dias.push(normalizarDia(parte));
+  }
+  return dias.map((d) => DIAS_SCHEMA[d]).filter(Boolean);
+}
+// "06h às 20h" → 06:00–20:00; "06h30 às 20h" → 06:30–20:00; valida 0-23/0-59.
+function faixaParaHoras(
+  faixa: string,
+): { opens: string; closes: string } | null {
+  const m = faixa.match(
+    /(\d{1,2})\s*h?\s*(\d{2})?\s*(?:às|as|-|–|—|até)\s*(\d{1,2})\s*h?\s*(\d{2})?/i,
+  );
+  if (!m) return null; // "Fechado" e afins são ignorados
+  const h1 = +m[1],
+    min1 = m[2] ? +m[2] : 0,
+    h2 = +m[3],
+    min2 = m[4] ? +m[4] : 0;
+  if (h1 > 23 || h2 > 23 || min1 > 59 || min2 > 59) return null;
+  const fmt = (h: number, mm: number) =>
+    `${String(h).padStart(2, "0")}:${String(mm).padStart(2, "0")}`;
+  return { opens: fmt(h1, min1), closes: fmt(h2, min2) };
+}
 function horariosParaSchema(
   horarios: readonly { dias: string; faixas: readonly string[] }[],
 ) {
@@ -72,20 +124,15 @@ function horariosParaSchema(
     closes: string;
   }[] = [];
   for (const h of horarios) {
-    const dias = h.dias
-      .toLowerCase()
-      .split(/,|\se\s/)
-      .map((d) => DIAS_SCHEMA[d.trim().replace(/\.$/, "")])
-      .filter(Boolean);
+    const dias = diasParaSchema(h.dias);
     if (!dias.length) continue;
     for (const faixa of h.faixas) {
-      const m = faixa.match(/(\d{1,2})h?\s*(?:às|as|-)\s*(\d{1,2})h?/i);
-      if (!m) continue; // "Fechado" e afins são ignorados
+      const horas = faixaParaHoras(faixa);
+      if (!horas) continue;
       specs.push({
         "@type": "OpeningHoursSpecification",
         dayOfWeek: dias,
-        opens: `${m[1].padStart(2, "0")}:00`,
-        closes: `${m[2].padStart(2, "0")}:00`,
+        ...horas,
       });
     }
   }
@@ -102,7 +149,7 @@ function montarJsonLd(c: Awaited<ReturnType<typeof getContent>>) {
     name: c.nome,
     slogan: c.slogan,
     url: c.url,
-    image: `${c.url}/fotos/galeria/studio-mova-43.jpg`,
+    image: `${c.url}/fotos/galeria/studio-mova-43-og.jpg`,
     logo: `${c.url}/marca/icon-512.png`,
     telephone: `+${c.contato.whatsapp}`,
     email: c.contato.email,

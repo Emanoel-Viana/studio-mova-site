@@ -252,6 +252,10 @@
 
 /* Superfícies e classes com uso duplo (texto x fundo) — tratadas à parte */
 :root.dark .bg-white { background-color: #17221c; }
+/* Versões com opacidade (ex.: barra fixa do mobile) — escurecer no dark
+   mantendo a translucidez, senão viram um bloco branco no tema escuro. */
+:root.dark .bg-white\/95 { background-color: rgb(23 34 28 / 0.95); }
+:root.dark .bg-white\/60 { background-color: rgb(23 34 28 / 0.6); }
 :root.dark .text-preto { color: #e8f1eb; }            /* texto (o fundo bg-preto continua escuro) */
 :root.dark .text-verde-escuro { color: #86e6b2; }     /* título/link em superfície agora escura */
 :root.dark .text-verde-medio { color: #63d69d; }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import { BLUR_FOTO } from "@/lib/blur";
@@ -9,6 +9,8 @@ type Foto = { src: string; w: number; h: number };
 
 export function Galeria({ fotos }: { fotos: Foto[] }) {
   const [aberto, setAberto] = useState<number | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const abridorRef = useRef<HTMLButtonElement | null>(null); // quem abriu (restaura foco)
 
   const fechar = useCallback(() => setAberto(null), []);
   const anterior = useCallback(
@@ -29,12 +31,30 @@ export function Galeria({ fotos }: { fotos: Foto[] }) {
       if (e.key === "Escape") fechar();
       else if (e.key === "ArrowLeft") anterior();
       else if (e.key === "ArrowRight") proximo();
+      else if (e.key === "Tab") {
+        // Prende o Tab dentro do modal (a11y de teclado).
+        const foco = dialogRef.current?.querySelectorAll<HTMLElement>("button");
+        if (!foco || !foco.length) return;
+        const primeiro = foco[0];
+        const ultimo = foco[foco.length - 1];
+        if (e.shiftKey && document.activeElement === primeiro) {
+          e.preventDefault();
+          ultimo.focus();
+        } else if (!e.shiftKey && document.activeElement === ultimo) {
+          e.preventDefault();
+          primeiro.focus();
+        }
+      }
     };
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKey);
+    // Move o foco pra dentro do modal ao abrir.
+    dialogRef.current?.querySelector<HTMLElement>("button")?.focus();
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKey);
+      // Restaura o foco pra miniatura que abriu.
+      abridorRef.current?.focus();
     };
   }, [aberto, fechar, anterior, proximo]);
 
@@ -45,7 +65,10 @@ export function Galeria({ fotos }: { fotos: Foto[] }) {
           <button
             key={f.src}
             type="button"
-            onClick={() => setAberto(i)}
+            onClick={(e) => {
+              abridorRef.current = e.currentTarget;
+              setAberto(i);
+            }}
             aria-label={`Ampliar foto ${i + 1}`}
             className="group relative block w-full mb-4 break-inside-avoid overflow-hidden rounded-[1.25rem] cursor-zoom-in"
           >
@@ -72,6 +95,7 @@ export function Galeria({ fotos }: { fotos: Foto[] }) {
 
       {aberto !== null && (
         <div
+          ref={dialogRef}
           className="fixed inset-0 z-[100] bg-black/92 flex items-center justify-center p-4 sm:p-8"
           onClick={fechar}
           role="dialog"

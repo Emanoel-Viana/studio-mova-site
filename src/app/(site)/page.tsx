@@ -81,7 +81,10 @@ export default async function Home() {
               </span>
               <span>
                 <strong className="font-display">
-                  <Contador value={Number(site.avaliacao.nota)} decimais={2} />
+                  <Contador
+                    value={Number(String(site.avaliacao.nota).replace(",", "."))}
+                    decimais={2}
+                  />
                 </strong>{" "}
                 — <Contador value={site.avaliacao.total} /> no{" "}
                 {site.avaliacao.fonte}
@@ -620,7 +623,7 @@ export default async function Home() {
               return (
                 <figure
                   key={d.autor}
-                  className="flex flex-col rounded-2xl bg-white/95 text-preto p-5 sm:p-7 h-full"
+                  className="flex flex-col rounded-2xl bg-white text-preto p-5 sm:p-7 h-full"
                 >
                   <div className="flex gap-0.5 mb-3 text-coral">
                     {Array.from({ length: 5 }).map((_, n) => (

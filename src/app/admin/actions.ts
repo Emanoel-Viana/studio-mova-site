@@ -13,9 +13,15 @@ export type EstadoLogin = { erro?: string };
 // padrões (`site`). Assim um payload torto (ex.: um array virar string) é
 // RECUSADO antes de gravar, em vez de quebrar a renderização do site público.
 // Chaves novas (que não existem nos padrões) são permitidas.
+const CHAVES_PERIGOSAS = new Set(["__proto__", "constructor", "prototype"]);
 function formaCoerente(over: unknown, base: unknown): boolean {
   if (Array.isArray(base) || Array.isArray(over)) {
-    return Array.isArray(base) === Array.isArray(over);
+    if (Array.isArray(base) !== Array.isArray(over)) return false;
+    // Valida CADA item do patch contra a forma-modelo (1º item dos padrões).
+    // Ex.: um array de objetos que venha com um item primitivo é recusado.
+    const modelo = (base as unknown[])[0];
+    if (modelo === undefined) return true; // sem modelo pra comparar
+    return (over as unknown[]).every((item) => formaCoerente(item, modelo));
   }
   const baseObj = base !== null && typeof base === "object";
   const overObj = over !== null && typeof over === "object";
@@ -24,6 +30,7 @@ function formaCoerente(over: unknown, base: unknown): boolean {
   const b = base as Record<string, unknown>;
   const o = over as Record<string, unknown>;
   for (const [k, v] of Object.entries(o)) {
+    if (CHAVES_PERIGOSAS.has(k)) return false; // anti prototype-pollution
     if (k in b && !formaCoerente(v, b[k])) return false;
   }
   return true;

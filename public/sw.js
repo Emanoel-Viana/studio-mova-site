@@ -1,7 +1,7 @@
 // Service Worker do Studio MOVA (PWA).
 // Estratégia: navegações = network-first (conteúdo sempre atual, com
 // fallback offline); assets estáticos = cache-first (rápido e offline).
-const CACHE = "mova-v49";
+const CACHE = "mova-v50";
 const OFFLINE_URL = "/offline";
 
 self.addEventListener("install", (event) => {
@@ -42,12 +42,15 @@ self.addEventListener("fetch", (event) => {
   }
 
   // Navegações entre páginas: rede primeiro, cache/offline como reserva.
+  // Só cacheia respostas OK (não guarda 404/500 pra não servir erro offline).
   if (request.mode === "navigate") {
     event.respondWith(
       fetch(request)
         .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put(request, copy));
+          if (res.ok) {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => c.put(request, copy));
+          }
           return res;
         })
         .catch(() =>
@@ -59,22 +62,26 @@ self.addEventListener("fetch", (event) => {
     return;
   }
 
-  // Assets estáticos: cache primeiro, atualizando em segundo plano.
+  // Assets estáticos: stale-while-revalidate — responde do cache na hora e
+  // atualiza em segundo plano (imagem trocada no mesmo caminho refresca sozinha).
   if (
     /\/_next\/static\/|\/marca\/|\/fotos\/|\.(?:png|jpg|jpeg|webp|avif|svg|ico|woff2?)$/.test(
       url.pathname,
     )
   ) {
     event.respondWith(
-      caches.match(request).then(
-        (cached) =>
-          cached ||
-          fetch(request).then((res) => {
-            const copy = res.clone();
-            caches.open(CACHE).then((c) => c.put(request, copy));
+      caches.match(request).then((cached) => {
+        const rede = fetch(request)
+          .then((res) => {
+            if (res.ok) {
+              const copy = res.clone();
+              caches.open(CACHE).then((c) => c.put(request, copy));
+            }
             return res;
-          }),
-      ),
+          })
+          .catch(() => cached);
+        return cached || rede;
+      }),
     );
   }
 });

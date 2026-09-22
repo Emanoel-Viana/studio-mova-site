@@ -3,6 +3,7 @@
 // e mescla por cima dos valores padrão de `site` (src/lib/site.ts). Se o
 // Supabase não estiver configurado ou a linha não existir, cai de volta
 // para os padrões do código.
+import { cache } from "react";
 import { site } from "./site";
 import { createClient, supabaseConfigurado } from "./supabase/server";
 import { mergeProfundo } from "./merge";
@@ -13,7 +14,11 @@ export type SiteContent = typeof site;
 // em `merge.ts`, testável sem o cliente Supabase).
 export { mergeProfundo };
 
-export async function getContent(): Promise<SiteContent> {
+// `cache()` do React: dedupe por request — as várias chamadas de `getContent()`
+// numa mesma renderização (layout raiz p/ JSON-LD, layout do site p/ Header e a
+// própria página) colapsam em UMA leitura do Supabase, e todas veem o MESMO
+// conteúdo (sem divergência intra-request).
+export const getContent = cache(async (): Promise<SiteContent> => {
   if (!supabaseConfigurado) return site;
 
   try {
@@ -30,4 +35,4 @@ export async function getContent(): Promise<SiteContent> {
   } catch {
     return site;
   }
-}
+});
