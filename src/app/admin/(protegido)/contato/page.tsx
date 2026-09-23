@@ -25,6 +25,8 @@ export default async function EditarContato() {
           nota: c.avaliacao.nota,
           total: String(c.avaliacao.total),
           fonte: c.avaliacao.fonte,
+          notaGoogle: c.avaliacaoGoogle.nota,
+          totalGoogle: String(c.avaliacaoGoogle.total),
           email: c.contato.email,
           instagram: c.contato.instagram,
           instagramUrl: c.contato.instagramUrl,

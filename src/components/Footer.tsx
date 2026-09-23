@@ -2,26 +2,7 @@ import Link from "next/link";
 import { Phone, Mail } from "lucide-react";
 import { navegacao, waLink } from "@/lib/site";
 import type { SiteContent } from "@/lib/content";
-
-function InstagramIcon({ size = 17 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden
-    >
-      <rect x="2" y="2" width="20" height="20" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
-    </svg>
-  );
-}
+import { IconeInstagram } from "@/components/IconeInstagram";
 
 export function Footer({ content: site }: { content: SiteContent }) {
   const ano = new Date().getFullYear();
@@ -70,7 +51,7 @@ export function Footer({ content: site }: { content: SiteContent }) {
               rel="noopener"
               className="flex items-center gap-2 text-sm text-[#D9E6DE] hover:text-white"
             >
-              <InstagramIcon size={15} />
+              <IconeInstagram size={15} />
               {site.contato.instagram}
             </a>
           </div>

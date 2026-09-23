@@ -8,6 +8,8 @@ type Campos = {
   nota: string;
   total: string;
   fonte: string;
+  notaGoogle: string;
+  totalGoogle: string;
   email: string;
   instagram: string;
   instagramUrl: string;
@@ -66,6 +68,11 @@ export function ContatoForm({ inicial }: { inicial: Campos }) {
           total: Number(c.total) || 0,
           fonte: c.fonte,
         },
+        // Só nota/total; fonte e url do Google são preservados pelo merge profundo.
+        avaliacaoGoogle: {
+          nota: c.notaGoogle,
+          total: Number(c.totalGoogle) || 0,
+        },
         contato: {
           whatsapp: c.whatsapp,
           whatsappVisivel: c.whatsappVisivel,
@@ -89,6 +96,7 @@ export function ContatoForm({ inicial }: { inicial: Campos }) {
       {/* Avaliação */}
       <section className="rounded-2xl bg-white border border-[#DDEDE3] p-6">
         <h2 className="text-lg mb-4">Avaliação (prova social)</h2>
+        <p className="text-sm font-semibold text-cinza mb-2">Wellhub</p>
         <div className="grid sm:grid-cols-3 gap-4">
           <CampoTexto
             label="Nota"
@@ -111,6 +119,27 @@ export function ContatoForm({ inicial }: { inicial: Campos }) {
             placeholder="Wellhub"
           />
         </div>
+        <p className="text-sm font-semibold text-cinza mt-5 mb-2">Google</p>
+        <div className="grid sm:grid-cols-2 gap-4">
+          <CampoTexto
+            label="Nota"
+            value={c.notaGoogle}
+            onChange={set("notaGoogle")}
+            placeholder="5,0"
+            inputMode="numeric"
+          />
+          <CampoTexto
+            label="Qtd. de avaliações"
+            value={c.totalGoogle}
+            onChange={set("totalGoogle")}
+            placeholder="48"
+            inputMode="numeric"
+          />
+        </div>
+        <p className="text-sm text-cinza mt-3">
+          A nota do Google também alimenta as estrelas do dado estruturado
+          (rich snippet). Use vírgula ou ponto — o site normaliza.
+        </p>
       </section>
 
       {/* Contato */}
