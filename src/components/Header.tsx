@@ -105,7 +105,7 @@ export function Header({ avaliacao, avaliacaoGoogle, whatsappVisivel }: Props) {
               )}
               target="_blank"
               rel="noopener"
-              className="btn btn-coral !min-h-0 !py-1.5 !px-3 !text-[0.7rem] shrink-0 lg:hidden"
+              className="btn btn-coral !min-h-0 !py-2 !px-3.5 !text-[0.72rem] shrink-0 lg:hidden"
             >
               Agendar
             </a>
@@ -119,7 +119,7 @@ export function Header({ avaliacao, avaliacaoGoogle, whatsappVisivel }: Props) {
                   <Link
                     href={item.href}
                     aria-current={ativo ? "page" : undefined}
-                    className={`block rounded-full font-display font-bold uppercase tracking-wide transition-colors px-2.5 py-1.5 text-[0.72rem] lg:px-3.5 lg:py-2.5 lg:text-[0.8rem] ${
+                    className={`block rounded-full font-display font-bold uppercase tracking-wide transition-colors px-3 py-2 text-[0.72rem] lg:px-3.5 lg:py-2.5 lg:text-[0.8rem] ${
                       ativo
                         ? "bg-white text-verde-escuro"
                         : "text-white hover:bg-white/10"

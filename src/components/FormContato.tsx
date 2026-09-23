@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { MessageCircle, Check } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { Turnstile } from "@/components/Turnstile";
@@ -35,6 +35,11 @@ export function FormContato({
   const [enviando, setEnviando] = useState(false);
   const [erro, setErro] = useState("");
   const [enviado, setEnviado] = useState(false);
+  const sucessoRef = useRef<HTMLHeadingElement>(null);
+  // Ao enviar, leva o foco pro título de sucesso (leitor de tela anuncia).
+  useEffect(() => {
+    if (enviado) sucessoRef.current?.focus();
+  }, [enviado]);
   // Muda a key do Turnstile pra remontar o widget e gerar um token NOVO
   // (o token do captcha é de uso único).
   const [captchaKey, setCaptchaKey] = useState(0);
@@ -110,7 +115,13 @@ export function FormContato({
         <span className="grid place-items-center w-14 h-14 rounded-full bg-verde text-white mx-auto mb-4">
           <Check size={30} aria-hidden />
         </span>
-        <h3 className="text-xl sm:text-2xl mb-2">Recebemos sua mensagem! 💚</h3>
+        <h3
+          ref={sucessoRef}
+          tabIndex={-1}
+          className="text-xl sm:text-2xl mb-2 outline-none"
+        >
+          Recebemos sua mensagem! 💚
+        </h3>
         <p className="text-cinza mb-6">
           Toque no botão abaixo para abrir o WhatsApp com a sua mensagem já
           pronta — é só enviar pra gente.

@@ -130,6 +130,7 @@ export function GradeHorarios({ grade }: { grade: Grade }) {
           <button
             key={p}
             type="button"
+            aria-pressed={periodo === p}
             onClick={() => setPeriodo(p)}
             className={`px-3.5 py-1.5 rounded-full text-sm font-display font-bold transition-colors ${
               periodo === p ? "bg-verde text-white" : "text-cinza"
@@ -144,6 +145,7 @@ export function GradeHorarios({ grade }: { grade: Grade }) {
       <div className="flex flex-wrap gap-2 mb-5">
         <button
           type="button"
+          aria-pressed={foco === "Todas"}
           onClick={() => setFoco("Todas")}
           className={botaoFiltro(foco === "Todas")}
         >
@@ -151,6 +153,7 @@ export function GradeHorarios({ grade }: { grade: Grade }) {
         </button>
         <button
           type="button"
+          aria-pressed={foco === "Coletivas"}
           onClick={() => setFoco("Coletivas")}
           className={botaoFiltro(foco === "Coletivas")}
         >
@@ -163,6 +166,7 @@ export function GradeHorarios({ grade }: { grade: Grade }) {
             <button
               key={nome}
               type="button"
+              aria-pressed={ativo}
               onClick={() => setFoco(nome)}
               className={botaoFiltro(ativo)}
             >

@@ -93,6 +93,7 @@ export function SeletorPlanos({ catalogo }: { catalogo: Catalogo }) {
               <button
                 key={m.id}
                 type="button"
+                aria-pressed={ativa}
                 onClick={() => {
                   setModId(m.id);
                   setFreqIdx(0);
@@ -127,6 +128,7 @@ export function SeletorPlanos({ catalogo }: { catalogo: Catalogo }) {
             <button
               key={f.freq}
               type="button"
+              aria-pressed={i === freqIdx}
               onClick={() => setFreqIdx(i)}
               className={`px-5 py-2 rounded-full font-display font-bold text-sm transition-colors ${
                 i === freqIdx ? "bg-verde text-white" : "text-cinza"
