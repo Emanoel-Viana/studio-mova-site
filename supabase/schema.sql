@@ -29,20 +29,18 @@ create policy "leitura publica do conteudo"
   for select
   using (true);
 
--- ESCRITA: somente o administrador.
--- ⚠️ SEGURANÇA: `auth.uid() is not null` = QUALQUER conta autenticada. Isso só é
--- seguro porque o SIGNUP PÚBLICO do Supabase está DESLIGADO (Auth → Providers →
--- Email → "Allow new users to sign up" = OFF) → existe só o admin. Como reforço
--- (defesa em profundidade), o recomendado é escopar ao UID do admin — troque a
--- linha abaixo por:  using (auth.uid() = 'SEU-UID-ADMIN')  with check (auth.uid() = 'SEU-UID-ADMIN')
--- (o UID fica em Auth → Users). Em 11/08/2026 isso foi aplicado no banco vivo via
--- SQL manual — confirme com o SELECT de verificação (ver docs/PENDENCIAS).
+-- ESCRITA: SOMENTE o UID do administrador (escopo confirmado no banco vivo em
+-- 22/09/2026 via pg_policies; endurecido em 11/08). Não é `auth.uid() is not null`
+-- genérico — mesmo com signup ligado, nenhuma outra conta edita o conteúdo.
+-- ⚠️ Ainda assim, mantenha o SIGNUP PÚBLICO DESLIGADO (Auth → Providers → Email →
+-- "Allow new users to sign up" = OFF) como defesa em profundidade.
+-- O UID é só um identificador de usuário (não é segredo/credencial).
 drop policy if exists "escrita apenas admin" on public.site_studiomova_configuracoes;
 create policy "escrita apenas admin"
   on public.site_studiomova_configuracoes
   for update
-  using (auth.uid() is not null)
-  with check (auth.uid() is not null);
+  using (auth.uid() = '707294b7-1eb0-4b97-8cbe-f94131356cb4'::uuid)
+  with check (auth.uid() = '707294b7-1eb0-4b97-8cbe-f94131356cb4'::uuid);
 
 -- Atualiza updated_at automaticamente a cada alteração.
 create or replace function public.tocar_updated_at()
@@ -82,10 +80,9 @@ create policy "inserir lead publico"
   on public.site_studiomova_leads_contato for insert
   with check (true);
 
--- LER: somente o administrador. ⚠️ Mesma observação da policy de escrita acima —
--- protege PII dos leads (nome/telefone/mensagem, LGPD). Depende do signup estar
--- DESLIGADO; o recomendado é escopar ao UID do admin (auth.uid() = 'SEU-UID-ADMIN').
+-- LER: SOMENTE o UID do administrador (protege PII dos leads — nome/telefone/
+-- mensagem, LGPD). Escopo confirmado no banco vivo em 22/09/2026.
 drop policy if exists "ler leads admin" on public.site_studiomova_leads_contato;
 create policy "ler leads admin"
   on public.site_studiomova_leads_contato for select
-  using (auth.uid() is not null);
+  using (auth.uid() = '707294b7-1eb0-4b97-8cbe-f94131356cb4'::uuid);
