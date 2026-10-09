@@ -643,7 +643,7 @@ export const site = {
       papel: "Professora",
       bio: "Especialista em treino personalizado e reabilitação, à frente do método MOVA.",
       foto: "/fotos/equipe/professorajuliana2.jpg",
-      foco: "center",
+      foco: "top",
     },
     {
       nome: "Nathalia",
