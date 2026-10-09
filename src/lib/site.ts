@@ -227,7 +227,7 @@ export const site = {
       detalhe: "A partir do plano TP5+ (TP5+, TP6 e TP7).",
       checkins: "3 check-ins por semana",
       agendamento:
-        "Agendamento via WhatsApp com a nossa especialista. Toda sexta-feira você envia suas disponibilidades para a semana seguinte.",
+        "Agendamento pelo próprio app do TotalPass — você escolhe e marca os horários direto por lá.",
       url: "https://totalpass.com/br/academias/studio-mova/",
     },
   ],
@@ -474,7 +474,7 @@ export const site = {
     },
     {
       q: "Como funciona pelo TotalPass?",
-      a: "Aceitamos a partir do TP5+ (TP5+, TP6 e TP7) — o TP5 comum, sem o '+', não é aceito. Pelo TotalPass o acesso é à musculação (as aulas coletivas ficam disponíveis no Wellhub Gold+ ou no plano regular). São até 12 check-ins por mês (limite mensal, com 1 por dia; sugerimos ~2 por semana). A sessão avaliativa já conta como 1 check-in. Agendar, remarcar e cancelar é tudo pelo próprio app do TotalPass.",
+      a: "Aceitamos a partir do TP5+ (TP5+, TP6 e TP7) — o TP5 comum, sem o '+', não é aceito. Pelo TotalPass o acesso é à musculação (as aulas coletivas ficam disponíveis no Wellhub Gold+ ou no plano regular). São 3 check-ins por semana (com 1 por dia). A sessão avaliativa já conta como 1 check-in. Agendar, remarcar e cancelar é tudo pelo próprio app do TotalPass.",
     },
     {
       q: "Onde fica o Studio?",
