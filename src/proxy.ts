@@ -23,7 +23,9 @@ function montarCsp(nonce: string, isDev: boolean): string {
     "img-src 'self' data: blob: https:",
     "font-src 'self' data:",
     "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://cloudflareinsights.com https://challenges.cloudflare.com",
-    "frame-src https://challenges.cloudflare.com",
+    // Turnstile (captcha) + Cal.com (agendamento online opcional, embutido em
+    // /agendar quando o admin cola o link). Sem o Cal.com o iframe cai na CSP.
+    "frame-src https://challenges.cloudflare.com https://cal.com https://app.cal.com",
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
@@ -82,10 +84,13 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
-    // Todas as rotas, menos API, estáticos e o favicon; e ignora prefetches
-    // do next/link (não precisam da CSP).
+    // Todas as rotas, menos API, estáticos, ícones, sitemap/robots/manifest,
+    // o service worker e QUALQUER arquivo de imagem/estático servido de public/
+    // (fotos, marca…). Antes só excluía api/_next/favicon, então o proxy gerava
+    // nonce+CSP à toa em cada foto e no sw.js. E ignora prefetches do next/link.
     {
-      source: "/((?!api|_next/static|_next/image|favicon.ico).*)",
+      source:
+        "/((?!api|_next/static|_next/image|favicon\\.ico|icon|apple-icon|opengraph-image|manifest\\.webmanifest|robots\\.txt|sitemap\\.xml|sw\\.js|fotos/|marca/|.*\\.(?:jpg|jpeg|png|webp|avif|gif|svg|ico|txt|xml|woff2?)$).*)",
       missing: [
         { type: "header", key: "next-router-prefetch" },
         { type: "header", key: "purpose", value: "prefetch" },

@@ -1,5 +1,6 @@
 "use server";
 
+import { after } from "next/server";
 import { createClient, supabaseConfigurado } from "@/lib/supabase/server";
 
 type Payload = {
@@ -40,6 +41,8 @@ async function verificarCaptcha(token: string): Promise<boolean> {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams({ secret: SECRET, response: token }),
+        // Teto de tempo: se o Cloudflare pendurar, não deixa o envio travar.
+        signal: AbortSignal.timeout(5000),
       },
     );
     const dados = (await resp.json()) as { success?: boolean };
@@ -64,7 +67,7 @@ async function notificarLead(lead: {
   const ctrl = new AbortController();
   const timer = setTimeout(() => ctrl.abort(), 5000);
   try {
-    await fetch(url, {
+    const resp = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -74,6 +77,11 @@ async function notificarLead(lead: {
       }),
       signal: ctrl.signal,
     });
+    // O n8n em modo teste (fora da escuta) responde 404 — sem conferir o status,
+    // isso passaria como "avisado" em silêncio. Registra pra dar pra investigar.
+    if (!resp.ok) {
+      console.error(`Webhook de lead (n8n) respondeu ${resp.status} — lead pode não ter avisado.`);
+    }
   } catch (e) {
     console.error(
       "Falha ao notificar lead (n8n):",
@@ -125,9 +133,12 @@ export async function enviarContato(
     if (error) console.error("Falha ao registrar lead:", error.message);
   }
 
-  // Notifica o studio na hora — mesmo que a gravação acima tenha falhado, o
-  // lead chega a um humano (fecha o "loop do lead").
-  await notificarLead({ nome, telefone, assunto, mensagem });
+  // Notifica o studio — mesmo que a gravação acima tenha falhado, o lead chega
+  // a um humano (fecha o "loop do lead"). Roda DEPOIS da resposta (`after`) pra
+  // não somar a latência do webhook ao tempo de envio do visitante.
+  // (Decisão registrada: NÃO retornamos ok:false se o banco falhar — a tela de
+  // sucesso abre o WhatsApp com a mensagem pronta, que é a entrega de fato.)
+  after(() => notificarLead({ nome, telefone, assunto, mensagem }));
 
   return { ok: true };
 }

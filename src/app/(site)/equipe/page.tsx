@@ -1,13 +1,17 @@
 import type { Metadata } from "next";
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
+import { metaPagina } from "@/lib/meta";
 import { PageHero } from "@/components/PageHero";
 import { Foto } from "@/components/Foto";
 
+const descricao =
+  "Conheça a equipe do Studio MOVA — profissionais dedicados que acompanham cada treino de perto.";
+
 export const metadata: Metadata = {
   title: "Equipe",
-  description:
-    "Conheça a equipe do Studio MOVA — profissionais dedicados que acompanham cada treino de perto.",
+  description: descricao,
+  ...metaPagina({ titulo: "Equipe — Studio MOVA", descricao, caminho: "/equipe" }),
 };
 
 export default async function Equipe() {

@@ -121,8 +121,10 @@
     transform: translateY(-2px);
     box-shadow: 0 10px 26px rgb(0 0 0 / 0.18);
   }
-  .btn-coral { background: var(--color-coral); color: #fff; }
-  .btn-coral:hover { background: #d56456; }
+  /* Coral mais fechado no BOTÃO (branco sobre #c2493b = 4,87:1, aprova AA).
+     O token --color-coral segue claro p/ detalhes decorativos e o foco. */
+  .btn-coral { background: #c2493b; color: #fff; }
+  .btn-coral:hover { background: #a93d31; }
   .btn-escuro { background: var(--color-preto); color: #fff; }
   .btn-verde { background: var(--color-verde); color: #fff; }
   .btn-verde:hover { background: var(--color-verde-medio); }
@@ -256,6 +258,9 @@
    mantendo a translucidez, senão viram um bloco branco no tema escuro. */
 :root.dark .bg-white\/95 { background-color: rgb(23 34 28 / 0.95); }
 :root.dark .bg-white\/60 { background-color: rgb(23 34 28 / 0.6); }
+/* Zebra da grade de horários: a linha clara precisa escurecer no dark, senão o
+   horário (texto claro) fica ilegível sobre fundo claro (branco no branco). */
+:root.dark .bg-\[\#F7FBF9\] { background-color: #14201a; }
 :root.dark .text-preto { color: #e8f1eb; }            /* texto (o fundo bg-preto continua escuro) */
 :root.dark .text-verde-escuro { color: #86e6b2; }     /* título/link em superfície agora escura */
 :root.dark .text-verde-medio { color: #63d69d; }

@@ -8,6 +8,7 @@ import {
   Trees,
 } from "lucide-react";
 import { waLink } from "@/lib/site";
+import { metaPagina } from "@/lib/meta";
 import { PageHero } from "@/components/PageHero";
 import { Foto } from "@/components/Foto";
 import { Galeria } from "./Galeria";
@@ -32,7 +33,7 @@ const descricao =
 export const metadata: Metadata = {
   title: "O Studio",
   description: descricao,
-  openGraph: { title: "O Studio — Studio MOVA", description: descricao },
+  ...metaPagina({ titulo: "O Studio — Studio MOVA", descricao, caminho: "/o-studio" }),
 };
 
 const comodidades = [

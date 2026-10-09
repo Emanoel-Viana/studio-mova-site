@@ -12,7 +12,7 @@ export const site = {
   // Pilares da marca (faixa elegante no hero).
   pilares: ["Saúde", "Força", "Equilíbrio", "Bem-estar"],
   descricao:
-    "Para quem não quer academia: musculação, Spin, Pilates e aulas coletivas em turmas de até 4 alunos, com professor ao seu lado do início ao fim. Studio boutique acolhedor na Asa Norte, Brasília — para todas as idades.",
+    "Para quem não quer academia: musculação personalizada em turmas de até 4 alunos, além de Spin, Pilates e aulas coletivas — sempre com professor ao seu lado. Studio boutique acolhedor na Asa Norte, Brasília — para todas as idades.",
   url: "https://studiomova.com.br",
 
   contato: {
@@ -46,7 +46,7 @@ export const site = {
   // Horários — atenção ao intervalo de Ter/Qui (13h–15h)
   horarios: [
     { dias: "Segunda, Quarta e Sexta", faixas: ["06h às 20h"] },
-    { dias: "Terça e Quinta", faixas: ["06h às 13h", "15h às 20h"] },
+    { dias: "Terça e Quinta", faixas: ["06h às 13h", "15h às 21h"] },
     { dias: "Sábado", faixas: ["07h às 12h"] },
     { dias: "Domingo", faixas: ["Fechado"] },
   ],
@@ -642,7 +642,7 @@ export const site = {
       nome: "Juliana",
       papel: "Professora",
       bio: "Especialista em treino personalizado e reabilitação, à frente do método MOVA.",
-      foto: "/fotos/equipe/professorajuliana.jpeg",
+      foto: "/fotos/equipe/professorajuliana2.jpg",
       foco: "center",
     },
     {

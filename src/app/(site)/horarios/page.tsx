@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Clock, MessageCircle, Sparkles } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
+import { metaPagina } from "@/lib/meta";
 import { PageHero } from "@/components/PageHero";
 import { GradeHorarios } from "./GradeHorarios";
 
@@ -10,7 +11,7 @@ const descricao =
 export const metadata: Metadata = {
   title: "Grade de horários",
   description: descricao,
-  openGraph: { title: "Grade de horários — Studio MOVA", description: descricao },
+  ...metaPagina({ titulo: "Grade de horários — Studio MOVA", descricao, caminho: "/horarios" }),
 };
 
 export default async function Horarios() {

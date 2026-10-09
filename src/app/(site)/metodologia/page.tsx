@@ -11,6 +11,7 @@ import {
   Check,
 } from "lucide-react";
 import { site, waLink } from "@/lib/site";
+import { metaPagina } from "@/lib/meta";
 import { PageHero } from "@/components/PageHero";
 import { Foto } from "@/components/Foto";
 
@@ -19,7 +20,7 @@ const descricao =
 export const metadata: Metadata = {
   title: "Metodologia",
   description: descricao,
-  openGraph: { title: "Metodologia — Studio MOVA", description: descricao },
+  ...metaPagina({ titulo: "Metodologia — Studio MOVA", descricao, caminho: "/metodologia" }),
 };
 
 // Ícone de mobilidade corporal (figura se alongando), no traço do lucide —

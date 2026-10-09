@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import { MessageCircle, Check } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
+import { metaPagina } from "@/lib/meta";
 import { PageHero } from "@/components/PageHero";
+
+const descricao =
+  "Agende sua sessão avaliativa gratuita no Studio MOVA pelo WhatsApp — atendimento humano e sem compromisso.";
 
 export const metadata: Metadata = {
   title: "Agendar avaliação",
-  description:
-    "Agende sua sessão avaliativa gratuita no Studio MOVA pelo WhatsApp — atendimento humano e sem compromisso.",
+  description: descricao,
+  ...metaPagina({ titulo: "Agendar avaliação — Studio MOVA", descricao, caminho: "/agendar" }),
 };
 
 // Aceita a URL completa ou "usuario/evento" e devolve o link de

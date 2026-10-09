@@ -94,6 +94,10 @@ export function Footer({ content: site }: { content: SiteContent }) {
         <p className="border-t border-[#23272C] pt-4 text-center text-xs text-[#8A938E]">
           © {ano} {site.nome} — {site.endereco.linha1}, {site.endereco.linha2}{" "}
           — {site.endereco.cidade}
+          {" · "}
+          <Link href="/privacidade" className="hover:text-white underline">
+            Privacidade
+          </Link>
         </p>
       </div>
     </footer>

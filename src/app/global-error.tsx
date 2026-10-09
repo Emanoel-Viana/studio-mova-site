@@ -4,13 +4,17 @@
 // falhar. Como substitui o documento inteiro, ela traz o próprio <html>/<body>
 // e estilos inline (o globals.css pode não estar aplicado aqui).
 export default function GlobalError({
-  reset,
+  retry,
 }: {
   error: Error & { digest?: string };
-  reset: () => void;
+  retry: () => void;
 }) {
   return (
     <html lang="pt-BR">
+      <head>
+        <title>Erro — Studio MOVA</title>
+        <meta name="robots" content="noindex" />
+      </head>
       <body
         style={{
           margin: 0,
@@ -32,10 +36,12 @@ export default function GlobalError({
             Tivemos um problema inesperado. Tente novamente em instantes.
           </p>
           <button
-            onClick={reset}
+            onClick={() => retry()}
             style={{
-              background: "#e0776b",
-              color: "#fff",
+              // Branco sobre verde escuro: contraste alto (o coral sobre verde
+              // ficava em ~3:1). Aqui é fundo do documento (#14532d).
+              background: "#ffffff",
+              color: "#0f3d21",
               border: 0,
               borderRadius: 999,
               padding: ".8rem 1.6rem",

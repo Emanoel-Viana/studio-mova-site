@@ -10,7 +10,14 @@ export function ServiceWorkerRegister() {
     if (!("serviceWorker" in navigator)) return;
     const registrar = () =>
       navigator.serviceWorker.register("/sw.js").catch(() => {});
-    window.addEventListener("load", registrar);
+    // Se a página já terminou de carregar (comum quando tudo vem do cache e a
+    // hidratação acontece depois do evento `load`), o listener nunca dispararia
+    // e o SW não seria registrado nessa visita. Registra na hora nesse caso.
+    if (document.readyState === "complete") {
+      registrar();
+      return;
+    }
+    window.addEventListener("load", registrar, { once: true });
     return () => window.removeEventListener("load", registrar);
   }, []);
 

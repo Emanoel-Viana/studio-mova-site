@@ -133,7 +133,7 @@ export function GradeHorarios({ grade }: { grade: Grade }) {
             aria-pressed={periodo === p}
             onClick={() => setPeriodo(p)}
             className={`px-3.5 py-1.5 rounded-full text-sm font-display font-bold transition-colors ${
-              periodo === p ? "bg-verde text-white" : "text-cinza"
+              periodo === p ? "bg-verde-escuro text-white" : "text-cinza"
             }`}
           >
             {p}

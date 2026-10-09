@@ -29,6 +29,10 @@ export async function GET() {
     const { error } = await supabase
       .from("site_studiomova_configuracoes")
       .select("*", { count: "exact", head: true })
+      // Sem repetição automática: o postgrest-js reenvia até 3× (1s+2s+4s) em
+      // 503/520, o que estouraria o timeout de 4s e faria uma QUEDA real do
+      // banco ser classificada como "lento" (200) — mascarando o alerta.
+      .retry(false)
       .abortSignal(ctrl.signal);
     if (error) throw error;
     const body = { ok: true, db: "ok", ts: new Date().toISOString(), db_ms: Date.now() - inicio };

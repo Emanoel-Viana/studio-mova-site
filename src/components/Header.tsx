@@ -40,7 +40,7 @@ export function Header({ avaliacao, avaliacaoGoogle, whatsappVisivel }: Props) {
     <header className="sticky top-0 z-50 shadow-[0_4px_20px_rgba(0,0,0,0.18)]">
       {/* Barra superior — prova social + contato (some ao rolar) */}
       <div
-        className={`bg-verde text-white text-[0.78rem] sm:text-sm font-semibold ${
+        className={`bg-verde-escuro text-white text-[0.78rem] sm:text-sm font-semibold ${
           compacto ? "hidden" : "block"
         }`}
       >

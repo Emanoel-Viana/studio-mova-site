@@ -6,11 +6,15 @@ import { getContent } from "@/lib/content";
 import { PageHero } from "@/components/PageHero";
 import { FormContato } from "@/components/FormContato";
 import { IconeInstagram } from "@/components/IconeInstagram";
+import { metaPagina } from "@/lib/meta";
+
+const descricao =
+  "Fale com o Studio MOVA na Asa Norte, Brasília. WhatsApp, endereço e horários de funcionamento.";
 
 export const metadata: Metadata = {
   title: "Contato",
-  description:
-    "Fale com o Studio MOVA na Asa Norte, Brasília. WhatsApp, endereço e horários de funcionamento.",
+  description: descricao,
+  ...metaPagina({ titulo: "Contato — Studio MOVA", descricao, caminho: "/contato" }),
 };
 
 // Renderiza a cada request para ler a chave do Turnstile do ambiente

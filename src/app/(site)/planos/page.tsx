@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Check, Lock, BadgePercent, CalendarClock } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
+import { metaPagina } from "@/lib/meta";
 import { PageHero } from "@/components/PageHero";
 import { SeletorPlanos } from "./SeletorPlanos";
 import { GradeAulas } from "./GradeAulas";
@@ -11,7 +12,7 @@ const descricao =
 export const metadata: Metadata = {
   title: "Planos",
   description: descricao,
-  openGraph: { title: "Planos — Studio MOVA", description: descricao },
+  ...metaPagina({ titulo: "Planos — Studio MOVA", descricao, caminho: "/planos" }),
 };
 
 export default async function Planos() {

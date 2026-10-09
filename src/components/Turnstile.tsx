@@ -25,8 +25,12 @@ export function Turnstile({
 }) {
   const ref = useRef<HTMLDivElement>(null);
   const idRef = useRef<string | null>(null);
+  // "Latest ref" do callback: atualizado num efeito (não durante a renderização,
+  // que a regra react-hooks/refs proíbe) pra o widget sempre chamar a versão atual.
   const onTokenRef = useRef(onToken);
-  onTokenRef.current = onToken;
+  useEffect(() => {
+    onTokenRef.current = onToken;
+  });
 
   const render = () => {
     if (!window.turnstile || !ref.current || idRef.current) return;

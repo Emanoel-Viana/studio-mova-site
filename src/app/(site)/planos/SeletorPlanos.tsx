@@ -100,7 +100,7 @@ export function SeletorPlanos({ catalogo }: { catalogo: Catalogo }) {
                 }}
                 className={`flex flex-col items-center justify-center gap-2 rounded-2xl px-1.5 py-4 font-display font-bold text-xs sm:text-sm transition-all ${
                   ativa
-                    ? "bg-verde text-white shadow-[0_10px_24px_rgba(30,155,94,0.28)] scale-[1.04]"
+                    ? "bg-verde-escuro text-white shadow-[0_10px_24px_rgba(20,83,45,0.3)] scale-[1.04]"
                     : "bg-white border border-[#DDEDE3] text-preto hover:border-verde hover:-translate-y-0.5"
                 }`}
               >
@@ -131,7 +131,7 @@ export function SeletorPlanos({ catalogo }: { catalogo: Catalogo }) {
               aria-pressed={i === freqIdx}
               onClick={() => setFreqIdx(i)}
               className={`px-5 py-2 rounded-full font-display font-bold text-sm transition-colors ${
-                i === freqIdx ? "bg-verde text-white" : "text-cinza"
+                i === freqIdx ? "bg-verde-escuro text-white" : "text-cinza"
               }`}
             >
               {f.freq}

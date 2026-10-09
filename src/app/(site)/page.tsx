@@ -112,9 +112,9 @@ export default async function Home() {
               ))}
             </div>
             <p className="max-w-[46ch] text-[#EAFBF1] text-lg mb-8">
-              Academia boutique na Asa Norte: musculação, spin, pilates e
-              aulas coletivas em turmas de até 4 alunos, com professor ao seu
-              lado do início ao fim.
+              Academia boutique na Asa Norte: musculação personalizada em turmas
+              de até 4 alunos, além de spin, pilates e aulas coletivas — sempre
+              com professor ao seu lado.
             </p>
             <div className="flex flex-wrap items-center gap-3">
               <a

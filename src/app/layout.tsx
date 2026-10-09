@@ -163,21 +163,11 @@ function montarJsonLd(c: Awaited<ReturnType<typeof getContent>>) {
       addressCountry: "BR",
     },
     openingHoursSpecification: horariosParaSchema(c.horarios),
-    // Nota agregada = a do Google (5,0), mostrada em destaque na página.
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: c.avaliacaoGoogle.nota.replace(",", "."),
-      reviewCount: c.avaliacaoGoogle.total,
-      bestRating: "5",
-      worstRating: "1",
-    },
-    // Avaliações reais (Google) — pro Google poder exibir estrelas na busca.
-    review: c.depoimentos.map((d) => ({
-      "@type": "Review",
-      author: { "@type": "Person", name: d.autor },
-      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
-      reviewBody: d.texto,
-    })),
+    // NOTA: aggregateRating/review foram REMOVIDOS de propósito. O Google
+    // ignora avaliação do próprio site (self-serving) em LocalBusiness desde
+    // 2019 — não gera estrelas na busca — e marcá-las arrisca ação manual por
+    // "spam de marcação estruturada". As avaliações continuam visíveis na
+    // página (prova social), só não vão no dado estruturado.
     sameAs: [c.contato.instagramUrl, ...c.parcerias.map((p) => p.url)],
   };
 }

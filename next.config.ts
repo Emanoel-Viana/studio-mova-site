@@ -34,6 +34,11 @@ const nextConfig: NextConfig = {
   // com WebP de fallback. O next/image faz o resize/conversão sob demanda.
   images: {
     formats: ["image/avif", "image/webp"],
+    // As fotos têm caminho versionado (trocam de nome quando mudam), então o
+    // resultado otimizado pode ser guardado por muito tempo. Sobe o cache de
+    // 4h (padrão) para 30 dias — menos reprocessamento (sharp) na VPS e menos
+    // MISS na Cloudflare depois de cada deploy.
+    minimumCacheTTL: 60 * 60 * 24 * 30,
   },
 
   async headers() {

@@ -7,13 +7,16 @@ import { useEffect } from "react";
 
 export default function Error({
   error,
-  reset,
+  retry,
 }: {
   error: Error & { digest?: string };
-  reset: () => void;
+  // `retry` (não `reset`): re-busca e re-renderiza a árvore. Como as páginas são
+  // Server Components, `reset` só limparia o estado e mostraria o MESMO erro.
+  retry: () => void;
 }) {
   useEffect(() => {
-    // Loga no servidor/telemetria; não expõe detalhe ao usuário.
+    // Loga no console do navegador (a telemetria de servidor fica no
+    // instrumentation.ts → onRequestError).
     console.error("Erro renderizando página:", error);
   }, [error]);
 
@@ -28,7 +31,7 @@ export default function Error({
           WhatsApp.
         </p>
         <div className="flex flex-wrap justify-center gap-3">
-          <button onClick={reset} className="btn btn-coral">
+          <button onClick={() => retry()} className="btn btn-coral">
             Tentar de novo
           </button>
           <Link href="/" className="btn btn-borda text-preto">

@@ -27,12 +27,28 @@ export const getContent = cache(async (): Promise<SiteContent> => {
       .from("site_studiomova_configuracoes")
       .select("content")
       .eq("id", 1)
+      // Sem repetição automática (o postgrest-js reenvia até 3× em 503/520,
+      // esperando 1s+2s+4s) e com teto de 2,5s: se o banco Free engasgar, a
+      // página cai no conteúdo padrão RÁPIDO em vez de pendurar a renderização.
+      .abortSignal(AbortSignal.timeout(2500))
+      .retry(false)
       .maybeSingle();
 
-    if (error || !data?.content) return site;
+    // Falha do banco NÃO pode ser silenciosa: sem log, ninguém percebe que o
+    // site está servindo os valores do código (preços/horários) no lugar do
+    // que foi editado no admin.
+    if (error) {
+      console.error("getContent: falha ao ler do Supabase:", error.message);
+      return site;
+    }
+    if (!data?.content) return site;
 
     return mergeProfundo(site, data.content as Partial<SiteContent>);
-  } catch {
+  } catch (e) {
+    console.error(
+      "getContent: exceção ao ler conteúdo (usando padrão do código):",
+      e instanceof Error ? e.message : e,
+    );
     return site;
   }
 });

@@ -72,6 +72,18 @@ create table if not exists public.site_studiomova_leads_contato (
 alter table public.site_studiomova_leads_contato
   add column if not exists telefone text;
 
+-- Limites de tamanho no INSERT público (defesa contra abuso de armazenamento).
+-- Batem com os limites do servidor em contato/actions.ts. Idempotente.
+alter table public.site_studiomova_leads_contato
+  drop constraint if exists lead_tamanhos;
+alter table public.site_studiomova_leads_contato
+  add constraint lead_tamanhos check (
+    char_length(nome) <= 120
+    and (telefone is null or char_length(telefone) <= 25)
+    and (assunto is null or char_length(assunto) <= 80)
+    and (mensagem is null or char_length(mensagem) <= 2000)
+  );
+
 alter table public.site_studiomova_leads_contato enable row level security;
 
 -- INSERIR: liberado para todos (o formulário público registra o contato).

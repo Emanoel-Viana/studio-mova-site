@@ -7,10 +7,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // todo deploy pode mudar conteúdo, "última modificação = último deploy" é um
   // valor legítimo (e o Google trata `lastmod` só como dica).
   const ultimoDeploy = new Date();
-  return navegacao.map((item) => ({
-    url: `${site.url}${item.href === "/" ? "" : item.href}`,
+  const paginas = navegacao.map((item) => item.href);
+  // /agendar é uma página real (sessão avaliativa) que não está no menu
+  // `navegacao`, então ficava de fora do sitemap. Incluída explicitamente.
+  if (!paginas.includes("/agendar")) paginas.push("/agendar");
+  if (!paginas.includes("/privacidade")) paginas.push("/privacidade");
+  return paginas.map((href) => ({
+    url: `${site.url}${href === "/" ? "" : href}`,
     lastModified: ultimoDeploy,
     changeFrequency: "monthly",
-    priority: item.href === "/" ? 1 : 0.8,
+    priority: href === "/" ? 1 : 0.8,
   }));
 }

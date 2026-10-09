@@ -51,3 +51,5 @@ next-env.d.ts
 /site mova - versao antiga/
 pilates fotos/
 Spin Fotos/
+
+!.env.example

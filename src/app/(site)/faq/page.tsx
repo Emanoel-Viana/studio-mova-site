@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import { Plus } from "lucide-react";
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
+import { metaPagina } from "@/lib/meta";
 import { PageHero } from "@/components/PageHero";
+
+const descricao =
+  "Dúvidas sobre o Studio MOVA: como funciona o treino, turmas, sessão avaliativa, planos, Wellhub e TotalPass.";
 
 export const metadata: Metadata = {
   title: "Perguntas frequentes",
-  description:
-    "Dúvidas sobre o Studio MOVA: como funciona o treino, turmas, sessão avaliativa, planos, Wellhub e TotalPass.",
+  description: descricao,
+  ...metaPagina({ titulo: "Perguntas frequentes — Studio MOVA", descricao, caminho: "/faq" }),
 };
 
 export default async function FAQ() {

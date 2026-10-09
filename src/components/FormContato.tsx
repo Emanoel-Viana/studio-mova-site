@@ -225,7 +225,7 @@ export function FormContato({
       )}
 
       {erro && (
-        <p className="text-sm text-coral font-medium" role="alert">
+        <p className="text-sm text-coral-escuro font-medium" role="alert">
           {erro}
         </p>
       )}
@@ -238,8 +238,16 @@ export function FormContato({
         {enviando ? "Enviando…" : "Enviar pelo WhatsApp"}
       </button>
       <p className="text-sm text-cinza">
-        Ao enviar, abrimos o WhatsApp com sua mensagem já pronta. Você confere e
-        manda. 💚
+        Ao enviar, preparamos sua mensagem no WhatsApp — é só tocar em “Abrir o
+        WhatsApp” e enviar pra gente. 💚
+      </p>
+      <p className="text-xs text-cinza">
+        Ao enviar, você concorda que o Studio MOVA use seu nome e telefone para
+        responder seu contato. Veja o{" "}
+        <a href="/privacidade" className="underline hover:text-verde-escuro">
+          aviso de privacidade
+        </a>
+        .
       </p>
     </form>
   );
