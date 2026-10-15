@@ -14,16 +14,23 @@ export function Contador({
   // Blindagem: se `value` vier NaN (ex.: nota editada como "4,94" no admin e
   // convertida errado), cai pra 0 em vez de renderizar "NaN".
   const seguro = Number.isFinite(value) ? value : 0;
-  const [n, setN] = useState(0);
+  // Inicia com o valor FINAL: assim o SSR e navegadores sem JS mostram o número
+  // real (um robô nunca vê "0"); a animação, quando roda, reinicia do 0.
+  const [n, setN] = useState(seguro);
   const ref = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setN(seguro);
-      return;
+      return; // já está no valor final
     }
+    // Se o número já está visível na carga (acima da dobra), NÃO anima — evita
+    // um flash de "final → 0 → final". Só anima o que está abaixo da dobra.
+    const rect = el.getBoundingClientRect();
+    const jaVisivel = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
+    if (jaVisivel) return;
+    setN(0); // abaixo da dobra: reinicia (invisível) e anima ao chegar
     let raf = 0;
     let feito = false;
     const obs = new IntersectionObserver(

@@ -253,12 +253,18 @@
   }
 }
 
-/* Animação de entrada suave ao rolar */
+/* Animação de entrada — curva premium (ease-out exponencial). */
 @keyframes mova-reveal {
-  from { opacity: 0; transform: translateY(22px); }
+  from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: none; }
 }
-.reveal { animation: mova-reveal 0.6s ease both; }
+/* Variante com blur-in (material) — usada só no hero (entrada única, sem o
+   custo de blur por seção durante o scroll). */
+@keyframes mova-reveal-blur {
+  from { opacity: 0; transform: translateY(24px); filter: blur(8px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+.reveal { animation: mova-reveal-blur 0.85s cubic-bezier(0.16, 1, 0.3, 1) both; }
 
 /* Entrada suave AO ROLAR — scroll-driven puro em CSS (animation-timeline).
    Envolto em @supports + reduced-motion: em navegador sem suporte ou com
@@ -267,9 +273,9 @@
   @supports (animation-timeline: view()) {
     .reveal-scroll {
       opacity: 0;
-      animation: mova-reveal 0.7s ease both;
+      animation: mova-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
       animation-timeline: view();
-      animation-range: entry 5% entry 55%;
+      animation-range: entry 5% entry 50%;
     }
   }
 }

@@ -125,15 +125,17 @@ export function GradeHorarios({ grade }: { grade: Grade }) {
   return (
     <div>
       {/* Filtro por período */}
-      <div className="inline-flex bg-cinza-claro rounded-full p-1 mb-4">
+      <div className="inline-flex bg-cinza-claro rounded-full p-1 mb-4 shadow-[inset_0_1px_2px_rgb(14_40_24_/_0.06)]">
         {PERIODOS.map((p) => (
           <button
             key={p}
             type="button"
             aria-pressed={periodo === p}
             onClick={() => setPeriodo(p)}
-            className={`px-3.5 py-1.5 rounded-full text-sm font-display font-bold transition-colors ${
-              periodo === p ? "bg-verde-escuro text-white" : "text-cinza"
+            className={`px-3.5 py-1.5 rounded-full text-sm font-display font-bold transition-all ${
+              periodo === p
+                ? "bg-verde-escuro text-white shadow-[0_2px_6px_rgb(14_40_24_/_0.25)]"
+                : "text-cinza hover:text-verde-escuro"
             }`}
           >
             {p}
@@ -184,7 +186,7 @@ export function GradeHorarios({ grade }: { grade: Grade }) {
       </div>
 
       {/* Grade */}
-      <div className="overflow-x-auto rounded-2xl border border-[#DDEDE3] bg-white shadow-[0_10px_30px_rgba(30,155,94,0.06)]">
+      <div className="painel overflow-x-auto">
         <table className="border-collapse min-w-[780px] w-full">
           <thead>
             <tr>
@@ -215,7 +217,9 @@ export function GradeHorarios({ grade }: { grade: Grade }) {
               linhas.map((linha, i) => (
                 <tr
                   key={linha.hora}
-                  className={i % 2 === 0 ? "bg-white" : "bg-[#F7FBF9]"}
+                  className={`transition-colors hover:bg-verde-claro ${
+                    i % 2 === 0 ? "bg-white" : "bg-[#F7FBF9]"
+                  }`}
                 >
                   <th className="sticky left-0 z-10 bg-inherit text-left font-display font-bold text-xs px-3 py-2 whitespace-nowrap border-r border-[#EEF5F0]">
                     {linha.hora}

@@ -18,6 +18,7 @@ import {
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
 import { BLUR_FOTO } from "@/lib/blur";
+import { Contador } from "@/components/Contador";
 import { QuizModalidade } from "./QuizModalidade";
 import { GradeAulas } from "./planos/GradeAulas";
 import { HistoriasAlunos } from "@/components/HistoriasAlunos";
@@ -240,20 +241,31 @@ export default async function Home() {
       <section className="secao-compacta bg-verde-escuro text-white">
         <div className="container-mova reveal-scroll">
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8 text-center">
-            {[
-              { num: "+150", label: "alunos já passaram pelo MOVA" },
-              { num: "+10", label: "anos de experiência dos professores" },
-              { num: "4", label: "alunos por turma, no máximo" },
-              { num: `+${site.aulas.length}`, label: "aulas e modalidades pra escolher" },
-              {
-                num: site.avaliacao.nota,
-                label: `nota de avaliação no ${site.avaliacao.fonte}`,
-              },
-              { num: "100%", label: "treino com professor do seu lado" },
-            ].map((s) => (
+            {(
+              [
+                { pre: "+", valor: 150, label: "alunos já passaram pelo MOVA" },
+                { pre: "+", valor: 10, label: "anos de experiência dos professores" },
+                { valor: 4, label: "alunos por turma, no máximo" },
+                { pre: "+", valor: site.aulas.length, label: "aulas e modalidades pra escolher" },
+                {
+                  valor: Number(String(site.avaliacao.nota).replace(",", ".")),
+                  dec: 2,
+                  label: `nota de avaliação no ${site.avaliacao.fonte}`,
+                },
+                { valor: 100, suf: "%", label: "treino com professor do seu lado" },
+              ] as {
+                pre?: string;
+                valor: number;
+                dec?: number;
+                suf?: string;
+                label: string;
+              }[]
+            ).map((s) => (
               <div key={s.label}>
                 <div className="nums font-display font-black text-[clamp(2.6rem,9vw,4rem)] leading-none text-coral tracking-[-0.03em]">
-                  {s.num}
+                  {s.pre}
+                  <Contador value={s.valor} decimais={s.dec ?? 0} />
+                  {s.suf}
                 </div>
                 <p className="text-[#D6EEDF] mt-2.5 text-sm max-w-[16ch] mx-auto">
                   {s.label}
