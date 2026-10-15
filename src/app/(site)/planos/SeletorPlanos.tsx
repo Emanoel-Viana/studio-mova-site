@@ -81,7 +81,6 @@ export function SeletorPlanos({ catalogo }: { catalogo: Catalogo }) {
     <div>
       {/* 1. Seletor de modalidade — em destaque (menu de opções) */}
       <div className="rounded-[1.5rem] bg-verde-claro border border-[#CDEBD9] p-5 sm:p-8 mb-10">
-        <p className="eyebrow text-center block">Escolha sua modalidade</p>
         <h3 className="text-center font-display font-black text-2xl lg:text-3xl mb-6">
           O que você quer treinar?
         </h3>
@@ -219,7 +218,6 @@ export function SeletorPlanos({ catalogo }: { catalogo: Catalogo }) {
       {/* 5. Planos Clube (tudo incluso) */}
       <div className="mt-16">
         <div className="text-center mb-8">
-          <span className="eyebrow">Planos completos</span>
           <h3 className="section-title">Quer o MOVA por inteiro?</h3>
           <p className="lead mx-auto">
             Os planos Clube reúnem várias modalidades numa rotina só — com

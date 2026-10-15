@@ -1,8 +1,8 @@
 // Service Worker do Studio MOVA (PWA).
 // Navegações = rede primeiro (conteúdo sempre atual, com teto de tempo e
 // fallback offline); assets estáticos e imagens = stale-while-revalidate.
-const CACHE = "mova-v55";
-const CACHE_PAGINAS = "mova-paginas-v55";
+const CACHE = "mova-v56";
+const CACHE_PAGINAS = "mova-paginas-v56";
 const OFFLINE_URL = "/offline";
 const MAX_PAGINAS = 40; // teto do cache de HTML (evita crescer sem limite)
 

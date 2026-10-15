@@ -1,12 +1,13 @@
 type Props = {
-  eyebrow: string;
+  /** Mantido por compatibilidade das chamadas; não é mais exibido (o título lidera). */
+  eyebrow?: string;
   titulo: string;
   descricao?: string;
 };
 
-export function PageHero({ eyebrow, titulo, descricao }: Props) {
+export function PageHero({ titulo, descricao }: Props) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-verde-medio to-[#14744A] text-white py-8 sm:py-10 lg:py-14">
+    <section className="relative overflow-hidden bg-gradient-to-br from-verde-medio to-[#14744A] text-white py-11 sm:py-14 lg:py-20">
       {/* Brilhos decorativos que boiam (atrás do conteúdo, nunca escondem nada) */}
       <div
         aria-hidden
@@ -26,11 +27,21 @@ export function PageHero({ eyebrow, titulo, descricao }: Props) {
           opacity: 0.4,
         }}
       />
+      {/* textura de pontos sutil (coesão com o hero da home) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.06]"
+        style={{
+          backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
+          backgroundSize: "22px 22px",
+        }}
+      />
       <div className="container-mova relative">
-        <span className="eyebrow !text-[#9BE8BF]">{eyebrow}</span>
-        <h1 className="text-[clamp(1.5rem,5.5vw,3rem)] leading-[1.1] mb-3">{titulo}</h1>
+        <h1 className="text-[clamp(1.9rem,6vw,3.6rem)] leading-[1.03] tracking-[-0.035em] mb-3.5">
+          {titulo}
+        </h1>
         {descricao && (
-          <p className="max-w-[60ch] text-[#EAFBF1] text-base sm:text-lg">
+          <p className="max-w-[58ch] text-[#EAFBF1] text-base sm:text-lg leading-relaxed">
             {descricao}
           </p>
         )}

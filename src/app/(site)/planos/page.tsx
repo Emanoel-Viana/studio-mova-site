@@ -75,7 +75,6 @@ export default async function Planos() {
       <section className="py-10 lg:py-12 bg-verde-claro">
         <div className="container-mova">
           <div className="text-center mb-10">
-            <span className="eyebrow">Nossas modalidades</span>
             <h2 className="section-title">Conheça todas as nossas aulas</h2>
             <p className="lead mx-auto">
               Mais saúde, movimento e bem-estar para a sua vida — sempre em
@@ -89,7 +88,6 @@ export default async function Planos() {
       {/* Formas de pagamento */}
       <section className="py-10 lg:py-12 bg-cinza-claro">
         <div className="container-mova">
-          <span className="eyebrow">Pagamento</span>
           <h2 className="section-title">Formas de pagamento</h2>
           <p className="lead mb-8">
             Você escolhe a forma mais confortável pra você.
@@ -114,7 +112,6 @@ export default async function Planos() {
         className="py-8 sm:py-10 lg:py-14 bg-verde-claro scroll-mt-24"
       >
         <div className="container-mova">
-          <span className="eyebrow">Parcerias</span>
           <h2 className="section-title">Use seu benefício corporativo</h2>
           <p className="lead mb-10">
             Já é assinante de um programa de bem-estar? Você pode treinar no MOVA
@@ -124,7 +121,7 @@ export default async function Planos() {
             {site.parcerias.map((p) => (
               <div
                 key={p.nome}
-                className="rounded-2xl bg-white border border-[#DDEDE3] p-5 sm:p-7 flex items-start gap-4"
+                className="painel p-5 sm:p-7 flex items-start gap-4"
               >
                 <Check
                   size={26}

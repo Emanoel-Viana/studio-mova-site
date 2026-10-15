@@ -83,13 +83,12 @@ export default function OStudio() {
       {/* Comodidades */}
       <section className="py-8 sm:py-10 lg:py-14 bg-verde-claro">
         <div className="container-mova">
-          <span className="eyebrow">Estrutura</span>
           <h2 className="section-title">O que você encontra por aqui</h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
             {comodidades.map(({ Icone, texto }) => (
               <div
                 key={texto}
-                className="flex items-center gap-4 rounded-2xl bg-white border border-[#E2EEE7] p-5"
+                className="painel flex items-center gap-4 p-5"
               >
                 <Icone className="text-verde-medio shrink-0" aria-hidden />
                 <span className="font-medium">{texto}</span>
@@ -102,7 +101,6 @@ export default function OStudio() {
       {/* Galeria */}
       <section className="py-8 sm:py-10 lg:py-14">
         <div className="container-mova">
-          <span className="eyebrow">Galeria</span>
           <h2 className="section-title">Dê uma espiada no espaço</h2>
           <p className="text-cinza">Toque em qualquer foto para ampliar.</p>
           <Galeria fotos={galeria} />

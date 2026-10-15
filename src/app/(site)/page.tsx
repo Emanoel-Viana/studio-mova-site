@@ -18,7 +18,6 @@ import {
 import { waLink } from "@/lib/site";
 import { getContent } from "@/lib/content";
 import { BLUR_FOTO } from "@/lib/blur";
-import { Contador } from "@/components/Contador";
 import { QuizModalidade } from "./QuizModalidade";
 import { GradeAulas } from "./planos/GradeAulas";
 import { HistoriasAlunos } from "@/components/HistoriasAlunos";
@@ -68,50 +67,29 @@ export default async function Home() {
         />
         <div className="container-mova relative grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center secao">
           <div className="reveal">
-            <div className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 rounded-full bg-white/15 border border-white/35 px-4 py-2 text-sm font-medium mb-6">
-              <Star size={16} className="fill-white" aria-hidden />
+            <div className="inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 rounded-full bg-white/12 border border-white/25 backdrop-blur-sm px-4 py-2 text-sm font-medium mb-7 nums">
+              <Star size={15} className="fill-[#FFD77A] text-[#FFD77A]" aria-hidden />
               <span>
                 <strong className="font-display">
                   {site.avaliacaoGoogle.nota}
                 </strong>{" "}
                 no {site.avaliacaoGoogle.fonte}
               </span>
-              <span aria-hidden className="text-white/40">
+              <span aria-hidden className="text-white/35">
                 ·
               </span>
               <span>
-                <strong className="font-display">
-                  <Contador
-                    value={Number(String(site.avaliacao.nota).replace(",", "."))}
-                    decimais={2}
-                  />
-                </strong>{" "}
-                — <Contador value={site.avaliacao.total} /> no{" "}
-                {site.avaliacao.fonte}
+                <strong className="font-display">{site.avaliacao.nota}</strong>{" "}
+                ({site.avaliacao.total}) no {site.avaliacao.fonte}
               </span>
             </div>
-            <p className="font-display font-bold uppercase tracking-[0.16em] text-[0.78rem] sm:text-sm text-[#9BE8BF] mb-2">
-              Para quem não quer academia
-            </p>
-            <h1 className="text-[clamp(1.8rem,6.5vw,4rem)] leading-[1.08] mb-3">
+            <h1 className="text-[clamp(2.1rem,7vw,4.5rem)] leading-[1.02] tracking-[-0.035em] mb-4">
               {site.slogan}
             </h1>
-            <p className="font-display font-bold text-[clamp(1.1rem,2.4vw,1.45rem)] text-[#D9FBE8] mb-4">
+            <p className="font-display font-bold text-[clamp(1.15rem,2.4vw,1.5rem)] text-[#D9FBE8] mb-5 max-w-[32ch] leading-snug">
               {site.subSlogan}
             </p>
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-1 mb-6 font-display font-bold uppercase tracking-[0.18em] text-[0.68rem] sm:text-xs text-[#9BE8BF]">
-              {site.pilares.map((p, i) => (
-                <span key={p} className="inline-flex items-center gap-3">
-                  {i > 0 && (
-                    <span aria-hidden className="text-white/35">
-                      •
-                    </span>
-                  )}
-                  {p}
-                </span>
-              ))}
-            </div>
-            <p className="max-w-[46ch] text-[#EAFBF1] text-lg mb-8">
+            <p className="max-w-[48ch] text-[#EAFBF1] text-[1.05rem] leading-relaxed mb-8">
               Academia boutique na Asa Norte: musculação personalizada em turmas
               de até 4 alunos, além de spin, pilates e aulas coletivas — sempre
               com professor ao seu lado.
@@ -152,9 +130,22 @@ export default async function Home() {
                 </li>
               ))}
             </ul>
+            {/* mantra da marca — linha discreta, com divisória */}
+            <div className="mt-8 pt-6 border-t border-white/15 flex flex-wrap items-center gap-x-3 gap-y-1 font-display font-bold uppercase tracking-[0.2em] text-[0.68rem] text-[#8FE0B6]">
+              {site.pilares.map((p, i) => (
+                <span key={p} className="inline-flex items-center gap-3">
+                  {i > 0 && (
+                    <span aria-hidden className="text-white/30">
+                      •
+                    </span>
+                  )}
+                  {p}
+                </span>
+              ))}
+            </div>
           </div>
           <div className="relative reveal">
-            <div className="relative aspect-square sm:aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-2xl ring-1 ring-white/20">
+            <div className="relative aspect-square sm:aspect-[4/5] rounded-[1.5rem] overflow-hidden ring-1 ring-white/15" style={{ boxShadow: "var(--shadow-hero)" }}>
               <Image
                 src="/fotos/reabilitacao/DSC00641.jpg"
                 alt="Professora do Studio MOVA acompanhando um aluno no treino"
@@ -218,7 +209,7 @@ export default async function Home() {
       {/* SOBRE */}
       <section className="secao">
         <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-12 items-center reveal-scroll">
-          <div className="relative aspect-square sm:aspect-[4/5] rounded-[1.25rem] overflow-hidden shadow-lg">
+          <div className="relative aspect-square sm:aspect-[4/5] rounded-[1.5rem] overflow-hidden" style={{ boxShadow: "var(--shadow-float)" }}>
             <Image
               src="/fotos/reabilitacao/DSC01898.jpg"
               alt="Treino adaptado no Studio MOVA com acompanhamento da professora"
@@ -230,7 +221,6 @@ export default async function Home() {
             />
           </div>
           <div>
-            <span className="eyebrow">O Studio</span>
             <h2 className="section-title">
               Se você não gosta de academia convencional, aqui é o seu lugar
             </h2>
@@ -262,7 +252,7 @@ export default async function Home() {
               { num: "100%", label: "treino com professor do seu lado" },
             ].map((s) => (
               <div key={s.label}>
-                <div className="font-display font-black text-[clamp(2.6rem,9vw,4rem)] leading-none text-coral">
+                <div className="nums font-display font-black text-[clamp(2.6rem,9vw,4rem)] leading-none text-coral tracking-[-0.03em]">
                   {s.num}
                 </div>
                 <p className="text-[#D6EEDF] mt-2.5 text-sm max-w-[16ch] mx-auto">
@@ -277,7 +267,6 @@ export default async function Home() {
       {/* PARA QUEM É */}
       <section className="secao bg-cinza-claro">
         <div className="container-mova reveal-scroll">
-          <span className="eyebrow">Para quem é o MOVA</span>
           <h2 className="section-title">Talvez você se reconheça aqui</h2>
           <p className="lead mb-8 max-w-[60ch]">
             Recebemos gente de todas as idades e níveis. Veja se algum desses é
@@ -285,10 +274,7 @@ export default async function Home() {
           </p>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {site.publico.map((p) => (
-              <div
-                key={p.titulo}
-                className="rounded-2xl bg-white border border-[#E2EEE7] p-5 sm:p-7 transition-all hover:-translate-y-1 hover:border-verde hover:shadow-[0_14px_34px_rgba(30,155,94,0.12)]"
-              >
+              <div key={p.titulo} className="card-premium p-5 sm:p-7">
                 <div className="grid place-items-center w-11 h-11 rounded-full bg-verde-claro mb-4">
                   <Check size={22} className="text-verde-medio" aria-hidden />
                 </div>
@@ -315,7 +301,6 @@ export default async function Home() {
       {/* HISTÓRIAS DE ALUNOS (vídeos) — prova social alta na página */}
       <section className="secao bg-white">
         <div className="container-mova reveal-scroll">
-          <span className="eyebrow">Histórias reais</span>
           <h2 className="section-title">Histórias de quem treina aqui</h2>
           <p className="lead mb-8 max-w-[60ch]">
             Alunos de verdade contando o que mudou depois que começaram no MOVA.
@@ -328,17 +313,13 @@ export default async function Home() {
       {/* METODOLOGIA */}
       <section className="secao bg-verde-escuro text-white">
         <div className="container-mova reveal-scroll">
-          <span className="eyebrow !text-[#7FE3AC]">Como funcionamos</span>
           <h2 className="section-title">
             60 minutos, 3 etapas, máximo 4 alunos
           </h2>
           <div className="grid md:grid-cols-3 gap-6 mt-8">
             {site.metodologia.map((etapa, i) => (
-              <div
-                key={etapa.titulo}
-                className="rounded-2xl bg-white/[0.07] border border-white/15 p-5 sm:p-7"
-              >
-                <div className="font-display font-black text-3xl text-[#7FE3AC] mb-2">
+              <div key={etapa.titulo} className="painel-dark p-5 sm:p-7">
+                <div className="nums grid place-items-center w-11 h-11 rounded-full bg-white/10 border border-white/20 font-display font-black text-xl text-[#7FE3AC] mb-4">
                   {i + 1}
                 </div>
                 <h3 className="text-xl mb-2">{etapa.titulo}</h3>
@@ -355,7 +336,6 @@ export default async function Home() {
       {/* MODALIDADES */}
       <section className="secao">
         <div className="container-mova reveal-scroll">
-          <span className="eyebrow">Modalidades</span>
           <h2 className="section-title">O que você encontra no MOVA</h2>
           <p className="lead mb-8 max-w-[60ch]">
             Um centro completo de movimento — do treino de força ao pilates, do
@@ -369,7 +349,7 @@ export default async function Home() {
               return (
                 <div
                   key={m.id}
-                  className="group overflow-hidden rounded-2xl bg-white border border-[#E2EEE7] transition-all hover:-translate-y-1 hover:border-verde hover:shadow-[0_14px_34px_rgba(30,155,94,0.12)]"
+                  className="group overflow-hidden card-premium"
                 >
                   {foto ? (
                     <div className="relative aspect-[3/2] overflow-hidden">
@@ -432,7 +412,6 @@ export default async function Home() {
         <div className="container-mova reveal-scroll">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div>
-              <span className="eyebrow">{site.quiropraxia.titulo}</span>
               <h2 className="section-title">{site.quiropraxia.subtitulo}</h2>
               <p className="lead mb-6">{site.quiropraxia.texto}</p>
               <div className="flex flex-wrap gap-3">
@@ -451,7 +430,7 @@ export default async function Home() {
                 </a>
               </div>
             </div>
-            <div className="rounded-2xl bg-white border border-[#DDEDE3] p-6 sm:p-8">
+            <div className="painel p-6 sm:p-8">
               <h3 className="flex items-center gap-2 text-xl mb-4">
                 <HandHeart size={22} className="text-verde-medio" aria-hidden />
                 Atendimento de Quiropraxia
@@ -481,7 +460,6 @@ export default async function Home() {
       {/* SESSÃO AVALIATIVA */}
       <section className="secao bg-gradient-to-br from-verde-medio to-[#14744A] text-white text-center">
         <div className="container-mova reveal-scroll">
-          <span className="eyebrow !text-[#9BE8BF]">O primeiro passo</span>
           <h2 className="section-title">Comece pela sessão avaliativa</h2>
           <div className="flex justify-center mb-5">
             <span className="inline-flex items-center gap-2 rounded-full bg-coral text-white font-display font-bold text-sm px-5 py-2 shadow-[0_8px_20px_rgba(224,119,107,0.35)]">
@@ -517,9 +495,6 @@ export default async function Home() {
       {/* QUIZ — descubra sua modalidade */}
       <section className="secao bg-verde-escuro text-white">
         <div className="container-mova text-center reveal-scroll">
-          <span className="eyebrow !text-[#7FE3AC]">
-            Não sabe por onde começar?
-          </span>
           <h2 className="section-title">Descubra a sua modalidade ideal</h2>
           <p className="lead mx-auto mb-8 !text-[#D6EEDF]">
             Responda 3 perguntinhas rápidas e a gente te mostra o treino
@@ -532,7 +507,6 @@ export default async function Home() {
       {/* PLANOS & MODALIDADES */}
       <section className="secao bg-verde-claro">
         <div className="container-mova text-center reveal-scroll">
-          <span className="eyebrow">Planos &amp; Modalidades</span>
           <h2 className="section-title">Escolha o seu movimento</h2>
           <p className="lead mx-auto mb-8">
             Musculação, Spin, Pilates e aulas coletivas — escolha o que quer
@@ -545,7 +519,7 @@ export default async function Home() {
                 <Link
                   key={m.id}
                   href="/planos"
-                  className="flex flex-col items-center gap-2 rounded-2xl bg-white border border-[#DDEDE3] p-4 transition-all hover:border-verde hover:-translate-y-1"
+                  className="card-premium flex flex-col items-center gap-2 p-4 hover:border-verde"
                 >
                   <Icone size={26} className="text-verde-medio" aria-hidden />
                   <span className="font-display font-bold text-sm">
@@ -571,9 +545,8 @@ export default async function Home() {
       </section>
 
       {/* DEPOIMENTOS */}
-      <section className="secao bg-verde text-white">
+      <section className="secao bg-verde-escuro text-white">
         <div className="container-mova reveal-scroll">
-          <span className="eyebrow !text-[#0E3D26]">Depoimentos</span>
           <h2 className="section-title">Quem treina aqui recomenda</h2>
           <div className="flex flex-wrap gap-3 mt-4">
             <a
@@ -623,7 +596,7 @@ export default async function Home() {
               return (
                 <figure
                   key={d.autor}
-                  className="flex flex-col rounded-2xl bg-white text-preto p-5 sm:p-7 h-full"
+                  className="card-premium flex flex-col text-preto p-5 sm:p-7 h-full"
                 >
                   <div className="flex gap-0.5 mb-3 text-coral">
                     {Array.from({ length: 5 }).map((_, n) => (
@@ -713,7 +686,6 @@ export default async function Home() {
       {/* EXPLORE O SITE — pb reduzido: o footer (também preto) vem logo abaixo */}
       <section className="secao !pb-8 bg-preto text-white">
         <div className="container-mova reveal-scroll">
-          <span className="eyebrow !text-[#7FE3AC]">Continue explorando</span>
           <h2 className="section-title">Conheça mais do MOVA</h2>
           <div className="grid md:grid-cols-3 gap-5 mt-8">
             {[

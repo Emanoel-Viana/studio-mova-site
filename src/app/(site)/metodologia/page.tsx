@@ -63,7 +63,6 @@ export default function Metodologia() {
       {/* Infográfico das 3 etapas (nativo) */}
       <section className="py-8 sm:py-10 lg:py-14">
         <div className="container-mova text-center">
-          <span className="eyebrow">As 3 etapas</span>
           <h2 className="section-title">Como é cada treino no MOVA</h2>
           <p className="lead mx-auto mb-2">
             Toda sessão é pensada do começo ao fim para você evoluir com
@@ -92,7 +91,6 @@ export default function Metodologia() {
       {/* Diferenciais — por que funciona */}
       <section className="py-8 sm:py-10 lg:py-14 bg-cinza-claro">
         <div className="container-mova">
-          <span className="eyebrow">Por que o método funciona</span>
           <h2 className="section-title">O que você não encontra na academia comum</h2>
           <p className="lead mb-10 max-w-[60ch]">
             A diferença não está só no equipamento — está na atenção que você
@@ -104,7 +102,7 @@ export default function Metodologia() {
               return (
                 <div
                   key={d.titulo}
-                  className="flex items-start gap-4 rounded-2xl bg-white border border-[#DDEDE3] p-5 sm:p-7"
+                  className="painel flex items-start gap-4 p-5 sm:p-7"
                 >
                   <div className="grid place-items-center w-12 h-12 shrink-0 rounded-full bg-verde-claro">
                     <Icone size={24} className="text-verde-medio" aria-hidden />
@@ -124,7 +122,6 @@ export default function Metodologia() {
       <section className="py-8 sm:py-10 lg:py-14 bg-verde-claro">
         <div className="container-mova grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           <div>
-            <span className="eyebrow">Treino adaptado</span>
             <h2 className="section-title">Reabilitação e movimento seguro</h2>
             <p className="lead mb-4">
               Voltando de uma lesão, com alguma dor, limitação ou cuidando do
@@ -169,7 +166,6 @@ export default function Metodologia() {
           <div className="rounded-3xl bg-verde-escuro text-white p-6 sm:p-8 lg:p-12">
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
               <div>
-                <span className="eyebrow !text-[#7FE3AC]">O primeiro passo</span>
                 <h2 className="section-title">Comece pela sessão avaliativa</h2>
                 <p className="text-[#D6EEDF] text-lg mb-6">
                   {site.sessaoAvaliativa.intro}
@@ -193,7 +189,7 @@ export default function Metodologia() {
                 {site.sessaoAvaliativa.etapas.map((item, i) => (
                   <li
                     key={item}
-                    className="flex items-center gap-4 rounded-xl bg-white/[0.07] border border-white/15 p-4"
+                    className="painel-dark flex items-center gap-4 p-4"
                   >
                     <span className="grid place-items-center w-9 h-9 shrink-0 rounded-full bg-verde text-white font-display font-bold">
                       {i + 1}

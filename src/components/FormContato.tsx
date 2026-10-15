@@ -105,7 +105,7 @@ export function FormContato({
   }
 
   const campo =
-    "w-full px-4 py-3.5 rounded-xl border border-[#D5E5DB] bg-white text-base focus:outline-none focus:border-verde focus:ring-3 focus:ring-verde/30";
+    "w-full px-4 py-3.5 rounded-xl border border-[#D5E5DB] bg-[#FBFDFC] text-base shadow-[inset_0_1px_2px_rgb(14_40_24_/_0.04)] transition-shadow focus:outline-none focus:border-verde focus:bg-white focus:ring-4 focus:ring-verde/20";
 
   // Tela de sucesso: link clicável (gesto real do usuário → o navegador NÃO
   // bloqueia como bloquearia um window.open disparado depois do await).

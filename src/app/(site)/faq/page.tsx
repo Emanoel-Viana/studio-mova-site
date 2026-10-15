@@ -30,7 +30,7 @@ export default async function FAQ() {
             {perguntas.map((item) => (
               <details
                 key={item.q}
-                className="group rounded-xl border border-[#E2EEE7] bg-white overflow-hidden"
+                className="group painel overflow-hidden"
               >
                 <summary className="flex items-center justify-between gap-4 cursor-pointer list-none p-5 font-display font-bold text-lg">
                   {item.q}

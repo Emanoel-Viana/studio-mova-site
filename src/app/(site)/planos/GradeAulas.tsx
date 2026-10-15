@@ -45,7 +45,7 @@ export function GradeAulas({
           return (
             <div
               key={aula.nome}
-              className="flex flex-col items-center text-center gap-2 rounded-2xl bg-white border border-[#DDEDE3] p-4 transition-all hover:-translate-y-0.5 hover:border-verde"
+              className="card-premium flex flex-col items-center text-center gap-2 p-4 hover:border-verde"
             >
               <span className="grid place-items-center w-11 h-11 rounded-2xl bg-verde-claro text-verde-escuro">
                 <Icone size={22} aria-hidden />
@@ -70,7 +70,7 @@ export function GradeAulas({
         return (
           <div
             key={aula.nome}
-            className="flex flex-col rounded-2xl bg-white border border-[#DDEDE3] p-6 transition-all hover:-translate-y-0.5 hover:border-verde hover:shadow-[0_14px_30px_rgba(30,155,94,0.10)]"
+            className="card-premium flex flex-col p-6 hover:border-verde"
           >
             <div className="flex items-center gap-3 mb-3">
               <span className="grid place-items-center w-12 h-12 rounded-2xl bg-verde-claro text-verde-escuro shrink-0">
