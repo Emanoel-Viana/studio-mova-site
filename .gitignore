@@ -53,3 +53,6 @@ pilates fotos/
 Spin Fotos/
 
 !.env.example
+
+# Artefatos da skill de design (impeccable)
+.impeccable/
