@@ -1,22 +1,26 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import { headers } from "next/headers";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { getContent } from "@/lib/content";
 import { ServiceWorkerRegister } from "@/components/ServiceWorkerRegister";
 
-const archivo = Archivo({
+// Fontes SELF-HOSTED (woff2 variável em ./fonts) — antes vinham do
+// next/font/google, que buscava no fonts.gstatic.com durante o build; isso
+// quebrava o deploy na EasyPanel (container sem acesso ao Google Fonts).
+// Agora o build nunca depende da rede do Google.
+const archivo = localFont({
   variable: "--font-archivo",
-  subsets: ["latin"],
-  weight: ["400", "700", "800", "900"],
+  src: "./fonts/archivo-var.woff2",
+  weight: "100 900",
   display: "swap",
 });
 
-const inter = Inter({
+const inter = localFont({
   variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  src: "./fonts/inter-var.woff2",
+  weight: "100 900",
   display: "swap",
 });
 
