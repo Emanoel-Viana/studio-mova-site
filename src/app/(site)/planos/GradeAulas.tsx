@@ -83,11 +83,11 @@ export function GradeAulas({
 
             <div className="flex flex-wrap gap-x-4 gap-y-1 mb-3 text-sm text-cinza">
               <span className="inline-flex items-center gap-1.5">
-                <Clock size={15} className="text-verde-medio" aria-hidden />
+                <Clock size={15} className="text-verde-texto" aria-hidden />
                 {aula.duracao}
               </span>
               <span className="inline-flex items-center gap-1.5">
-                <Users size={15} className="text-verde-medio" aria-hidden />
+                <Users size={15} className="text-verde-texto" aria-hidden />
                 {aula.capacidade}
               </span>
             </div>
@@ -99,7 +99,7 @@ export function GradeAulas({
                 <li key={b} className="flex items-start gap-2 text-sm">
                   <Check
                     size={16}
-                    className="text-verde-medio shrink-0 mt-0.5"
+                    className="text-verde-texto shrink-0 mt-0.5"
                     aria-hidden
                   />
                   <span>{b}</span>

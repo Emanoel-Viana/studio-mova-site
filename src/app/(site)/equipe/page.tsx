@@ -40,7 +40,7 @@ export default async function Equipe() {
                   />
                 </div>
                 <h2 className="text-xl">{pessoa.nome}</h2>
-                <p className="text-verde-medio font-semibold mb-2">
+                <p className="text-verde-texto font-semibold mb-2">
                   {pessoa.papel}
                 </p>
                 <p className="text-cinza">{pessoa.bio}</p>

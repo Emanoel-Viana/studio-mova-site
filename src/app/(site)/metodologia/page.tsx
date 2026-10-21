@@ -105,7 +105,7 @@ export default function Metodologia() {
                   className="painel flex items-start gap-4 p-5 sm:p-7"
                 >
                   <div className="grid place-items-center w-12 h-12 shrink-0 rounded-full bg-verde-claro">
-                    <Icone size={24} className="text-verde-medio" aria-hidden />
+                    <Icone size={24} className="text-verde-texto" aria-hidden />
                   </div>
                   <div>
                     <h3 className="text-lg mb-1">{d.titulo}</h3>
@@ -138,7 +138,7 @@ export default function Metodologia() {
               ].map((item) => (
                 <li key={item} className="flex items-start gap-3">
                   <HeartPulse
-                    className="text-verde-medio shrink-0 mt-1"
+                    className="text-verde-texto shrink-0 mt-1"
                     size={20}
                     aria-hidden
                   />
@@ -206,7 +206,7 @@ export default function Metodologia() {
       <section className="pb-16 lg:pb-24 text-center">
         <div className="container-mova">
           <Activity
-            className="mx-auto text-verde-medio mb-4"
+            className="mx-auto text-verde-texto mb-4"
             size={36}
             aria-hidden
           />

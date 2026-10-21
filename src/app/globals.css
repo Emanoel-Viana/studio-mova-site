@@ -12,6 +12,9 @@
   --color-verde-escuro: #14532d;
   --color-verde-claro: #e8f7ef;
   --color-verde-medio: #1e9b5e;
+  /* Verde de TEXTO (links/labels sobre fundo claro): #157a49 = 5,37:1 na AA.
+     O verde-medio (#1e9b5e, 3,56:1) só passa como FUNDO de botão, não como texto. */
+  --color-verde-texto: #157a49;
   --color-coral: #e0776b;
   --color-coral-escuro: #9b3b2e;
   --color-preto: #161a18;
@@ -339,6 +342,7 @@
 :root.dark .text-preto { color: #e8f1eb; }            /* texto (o fundo bg-preto continua escuro) */
 :root.dark .text-verde-escuro { color: #86e6b2; }     /* título/link em superfície agora escura */
 :root.dark .text-verde-medio { color: #63d69d; }
+:root.dark .text-verde-texto { color: #63d69d; }  /* no escuro o verde de texto clareia igual */
 :root.dark .btn-escuro { background: #22302a; color: #eaf3ee; }
 
 /* Bordas claras → escuras */

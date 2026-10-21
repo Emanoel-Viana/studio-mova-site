@@ -90,7 +90,7 @@ export default function OStudio() {
                 key={texto}
                 className="painel flex items-center gap-4 p-5"
               >
-                <Icone className="text-verde-medio shrink-0" aria-hidden />
+                <Icone className="text-verde-texto shrink-0" aria-hidden />
                 <span className="font-medium">{texto}</span>
               </div>
             ))}

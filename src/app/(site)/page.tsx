@@ -66,6 +66,17 @@ export default async function Home() {
             backgroundSize: "22px 22px",
           }}
         />
+        {/* Scrim de legibilidade: véu verde-escuro atrás da COLUNA DE TEXTO
+            (esquerda/topo). Garante contraste AA do texto sobre o verde vibrante
+            sem apagar o gradiente nem a foto (que fica opaca, por cima). */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(118deg, rgba(8,34,20,0.64) 0%, rgba(8,34,20,0.46) 42%, rgba(8,34,20,0.14) 72%, transparent 100%)",
+          }}
+        />
         <div className="container-mova relative grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-12 items-center secao">
           <div className="reveal">
             <div className="inline-flex flex-wrap items-center gap-x-2.5 gap-y-1 rounded-full bg-white/12 border border-white/25 backdrop-blur-sm px-4 py-2 text-sm font-medium mb-7 nums">
@@ -288,7 +299,7 @@ export default async function Home() {
             {site.publico.map((p) => (
               <div key={p.titulo} className="card-premium p-5 sm:p-7">
                 <div className="grid place-items-center w-11 h-11 rounded-full bg-verde-claro mb-4">
-                  <Check size={22} className="text-verde-medio" aria-hidden />
+                  <Check size={22} className="text-verde-texto" aria-hidden />
                 </div>
                 <h3 className="text-lg mb-2">{p.titulo}</h3>
                 <p className="text-cinza">{p.desc}</p>
@@ -380,7 +391,7 @@ export default async function Home() {
                     <div className="grid place-items-center w-12 h-12 rounded-2xl bg-verde-claro mb-3">
                       <Icone
                         size={26}
-                        className="text-verde-medio"
+                        className="text-verde-texto"
                         aria-hidden
                       />
                     </div>
@@ -391,7 +402,7 @@ export default async function Home() {
                         href={reel}
                         target="_blank"
                         rel="noopener"
-                        className="inline-flex items-center gap-1.5 mt-4 font-display font-bold text-sm uppercase tracking-wide text-verde-medio transition-colors hover:text-verde-escuro"
+                        className="inline-flex items-center gap-1.5 mt-4 font-display font-bold text-sm uppercase tracking-wide text-verde-texto transition-colors hover:text-verde-escuro"
                       >
                         <PlayCircle size={17} aria-hidden />
                         Ver em ação
@@ -444,7 +455,7 @@ export default async function Home() {
             </div>
             <div className="painel p-6 sm:p-8">
               <h3 className="flex items-center gap-2 text-xl mb-4">
-                <HandHeart size={22} className="text-verde-medio" aria-hidden />
+                <HandHeart size={22} className="text-verde-texto" aria-hidden />
                 Atendimento de Quiropraxia
               </h3>
               <div className="grid gap-3">
@@ -533,7 +544,7 @@ export default async function Home() {
                   href="/planos"
                   className="card-premium flex flex-col items-center gap-2 p-4 hover:border-verde"
                 >
-                  <Icone size={26} className="text-verde-medio" aria-hidden />
+                  <Icone size={26} className="text-verde-texto" aria-hidden />
                   <span className="font-display font-bold text-sm">
                     {m.nome}
                   </span>

@@ -30,7 +30,7 @@ export default async function Horarios() {
           <GradeHorarios grade={site.grade} />
 
           <p className="text-sm text-cinza mt-4 flex items-start gap-2">
-            <Clock size={16} className="text-verde-medio shrink-0 mt-0.5" aria-hidden />
+            <Clock size={16} className="text-verde-texto shrink-0 mt-0.5" aria-hidden />
             Grade de referência — os horários podem mudar. A musculação tem
             horários flexíveis o dia todo. Confirme a disponibilidade da turma no
             WhatsApp antes de vir.

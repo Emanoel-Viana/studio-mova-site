@@ -55,7 +55,7 @@ function LinhasPreco({ p }: { p?: Preco }) {
               melhor preço
             </span>
           </span>
-          <strong className="font-display text-verde-medio">
+          <strong className="font-display text-verde-texto">
             R$ {p.anual}
             <span className="text-xs text-cinza font-body font-normal">/mês</span>
           </strong>
@@ -207,7 +207,7 @@ export function SeletorPlanos({ catalogo }: { catalogo: Catalogo }) {
                 key={c}
                 className="inline-flex items-center gap-1.5 bg-white rounded-full px-3 py-1.5 text-sm font-medium"
               >
-                <Check size={14} className="text-verde-medio" aria-hidden />
+                <Check size={14} className="text-verde-texto" aria-hidden />
                 {c}
               </span>
             ))}
@@ -263,7 +263,7 @@ export function SeletorPlanos({ catalogo }: { catalogo: Catalogo }) {
                       className={
                         clube.destaque
                           ? "text-coral shrink-0 mt-0.5"
-                          : "text-verde-medio shrink-0 mt-0.5"
+                          : "text-verde-texto shrink-0 mt-0.5"
                       }
                       aria-hidden
                     />
@@ -298,7 +298,7 @@ export function SeletorPlanos({ catalogo }: { catalogo: Catalogo }) {
                   <span className="font-semibold">Anual</span>
                   <strong
                     className={`font-display text-xl ${
-                      clube.destaque ? "text-coral" : "text-verde-medio"
+                      clube.destaque ? "text-coral" : "text-verde-texto"
                     }`}
                   >
                     R$ {clube.anual}

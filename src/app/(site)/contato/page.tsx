@@ -140,7 +140,7 @@ export default async function Contato() {
                 rel="noopener"
                 className="flex items-start gap-4 rounded-2xl border border-[#E2EEE7] p-5 hover:border-verde transition-colors"
               >
-                <Phone className="text-verde-medio shrink-0" aria-hidden />
+                <Phone className="text-verde-texto shrink-0" aria-hidden />
                 <span>
                   <strong className="block font-display">WhatsApp</strong>
                   {site.contato.whatsappVisivel}
@@ -150,7 +150,7 @@ export default async function Contato() {
                 href={`mailto:${site.contato.email}`}
                 className="flex items-start gap-4 rounded-2xl border border-[#E2EEE7] p-5 hover:border-verde transition-colors"
               >
-                <Mail className="text-verde-medio shrink-0" aria-hidden />
+                <Mail className="text-verde-texto shrink-0" aria-hidden />
                 <span>
                   <strong className="block font-display">E-mail</strong>
                   {site.contato.email}
@@ -164,12 +164,12 @@ export default async function Contato() {
                 rel="noopener"
                 className="flex items-start gap-4 rounded-2xl border border-[#E2EEE7] p-5 hover:border-verde transition-colors"
               >
-                <MapPin className="text-verde-medio shrink-0" aria-hidden />
+                <MapPin className="text-verde-texto shrink-0" aria-hidden />
                 <span>
                   <strong className="block font-display">Endereço</strong>
                   {site.endereco.linha1}, {site.endereco.linha2} —{" "}
                   {site.endereco.cidade} — CEP {site.endereco.cep}
-                  <span className="block text-sm text-verde-medio mt-1">
+                  <span className="block text-sm text-verde-texto mt-1">
                     Abrir no Google Maps →
                   </span>
                 </span>
@@ -179,7 +179,7 @@ export default async function Contato() {
             {/* Horários */}
             <div className="mt-8 rounded-2xl bg-verde-claro p-6">
               <h3 className="flex items-center gap-2 text-xl mb-4">
-                <Clock size={22} className="text-verde-medio" aria-hidden />
+                <Clock size={22} className="text-verde-texto" aria-hidden />
                 Horários
               </h3>
               <ul className="divide-y divide-[#D5E5DB]">

@@ -101,7 +101,7 @@ export default async function Agendar() {
                     key={item}
                     className="flex items-center gap-2 rounded-xl bg-verde-claro px-4 py-3 text-sm font-medium text-verde-escuro"
                   >
-                    <Check size={18} className="text-verde-medio shrink-0" aria-hidden />
+                    <Check size={18} className="text-verde-texto shrink-0" aria-hidden />
                     {item}
                   </div>
                 ))}

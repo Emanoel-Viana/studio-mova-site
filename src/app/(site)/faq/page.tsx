@@ -36,7 +36,7 @@ export default async function FAQ() {
                   {item.q}
                   <Plus
                     size={22}
-                    className="text-verde-medio shrink-0 transition-transform group-open:rotate-45"
+                    className="text-verde-texto shrink-0 transition-transform group-open:rotate-45"
                     aria-hidden
                   />
                 </summary>
